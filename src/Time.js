@@ -15,7 +15,7 @@ const FormatTime=()=>{
   hours = hours % 12 || 12;
 
  return(
-  <h4> {dayName}, {monthName}, {day} {year}  {hours.toString().padStart(2, "0")}:{minutes}:{seconds} {ampm}</h4>
+  <h4> {dayName},{monthName}., {day} {year}  {hours.toString().padStart(2, "0")}:{minutes} {ampm}</h4>
   );
 }
 export default FormatTime;
