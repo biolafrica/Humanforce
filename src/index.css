@@ -84,6 +84,7 @@ body {
   background-color: #fafaff;
   font-size: 1rem;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 h1,
@@ -263,6 +264,7 @@ a {
   transform: translate(-50%, -50%);
   padding: 50px;
   box-sizing: border-box;
+ 
 
 }
 
@@ -290,10 +292,25 @@ a {
   gap: 10px;
   align-items: center;
   border-radius: 5px;
-
   width: 30%;
   padding: 10px;
   cursor: pointer;
+}
+
+.timer_container{
+  text-align: center;
+  border-bottom: 1px solid var(--Seperator-light);
+  padding: 20px 0px;
+  margin-bottom: 30px;
+  
+
+}
+
+.clock_container button{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
 }
 
 .clockin_container:hover,
@@ -308,6 +325,81 @@ a {
 .payroll_container:active,
 .attendance_container:active {
   box-shadow: var(--elevate-3);
+}
+
+.clock_container{
+  border: 1px solid black;
+  width: 60%;
+  padding: 0px 50px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+.staff_details{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.staff_name,
+.staff_position,
+.staff_company
+{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.clock_in_cont{
+  display: flex;
+  align-items: start;
+  gap: 20px;
+
+}
+
+.check_arrow {
+
+
+}
+
+.clock_in,
+.break_start,
+.break_end,
+.clock_out{
+  display: flex;
+  gap: 30px;
+  
+}
+
+.clock_in_cont h4 {
+  line-height: 25px;
+}
+
+.clock_out h4,
+.break_end h4,
+.break_start h4,
+.clock_in h4{
+  line-height: 26px;
+}
+
+
+.clockstatus_container{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+
+.arrow{
+  width: 0px;
+  height: 20px;
+  border: 2px solid black;
+  margin: 0 auto;
 }
 
 
