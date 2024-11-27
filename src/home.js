@@ -5,7 +5,7 @@ const Homepage=()=>{
     <div className="home_container">
 
       <div className="home_up">
-        
+
         <Link to="/Login" className="clockin_container">
           <img src="icons/START SHIFT.svg" alt="" />
           <h4>Start Work</h4>
@@ -20,10 +20,10 @@ const Homepage=()=>{
 
       <div className="home_down">
 
-        <div className="payroll_container">
+        <Link to= "/Payslip" className="payroll_container">
           <img src="icons/PAYRI.svg" alt="" />
-          <h4>Payroll</h4>
-        </div>
+          <h4>Payslip</h4>
+        </Link>
 
         <div className="attendance_container">
           <img src="icons/ATTENDANCE.svg" alt="" />
