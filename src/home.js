@@ -25,10 +25,10 @@ const Homepage=()=>{
           <h4>Payslip</h4>
         </Link>
 
-        <div className="attendance_container">
+        <Link to="/Attendance" className="attendance_container">
           <img src="icons/ATTENDANCE.svg" alt="" />
           <h4>Attendance</h4>
-        </div>
+        </Link>
 
       </div>
       

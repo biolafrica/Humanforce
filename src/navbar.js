@@ -1,12 +1,13 @@
 import FormatTime from "./Time";
+import { Link } from "react-router-dom";
 
 const Navbar =()=>{
   return(
     <nav className="nav_container">
 
-      <div className="left_container">
+      <Link to="/" className="left_container">
         <img src="/icons/Group work.svg" alt="brand icon" />
-      </div>
+      </Link>
 
       <div className="right_container">
         <FormatTime/>

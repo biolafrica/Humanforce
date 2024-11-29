@@ -103,6 +103,7 @@ input[type="password"],
 input[type="file"],
 input[type="search"],
 input[type="number"],
+input[type="month"],
 select,
 textarea {
   font-family: 'Almarai', 'Inter';
@@ -111,7 +112,7 @@ textarea {
   box-sizing: border-box;
   width: 100%;
   padding: 10px 16px;
-  border-radius: 0px;
+  border-radius: 5px;
   border: 1px solid var(--Border-light);
   font-weight: 400;
   font-size: clamp(14.7px, 2vw, 19px);
@@ -414,6 +415,79 @@ a {
   text-align: center;
   margin-bottom: 20px;
 }
+
+/*attendance*/
+.table_container{
+  border: 1px solid black;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 5px;
+
+
+}
+
+.table_header,
+.table_body{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  padding: 10px;
+  
+}
+
+.table_header{
+ background-color: #f4f4f4;
+ font-weight: bold;
+ 
+  
+}
+
+.table_body .column{
+  display: contents;
+}
+
+.column .date_column,
+.column .clockin_column,
+.column .clockout_column,
+.column .hours_column,
+.column .status_column{
+  padding: 15px 8px;
+  border-bottom: 1px solid #e0e0e0;
+  
+}
+.month_form{
+  width: 20%;
+  margin-bottom: 30px;
+  
+}
+
+.table_footer{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.table_footer img{
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.table_footer img:hover {
+  filter: brightness(0.9);
+
+}
+
+
+
+
 
 
 @media(max-width:768px) {

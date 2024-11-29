@@ -5,6 +5,7 @@ import Homepage from "./home";
 import Login from "./login";
 import ClockDetails from "./clockDetails";
 import Payslip from "./payslip";
+import Attendance from "./attendance";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path='/login'  element={<Login/>} />
             <Route path='/clock'  element={<ClockDetails/>} />
             <Route path='/payslip'  element={<Payslip/>} />
+            <Route path='/attendance'  element={<Attendance/>} />
 
           </Routes>
         </div>
