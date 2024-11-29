@@ -25,28 +25,28 @@ const Attendance = ()=>{
 
           <div className="column">
             <h4 className="date_column">01-12</h4>
-            <h4 className="clockin_column">06:00:00</h4>
-            <h4 className="clockout_column">14:00:01</h4>
-            <h4 className="hours_column">7.5</h4>
+            <h4 className="clockin_column"> <b className="small">Clock in: </b>06:00:00</h4>
+            <h4 className="clockout_column"><b className="small" >Clock out: </b> 14:00:01</h4>
+            <h4 className="hours_column">7.5<span className="small" >hours</span></h4>
             <h4 className="status_column">Early</h4>
           </div>
 
           <div className="column">
             <h4 className="date_column">01-12</h4>
-            <h4 className="clockin_column">06:00:00</h4>
-            <h4 className="clockout_column">14:00:01</h4>
-            <h4 className="hours_column">7.5</h4>
+            <h4 className="clockin_column"> <b className="small">Clock in: </b>06:00:00</h4>
+            <h4 className="clockout_column"><b className="small" >Clock out: </b> 14:00:01</h4>
+            <h4 className="hours_column">7.5<span className="small" >hours</span></h4>
             <h4 className="status_column">Early</h4>
           </div>
 
           <div className="column">
             <h4 className="date_column">01-12</h4>
-            <h4 className="clockin_column">06:00:00</h4>
-            <h4 className="clockout_column">14:00:01</h4>
-            <h4 className="hours_column">7.5</h4>
+            <h4 className="clockin_column"> <b className="small">Clock in: </b>06:00:00</h4>
+            <h4 className="clockout_column"><b className="small" >Clock out: </b> 14:00:01</h4>
+            <h4 className="hours_column">7.5<span className="small" >hours</span></h4>
             <h4 className="status_column">Early</h4>
           </div>
-        
+
         </div>
 
         <div className="table_footer">

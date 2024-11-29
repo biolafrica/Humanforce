@@ -226,15 +226,19 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 120px;
-
+  padding: 30px 20px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  background-color: white;
 }
 
 .login_container{
   box-sizing: border-box;
   border: 1px solid black;
   width: 40%;
-  margin: 100px auto;
+  margin: 200px auto;
   padding: 50px;
 
 }
@@ -294,9 +298,10 @@ a {
   gap: 10px;
   align-items: center;
   border-radius: 5px;
-  width: 30%;
+  width: 35%;
   padding: 10px;
   cursor: pointer;
+  
 }
 
 .timer_container{
@@ -418,12 +423,9 @@ a {
 
 /*attendance*/
 .table_container{
-  border: 1px solid black;
+  border: 1px solid var(--Border-light);
   width: 80%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 200px auto 0px auto;
   padding: 20px;
   border-radius: 5px;
 
@@ -459,6 +461,7 @@ a {
   border-bottom: 1px solid #e0e0e0;
   
 }
+
 .month_form{
   width: 20%;
   margin-bottom: 30px;
@@ -485,9 +488,9 @@ a {
 
 }
 
-
-
-
+.small{
+  display: none;
+}
 
 
 @media(max-width:768px) {
@@ -523,6 +526,108 @@ a {
     line-height: 21.3px;
     letter-spacing: 0.6%;
   }
+
+  .home_container{
+    width: 90%;
+    border: none;
+    box-shadow: none;
+  }
+ 
+  .table_body {
+    grid-template-columns: 1fr;
+    text-align: left;
+
+  }
+
+  .column h4{
+    margin: 5px 0;
+  }
+
+  .table_container {
+    border: 1px solid black;
+    width: 80%;
+    padding: 20px;
+    border-radius: 5px;
+
+
+  }
+
+  .month_form {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+
+  .table_container {
+    width: 90%;
+  
+  }
+
+  .table_header {
+    display: none;
+  }
+
+  .table_body .column {
+    display: contents;
+  }
+
+  .column .date_column,
+  .column .clockin_column,
+  .column .clockout_column,
+  .column .hours_column,
+  .column .status_column {
+    padding: 0px;
+    border-bottom: none;
+
+  }
+
+  .table_body .column{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--Border-light);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .small{
+    display: initial;
+  }
+
+  .payslip_form{
+    border: none;
+    width: 90%;
+    padding: 10px;
+  }
+
+  .clockstatus_container{
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .clock_container{
+    border: none;
+    padding: 0;
+    width: 90%;
+  }
+
+  .staff_details,
+  .staff_clock_summary{
+    margin: 0 auto;
+  }
+
+  .clock_container button{
+    width: 80%;
+  }
+
+  .login_container{
+    width: 90%;
+    border: none;
+    padding: 10px;
+  }
+
+  
+
+
 }
 
 @media(min-width:769px) and (max-width:992px) {
@@ -556,6 +661,20 @@ a {
     font-size: 16px;
     line-height: 21px;
     letter-spacing: 0.7%;
+  }
+
+  .payslip_form {
+    width: 60%;
+    
+  }
+
+  .home_container,
+  .login_container{
+    width: 60%;
+  }
+
+  .clock_container{
+    width: 80%;
   }
 
 }
