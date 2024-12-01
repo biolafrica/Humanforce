@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UserLayout from "./layout/userlayout";
+
 import Footer from "./footer";
-import Navbar from "./navbar";
+import Navbar from "./nav/navbar";
 import Homepage from "./home";
 import Login from "./login";
 import ClockDetails from "./clockDetails";
@@ -12,23 +14,18 @@ function App() {
   return (
 
     <Router>
-      <div className="App">
-        <Navbar/>
+      <Routes>
 
-        <div className="content">
-          <Routes>
-            <Route path='/'  element={<Homepage/>} />
-            <Route path='/login'  element={<Login/>} />
-            <Route path='/clock'  element={<ClockDetails/>} />
-            <Route path='/payslip'  element={<Payslip/>} />
-            <Route path='/attendance'  element={<Attendance/>} />
+        {/* user routes*/}
+        <Route path='/'  element={<UserLayout><Homepage/></UserLayout>} />
+        <Route path='/login'  element={<UserLayout><Login/></UserLayout>} />
+        <Route path='/clock'  element={<UserLayout><ClockDetails/></UserLayout>} />
+        <Route path='/payslip'  element={<UserLayout><Payslip/></UserLayout>} />
+        <Route path='/attendance'  element={<UserLayout><Attendance/></UserLayout>} />
 
-          </Routes>
-        </div>
-
-        <Footer/>
-      </div>
-
+        {/* admin routes*/}
+      </Routes>
+        
     </Router>
     
   );
