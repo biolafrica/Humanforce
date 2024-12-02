@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SideNav=()=>{
   return(
     <div className="sidebar-cont">
@@ -8,37 +10,38 @@ const SideNav=()=>{
 
       <div className="side-nav">
 
-        <div className="dashboard">
+        <Link to="/admin" className="dashboard active">
           <img src="icons/Dashboard.svg" alt="" />
           <h4>Dashboard</h4>
-        </div>
+        </Link>
 
-        <div className="staff">
+        <Link to="/admin/staff" className="staff">
           <img src="icons/Group.svg" alt="" />
           <h4>Staff</h4>
-        </div>
+        </Link>
 
-        <div className="team">
+        <Link className="team">
           <img src="icons/Groups.svg" alt="" />
           <h4>Team</h4>
-        </div>
+        </Link>
 
-        <div className="payroll">
+        <Link className="payroll">
           <img src="icons/Matthew Accounting.svg" alt="" />
           <h4>Payroll</h4>
-        </div>
+        </Link>
 
-        <div className="attendance">
+        <Link className="attendance">
           <img src="icons/Date range.svg" alt="" />
           <h4>Attendance</h4>
-        </div>
+        </Link>
 
-        <div className="settings">
+        <Link className="settings">
           <img src="icons/Settings.svg" alt="" />
           <h4>Settings</h4>
-        </div>
+        </Link>
 
       </div>
+
     </div>
   )
 

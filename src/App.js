@@ -7,6 +7,7 @@ import ClockDetails from "./user/clockDetails";
 import Payslip from "./user/payslip";
 import Attendance from "./user/attendance";
 import Dashboard from "./admin/dashboard";
+import Staff from "./admin/staff";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
         {/* admin routes*/}
         <Route path='/admin'  element={<AdminLayout><Dashboard/></AdminLayout>} />
+        <Route path='/admin/staff'  element={<AdminLayout><Staff/></AdminLayout>} />
       </Routes>
         
     </Router>
