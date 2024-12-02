@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserLayout from "./layout/userlayout";
-import Homepage from "./home";
-import Login from "./login";
-import ClockDetails from "./clockDetails";
-import Payslip from "./payslip";
-import Attendance from "./attendance";
+import AdminLayout from "./layout/adminlayout";
+import Homepage from "./user/home";
+import Login from "./user/login";
+import ClockDetails from "./user/clockDetails";
+import Payslip from "./user/payslip";
+import Attendance from "./user/attendance";
+import Dashboard from "./admin/dashboard";
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
         <Route path='/attendance'  element={<UserLayout><Attendance/></UserLayout>} />
 
         {/* admin routes*/}
+        <Route path='/admin'  element={<AdminLayout><Dashboard/></AdminLayout>} />
       </Routes>
         
     </Router>

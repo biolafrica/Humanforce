@@ -1,4 +1,4 @@
-import FormatTime from "../Time";
+import FormatTime from "../hooks/Time";
 import { Link } from "react-router-dom";
 
 const Navbar =()=>{

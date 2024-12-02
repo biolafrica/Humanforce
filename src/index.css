@@ -492,6 +492,60 @@ a {
   display: none;
 }
 
+/*admin header*/
+.side-nav{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dashboard,
+.staff,
+.team,
+.payroll,
+.attendance,
+.settings{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 30px;
+  border: 1px solid var(--Border-light);
+  border-radius: 5px;
+}
+
+.side-logo img{
+  height: 36px;
+  width: 36px;
+}
+
+.sidebar-cont{
+  padding: 20px;
+  border: 1px solid black;
+  width: 25%;
+}
+
+.right-logout{
+  display: flex;
+  align-items: center;
+  row-gap: 15px;
+}
+
+.right-adminav{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.right-icon{
+  border: 1px solid black;
+  padding: 10px;
+}
+
+
+
+
 
 @media(max-width:768px) {
   /* general styles */

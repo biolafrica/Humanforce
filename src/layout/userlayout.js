@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../nav/navbar";
-import Footer from "../footer";
+import Footer from "../nav/footer";
 
 
 const UserLayout = ({children})=>{
