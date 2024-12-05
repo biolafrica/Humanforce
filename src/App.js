@@ -8,6 +8,7 @@ import Payslip from "./user/payslip";
 import Attendance from "./user/attendance";
 import Dashboard from "./admin/dashboard";
 import Staff from "./admin/staff";
+import NewStaff from "./admin/newstaff";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         {/* admin routes*/}
         <Route path='/admin'  element={<AdminLayout><Dashboard/></AdminLayout>} />
         <Route path='/admin/staff'  element={<AdminLayout><Staff/></AdminLayout>} />
+        <Route path='/admin/staff/new'  element={<AdminLayout><NewStaff/></AdminLayout>} />
       </Routes>
         
     </Router>
