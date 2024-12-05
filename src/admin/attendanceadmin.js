@@ -52,8 +52,6 @@ const attendanceAdmin =()=>{
         <img src="icons/Keyboard arrow right.svg" alt="" />
       </div>
 
-
-
     </div>
   )
 };
