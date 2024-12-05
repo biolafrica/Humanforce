@@ -8,6 +8,8 @@ import Payslip from "./user/payslip";
 import Attendance from "./user/attendance";
 import Dashboard from "./admin/dashboard";
 import Staff from "./admin/staff";
+import NewTeam from "./admin/newteam";
+import Team from "./admin/team";
 import NewStaff from "./admin/newstaff";
 
 
@@ -28,6 +30,8 @@ function App() {
         <Route path='/admin'  element={<AdminLayout><Dashboard/></AdminLayout>} />
         <Route path='/admin/staff'  element={<AdminLayout><Staff/></AdminLayout>} />
         <Route path='/admin/staff/new'  element={<AdminLayout><NewStaff/></AdminLayout>} />
+        <Route path='/admin/team'  element={<AdminLayout><Team/></AdminLayout>} />
+        <Route path='/admin/team/new'  element={<AdminLayout><NewTeam/></AdminLayout>} />
       </Routes>
         
     </Router>
