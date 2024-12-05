@@ -8,7 +8,6 @@ const NewTeam =()=>{
       </div>
 
       <div className="newteam_body">
-
         <form action="">
           <label htmlFor="">Name</label>
           <select name="name" id="">
