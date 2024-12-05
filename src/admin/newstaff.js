@@ -6,20 +6,6 @@ const NewStaff =()=>{
 
         <form action="">
           <label htmlFor="">Full Name</label>
-          <input type="text" placeholder="enter full name" />
-        </form>
-
-        <form action="">
-          <label htmlFor="">Role</label>
-          <input type="text" placeholder="enter role" />
-        </form>
-
-      </div>
-
-      <div className="newstaff_column">
-
-        <form action="">
-          <label htmlFor="">Full Name</label>
           <select name="" id="">
             <option value="contract">Contract</option>
             <option value="contract">Fixed</option>
