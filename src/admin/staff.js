@@ -17,7 +17,7 @@ const Staff = ()=>{
           <div className="table_heading ">
 
             <form action="" className="month_form">
-              <input type="text" placeholder="search staff" />
+              <input type="text" placeholder="search " />
             </form>
 
             <button className="filled-btn">
