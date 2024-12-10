@@ -20,22 +20,22 @@ const SideNav=()=>{
           <h4>Staff</h4>
         </Link>
 
-        <Link className="team">
+        <Link to="/admin/team" className="team">
           <img src="icons/Groups.svg" alt="" />
           <h4>Team</h4>
         </Link>
 
-        <Link className="payroll">
+        <Link to="/admin/payroll" className="payroll">
           <img src="icons/Matthew Accounting.svg" alt="" />
           <h4>Payroll</h4>
         </Link>
 
-        <Link className="attendance">
+        <Link to="/admin/attendance" className="attendance">
           <img src="icons/Date range.svg" alt="" />
           <h4>Attendance</h4>
         </Link>
 
-        <Link className="settings">
+        <Link to="/admin/settings" className="settings">
           <img src="icons/Settings.svg" alt="" />
           <h4>Settings</h4>
         </Link>

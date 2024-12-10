@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Staff = ()=>{
 
   return(
@@ -20,10 +22,12 @@ const Staff = ()=>{
               <input type="text" placeholder="search " />
             </form>
 
-            <button className="filled-btn">
+            <Link to="/admin/staff/new" className="filled-btn">
               <img src="icons/Add.svg" alt="" />
               <h4>Add Staff</h4>
-            </button>
+            </Link>
+
+            
 
           </div>
 

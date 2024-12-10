@@ -11,6 +11,11 @@ import Staff from "./admin/staff";
 import NewTeam from "./admin/newteam";
 import Team from "./admin/team";
 import NewStaff from "./admin/newstaff";
+import Payroll from "./admin/payroll";
+import PayrollEdit from "./admin/payrolledit";
+import AttendanceAdmin from "./admin/attendanceadmin";
+import AttendanceMore from "./admin/attendancemore";
+import Businessetting from "./admin/businessetting";
 
 
 function App() {
@@ -32,6 +37,11 @@ function App() {
         <Route path='/admin/staff/new'  element={<AdminLayout><NewStaff/></AdminLayout>} />
         <Route path='/admin/team'  element={<AdminLayout><Team/></AdminLayout>} />
         <Route path='/admin/team/new'  element={<AdminLayout><NewTeam/></AdminLayout>} />
+        <Route path='/admin/payroll'  element={<AdminLayout><Payroll/></AdminLayout>} />
+        <Route path='/admin/payroll/edit'  element={<AdminLayout><PayrollEdit/></AdminLayout>} />
+        <Route path='/admin/attendance'  element={<AdminLayout><AttendanceAdmin/></AdminLayout>} />
+        <Route path='/admin/attendance/more'  element={<AdminLayout><AttendanceMore/></AdminLayout>} />
+        <Route path='/admin/settings'  element={<AdminLayout><Businessetting/></AdminLayout>} />
       </Routes>
         
     </Router>

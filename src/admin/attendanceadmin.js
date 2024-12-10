@@ -1,4 +1,5 @@
-const attendanceAdmin =()=>{
+import { Link } from "react-router-dom";
+const AttendanceAdmin =()=>{
   return(
     <div className="attendanceadmin_cont">
       <h3>Attendance</h3>
@@ -21,29 +22,29 @@ const attendanceAdmin =()=>{
 
       <div className="table_body">
 
-        <div className="column">
+        <Link to="/admin/attendance/more" className="column">
           <h6 className="date_column">Abiodun Biobaku</h6>
           <h6 className="clockin_column">Rider</h6>
           <h6 className="clockout_column">100</h6>
           <h6 className="hours_column">N10,000:00</h6>
           <h6 className="status_column">82%</h6>
-        </div>
+        </Link>
 
-        <div className="column">
+        <Link to="/admin/attendance/more" className="column">
           <h6 className="date_column">Adegoke Emmanuel</h6>
           <h6 className="clockin_column">Graphics Designer</h6>
           <h6 className="clockout_column">200</h6>
           <h6 className="hours_column">N2,000:00</h6>
           <h6 className="status_column">90%</h6>
-        </div>
+        </Link>
 
-        <div className="column">
+        <Link to="/admin/attendance/more" className="column">
           <h6 className="date_column">Oletubo Oluwadamilare</h6>
           <h6 className="clockin_column">Operations Manager</h6>
           <h6 className="clockout_column">200</h6>
           <h6 className="hours_column">N1,000:00</h6>
           <h6 className="status_column">70%</h6>
-        </div>
+        </Link>
 
       </div>
 
@@ -56,4 +57,4 @@ const attendanceAdmin =()=>{
   )
 };
 
-export default attendanceAdmin;
+export default AttendanceAdmin;

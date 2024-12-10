@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Payroll =()=>{
   return(
     <div className="payroll_cont">
@@ -31,29 +32,29 @@ const Payroll =()=>{
 
         <div className="table_body">
 
-          <div className="column">
+          <Link to="/payroll/edit" className="column">
             <h6 className="date_column">Abiodun Biobaku</h6>
             <h6 className="clockin_column">Rider</h6>
             <h6 className="clockout_column">11-12-2024</h6>
             <h6 className="hours_column">N10,000:00</h6>
             <h6 className="status_column">Active</h6>
-          </div>
+          </Link>
 
-          <div className="column">
+          <Link to="/payroll/edit" className="column">
             <h6 className="date_column">Adegoke Emmanuel</h6>
             <h6 className="clockin_column">Graphics Designer</h6>
             <h6 className="clockout_column">12-12-2024</h6>
             <h6 className="hours_column">N200,000:00</h6>
             <h6 className="status_column">Sacked</h6>
-          </div>
+          </Link>
 
-          <div className="column">
+          <Link to="/payroll/edit" className="column">
             <h6 className="date_column">Oletubo Oluwadamilare</h6>
             <h6 className="clockin_column">Operations Manager</h6>
             <h6 className="clockout_column">13-13-2024</h6>
             <h6 className="hours_column">N100,000:00</h6>
             <h6 className="status_column">Resigned</h6>
-          </div>
+          </Link>
 
         </div>
 

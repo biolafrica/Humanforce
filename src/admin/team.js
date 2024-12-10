@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Team = ()=>{
   return (
     <div className="team_cont">
@@ -10,11 +12,11 @@ const Team = ()=>{
         </div>
 
         <div className="team_heading_right">
-          <button className="filled-btn">
+          <Link to="/admin/team/new" className="filled-btn">
             <h4>Add Team</h4>
             <img src="icons/Person add" alt="" />
 
-          </button>
+          </Link>
         </div>
       </div>
 
