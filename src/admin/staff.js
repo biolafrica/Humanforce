@@ -23,11 +23,9 @@ const Staff = ()=>{
             </form>
 
             <Link to="/admin/staff/new" className="filled-btn">
-              <img src="icons/Add.svg" alt="" />
+              <img src="/icons/Add.svg" alt="" />
               <h4>Add Staff</h4>
             </Link>
-
-            
 
           </div>
 
@@ -68,8 +66,8 @@ const Staff = ()=>{
           </div>
 
           <div className="table_footer">
-            <img src="icons/Keyboard arrow left.svg" alt="" />
-            <img src="icons/Keyboard arrow right.svg" alt="" />
+            <img src="/icons/Keyboard arrow left.svg" alt="" />
+            <img src="/icons/Keyboard arrow right.svg" alt="" />
           </div>
 
         </div>

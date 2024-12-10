@@ -32,7 +32,7 @@ const Payroll =()=>{
 
         <div className="table_body">
 
-          <Link to="/payroll/edit" className="column">
+          <Link to="/admin/payroll/edit" className="column">
             <h6 className="date_column">Abiodun Biobaku</h6>
             <h6 className="clockin_column">Rider</h6>
             <h6 className="clockout_column">11-12-2024</h6>
@@ -40,7 +40,7 @@ const Payroll =()=>{
             <h6 className="status_column">Active</h6>
           </Link>
 
-          <Link to="/payroll/edit" className="column">
+          <Link to="/admin/payroll/edit" className="column">
             <h6 className="date_column">Adegoke Emmanuel</h6>
             <h6 className="clockin_column">Graphics Designer</h6>
             <h6 className="clockout_column">12-12-2024</h6>
@@ -48,7 +48,7 @@ const Payroll =()=>{
             <h6 className="status_column">Sacked</h6>
           </Link>
 
-          <Link to="/payroll/edit" className="column">
+          <Link to="/admin/payroll/edit" className="column">
             <h6 className="date_column">Oletubo Oluwadamilare</h6>
             <h6 className="clockin_column">Operations Manager</h6>
             <h6 className="clockout_column">13-13-2024</h6>
@@ -59,11 +59,10 @@ const Payroll =()=>{
         </div>
 
         <div className="table_footer">
-          <img src="icons/Keyboard arrow left.svg" alt="" />
-          <img src="icons/Keyboard arrow right.svg" alt="" />
+          <img src="/icons/Keyboard arrow left.svg" alt="" />
+          <img src="/icons/Keyboard arrow right.svg" alt="" />
         </div>
 
-        
       </div>
 
     </div>

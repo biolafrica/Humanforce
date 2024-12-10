@@ -104,6 +104,8 @@ input[type="file"],
 input[type="search"],
 input[type="number"],
 input[type="month"],
+input[type="date"],
+input[type="time"],
 select,
 textarea {
   font-family: 'Almarai', 'Inter';
@@ -249,8 +251,14 @@ a {
 }
 
 .login_container button,
-.payslip_form button{
+.payslip_form button,
+.newteam_body button,
+.newstaff_cont button,
+.fixed_staff button{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  
 }
 
 .error_message{
@@ -286,7 +294,6 @@ a {
   margin-bottom: 50px;
 
 }
-
 
 .clockin_container,
 .clockout_container,
@@ -431,7 +438,6 @@ a {
 
 .staff_table_container{
   border: 1px solid var(--Border-light);
-  width: 90%;
   margin: 0px auto 0px auto;
   padding: 20px;
   border-radius: 5px;
@@ -464,6 +470,10 @@ a {
 .column .status_column{
   padding: 15px 8px;
   border-bottom: 1px solid #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   
 }
 
@@ -661,18 +671,25 @@ a {
 
 .staff_table_container {
   border: 1px solid var(--Border-light);
-  width: 90%;
   margin: 0px auto 0px auto;
   padding: 20px;
   border-radius: 5px;
 
 }
 
+.staff_cont{
+  width: 90%;
+  margin: 30px auto;
+}
+
 .staff_cont_head{
   display: flex;
-  margin: 50px 20px;
+  margin: 50px 0px;
   align-items: center;
+  justify-content: center;
   gap: 60px;
+  background-color: #f5f5f5;
+  padding: 10px;
 }
 
 .staff_cont_head h5 {
@@ -705,13 +722,171 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-
 }
 
 .filled-btn{
   display: flex;
   align-items: center;
 }
+
+.team_cont,
+.payroll_cont,
+.contract_staff{
+  width: 90%;
+  margin: 50px auto;
+}
+
+.team_heading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.newteam_cont{
+  width: 60%;
+  margin: 50px auto;
+  border: 1px solid var(--Border-light);
+  border-radius: 5px;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.sec{
+  color: var(--Secondary-Text-light);
+}
+
+.newteam_header{
+  margin-bottom: 20px;
+}
+
+.team_body,
+.payrollcont_body,
+.contract_staff,
+.attendanceadmin_cont,
+.attendancemore_cont{
+  border: 1px solid var(--Border-light);
+  border-radius: 5px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.newstaff_cont,
+.fixed_staff,
+.bio_data,
+.working_hours,
+.payment,
+.personal_body,
+.password_body{
+  width: 70%;
+  margin: 50px auto;
+  border: 1px solid var(--Border-light);
+  border-radius: 5px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.newstaff_column,
+.payroll_column,
+.payment_column{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newstaff_column form,
+.payroll_column form,
+.payment_column form{
+  width: 45%;
+}
+
+.attendanceadmin_cont,
+.attendancemore_cont{
+  margin: 50px auto;
+  width: 90%;
+}
+
+.attendanceadmin_cont h5,
+.attendancemore_cont h5{
+  margin-bottom: 15px;
+}
+
+.payroll_columns,
+.payment_columns,
+.payment_columns{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.password_body .payment_column{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.businessettings_head{
+  width: 90%;
+  margin: 0px auto;
+}
+
+.work_hours form{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.work_hours{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.working_hours_column{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.working_hours_colums{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payroll_columns button,
+.working_hours_colums button,
+.payment_columns button{
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.password_column button{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.password_column{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 70%;
+  margin: 0 auto;
+
+}
+
+.password_body h5{
+  text-align: center;
+}
+
 
 
 

@@ -2,7 +2,7 @@ const AdminNav=()=>{
 
   return(
     <div className="adminavbar_cont">
-      
+
       <div className="left-adminav">
         <h4>Dashboard</h4>
       </div>
@@ -14,7 +14,7 @@ const AdminNav=()=>{
         </div>
 
         <div className="right-logout">
-          <img src="icons/Logout.svg" alt="" />
+          <img src="/icons/Logout.svg" alt="" />
           <h4>Logout</h4>
         </div>
 

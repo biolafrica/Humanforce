@@ -5,7 +5,7 @@ const SideNav=()=>{
     <div className="sidebar-cont">
 
       <div className="side-logo">
-        <img src="icons/Group work.svg" alt="" />
+        <img src="/icons/Group work.svg" alt="" />
       </div>
 
       <div className="side-nav">

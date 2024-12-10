@@ -9,13 +9,13 @@ const PayrollEdit = ()=>{
         <div className="newstaff_column">
 
           <form action="">
-            <label htmlFor="">Basic Pay</label>
-            <input type="text" placeholder="enter amount" />
+            <label htmlFor=""><h4>Basic Pay</h4></label>
+            <input type="text" placeholder="Enter amount" />
           </form>
 
           <form action="">
-            <label htmlFor="">Loan</label>
-            <input type="text" placeholder="enter amount" />
+            <label htmlFor=""><h4>Loan</h4></label>
+            <input type="text" placeholder="Enter amount" />
           </form>
 
         </div>
@@ -23,13 +23,13 @@ const PayrollEdit = ()=>{
         <div className="newstaff_column">
 
           <form action="">
-            <label htmlFor="">Lateness</label>
-            <input type="text" placeholder="enter amount" />
+            <label htmlFor=""><h4>Lateness</h4></label>
+            <input type="text" placeholder="Enter amount" />
           </form>
 
           <form action="">
-            <label htmlFor="">Pension</label>
-            <input type="text" placeholder="enter amount" />
+            <label htmlFor=""><h4>Pension</h4></label>
+            <input type="text" placeholder="Enter amount" />
           </form>
 
         </div>
@@ -37,18 +37,18 @@ const PayrollEdit = ()=>{
         <div className="newstaff_column">
 
           <form action="">
-            <label htmlFor="">Payee Tax</label>
-            <input type="text" placeholder="enter payee tax" />
+            <label htmlFor=""><h4>Payee Tax</h4></label>
+            <input type="text" placeholder="Enter payee tax" />
           </form>
 
           <form action="">
-            <label htmlFor="">Net Pay</label>
-            <input type="text" placeholder="enter net pay" />
+            <label htmlFor=""><h4>Net Pay</h4></label>
+            <input type="text" placeholder="Enter net pay" />
           </form>
 
         </div>
 
-        <button>Submit</button>
+        <button className="filled-btn"><h4>Submit</h4></button>
 
       </div>
 
@@ -107,13 +107,11 @@ const PayrollEdit = ()=>{
         </div>
 
         <div className="table_footer">
-          <img src="icons/Keyboard arrow left.svg" alt="" />
-          <img src="icons/Keyboard arrow right.svg" alt="" />
+          <img src="/icons/Keyboard arrow left.svg" alt="" />
+          <img src="/icons/Keyboard arrow right.svg" alt="" />
         </div>
 
       </div>
-
-    
 
     </div>
   )

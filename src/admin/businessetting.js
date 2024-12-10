@@ -15,20 +15,20 @@ const Businessetting =()=>{
         <div className="businessettings_body">
 
           <div className="bio_data">
-            <h4>Payroll Summary</h4>
+            <h5>Payroll Summary</h5>
 
             <div className="payroll_columns">
 
               <div className="payroll_column">
 
                 <form action="">
-                  <label htmlFor="">Business name</label>
-                  <input type="text" placeholder="enter full name" />
+                  <label htmlFor=""><h4>Business name</h4></label>
+                  <input type="text" placeholder="Enter full name" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Business email</label>
-                  <input type="email" placeholder="enter phone number" />
+                  <label htmlFor=""><h4>Business email</h4></label>
+                  <input type="email" placeholder="Enter phone number" />
                 </form>
                 
               </div>
@@ -36,13 +36,13 @@ const Businessetting =()=>{
               <div className="payroll_column">
 
                 <form action="">
-                  <label htmlFor="">Business address I</label>
-                  <input type="text" placeholder="enter full name" />
+                  <label htmlFor=""><h4>Business address I</h4></label>
+                  <input type="text" placeholder="Enter full name" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Business eaddress II</label>
-                  <input type="text" placeholder="enter phone number" />
+                  <label htmlFor=""><h4>Business address II</h4></label>
+                  <input type="text" placeholder="Enter phone number" />
                 </form>
                 
               </div>
@@ -50,13 +50,13 @@ const Businessetting =()=>{
               <div className="payroll_column">
 
                 <form action="">
-                  <label htmlFor="">Break hours</label>
-                  <input type="number" placeholder="enter full name" />
+                  <label htmlFor=""><h4>Break hours</h4></label>
+                  <input type="number" placeholder="Enter full name" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Lateness hour</label>
-                  <input type="number" placeholder="enter phone number" />
+                  <label htmlFor=""><h4>Lateness hour</h4></label>
+                  <input type="number" placeholder="Enter phone number" />
                 </form>
                 
               </div>
@@ -64,23 +64,25 @@ const Businessetting =()=>{
               <div className="payroll_column">
 
                 <form action="">
-                  <label htmlFor="">Lateness fine</label>
-                  <input type="number" placeholder="enter full name" />
+                  <label htmlFor=""><h4>Lateness fine</h4></label>
+                  <input type="number" placeholder="Enter full name" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Business number</label>
-                  <input type="number" placeholder="enter phone number" />
+                  <label htmlFor=""><h4>Business number</h4></label>
+                  <input type="number" placeholder="Enter phone number" />
                 </form>
                 
               </div>
+
+              <button className="filled-btn"><h4>Submit</h4></button>
 
             </div>
 
           </div>
 
           <div className="working_hours">
-            <h4>Working hours</h4>
+            <h5>Working hours</h5>
 
             <div className="working_hours_colums">
 
@@ -88,13 +90,13 @@ const Businessetting =()=>{
                 <h4 className="week_day">Sunday</h4>
                 <div className="work_hours">
                   <form action="">
-                    <label htmlFor="">Open:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Open:</h4></label>
+                    <input type="time" />
                   </form>
 
                   <form action="">
-                    <label htmlFor="">Close:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Close:</h4></label>
+                    <input type="time" />
                   </form>
                 </div>
               </div>
@@ -103,13 +105,13 @@ const Businessetting =()=>{
                 <h4 className="week_day">Monday</h4>
                 <div className="work_hours">
                   <form action="">
-                    <label htmlFor="">Open:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Open:</h4></label>
+                    <input type="time" />
                   </form>
 
                   <form action="">
-                    <label htmlFor="">Close:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Close:</h4></label>
+                    <input type="time" />
                   </form>
                 </div>
               </div>
@@ -118,13 +120,13 @@ const Businessetting =()=>{
                 <h4 className="week_day">Tuesday</h4>
                 <div className="work_hours">
                   <form action="">
-                    <label htmlFor="">Open:</label>
-                    <input type="text" />
+                    <label htmlFor=""> <h4>Open:</h4></label>
+                    <input type="time" />
                   </form>
 
                   <form action="">
-                    <label htmlFor="">Close:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Close:</h4></label>
+                    <input type="time" />
                   </form>
                 </div>
               </div>
@@ -133,13 +135,13 @@ const Businessetting =()=>{
                 <h4 className="week_day">Wednesday</h4>
                 <div className="work_hours">
                   <form action="">
-                    <label htmlFor="">Open:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Open:</h4></label>
+                    <input type="time" />
                   </form>
 
                   <form action="">
-                    <label htmlFor="">Close:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Close:</h4></label>
+                    <input type="time" />
                   </form>
                 </div>
               </div>
@@ -148,13 +150,13 @@ const Businessetting =()=>{
                 <h4 className="week_day">Thursday</h4>
                 <div className="work_hours">
                   <form action="">
-                    <label htmlFor="">Open:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Open:</h4></label>
+                    <input type="time" />
                   </form>
 
                   <form action="">
-                    <label htmlFor="">Close:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Close:</h4></label>
+                    <input type="time" />
                   </form>
                 </div>
               </div>
@@ -163,13 +165,13 @@ const Businessetting =()=>{
                 <h4 className="week_day">Friday</h4>
                 <div className="work_hours">
                   <form action="">
-                    <label htmlFor="">Open:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Open:</h4></label>
+                    <input type="time" />
                   </form>
 
                   <form action="">
-                    <label htmlFor="">Close:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Close: </h4></label>
+                    <input type="time" />
                   </form>
                 </div>
               </div>
@@ -178,23 +180,20 @@ const Businessetting =()=>{
                 <h4 className="week_day">Saturday</h4>
                 <div className="work_hours">
                   <form action="">
-                    <label htmlFor="">Open:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Open:</h4></label>
+                    <input type="time" />
                   </form>
 
                   <form action="">
-                    <label htmlFor="">Close:</label>
-                    <input type="text" />
+                    <label htmlFor=""><h4>Close:</h4></label>
+                    <input type="time" />
                   </form>
                 </div>
               </div>
 
-              <button>Submit</button>
+              <button className="filled-btn"><h4>Submit</h4></button>
 
             </div>
-
-
-
 
           </div>
 
@@ -206,12 +205,12 @@ const Businessetting =()=>{
               <div className="payment_column">
 
                 <form action="">
-                  <label htmlFor="">Salary date</label>
+                  <label htmlFor=""><h4>Salary date</h4></label>
                   <input type="number" placeholder="enter date" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Wages day</label>
+                  <label htmlFor=""><h4>Wages day</h4></label>
                   <input type="text" placeholder="enter day" />
                 </form>
                 
@@ -220,18 +219,18 @@ const Businessetting =()=>{
               <div className="payment_column">
 
                 <form action="">
-                  <label htmlFor="">Tax</label>
+                  <label htmlFor=""><h4>Tax</h4></label>
                   <input type="number" placeholder="enter percentage" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Pension</label>
+                  <label htmlFor=""><h4>Pension</h4></label>
                   <input type="number" placeholder="enter percentage" />
                 </form>
                 
               </div>
 
-              <button>submit</button>
+              <button className="filled-btn"><h4>submit</h4></button>
 
             </div>
           </div>
@@ -247,12 +246,12 @@ const Businessetting =()=>{
               <div className="payment_column">
 
                 <form action="">
-                  <label htmlFor="">First name</label>
+                  <label htmlFor=""><h4>First name</h4></label>
                   <input type="text" placeholder="enter full name" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Last name</label>
+                  <label htmlFor=""><h4>Last name</h4></label>
                   <input type="text" placeholder="enter name" />
                 </form>
                 
@@ -261,42 +260,44 @@ const Businessetting =()=>{
               <div className="payment_column">
 
                 <form action="">
-                  <label htmlFor="">Email</label>
+                  <label htmlFor=""><h4>Email</h4></label>
                   <input type="email" placeholder="enter email" />
                 </form>
 
                 <form action="">
-                  <label htmlFor="">Role</label>
+                  <label htmlFor=""><h4>Role</h4></label>
                   <input type="text" placeholder="enter role" />
                 </form>
                 
               </div>
 
-              <button>submit</button>
+              <button className="filled-btn"><h4>submit</h4></button>
 
             </div>
 
         </div>
 
         <div className="password_body">
-          <h4>change Password</h4>
+          <h5>change Password</h5>
 
-          <div className="payment_column">
+          <div className="password_column">
 
             <form action="">
-              <label htmlFor="">Old Password</label>
+              <label htmlFor=""><h4>Old Password</h4></label>
               <input type="password" placeholder="enter password" />
             </form>
 
             <form action="">
-              <label htmlFor="">New password</label>
+              <label htmlFor=""><h4>New password</h4></label>
               <input type="text" placeholder="enter password" />
             </form>
 
             <form action="">
-              <label htmlFor="">Confirm password</label>
+              <label htmlFor=""><h4>Confirm password </h4></label>
               <input type="text" placeholder="enter password" />
             </form>
+
+            <button className="filled-btn"><h4>Submit</h4></button>
             
           </div>
 

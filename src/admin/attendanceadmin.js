@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const AttendanceAdmin =()=>{
   return(
     <div className="attendanceadmin_cont">
-      <h3>Attendance</h3>
+      <h5>Attendance</h5>
 
       <div className="table_heading ">
 
@@ -49,8 +49,8 @@ const AttendanceAdmin =()=>{
       </div>
 
       <div className="table_footer">
-        <img src="icons/Keyboard arrow left.svg" alt="" />
-        <img src="icons/Keyboard arrow right.svg" alt="" />
+        <img src="/icons/Keyboard arrow left.svg" alt="" />
+        <img src="/icons/Keyboard arrow right.svg" alt="" />
       </div>
 
     </div>
