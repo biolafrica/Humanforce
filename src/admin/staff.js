@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useFetch from "../useFetch";
+import useFetch from "../hooks/useFetch";
 
 const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
