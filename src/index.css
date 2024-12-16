@@ -796,7 +796,7 @@ a {
   align-items: center;
 }
 
-.newstaff_column form,
+.newstaff_column div,
 .payroll_column form,
 .payment_column form{
   width: 45%;
@@ -885,6 +885,12 @@ a {
 
 .password_body h5{
   text-align: center;
+}
+
+.form_column{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 
