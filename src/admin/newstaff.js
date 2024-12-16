@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import useForm from "../hooks/useForm";
 
 const NewStaff =()=>{
 
-  const [formData, setFormData] = useState({
+  const initialValues = {
     firstname: "",
     lastname: "",
     employment_type: "",
@@ -16,19 +17,16 @@ const NewStaff =()=>{
     address: "",
     next_of_kin_name: "",
     next_of_kin_phone_number: "",
-    
-  })
+  }
 
-  const handleInputChange=(e)=>{
-    const{name, value} = e.target;
-    setFormData({...formData, [name]: value});
-  };
+  const {formData, handleInputChange, resetForm} = useForm(initialValues)
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:4000/admin/register", formData);
       alert("staff added successfully!");
+      resetForm();
       
     } catch (error) {
       console.log("Error adding staff", error);
