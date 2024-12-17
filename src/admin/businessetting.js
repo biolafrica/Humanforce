@@ -1,4 +1,39 @@
+import useForm from "../hooks/useForm";
+import axios from "axios";
+import { useState } from "react";
+
 const Businessetting =()=>{
+  const initialValues = {
+    business_name : "",
+    business_email: "",
+    business_address_I: "",
+    business_address_II: "",
+    break_hours: "",
+    lateness_hours: "",
+    lateness_fine: "",
+    business_phone_number: "",
+    salary_date: "",
+    wages_day: "",
+    tax: "",
+    pension: ""
+
+  }
+  const{formData, handleInputChange, resetForm} = useForm(initialValues);
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:4000/admin/register/business", formData);
+      alert("business added succesfully");
+      resetForm();
+
+    } catch (error) {
+      console.log("Error adding business", error);
+      alert("Failed to add business. Please try again");
+      
+    }
+
+  }
+
   return(
     <div className="businesseting_cont">
 
@@ -17,67 +52,123 @@ const Businessetting =()=>{
           <div className="bio_data">
             <h5>Payroll Summary</h5>
 
-            <div className="payroll_columns">
+            <form className="payroll_columns" onSubmit={handleSubmit}>
 
               <div className="payroll_column">
 
-                <form action="">
-                  <label htmlFor=""><h4>Business name</h4></label>
-                  <input type="text" placeholder="Enter full name" />
-                </form>
+                <div action="">
+                  <label htmlFor="business_name"><h4>Business name</h4></label>
+                  <input
+                   type="text" 
+                   placeholder="Enter business name"
+                   value={FormData.business_name}
+                   name="business_name"
+                   onChange={handleInputChange}
+                   required
+                  />
+                </div>
 
-                <form action="">
+                <div action="business_email">
                   <label htmlFor=""><h4>Business email</h4></label>
-                  <input type="email" placeholder="Enter phone number" />
-                </form>
+                  <input
+                    type="email"
+                    placeholder="Enter business email"
+                    name="business_email"
+                    value={FormData.business_email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
                 
               </div>
 
               <div className="payroll_column">
 
-                <form action="">
-                  <label htmlFor=""><h4>Business address I</h4></label>
-                  <input type="text" placeholder="Enter full name" />
-                </form>
+                <div action="">
+                  <label htmlFor="business_address_I"><h4>Business address I</h4></label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter first business address" 
+                    name="business_address_I"
+                    onChange={handleInputChange}
+                    value={formData.business_address_I}
+                    required
+                  />
+                </div>
 
-                <form action="">
-                  <label htmlFor=""><h4>Business address II</h4></label>
-                  <input type="text" placeholder="Enter phone number" />
-                </form>
+                <div action="">
+                  <label htmlFor="business_address_II"><h4>Business address II</h4></label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter second business address"
+                    name="business_address_II"
+                    value={formData.business_address_II}
+                    onChange={handleInputChange} 
+                    required
+                  />
+                </div>
                 
               </div>
 
               <div className="payroll_column">
 
-                <form action="">
-                  <label htmlFor=""><h4>Break hours</h4></label>
-                  <input type="number" placeholder="Enter full name" />
-                </form>
+                <div action="">
+                  <label htmlFor="break_hours"><h4>Break hours</h4></label>
+                  <input 
+                  type="number" 
+                  placeholder="Enter break hours"
+                  name="break_hours"
+                  value={formData.break_hours}
+                  onChange={handleInputChange}
+                  required
+                  />
+                </div>
 
-                <form action="">
-                  <label htmlFor=""><h4>Lateness hour</h4></label>
-                  <input type="number" placeholder="Enter phone number" />
-                </form>
+                <div action="">
+                  <label htmlFor="lateness_hours"><h4>Lateness hour</h4></label>
+                  <input 
+                  type="number" 
+                  placeholder="Enter phone number"
+                  name="lateness_hours"
+                  value={formData.lateness_hours}
+                  onChange={handleInputChange} 
+                  required
+                  />
+                </div>
                 
               </div>
 
               <div className="payroll_column">
 
-                <form action="">
-                  <label htmlFor=""><h4>Lateness fine</h4></label>
-                  <input type="number" placeholder="Enter full name" />
-                </form>
+                <div action="">
+                  <label htmlFor="lateness_fine"><h4>Lateness fine</h4></label>
+                  <input 
+                    type="number" 
+                    placeholder="Enter fine amount"
+                    name="lateness_fine"
+                    value={formData.lateness_fine}
+                    onChange={handleInputChange} 
+                    required
+                  />
+                </div>
 
-                <form action="">
-                  <label htmlFor=""><h4>Business number</h4></label>
-                  <input type="number" placeholder="Enter phone number" />
-                </form>
+                <div action="">
+                  <label htmlFor="business_phone_number"><h4>Business number</h4></label>
+                  <input 
+                  type="number" 
+                  placeholder="Enter business phone number"
+                  name="business_phone_number"
+                  value={formData.business_phone_number}
+                  onChange={handleInputChange}
+                  required 
+                  />
+                </div>
                 
               </div>
 
-              <button className="filled-btn"><h4>Submit</h4></button>
+              <button className="filled-btn" type="submit"><h4>Submit</h4></button>
 
-            </div>
+            </form>
 
           </div>
 
@@ -200,39 +291,67 @@ const Businessetting =()=>{
           <div className="payment">
             <h4>Payment Structure</h4>
 
-            <div className="payment_columns">
+            <form className="payment_columns" onSubmit={handleSubmit}>
 
               <div className="payment_column">
 
-                <form action="">
-                  <label htmlFor=""><h4>Salary date</h4></label>
-                  <input type="number" placeholder="enter date" />
-                </form>
+                <div>
+                  <label htmlFor="salary_date"><h4>Salary date</h4></label>
+                  <input 
+                    type="number" 
+                    placeholder="enter salary date" 
+                    name="salary_date"
+                    value={formData.salary_date}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
 
-                <form action="">
-                  <label htmlFor=""><h4>Wages day</h4></label>
-                  <input type="text" placeholder="enter day" />
-                </form>
+                <div>
+                  <label htmlFor="wages_day"><h4>Wages day</h4></label>
+                  <input 
+                    type="text" 
+                    placeholder="enter wages day" 
+                    name="wages_day"
+                    value={formData.wages_day}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
                 
               </div>
 
               <div className="payment_column">
 
-                <form action="">
-                  <label htmlFor=""><h4>Tax</h4></label>
-                  <input type="number" placeholder="enter percentage" />
-                </form>
+                <div>
+                  <label htmlFor="tax"><h4>Tax</h4></label>
+                  <input 
+                    type="number" 
+                    placeholder="enter tax percentage" 
+                    name="tax"
+                    value={formData.tax}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
 
-                <form action="">
-                  <label htmlFor=""><h4>Pension</h4></label>
-                  <input type="number" placeholder="enter percentage" />
-                </form>
+                <div>
+                  <label htmlFor="pension"><h4>Pension</h4></label>
+                  <input 
+                  type="number" 
+                  placeholder="enter percentage"
+                  name="pension"
+                  value={formData.pension}
+                  onChange={handleInputChange}
+                  required 
+                  />
+                </div>
                 
               </div>
 
-              <button className="filled-btn"><h4>submit</h4></button>
+              <button className="filled-btn" type="submit"><h4>submit</h4></button>
 
-            </div>
+            </form>
           </div>
 
         </div>

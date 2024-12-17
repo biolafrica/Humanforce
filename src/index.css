@@ -797,8 +797,8 @@ a {
 }
 
 .newstaff_column div,
-.payroll_column form,
-.payment_column form{
+.payroll_column div,
+.payment_column div{
   width: 45%;
 }
 
