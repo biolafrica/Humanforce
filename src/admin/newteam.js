@@ -7,6 +7,7 @@ const NewTeam =()=>{
   const url = "http://localhost:4000/admin/staff";
   const {data, isLoading, errorMessage} = useFetch(url);
   console.log(data);
+  const users = data?.users || [];
 
   const initialValues = {
     staff_code: "",
@@ -49,7 +50,7 @@ const NewTeam =()=>{
             onChange={handleInputChange}
             required
             >
-            {data.map((item)=>(
+            {users.map((item)=>(
               <option value={item.staff_code} key={item._id}>{item.firstname} {item.lastname}</option>
             ))}
             

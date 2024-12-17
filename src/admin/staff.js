@@ -5,11 +5,13 @@ const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
   const {data, isLoading, errorMessage} = useFetch(url);
 
-  const total = data ? data.length : 0;
+  const users = data?.users || [];
+
+  const total = users ? users.length : 0;
   const contract = [];
   const fixed = [];
 
-  data.forEach((item)=>{
+  users.forEach((item)=>{
     if (item.employment_type = "contract"){
       contract.push(item);
 
@@ -24,7 +26,7 @@ const Staff = ()=>{
     <div className="staff_cont">
       {errorMessage && <div> {errorMessage} </div>}
       {isLoading && <div>loading......</div>}
-      {data && (<>
+      {users && (<>
         <div className="staff_cont_head">
           <h5 className="total select">Total - {total}</h5>
           <h5 className="contract">Contract - {contract.length}</h5>
@@ -57,7 +59,7 @@ const Staff = ()=>{
             </div>
 
             <div className="table_body">
-              {data.map((data)=>(
+              {users.map((data)=>(
 
                 <Link className="column" key={data._id}>
                   <h6 className="date_column">{data.firstname} {data.lastname}</h6>

@@ -14,8 +14,7 @@ function useFetch(url){
       return response.json();
     })
     .then((data)=>{
-      console.log(data, data.users)
-      setData(data.users);
+      setData(data);
       setIsLoading(false);
       setErrorMessage(null)
     })
