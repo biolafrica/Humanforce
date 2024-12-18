@@ -24,7 +24,7 @@ const NewStaff =()=>{
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/admin/register", formData);
+      const response = await axios.post("http://localhost:4000/admin/staff", formData);
       alert("staff added successfully!");
       resetForm();
       

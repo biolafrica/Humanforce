@@ -1,9 +1,8 @@
-import useForm from "../hooks/useForm";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Businessetting =()=>{
-  const initialValues = {
+  const [formData, setFormData] = useState({
     business_name : "",
     business_email: "",
     business_address_I: "",
@@ -17,26 +16,67 @@ const Businessetting =()=>{
     tax: "",
     pension: ""
 
-  }
-  const{formData, handleInputChange, resetForm} = useForm(initialValues);
-  const handleSubmit = async(e)=>{
+  })
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  useEffect(()=>{
+    const fetchBusinessData = async () =>{
+      setIsLoading(true);
+      try {
+        const response = await axios.get("http://localhost:4000/admin/business");
+        const businessData = response.data.business;
+
+        setFormData((prev)=>({
+          ...prev,
+          ...businessData,
+
+        }));
+
+        setErrorMessage(null);
+
+        
+      } catch (error) {
+        setErrorMessage("failed to load business data. please try again")
+        
+      } finally{
+        setIsLoading(false)
+      }
+    };
+
+    fetchBusinessData();
+
+  },[]);
+
+  const handleInputChange = (e)=>{
+    const {name, value} = e.target;
+    setFormData((prev) =>({
+      ...prev,
+      [name] : value,
+    }));
+  };
+
+  const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/admin/register/business", formData);
-      alert("business added succesfully");
-      resetForm();
-
-    } catch (error) {
-      console.log("Error adding business", error);
-      alert("Failed to add business. Please try again");
+      const response = await axios.put("http://localhost:4000/admin/business", formData);
+      alert("Business information saved successfully!");
       
-    }
+    } catch (error) {
+      console.error("Error saving business information. Please try again");
+      
+    };
 
-  }
+  };
 
+
+
+  if(errorMessage) return(<div> {errorMessage}</div>); 
+  if(isLoading) return(<div>....isLoading</div>);
   return(
     <div className="businesseting_cont">
-
+      
       <div className="businessettings_head">
         <div className="staff_cont_head">
           <h5 className="total select">Business</h5>
@@ -44,7 +84,7 @@ const Businessetting =()=>{
           <h5 className="fixed">Password</h5>
         </div>
       </div>
-
+        
       <div className="settings_cont">
 
         <div className="businessettings_body">
@@ -59,12 +99,12 @@ const Businessetting =()=>{
                 <div action="">
                   <label htmlFor="business_name"><h4>Business name</h4></label>
                   <input
-                   type="text" 
-                   placeholder="Enter business name"
-                   value={FormData.business_name}
-                   name="business_name"
-                   onChange={handleInputChange}
-                   required
+                  type="text" 
+                  placeholder="Enter business name"
+                  value={formData.business_name}
+                  name="business_name"
+                  onChange={handleInputChange}
+                  required
                   />
                 </div>
 
@@ -74,7 +114,7 @@ const Businessetting =()=>{
                     type="email"
                     placeholder="Enter business email"
                     name="business_email"
-                    value={FormData.business_email}
+                    value={formData.business_email}
                     onChange={handleInputChange}
                     required
                   />
@@ -424,8 +464,10 @@ const Businessetting =()=>{
       </div>
       
     </div>
+  );
 
-  )
 }
 
 export default Businessetting;
+
+

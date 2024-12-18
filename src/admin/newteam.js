@@ -18,7 +18,7 @@ const NewTeam =()=>{
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/admin/register/team", formData);
+      const res = await axios.post("http://localhost:4000/admin/team", formData);
       alert("team added succesfully");
       resetForm();
       

@@ -59,14 +59,14 @@ const Staff = ()=>{
             </div>
 
             <div className="table_body">
-              {users.map((data)=>(
+              {users.map((user)=>(
 
-                <Link className="column" key={data._id}>
-                  <h6 className="date_column">{data.firstname} {data.lastname}</h6>
-                  <h6 className="clockin_column">{data.role}</h6>
-                  <h6 className="clockout_column">{data.employment_type}</h6>
-                  <h6 className="hours_column">{data.salary}</h6>
-                  <h6 className="status_column">{data.status}</h6>
+                <Link className="column" key={user._id}>
+                  <h6 className="date_column">{user.firstname} {user.lastname}</h6>
+                  <h6 className="clockin_column">{user.role}</h6>
+                  <h6 className="clockout_column">{user.employment_type}</h6>
+                  <h6 className="hours_column">{user.salary}</h6>
+                  <h6 className="status_column">{user.status}</h6>
                 </Link>
 
               ))}
