@@ -16,6 +16,7 @@ import PayrollEdit from "./admin/payrolledit";
 import AttendanceAdmin from "./admin/attendanceadmin";
 import AttendanceMore from "./admin/attendancemore";
 import Businessetting from "./admin/businessetting";
+import PrivateRoute from "./components/privateroute";
 
 
 function App() {
@@ -25,11 +26,27 @@ function App() {
       <Routes>
 
         {/* user routes*/}
-        <Route path='/'  element={<UserLayout><Homepage/></UserLayout>} />
+        <Route path='/' element={
+          <PrivateRoute element={<UserLayout><Homepage/></UserLayout>} /> 
+          }
+        />
+        
         <Route path='/login'  element={<UserLayout><Login/></UserLayout>} />
-        <Route path='/clock'  element={<UserLayout><ClockDetails/></UserLayout>} />
-        <Route path='/payslip'  element={<UserLayout><Payslip/></UserLayout>} />
-        <Route path='/attendance'  element={<UserLayout><Attendance/></UserLayout>} />
+
+        <Route path='/clock' element={
+          <PrivateRoute element={<UserLayout><ClockDetails/></UserLayout>} />
+          }
+        />
+
+        <Route path='/payslip' element={ 
+          <PrivateRoute  element={<UserLayout><Payslip/></UserLayout>} />
+          }
+        /> 
+
+        <Route path='/attendance' element={   
+          <PrivateRoute element={<UserLayout><Attendance/></UserLayout>}/> 
+          }
+        />
 
         {/* admin routes*/}
         <Route path='/admin'  element={<AdminLayout><Dashboard/></AdminLayout>} />
