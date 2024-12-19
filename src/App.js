@@ -27,24 +27,32 @@ function App() {
 
         {/* user routes*/}
         <Route path='/' element={
-          <PrivateRoute element={<UserLayout><Homepage/></UserLayout>} /> 
+          <PrivateRoute>
+            <UserLayout><Homepage/></UserLayout>
+          </PrivateRoute> 
           }
         />
-        
+
         <Route path='/login'  element={<UserLayout><Login/></UserLayout>} />
 
-        <Route path='/clock' element={
-          <PrivateRoute element={<UserLayout><ClockDetails/></UserLayout>} />
+        <Route path='/clock/:id' element={
+          <PrivateRoute>
+            <UserLayout><ClockDetails/></UserLayout>
+          </PrivateRoute>
           }
         />
 
         <Route path='/payslip' element={ 
-          <PrivateRoute  element={<UserLayout><Payslip/></UserLayout>} />
+          <PrivateRoute>
+            <UserLayout><Payslip/></UserLayout>
+          </PrivateRoute>
           }
         /> 
 
         <Route path='/attendance' element={   
-          <PrivateRoute element={<UserLayout><Attendance/></UserLayout>}/> 
+          <PrivateRoute>
+            <UserLayout><Attendance/></UserLayout>
+          </PrivateRoute> 
           }
         />
 

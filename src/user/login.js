@@ -2,6 +2,7 @@ import { useState } from "react";
 import useForm from "../hooks/useForm";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
+import { stringify } from "postcss";
 
 const Login = ()=>{
   const navigate = useNavigate()
@@ -17,9 +18,11 @@ const Login = ()=>{
     try {
       const response = await axios.post("http://localhost:4000/login", formData);
       const data = response.data;
-      const {token} = response.data;
+      const {token,user} = response.data;
 
-      localStorage.setItem("authToken", token)
+      localStorage.setItem("authToken", token);
+      localStorage.setItem('user', JSON.stringify(user));
+      console.log(token, user);
 
       if(data){
         navigate("/");

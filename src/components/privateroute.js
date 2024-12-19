@@ -13,10 +13,11 @@ const PrivateRoute = ({children}) =>{
 
   try {
     const decoded = jwtDecode(token);
-
+    
     const isExpired = decoded.exp * 1000 <Date.now();
     if(isExpired){
       localStorage.removeItem("authToken");
+      localStorage.removeItem('user');
       return <Navigate to="/login" />
     }
 

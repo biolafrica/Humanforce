@@ -1,5 +1,9 @@
 const ClockDetails =()=>{
 
+  const storedUser = localStorage.getItem('user');
+  const user = JSON.parse(storedUser);
+  console.log(user);
+
   return(
     <div className="clock_container">
 
@@ -13,12 +17,12 @@ const ClockDetails =()=>{
 
           <div className="staff_name">
             <img src="/icons/Person.svg" alt="" />
-            <h4>Abiodun Biobaku</h4>
+            <h4>{user.firstname} {user.lastname}</h4>
           </div>
 
           <div className="staff_position">
             <img src="/icons/Work.svg" alt="" />
-            <h4>Operations manager</h4>
+            <h4>{user.position}</h4>
           </div>
 
           <div className="staff_company">
