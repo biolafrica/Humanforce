@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch"
 import formatMTime from "../components/formatmtime"
 import StaffDetails from "../components/staffDetails"
 import StaffClock from "../components/staffClock"
+import {clockButton, clockButtonClass} from "../components/clockButton"
 
 
 
@@ -17,6 +18,7 @@ const ClockDetails =()=>{
   const storedUser = localStorage.getItem('user');
   const user = JSON.parse(storedUser);
   console.log("logIn user", user);
+  
 
   if(isLoading)return(<div>.....Loading</div>)
   if(errorMessage)return(<div>{errorMessage}</div>)
@@ -35,7 +37,7 @@ const ClockDetails =()=>{
 
       </div>
 
-      <button className="filled-btn"><h4>Start Break</h4></button>
+      <button className={clockButtonClass(data.data)}><h4>{clockButton(data.data)}</h4></button>
 
     </div>
 
