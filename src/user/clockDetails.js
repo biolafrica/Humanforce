@@ -1,10 +1,27 @@
+import { useParams } from "react-router-dom"
+import useFetch from "../hooks/useFetch"
+import formatMTime from "../components/formatmtime"
+import StaffDetails from "../components/staffDetails"
+import StaffClock from "../components/staffClock"
+
+
+
 const ClockDetails =()=>{
+  const {id} = useParams();
+  console.log("attendance id", id)
+
+  const url = `http://localhost:4000/clock/${id}`;
+  const{data, isLoading, errorMessage} = useFetch(url);
+  if(data){console.log("fetched data",data)}
 
   const storedUser = localStorage.getItem('user');
   const user = JSON.parse(storedUser);
-  console.log(user);
+  console.log("logIn user", user);
 
-  return(
+  if(isLoading)return(<div>.....Loading</div>)
+  if(errorMessage)return(<div>{errorMessage}</div>)
+  if(data) return(
+
     <div className="clock_container">
 
       <div className="timer_container">
@@ -13,85 +30,15 @@ const ClockDetails =()=>{
 
       <div className="clockstatus_container">
 
-        <div className="staff_details">
-
-          <div className="staff_name">
-            <img src="/icons/Person.svg" alt="" />
-            <h4>{user.firstname} {user.lastname}</h4>
-          </div>
-
-          <div className="staff_position">
-            <img src="/icons/Work.svg" alt="" />
-            <h4>{user.position}</h4>
-          </div>
-
-          <div className="staff_company">
-            <img src="/icons/Local convenience store.svg" alt="" />
-            <h4>Eatup Food Services</h4>
-          </div>
-
-        </div>
-
-        <div className="staff_clock_summary">
-
-          <div className="clock_in">
-            <h4><b>06:00</b></h4>
-
-            <div className="clock_in_cont">
-
-              <div className="check_arrow">
-                <img src="/icons/Check circle outline.svg" alt="" />
-                <div className="arrow"></div>
-              </div> 
-
-              <h4>Clock in</h4>
-
-            </div>
-
-          </div>
-
-          <div className="break_start">
-            <h4><b>10:00</b></h4>
-
-            <div className="clock_in_cont">
-              <div className="check_arrow">
-                <img src="icons/Circle.svg" alt="" />
-                <div className="arrow"></div>
-              </div> 
-              <h4>Break started</h4>
-            </div>
-
-          </div>
-
-          <div className="break_end">
-            <h4><b>10:30</b></h4>
-            
-            <div className="clock_in_cont">
-              
-              <div className="check_arrow">
-                <img src="icons/fill Circle.svg" alt="" />
-                <div className="arrow"></div>
-              </div> 
-              <h4>Break ended</h4>
-
-            </div>
-          </div>
-
-          <div className="clock_out">
-            <h4><b>02:00</b></h4>
-            <div className="clock_in_cont">
-              <img src="icons/Check circle.svg" alt="" />
-              <h4>Clock out</h4>
-            </div>
-          </div>
-
-        </div>
+        <StaffDetails staff={user}/>
+        <StaffClock clock ={data}/>
 
       </div>
 
       <button className="filled-btn"><h4>Start Break</h4></button>
 
     </div>
+
   )
   
 

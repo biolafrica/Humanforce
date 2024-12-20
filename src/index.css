@@ -369,29 +369,19 @@ a {
 
 .clock_in_cont{
   display: flex;
-  align-items: start;
+  align-items: center;
   gap: 20px;
 
 }
 
-.clock_in,
-.break_start,
+
+
+
+.clock_out,
 .break_end,
-.clock_out{
-  display: flex;
-  gap: 30px;
-  
-}
-
-.clock_in_cont h4 {
-  line-height: 25px;
-}
-
-.clock_out h4,
-.break_end h4,
-.break_start h4,
-.clock_in h4{
-  line-height: 26px;
+.break_start,
+.clock_in{
+  margin-bottom: 20px;
 }
 
 
@@ -893,7 +883,9 @@ a {
   gap: 20px;
 }
 
-
+.none{
+  display: none;
+}
 
 
 @media(max-width:768px) {
