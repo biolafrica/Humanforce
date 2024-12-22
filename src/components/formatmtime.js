@@ -7,4 +7,8 @@ const formatMTime=(time)=>{
   return `${hours} : ${minute}`
 }
 
+const CountdownTime = ()=>{
+  
+}
+
 export default formatMTime;

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
-function useFetch(url){
+function useFetch(url, refresh = false){
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(()=>{
+    setIsLoading(true);
     fetch(url)
     .then(response =>{
       if(!response.ok){
@@ -22,7 +23,7 @@ function useFetch(url){
       setErrorMessage(err.message);
       setIsLoading(false);
     })
-  }, [url]);
+  }, [url, refresh]);
 
   return {data, isLoading, errorMessage}
 

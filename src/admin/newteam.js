@@ -5,7 +5,8 @@ import axios from "axios";
 
 const NewTeam =()=>{
   const url = "http://localhost:4000/admin/staff";
-  const {data, isLoading, errorMessage} = useFetch(url);
+  const refresh = false;
+  const {data, isLoading, errorMessage} = useFetch(url, refresh);
   console.log(data);
   const users = data?.users || [];
 

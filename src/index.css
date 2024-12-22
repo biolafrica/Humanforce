@@ -371,23 +371,33 @@ a {
 .clock_in_cont{
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
+  width: 100%;
 
+}
+.clock_type{
+  width: 50%;
 }
 
 .clock_out,
 .break_end,
 .break_start,
 .clock_in{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .clockstatus_container{
   display: flex;
   align-items: start;
-  justify-content: space-between;
 }
 
+.staff_details{
+  width: 50%;
+}
+
+.staff_clock_summary{
+  width: 50%;
+}
 
 .arrow{
   width: 0px;

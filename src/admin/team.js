@@ -3,7 +3,8 @@ import useFetch from "../hooks/useFetch";
 
 const Team = ()=>{
   const url = "http://localhost:4000/admin/team";
-  const {data, isLoading, errorMessage} = useFetch(url);
+  const refresh = false;
+  const {data, isLoading, errorMessage} = useFetch(url,refresh);
 
   const users = data?.users || [];
   const teams = data?.teams || [];
