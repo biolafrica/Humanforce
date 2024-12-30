@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom"
-import useFetch from "../hooks/useFetch"
-import formatMTime from "../components/formatmtime"
-import StaffDetails from "../components/staffDetails"
-import StaffClock from "../components/staffClock"
-import {clockButton, clockButtonClass} from "../components/clockButton"
-import axios from "axios"
-import { useState } from "react"
+import { useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
+import StaffDetails from "../components/staffDetails";
+import StaffClock from "../components/staffClock";
+import {clockButton, clockButtonClass} from "../components/clockButton";
+import axios from "axios";
+import { useState } from "react";
+import DisplayTimer from "../components/displayTimer";
 
 
 
@@ -51,7 +51,6 @@ const ClockDetails =()=>{
     
 
   }
-  
 
   if (isLoading)return<div>.....Loading</div>
   if (errorMessage)return<div>{errorMessage}</div>
@@ -59,9 +58,7 @@ const ClockDetails =()=>{
     return(
       <div className="clock_container">
 
-        <div className="timer_container">
-          <h3><b>09:00:53</b></h3>
-        </div>
+        <DisplayTimer time={data} />
 
         <div className="clockstatus_container">
 
@@ -76,8 +73,9 @@ const ClockDetails =()=>{
         >
           <h4>{clockButton(data.data)}</h4>
         </button>
-
+      
       </div>
+
 
     )
   

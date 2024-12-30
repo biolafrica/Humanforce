@@ -7,8 +7,46 @@ const formatMTime=(time)=>{
   return `${hours} : ${minute}`
 }
 
-const CountdownTime = ()=>{
+const timeDifference=(startTime, endTime)=>{
   
+  const start = new Date(startTime);
+  const end = new Date(endTime);
+
+  const diffInSeconds = Math.floor((end - start)/ 1000);
+
+  const hours = Math.floor(diffInSeconds/ 3600);
+
+  const minutes = Math.floor((diffInSeconds % 3600) / 60);
+
+  const seconds = diffInSeconds % 60;
+
+  return {hours, minutes, seconds}
 }
 
-export default formatMTime;
+const breakTimeDifference=(startTime,endTime,breakStart,breakEnd)=>{
+  const start = new Date(startTime);
+  const end = new Date(endTime);
+  const break_start = new Date(breakStart) 
+  const break_end = new Date(breakEnd)
+
+  const timeDiffInSeconds = Math.floor((end - start)/ 1000);
+  const breakDiffInSeconds = Math.floor((break_end - break_start)/ 1000);
+  const diffInSeconds = timeDiffInSeconds - breakDiffInSeconds;
+
+  const hours = Math.floor(diffInSeconds/ 3600);
+
+  const minutes = Math.floor((diffInSeconds % 3600) / 60);
+
+  const seconds = diffInSeconds % 60;
+
+  return {hours, minutes, seconds}
+
+
+
+}
+
+export {
+  formatMTime,
+  timeDifference,
+  breakTimeDifference
+}

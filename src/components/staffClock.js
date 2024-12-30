@@ -1,4 +1,4 @@
-import formatMTime from "./formatmtime"
+import {formatMTime} from "./formatmtime"
 
 const StaffClock = (props)=>{
   const clock = props.clock.data;
