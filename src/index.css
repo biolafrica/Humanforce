@@ -831,7 +831,7 @@ a {
   margin: 0px auto;
 }
 
-.work_hours form{
+.work_hours div{
   display: flex;
   align-items: center;
   gap: 5px;
@@ -853,6 +853,11 @@ a {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.checkbox_cont{
+  display: flex;
+  gap: 10px;
 }
 
 .payroll_columns button,
