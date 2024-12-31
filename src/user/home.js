@@ -9,22 +9,35 @@ const Homepage=()=>{
   const token = localStorage.getItem("authToken");
   console.log(token);
 
-  const handleClick =async()=>{
+  const handleStartWorkClick =async()=>{
     try {
-    const response = await  axios.post("http://localhost:4000/clock", {token});
-    const data = response.data;
-    console.log(data);
-    if(data){
-      navigate(`/clock/${data.id}`);
-
-    }
+      const response = await  axios.post("http://localhost:4000/clock", {token});
+      const data = response.data;
+      if(data){
+        navigate(`/clock/${data.id}`);
+      }
       
     } catch (error) {
       console.error("Error:", error.response?.data || error.message);
-
-      
     }
     
+  }
+
+  const handleEndWorkClick = async() =>{
+    try {
+      const response = await axios.post("http://localhost:4000/clocked", {token});
+      const data = response.data;
+      console.log(data);
+
+      if(data.id){
+        return navigate(`/clock/${data.id}`);
+      } else if (data.message){
+        return alert("You are yet to clock in");
+      }
+      
+    } catch (error) {
+      console.error("Error:", error.response?.data || error.message);
+    }
 
   }
 
@@ -33,12 +46,12 @@ const Homepage=()=>{
 
       <div className="home_up">
 
-        <Link to="" className="clockin_container" onClick={handleClick}>
+        <Link to="" className="clockin_container" onClick={handleStartWorkClick}>
           <img src="icons/START SHIFT.svg" alt="" />
           <h4>Start Work</h4>
         </Link>
 
-        <Link to="clock" className="clockout_container">
+        <Link to="" className="clockout_container" onClick={handleEndWorkClick}>
           <img src="icons/END SHIFT.svg" alt="" />
           <h4>End Work</h4>
         </Link>
