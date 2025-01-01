@@ -1,9 +1,12 @@
 import useFetch from "../hooks/useFetch";
 import Business from "../components/business";
+import doubleUseFetch from "../hooks/doubleuseFetch";
 
 const Businessetting =()=>{
-  const url = 'http://localhost:4000/admin/business'
-  const {data, isLoading, errorMessage} = useFetch(url);
+  const urlI = 'http://localhost:4000/admin/business'
+  const urlII = 'http://localhost:4000/admin/business'
+  const {dataI,dataII, isLoading, errorMessage} = doubleUseFetch(urlI,urlII);
+
 
   if(errorMessage) return(<div> {errorMessage}</div>); 
   if(isLoading) return(<div>....isLoading</div>);
