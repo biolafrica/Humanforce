@@ -1,8 +1,10 @@
 import axios from "axios";
-import useForm from "../hooks/useForm";
+import {useFormWithAddress} from "../hooks/useForm";
 import WorkingHours from "./workingHours";
 
+
 const Business= (props)=>{
+  const apiKey = "AIzaSyCeZCzNBO5995VfpOA7b2baQ1fJBP9t71c";
   const data = props.data;
   const name = data[0];
 
@@ -21,7 +23,16 @@ const Business= (props)=>{
     pension : name.pension,
   }
 
-  const {formData, handleInputChange, resetForm} = useForm(initialValues);
+  
+
+  const{
+    formData,
+    handleInputChange, 
+    resetForm,
+    handleSuggestionClick,
+    isLoading,
+    suggestions
+  } = useFormWithAddress(initialValues, apiKey);
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -99,6 +110,21 @@ const Business= (props)=>{
                 required
               />
             </div>
+
+            {isLoading && <div>...Loading</div>}
+            {suggestions.length > 0 && (
+              <ul className="sugesstions-list">
+                {suggestions.map((suggestion, index)=>{
+                  <li
+                  key={index}
+                  onClick={()=> handleSuggestionClick(suggestion)}
+                  className="suggestion-item"
+                  >
+                    {suggestion}
+                  </li>
+                })}
+              </ul>
+            )}
             
           </div>
 

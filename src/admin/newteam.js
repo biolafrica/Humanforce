@@ -1,6 +1,6 @@
 import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
 import useFetch from "../hooks/useFetch";
-import useForm from "../hooks/useForm";
+import {useForm} from "../hooks/useForm";
 import axios from "axios";
 
 const NewTeam =()=>{
