@@ -1,14 +1,15 @@
 import { useState } from "react";
+import axios from "axios";
 
 const WorkingHours = ()=>{
   const [workingHours, setWorkingHours] = useState({
-    Sunday: { open:"", close:"", isClosed: false},
-    Monday: { open:"", close:"", isClosed: false},
-    Tuesday: { open:"", close:"", isClosed: false},
-    Wednesday: { open:"", close:"", isClosed: false},
-    Thursday: { open:"", close:"", isClosed: false},
-    Friday: { open:"", close:"", isClosed: false},
-    Saturday: { open:"", close:"", isClosed: false},
+    sunday: { open:"", close:"", isClosed: false},
+    monday: { open:"", close:"", isClosed: false},
+    tuesday: { open:"", close:"", isClosed: false},
+    wednesday: { open:"", close:"", isClosed: false},
+    thursday: { open:"", close:"", isClosed: false},
+    friday: { open:"", close:"", isClosed: false},
+    saturday: { open:"", close:"", isClosed: false},
 
   });
 
@@ -32,16 +33,30 @@ const WorkingHours = ()=>{
   const handleSubmit = async (e)=>{
     e.preventDefault();
     console.log(workingHours);
+
+    const payload = {days : workingHours}
+    try {
+      const response = await axios.post("http://localhost:4000/admin/working-hours", payload);
+
+      console.log(response.data);
+      alert("working hours saved successfully!");
+
+      
+    } catch (error) {
+      console.log("Error saving working hours", error);
+      alert("Error saving working hours")
+      
+    }
   }
 
   const weekDays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
   ];
 
   return(
