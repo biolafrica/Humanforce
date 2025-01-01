@@ -16,7 +16,7 @@ const Business= (props)=>{
     lateness_fine : name.lateness_fine,
     business_phone_number : name.business_phone_number,
     salary_date : name.salary_date,
-    wages_day : name.wages,
+    wages_day : name.wages_day,
     tax : name.tax,
     pension : name.pension,
   }
@@ -167,7 +167,7 @@ const Business= (props)=>{
       <div className="working_hours">
         <h5>Working hours</h5>
 
-        <WorkingHours/>
+        <WorkingHours data = {props.work}/>
 
       </div>
 

@@ -1,16 +1,21 @@
 import useFetch from "../hooks/useFetch";
 import Business from "../components/business";
-import doubleUseFetch from "../hooks/doubleuseFetch";
+import DoubleUseFetch from "../hooks/doubleuseFetch";
 
 const Businessetting =()=>{
-  const urlI = 'http://localhost:4000/admin/business'
-  const urlII = 'http://localhost:4000/admin/business'
-  const {dataI,dataII, isLoading, errorMessage} = doubleUseFetch(urlI,urlII);
+  const urlI = 'http://localhost:4000/admin/business';
+  const urlII = 'http://localhost:4000/admin/working-hours';
+  const {dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI,urlII);
+
+  console.log({
+    business : dataI,
+    workingHours : dataII,
+  })
 
 
   if(errorMessage) return(<div> {errorMessage}</div>); 
   if(isLoading) return(<div>....isLoading</div>);
-  if(data){
+  if(dataI && dataII){
     return(
     <div className="businesseting_cont">
       
@@ -24,7 +29,7 @@ const Businessetting =()=>{
         
       <div className="settings_cont">
 
-        <Business data={data.business}/>
+        <Business data={dataI.business} work={dataII}/>
 
         <div className="personal_body">
 

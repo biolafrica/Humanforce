@@ -1,12 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 
-function doubleUseFetch(urlI, urlII){
-  const [dataI, setDataI] = useState(null)
-  const [dataII, setDataII] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [errorMessage, setErrorMessage] = useState(null)
+
+function DoubleUseFetch(urlI, urlII){
+  const [dataI, setDataI] = useState(null);
+  const [dataII, setDataII] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(()=>{
     setIsLoading(true);
@@ -22,15 +23,15 @@ function doubleUseFetch(urlI, urlII){
       setErrorMessage(null);
     })
     .catch((error)=>{
-      setErrorMessage(err.message || "An error occur fetching data");
+      setErrorMessage(error.message || "An error occur fetching data");
       setIsLoading(false);
     })
     
 
   }, [urlI, urlII]);
 
-  return(dataI, dataII, isLoading, errorMessage)
+  return{dataI, dataII, isLoading, errorMessage}
 
 }
 
-export default doubleUseFetch;
+export default DoubleUseFetch;

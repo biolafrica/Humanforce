@@ -1,17 +1,60 @@
 import { useState } from "react";
 import axios from "axios";
 
-const WorkingHours = ()=>{
+const WorkingHours = (props)=>{
+  const data = props.data.workingHours;
+  const hour = data[0].days;
+  
+  const [sun,mon,tue,wed,thur,fri,sat] = [
+    hour.sunday,
+    hour.monday,
+    hour.tuesday,
+    hour.wednesday,
+    hour.thursday,
+    hour.friday,
+    hour.saturday
+  ]
+
+
   const [workingHours, setWorkingHours] = useState({
-    sunday: { open:"", close:"", isClosed: false},
-    monday: { open:"", close:"", isClosed: false},
-    tuesday: { open:"", close:"", isClosed: false},
-    wednesday: { open:"", close:"", isClosed: false},
-    thursday: { open:"", close:"", isClosed: false},
-    friday: { open:"", close:"", isClosed: false},
-    saturday: { open:"", close:"", isClosed: false},
+    sunday: { 
+      open:sun.open,
+      close:sun.close, 
+      isClosed: sun.isClosed
+    },
+    monday: { 
+      open:mon.open, 
+      close:mon.close, 
+      isClosed: mon.isClosed
+    },
+    tuesday: { 
+      open:tue.open, 
+      close:tue.close, 
+      isClosed: tue.isClosed
+    },
+    wednesday: { 
+      open:wed.open, 
+      close:wed.close, 
+      isClosed: wed.isClosed
+    },
+    thursday: { 
+      open:thur.open, 
+      close:thur.close, 
+      isClosed: thur.isClosed
+    },
+    friday: { 
+      open:fri.open, 
+      close:fri.close, 
+      isClosed: fri.isClosed
+    },
+    saturday: { 
+      open:sat.open, 
+      close:sat.close, 
+      isClosed: sat.isClosed
+    },
 
   });
+
 
   const handleCheckboxChange = (day) =>{
     setWorkingHours((prevState)=> ({
