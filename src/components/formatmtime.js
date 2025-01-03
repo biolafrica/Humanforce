@@ -24,11 +24,13 @@ const timeDifference=(startTime, endTime)=>{
 }
 
 const breakTimeDifference=(startTime,endTime,breakStart,breakEnd)=>{
-  const start = new Date(startTime);
-  const end = new Date(endTime);
-  const break_start = new Date(breakStart) 
-  const break_end = new Date(breakEnd)
 
+  const[start,end,break_start,break_end]= [
+    new Date(startTime),
+    new Date(endTime),
+    new Date(breakStart),
+    new Date(breakEnd)
+  ];
   const timeDiffInSeconds = Math.floor((end - start)/ 1000);
   const breakDiffInSeconds = Math.floor((break_end - break_start)/ 1000);
   const diffInSeconds = timeDiffInSeconds - breakDiffInSeconds;
