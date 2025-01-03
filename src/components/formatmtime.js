@@ -7,6 +7,20 @@ const formatMTime=(time)=>{
   return `${hours} : ${minute}`
 }
 
+
+const formattedFullTime = (timeStamp)=>{
+
+  const date = new Date(timeStamp); 
+
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minute = date.getMinutes().toString().padStart(2, "0");
+  const seconds = date.getSeconds().toString().padStart(2, "0");
+
+  return `${hours} : ${minute} : ${seconds}`
+
+}
+
+
 const timeDifference=(startTime, endTime)=>{
   
   const start = new Date(startTime);
@@ -22,6 +36,7 @@ const timeDifference=(startTime, endTime)=>{
 
   return {hours, minutes, seconds}
 }
+
 
 const breakTimeDifference=(startTime,endTime,breakStart,breakEnd)=>{
 
@@ -47,8 +62,25 @@ const breakTimeDifference=(startTime,endTime,breakStart,breakEnd)=>{
 
 }
 
+
+const formattedDate=(timeStamp)=>{
+
+  const dateObject = new Date(timeStamp);
+
+  const day= String(dateObject.getDate()).padStart(2, "0");
+  const month = String(dateObject.getMonth() + 1).padStart(2, "0");
+  const year = dateObject.getFullYear();
+
+  return(`${day} - ${month} - ${year}`);
+
+
+}
+
+
 export {
   formatMTime,
   timeDifference,
-  breakTimeDifference
+  breakTimeDifference,
+  formattedDate,
+  formattedFullTime
 }

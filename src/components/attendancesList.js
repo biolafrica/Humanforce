@@ -39,7 +39,11 @@ const AttendancesList = (props)=>{
           : 0;
 
         return(
-          <Link to="/admin/attendance/more" className="column" key={user._id}>
+          <Link 
+              to={`/admin/attendance/more/${user._id}`} 
+              className="column" 
+              key={user._id}
+            >
             <h6 className="date_column">{user.firstname} {user.lastname}</h6>
             <h6 className="clockin_column">{user.role}</h6>
             <h6 className="clockout_column">{totalHours || 0}</h6>

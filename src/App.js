@@ -65,7 +65,7 @@ function App() {
         <Route path='/admin/payroll'  element={<AdminLayout><Payroll/></AdminLayout>} />
         <Route path='/admin/payroll/edit'  element={<AdminLayout><PayrollEdit/></AdminLayout>} />
         <Route path='/admin/attendance'  element={<AdminLayout><AttendanceAdmin/></AdminLayout>} />
-        <Route path='/admin/attendance/more'  element={<AdminLayout><AttendanceMore/></AdminLayout>} />
+        <Route path='/admin/attendance/more/:id'  element={<AdminLayout><AttendanceMore/></AdminLayout>} />
         <Route path='/admin/settings'  element={<AdminLayout><Businessetting/></AdminLayout>} />
       </Routes>
         
