@@ -7,12 +7,7 @@ const Businessetting =()=>{
   const urlII = 'http://localhost:4000/admin/working-hours';
   const {dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI,urlII);
 
-  console.log({
-    business : dataI,
-    workingHours : dataII,
-  })
-
-
+  
   if(errorMessage) return(<div> {errorMessage}</div>); 
   if(isLoading) return(<div>....isLoading</div>);
   if(dataI && dataII){
