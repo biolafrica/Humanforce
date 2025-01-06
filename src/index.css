@@ -928,6 +928,17 @@ a {
   display: none;
 }
 
+.update_earnings,
+.update_team{
+  width: 60%;
+  margin: 30px auto;
+  border: 1px solid var(--Border-light);
+  border-radius: 5px;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+
 
 @media(max-width:768px) {
   /* general styles */

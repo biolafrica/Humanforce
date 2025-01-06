@@ -22,8 +22,8 @@ const ContractStaffEdit = ()=>{
         <div className="table_header">
           <h6 className="date_column"></h6>
           <h6 className="clockin_column">Basic Pay</h6>
-          <h6 className="clockout_column">Loan</h6>
-          <h6 className="hours_column">Lateness</h6>
+          <h6 className="clockout_column">Deductions</h6>
+          <h6 className="hours_column">Bonuses</h6>
           <h6 className="status_column">Net Pay</h6>
         </div>
 
@@ -71,6 +71,55 @@ const ContractStaffEdit = ()=>{
 
         </div>
 
+      </div>
+
+      <div className="update_earnings">
+
+        <form action="">
+
+          <label htmlFor=""><h4>Week</h4></label>
+          <select name="" >
+            <option value="November">Week 1</option>
+            <option value="December">Week 2</option>
+            <option value="December">Week 3</option>
+            <option value="December">Week 4</option>
+          </select>
+          <div className="error_message"></div>
+
+          <label htmlFor=""><h4>Day</h4></label>
+          <select name="" >
+            <option value="November">Monday</option>
+            <option value="December">Tuesday</option>
+            <option value="December">Wednesday</option>
+            <option value="December">Thursday</option>
+            <option value="December">Friday</option>
+            <option value="December">Saturday</option>
+          </select>
+          <div className="error_message"></div>
+
+          <label htmlFor=""><h4>Rate</h4></label>
+          <input type="number" />
+          <div className="error_message"></div>
+
+
+          <label htmlFor=""><h4>Unit</h4></label>
+          <input type="number" />
+          <div className="error_message"></div>
+
+
+          <label htmlFor=""><h4>Loan </h4></label>
+          <input type="number" />
+          <div className="error_message"></div>
+
+
+          <label htmlFor=""><h4>Bonus </h4></label>
+          <input type="number" />
+          <div className="error_message"></div>
+
+          <button className="filled-btn" type="submit"><h4>Update</h4></button>
+
+        </form>
+        
       </div>
 
     </div>

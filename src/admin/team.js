@@ -75,6 +75,29 @@ const Team = ()=>{
 
       </div>
 
+      <div className="update_team">
+
+        <form action="">
+
+          <label htmlFor=""><h4>Name</h4></label>
+          <input type="text" />
+          <div className="error_message"></div>
+
+          <label htmlFor=""><h4>Role</h4></label>
+          <select name="" >
+            <option value="November">Basic</option>
+            <option value="December">Admin</option>
+            <option value="December">Operation</option>
+            <option value="December">Finace</option>
+          </select>
+          <div className="error_message"></div>
+
+          <button className="filled-btn" type="submit"><h4>Update</h4></button>
+
+        </form>
+        
+      </div>
+
     </div>
   )
 }
