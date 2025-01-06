@@ -1,58 +1,23 @@
-const PayrollEdit = ()=>{
+const ContractStaffEdit = ()=>{
   return(
     <div className="payrolleditcont">
 
-      <div className="fixed_staff">
-
-        <h4>Payroll Summary</h4>
-
-        <div className="newstaff_column">
-
-          <form action="">
-            <label htmlFor=""><h4>Basic Pay</h4></label>
-            <input type="text" placeholder="Enter amount" />
-          </form>
-
-          <form action="">
-            <label htmlFor=""><h4>Loan</h4></label>
-            <input type="text" placeholder="Enter amount" />
-          </form>
-
-        </div>
-
-        <div className="newstaff_column">
-
-          <form action="">
-            <label htmlFor=""><h4>Lateness</h4></label>
-            <input type="text" placeholder="Enter amount" />
-          </form>
-
-          <form action="">
-            <label htmlFor=""><h4>Pension</h4></label>
-            <input type="text" placeholder="Enter amount" />
-          </form>
-
-        </div>
-
-        <div className="newstaff_column">
-
-          <form action="">
-            <label htmlFor=""><h4>Payee Tax</h4></label>
-            <input type="text" placeholder="Enter payee tax" />
-          </form>
-
-          <form action="">
-            <label htmlFor=""><h4>Net Pay</h4></label>
-            <input type="text" placeholder="Enter net pay" />
-          </form>
-
-        </div>
-
-        <button className="filled-btn"><h4>Submit</h4></button>
-
-      </div>
-
       <div className="contract_staff">
+
+        <h4>Abiodun Biobaku Payslip</h4>
+
+        <div className="contract_staff_date_filter">
+          <div className="staff_filter_container ">
+
+            <select name="" >
+              <option value="November">November, 2024</option>
+              <option value="December">December, 2024</option>
+            </select>
+
+          </div>
+
+          <img src="/icons/Edit.svg" alt="" />
+        </div>
 
         <div className="table_header">
           <h6 className="date_column"></h6>
@@ -106,11 +71,6 @@ const PayrollEdit = ()=>{
 
         </div>
 
-        <div className="table_footer">
-          <img src="/icons/Keyboard arrow left.svg" alt="" />
-          <img src="/icons/Keyboard arrow right.svg" alt="" />
-        </div>
-
       </div>
 
     </div>
@@ -118,4 +78,4 @@ const PayrollEdit = ()=>{
 
 }
 
-export default PayrollEdit
+export default ContractStaffEdit;

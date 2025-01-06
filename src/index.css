@@ -399,6 +399,12 @@ a {
   width: 50%;
 }
 
+.unpaid_staff{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .arrow{
   width: 0px;
   height: 20px;
@@ -447,6 +453,29 @@ a {
   grid-template-columns: repeat(5, 1fr);
   padding: 10px;
   
+}
+.fixed_staff_date_filter,
+.contract_staff_date_filter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contract_staff_date_filter{
+  margin: 20px 0px;
+}
+
+.staff_row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--Seperator-light);
+  padding: 15px 0px;
+}
+
+.paid_staff{
+  margin: 20px 0px;
+  color: var(--Text-light);
 }
 
 .table_header{
@@ -945,6 +974,7 @@ a {
     text-align: left;
 
   }
+
 
   .column h4{
     margin: 5px 0;
