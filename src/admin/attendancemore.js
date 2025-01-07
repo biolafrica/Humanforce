@@ -9,10 +9,6 @@ const AttendanceMore = ()=>{
   const url = `http://localhost:4000/admin/attendance/${id}`;
   const refresh = false ;
   const {data, isLoading, errorMessage} = useFetch(url, refresh);
-
-  if(data){
-    console.log('data:', data)
-  }
  
   if(isLoading) return(<div>...Loading</div>)
   if(errorMessage) return({errorMessage})
@@ -26,11 +22,6 @@ const AttendanceMore = ()=>{
     )
   }
 
-
-
-
-
-  
 };
 
 export default AttendanceMore;

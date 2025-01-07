@@ -64,8 +64,8 @@ function App() {
         <Route path='/admin/team'  element={<AdminLayout><Team/></AdminLayout>} />
         <Route path='/admin/team/new'  element={<AdminLayout><NewTeam/></AdminLayout>} />
         <Route path='/admin/payroll'  element={<AdminLayout><Payroll/></AdminLayout>} />
-        <Route path='/admin/payroll/edit/contract'  element={<AdminLayout><ContractStaffEdit/></AdminLayout>} />
-        <Route path='/admin/payroll/edit/fixed'  element={<AdminLayout><FixedStaffEdit/></AdminLayout>} />
+        <Route path='/admin/payroll/edit/contract/:id'  element={<AdminLayout><ContractStaffEdit/></AdminLayout>} />
+        <Route path='/admin/payroll/edit/fixed/:id'  element={<AdminLayout><FixedStaffEdit/></AdminLayout>} />
         <Route path='/admin/attendance'  element={<AdminLayout><AttendanceAdmin/></AdminLayout>} />
         <Route path='/admin/attendance/more/:id'  element={<AdminLayout><AttendanceMore/></AdminLayout>} />
         <Route path='/admin/settings'  element={<AdminLayout><Businessetting/></AdminLayout>} />

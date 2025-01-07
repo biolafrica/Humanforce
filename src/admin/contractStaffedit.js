@@ -1,4 +1,18 @@
+import { useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
+
+
 const ContractStaffEdit = ()=>{
+
+  const {id} = useParams();
+  console.log("selected user", id)
+  const url = `http://localhost:4000/admin/payroll/${id}`;
+  const refresh = false ;
+  const {data, isLoading, errorMessage} = useFetch(url, refresh);
+  if(data){
+    console.log("selected contract staff data", data)
+  }
+
   return(
     <div className="payrolleditcont">
 

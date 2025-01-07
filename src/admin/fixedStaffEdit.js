@@ -1,134 +1,100 @@
+import { useParams } from "react-router-dom";
+import { useState,useEffect } from "react";
+import useFetch from "../hooks/useFetch";
+import { PaidStaff, UnpaidStaff } from "../components/fixedPayrollStaff";
+
 const FixedStaffEdit = ()=>{
+
+  const {id} = useParams();
+  console.log("selected user id", id)
+  const url = `http://localhost:4000/admin/payroll/${id}`;
+  const refresh = false ;
+
+  const {data, isLoading, errorMessage} = useFetch(url, refresh);
+  const [selectedMonth, setSelectedMonth] = useState(null);
+  const [payrollMonths, setPayrollMonths] = useState([]);
+  const [activeMonthData, setActiveMonthData] = useState(null);
+  
+  const formatMonthYear = (dateString) =>{
+    const options = {year : "numeric", month: "long"};
+    return new Date(dateString).toLocaleDateString("en-US", options)
+  };
+
+  useEffect(()=>{
+    if(data && data.payroll){
+
+      const months = data.payroll.map((item) =>({
+        label: formatMonthYear(item.createdAt),
+        value: item.createdAt
+      }))
+
+      setPayrollMonths(months);
+
+      const currentMonth = months[0]?.value;
+      setSelectedMonth(currentMonth);
+
+      const currentMonthData = data.payroll.find(
+        (item) => item.createdAt === currentMonth
+      );
+
+      setActiveMonthData(currentMonthData);
+    }
+  }, [data]);
+
+  const handleMonthChange = (e) =>{
+    const selected = e.target.value;
+    setSelectedMonth(selected);
+
+    const selectedData = data.payroll.find(
+    (item) => item.createdAt === selected);
+    setActiveMonthData(selectedData);
+  };
+
+  if(isLoading) return (<div>....Loading</div>)
+  if(errorMessage) return (<div>{errorMessage}</div>)
+
+
   return(
     <div className="payrolleditcont">
 
       <div className="fixed_staff">
 
-        <h4>Abiodun Biobaku Payslip</h4>
+        <h4>{data.name.firstname} {data.name.lastname} Payslip</h4>
 
         <div className="fixed_staff_date_filter">
+
           <div className="staff_filter_container ">
-            <select name="" >
-              <option value="November">November, 2024</option>
-              <option value="December">December, 2024</option>
+            <select 
+              name=""
+              value={selectedMonth}
+              onChange={handleMonthChange} 
+            >
+              {payrollMonths.map((month) =>(
+                <option 
+                  value={month.value}
+                  key={month.value}
+                >
+                  {month.label}
+                </option>
+              ))}
+            
             </select>
           </div>
+
           <img src="/icons/Edit.svg" alt="" />
+
         </div>
         
-        <form>
-
-          <div className="unpaid_staff">
-
-            <div className="newstaff_column">
-
-              <div>
-                <label htmlFor=""><h4>Basic Pay</h4></label>
-                <input type="text" placeholder="Enter amount" />
-              </div>
-
-              <div>
-                <label htmlFor=""><h4>Loan</h4></label>
-                <input type="text" placeholder="Enter amount" />
-              </div>
-
-            </div>
-
-            <div className="newstaff_column">
-
-              <div>
-                <label htmlFor=""><h4>Lateness</h4></label>
-                <input type="text" placeholder="Enter amount" />
-              </div>
-
-              <div>
-                <label htmlFor=""><h4>Pension</h4></label>
-                <input type="text" placeholder="Enter amount" />
-              </div>
-
-            </div>
-
-            <div className="newstaff_column">
-
-              <div>
-                <label htmlFor=""><h4>Deduction</h4></label>
-                <input type="text" placeholder="Enter amount" />
-              </div>
-
-              <div>
-                <label htmlFor=""><h4>Bonuses</h4></label>
-                <input type="text" placeholder="Enter amount" />
-              </div>
-
-            </div>
-
-            <div className="newstaff_column">
-
-              <div>
-                <label htmlFor=""><h4>Payee Tax</h4></label>
-                <input type="text" placeholder="Enter payee tax" />
-              </div>
-
-              <div>
-                <label htmlFor=""><h4>Net Pay</h4></label>
-                <input type="text" placeholder="Enter net pay" />
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="paid_staff">
-
-            <div className="staff_row">
-              <h4>Basic Pay</h4>
-              <h4>N400,000:00</h4>
-            </div>
-
-            <div className="staff_row">
-              <h4>Bonuses</h4>
-              <h4>N2,000:00</h4>
-            </div>
-
-            <div className="staff_row">
-              <h4>Loan</h4>
-              <h4>N10,000:00</h4>
-            </div>
-
-            <div className="staff_row">
-              <h4>Late Fine</h4>
-              <h4>N5,000:00</h4>
-            </div>
-
-            <div className="staff_row">
-              <h4>Pension </h4>
-              <h4>N2,000:00</h4>
-            </div>
-
-            <div className="staff_row">
-              <h4>Deduction</h4>
-              <h4>N0:00</h4>
-            </div>
-
-            <div className="staff_row">
-              <h4>Tax</h4>
-              <h4>N50,000:00</h4>
-            </div>
-
-            <div className="staff_row">
-              <h4>Net Pay</h4>
-              <h4>N335,000:00</h4>
-            </div>
-
-          </div>
-
-         <button className="filled-btn"><h4>Submit</h4></button>
-
-        </form>
+        <div>
+          {selectedMonth === payrollMonths[0]?.value ?(
+            <UnpaidStaff data={activeMonthData}/>
+          ):(
+            <PaidStaff data={activeMonthData} />
+          )}
+          
+          
+        </div>
         
-
-       
-
       </div>
 
     </div>
