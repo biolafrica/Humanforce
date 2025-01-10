@@ -49,7 +49,6 @@ const PayrollTable = ({weeks}) =>{
       </div>
 
     </div>
-
   );
 
 };

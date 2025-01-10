@@ -4,7 +4,7 @@ import WorkingHours from "./workingHours";
 
 
 const Business= (props)=>{
-  const apiKey = "AIzaSyCeZCzNBO5995VfpOA7b2baQ1fJBP9t71c";
+  const apiKey = "";
   const data = props.data;
   const name = data[0];
 
@@ -23,7 +23,6 @@ const Business= (props)=>{
     pension : name.pension,
   }
 
-  
 
   const{
     formData,
