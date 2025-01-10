@@ -14,6 +14,8 @@ const FixedStaffEdit = ()=>{
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [payrollMonths, setPayrollMonths] = useState([]);
   const [activeMonthData, setActiveMonthData] = useState(null);
+
+ 
   
   const formatMonthYear = (dateString) =>{
     const options = {year : "numeric", month: "long"};
@@ -86,7 +88,8 @@ const FixedStaffEdit = ()=>{
         </div>
         
         <div>
-          {selectedMonth === payrollMonths[0]?.value ?(
+
+          {selectedMonth === payrollMonths[0]?.value ? (
             <UnpaidStaff data={activeMonthData}/>
           ):(
             <PaidStaff data={activeMonthData} />

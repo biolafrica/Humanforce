@@ -1,10 +1,14 @@
 import {useForm} from "../hooks/useForm"
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const UnpaidStaff =(props)=>{
-  const payroll = props.data;
+  const payroll = props.data
+  const {id} = useParams();
+  console .log("mine", payroll )
 
   const initialValues = {
-    basic_pay : payroll.basic_pay,
+    basic_pay : payroll.basic_pay ,
     bonuses : payroll.bonuses,
     deductions : payroll.deductions,
     lateness_fine : payroll.lateness_fine,
@@ -16,9 +20,16 @@ const UnpaidStaff =(props)=>{
   }
   const {formData, handleInputChange, resetForm} = useForm (initialValues)
 
-  const handleSubmitForm = (e)=>{
+  const handleSubmitForm = async(e)=>{
     e.preventDefault();
-    console.log(formData)
+    try {
+      const response = await axios.post(`http://localhost:4000/admin/payroll/${id}`, formData);
+      alert("payroll information updated successfully!");
+      
+    } catch (error) {
+      console.error("Error updating payroll information . Please try again");
+      
+    };
   }
 
   return(
@@ -138,7 +149,7 @@ const UnpaidStaff =(props)=>{
 }
 
 const PaidStaff =(props)=>{
-  const payroll = props.data;
+  const payroll = props.data === null ? 0 : props.data;
 
   return(
 
