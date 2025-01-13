@@ -5,8 +5,7 @@ const AttendancesList = (props)=>{
   console.log("attendance props", props.data);
   const attendances = props.data.attendances.attendances;
   const users = props.data.users.users;
-  console.log("attendance",attendances); 
-  console.log("users",users); 
+  
   return(
       
     <div className="table_body">

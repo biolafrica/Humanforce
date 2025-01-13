@@ -1,9 +1,11 @@
 import axios from "axios";
 import {useFormWithAddress} from "../hooks/useForm";
 import WorkingHours from "./workingHours";
+import { AlertPopup, useAlert } from "../components/alert";
 
 
 const Business= (props)=>{
+  const {alert, showAlert} = useAlert();
   const apiKey = "";
   const data = props.data;
   const name = data[0];
@@ -23,7 +25,6 @@ const Business= (props)=>{
     pension : name.pension,
   }
 
-
   const{
     formData,
     handleInputChange, 
@@ -37,10 +38,11 @@ const Business= (props)=>{
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:4000/admin/business", formData);
-      alert("Business information saved successfully!");
+      showAlert("Business information saved successfully!", "success");
       
     } catch (error) {
       console.error("Error saving business information. Please try again");
+      showAlert("Unsuccessfull, please try again", "error");
       
     };
 
@@ -262,6 +264,15 @@ const Business= (props)=>{
         </form>
 
       </div>
+
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
 
     </div>
   )

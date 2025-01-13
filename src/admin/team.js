@@ -50,7 +50,7 @@ const Team = ()=>{
                 matchingUser = user
               }
             })
-            console.log(matchingUser);
+          
 
             return(
               <div className="column" key={team._id}>

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import {useForm} from "../hooks/useForm";
+import { AlertPopup, useAlert } from "../components/alert";
 
 const NewStaff =()=>{
+  const {alert, showAlert} = useAlert();
 
   const initialValues = {
     firstname: "",
@@ -25,12 +27,12 @@ const NewStaff =()=>{
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:4000/admin/staff", formData);
-      alert("staff added successfully!");
+      showAlert("staff added successfully!", "success");
       resetForm();
       
     } catch (error) {
       console.log("Error adding staff", error);
-      alert("Failed to add staff. Please try again")
+      showAlert("Unsuccessfull, please try again");
       
     }
   }
@@ -217,6 +219,16 @@ const NewStaff =()=>{
         <button className="filled-btn" type="submit"><h4>Submit</h4></button>
 
       </form>
+
+
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
       
     </div>
   );

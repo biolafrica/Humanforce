@@ -12,12 +12,11 @@ const ContractStaffEdit = () =>{
   const [weeks, setWeeks] = useState([]);
   const [isEditVisible, setIsEditVisible] = useState(true);
 
-   const currentMonth = new Date().toLocaleString("default", {
-      month: 'long', 
-      year: "numeric"
-    });
+  const currentMonth = new Date().toLocaleString("default", {
+    month: 'long', 
+    year: "numeric"
+  });
 
-  console.log("before setting state",payrollData, weeks)
   
   useEffect(()=>{
     const fetchPayroll = async()=>{

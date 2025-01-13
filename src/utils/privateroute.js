@@ -30,6 +30,11 @@ const PrivateRoute = ({children}) =>{
 
 }
 
+const AdminPrivateRoute = ()=>{
+  const token = localStorage.getItem('authToken');
+
+}
 
 
-export default PrivateRoute
+
+export  {PrivateRoute, AdminPrivateRoute}

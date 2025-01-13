@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { AlertPopup,useAlert } from "./alert";
 
 const WorkingHours = (props)=>{
+  const {alert, showAlert} = useAlert();
   const data = props.data.workingHours;
   const hour = data[0].days;
   
@@ -75,19 +77,16 @@ const WorkingHours = (props)=>{
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    console.log(workingHours);
 
     const payload = {days : workingHours}
     try {
       const response = await axios.post("http://localhost:4000/admin/working-hours", payload);
-
-      console.log(response.data);
-      alert("working hours saved successfully!");
+      showAlert("working hours saved successfully!", "success")
 
       
     } catch (error) {
       console.log("Error saving working hours", error);
-      alert("Error saving working hours")
+      showAlert("Error saving working hours", "error")
       
     }
   }
@@ -103,59 +102,71 @@ const WorkingHours = (props)=>{
   ];
 
   return(
-    <form action="" onSubmit={handleSubmit}>
+    <>
+      <form action="" onSubmit={handleSubmit}>
 
-      <div className="working_hours_colums">
+        <div className="working_hours_colums">
 
-        {weekDays.map((day)=>(
+          {weekDays.map((day)=>(
 
-          <div className="working_hours_column" key={day}>
+            <div className="working_hours_column" key={day}>
 
-            <div className="days">
-              <h4 className="week_day">{day}</h4>
-              <div className="checkbox_cont">
-                <input
-                  type="checkbox" 
-                  name="" 
-                  onChange={()=>handleCheckboxChange(day)}
-                  checked={workingHours[day].isClosed}
-                />
-                <h5>Close</h5>
+              <div className="days">
+                <h4 className="week_day">{day}</h4>
+                <div className="checkbox_cont">
+                  <input
+                    type="checkbox" 
+                    name="" 
+                    onChange={()=>handleCheckboxChange(day)}
+                    checked={workingHours[day].isClosed}
+                  />
+                  <h5>Close</h5>
+                </div>
               </div>
+
+              {!workingHours[day].isClosed && (
+                <div className="work_hours">
+                  <div>
+                    <label htmlFor=""><h4>Open:</h4></label>
+                    <input 
+                      type="time" 
+                      value={workingHours[day].open}
+                      onChange={(e) => handleTimeChange(day, "open", e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor=""><h4>Close:</h4></label>
+                    <input 
+                      type="time"
+                      value={workingHours[day].close}
+                      onChange={(e) => handleTimeChange(day, "close", e.target.value)} 
+                    />
+                  </div>
+                </div>
+
+              )}
+              
             </div>
 
-            {!workingHours[day].isClosed && (
-              <div className="work_hours">
-                <div>
-                  <label htmlFor=""><h4>Open:</h4></label>
-                  <input 
-                    type="time" 
-                    value={workingHours[day].open}
-                    onChange={(e) => handleTimeChange(day, "open", e.target.value)}
-                  />
-                </div>
+          ))}
 
-                <div>
-                  <label htmlFor=""><h4>Close:</h4></label>
-                  <input 
-                    type="time"
-                    value={workingHours[day].close}
-                    onChange={(e) => handleTimeChange(day, "close", e.target.value)} 
-                  />
-                </div>
-              </div>
+          <button className="filled-btn" type="submit"><h4>Submit</h4></button>
 
-            )}
-            
-          </div>
+        </div>
 
-        ))}
+      </form>
 
-        <button className="filled-btn" type="submit"><h4>Submit</h4></button>
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
 
-      </div>
-
-    </form>
+    </>
   )
 
 

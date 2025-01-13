@@ -2,30 +2,32 @@ import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
 import useFetch from "../hooks/useFetch";
 import {useForm} from "../hooks/useForm";
 import axios from "axios";
+import { AlertPopup, useAlert } from "../components/alert";
 
 const NewTeam =()=>{
+  const {alert, showAlert} = useAlert();
   const url = "http://localhost:4000/admin/staff";
   const refresh = false;
   const {data, isLoading, errorMessage} = useFetch(url, refresh);
-  console.log(data);
   const users = data?.users || [];
 
   const initialValues = {
     staff_code: "",
     team_role: ""
   }
+
   const{formData,handleInputChange,resetForm} = useForm(initialValues)
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:4000/admin/team", formData);
-      alert("team added succesfully");
+      showAlert("Team added succesfully", "success");
       resetForm();
       
     } catch (error) {
       console.log("Fail to add team member:", error);
-      alert("failed to add team member, please try again");
+      showAlert("Unsuccessfull , please try again", "error");
       
     }
 
@@ -78,6 +80,15 @@ const NewTeam =()=>{
         </form>
 
       </div>
+
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
 
       
 
