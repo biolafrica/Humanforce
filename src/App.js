@@ -10,6 +10,7 @@ import Attendance from "./user/attendance";
 import Dashboard from "./admin/dashboard";
 import DashboardUser from "./admin/user";
 import Staff from "./admin/staff";
+import RegisteredStaff from "./admin/registeredStaff";
 import NewTeam from "./admin/newteam";
 import Team from "./admin/team";
 import NewStaff from "./admin/newstaff";
@@ -98,6 +99,13 @@ function App() {
           {
             <AdminPrivateRoute>
               <AdminLayout><Staff/></AdminLayout>
+            </AdminPrivateRoute>     
+          } 
+        />
+        <Route path='/admin/staff/:id'  element=
+          {
+            <AdminPrivateRoute>
+              <AdminLayout><RegisteredStaff/></AdminLayout>
             </AdminPrivateRoute>     
           } 
         />

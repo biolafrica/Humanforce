@@ -62,7 +62,7 @@ const Staff = ()=>{
             <div className="table_body">
               {users.map((user)=>(
 
-                <Link className="column" key={user._id}>
+                <Link to={`/admin/staff/${user._id}`} className="column" key={user._id}>
                   <h6 className="date_column">{user.firstname} {user.lastname}</h6>
                   <h6 className="clockin_column">{user.role}</h6>
                   <h6 className="clockout_column">{user.employment_type}</h6>

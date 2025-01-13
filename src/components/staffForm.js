@@ -133,7 +133,7 @@ const StaffForm = ({initialValues, url})=>{
               type="email"
               name="email_address"
               placeholder="Enter email address"
-              value={FormData.email_address}
+              value={formData.email_address}
               onChange={handleInputChange}
               required
             />
