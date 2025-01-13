@@ -89,7 +89,18 @@ const DisplayTimer = (props)=>{
         isRunning = {false}
       />
     )
-  };
+  }else{
+    let difference = timeDifference(time.clock_in, time.clock_out);
+    return(
+      <Timer
+        initialHours = {difference.hours}
+        initialMinute = {difference.minutes}
+        initialSeconds = {difference.seconds}
+        isPaused = {true}
+        isRunning = {false}
+      />
+    )
+  }
   
 }
 

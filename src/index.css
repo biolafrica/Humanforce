@@ -943,6 +943,49 @@ a {
   margin: 50px 0px;
 }
 
+/*alert css*/
+.alert_cont{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 5px;
+  color: var(--Text-light);
+  box-shadow: var(--elevate-1);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  min-width: 300px;
+  background-color: white;
+}
+
+.message_cont{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 80%;;
+}
+
+.close{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.message_cont img{
+  width: 24px;
+  height: 24px;
+}
+
+.alert-success{
+  border: 1px solid #28a745 ;
+}
+
+.alert-error{
+  border: 1px solid #dc3545;
+}
 
 
 @media(max-width:768px) {

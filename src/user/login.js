@@ -1,10 +1,13 @@
 import {useForm} from "../hooks/useForm";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
-import { stringify } from "postcss";
+import {AlertPopup, useAlert} from "../components/alert";
+import { type } from "@testing-library/user-event/dist/type";
 
 const Login = ()=>{
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const {alert, showAlert} = useAlert();
 
   const initialValue = ({
     staff_code: ""
@@ -24,14 +27,17 @@ const Login = ()=>{
       console.log(token, user);
 
       if(data){
+        showAlert("Logged in successfully", "success");
         navigate("/");
       }
-      alert("Logged in succesfully");
+      
+     
       resetForm();
       
     } catch (error) {
       console.log("Login failed;", error);
-      alert("Invalid login credentials");
+      showAlert("Invalid Credentials", "error");
+     
       
     }
   }
@@ -49,6 +55,7 @@ const Login = ()=>{
           name="staff_code"
           value={formData.staff_code}
           onChange={handleInputChange}
+          required
         />
         <div className="error_message"></div>
 
@@ -56,6 +63,14 @@ const Login = ()=>{
 
       </form>
 
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
     
     </div>
   )

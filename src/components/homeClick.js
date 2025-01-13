@@ -1,25 +1,24 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AlertPopup,useAlert } from "./alert";
 
 const HomeClicks = (props)=>{
   const workingHours = props.workingHours.workingHours;
-
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
+  const {alert, showAlert} = useAlert();
 
   const now = new Date();
   const currentDay = now.toLocaleString("en-US", {weekday: 'long'}).toLowerCase();
-  console.log(currentDay);
 
   const hour = workingHours[0].days
   const day = hour[currentDay]
-  console.log("closed", day.isClosed)
 
   const handleStartWorkClick =async()=>{
     
     if(day.isClosed === true){
-      return alert("we are not operational today")
+      return showAlert("we are not operational today", "info")
     }else{
       try {
         const response = await  axios.post("http://localhost:4000/clock", {token});
@@ -40,17 +39,16 @@ const HomeClicks = (props)=>{
   const handleEndWorkClick = async() =>{
 
     if(day.isClosed === true){
-      return alert("we are not operational today")
+      return showAlert("we are not operational today", "info")
     }else{
       try {
         const response = await axios.post("http://localhost:4000/clocked", {token});
         const data = response.data;
-        console.log(data);
-
+        
         if(data.id){
           return navigate(`/clock/${data.id}`);
         } else if (data.message){
-          return alert("You are yet to clock in");
+          return showAlert("You are yet to clock in", "info")
         }
         
       } catch (error) {
@@ -92,6 +90,15 @@ const HomeClicks = (props)=>{
         </Link>
 
       </div>
+
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
 
     </div>
 

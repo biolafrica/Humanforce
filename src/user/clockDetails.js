@@ -11,21 +11,17 @@ import DisplayTimer from "../components/displayTimer";
 
 const ClockDetails =()=>{
   const {id} = useParams();
-  console.log("attendance id", id)
 
   const url = `http://localhost:4000/clock/${id}`;
   const[refresh, setRefresh] = useState(false);
   const{data, isLoading, errorMessage} = useFetch(url,refresh);
-  if(data){console.log("fetched data",data)}
 
   const storedUser = localStorage.getItem('user');
   const user = JSON.parse(storedUser);
-  console.log("logIn user", user);
 
   const patchAttendance = async(updates)=>{
     try {
       const response = await  axios.patch(`http://localhost:4000/clock/${id}`, updates);
-      console.log("Update Response:", response.data);
       setRefresh((prev)=> !prev);
       
     } catch (error) {
@@ -41,11 +37,13 @@ const ClockDetails =()=>{
 
     if(value === "Start Break"){
       patchAttendance({break_start : new Date()});
+
     } else if(value === "End Break"){
       patchAttendance({break_end : new Date()});
-    }else if("End Work"){
-      const clock_out = Date.now();
+
+    }else if(value === "End Work"){
       patchAttendance({clock_out : new Date()});
+
     }
     
     

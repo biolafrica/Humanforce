@@ -3,6 +3,7 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { generateYearMonthWeeks } from "./formatmtime";
+import {AlertPopup, useAlert } from "./alert";
 
 
 const PayslipForm = ({payslips})=>{
@@ -10,7 +11,8 @@ const PayslipForm = ({payslips})=>{
   const currentMonth = generateYearMonthWeeks().currentMonth;
   const currentYear = generateYearMonthWeeks().currentYear;
   const currentWeek = generateYearMonthWeeks().week;
-  console.log(currentWeek);
+  
+  const {alert, showAlert} = useAlert();
 
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
@@ -30,11 +32,13 @@ const PayslipForm = ({payslips})=>{
 
     if(selectedPayslip.length > 0 && (payslips[currentYear])[0].staff_type === "fixed"){
       setPayslipData(selectedPayslip[0])
+
     }else if((selectedPayslip.length > 0 && (payslips[currentYear])[0].staff_type === "contract")){
       const selectedOptionWeek = selectedPayslip.filter((weeks) => weeks.week === selectedWeek);
       setPayslipData(selectedOptionWeek[0])
+
     }else {
-      alert('Payslip not found for the selected month')
+      showAlert('Payslip not found for the selected month', "info");
     }
    
   }
@@ -110,8 +114,6 @@ const PayslipForm = ({payslips})=>{
 
         <button type="submit" className="filled-btn"><h4>View Payslip</h4></button>
 
-        
-
       </form>
 
       {payslipData && payslipData._id && (
@@ -126,6 +128,15 @@ const PayslipForm = ({payslips})=>{
             <h4>Download as PDF</h4> 
           </button>
         </>
+      )}
+
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
       )}
       
     </>

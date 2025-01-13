@@ -1,5 +1,4 @@
 import UserAttendancelist from "./userAttendanceList";
-import useFetch from "../hooks/useFetch";
 import UserFetch from "../hooks/userFetch";
 
 const UserAttendance = ()=>{
@@ -7,9 +6,7 @@ const UserAttendance = ()=>{
   const url  = "http://localhost:4000/attendance/";
 
   const{data, isLoading, errorMessage} = UserFetch(url, token); 
-  if(data){
-    console.log("DATA", data)
-  } 
+
   if(isLoading) return(<div>...loading</div>)
   if(errorMessage) return({errorMessage})
   if(data){
