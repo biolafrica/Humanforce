@@ -30,8 +30,30 @@ const PrivateRoute = ({children}) =>{
 
 }
 
-const AdminPrivateRoute = ()=>{
-  const token = localStorage.getItem('authToken');
+const AdminPrivateRoute = ({children})=>{
+  const token = localStorage.getItem('adminAuthToken');
+
+  if(!token){
+    return <Navigate to="/admin/login" />;
+  }
+
+  try {
+    const decoded = jwtDecode(token);
+    
+    const isExpired = decoded.exp * 1000 <Date.now();
+    if(isExpired){
+      localStorage.removeItem("adminAuthToken");
+      localStorage.removeItem('team');
+      return <Navigate to="/admin/login" />
+    }
+
+    return children;
+  } catch (error) {
+    console.error("Invalid token:", error);
+    return <Navigate to="/admin/login" />;
+    
+  }
+
 
 }
 

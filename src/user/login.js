@@ -30,8 +30,6 @@ const Login = ()=>{
         showAlert("Logged in successfully", "success");
         navigate("/");
       }
-      
-     
       resetForm();
       
     } catch (error) {

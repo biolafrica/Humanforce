@@ -80,7 +80,7 @@ function App() {
 
         <Route path='/admin/Login'  element=
           {
-            <AdminLayout><AdminLogin/></AdminLayout>  
+            <UserLayout><AdminLogin/></UserLayout>  
           } 
         />
 
