@@ -8,6 +8,7 @@ import ClockDetails from "./user/clockDetails";
 import Payslip from "./user/payslip";
 import Attendance from "./user/attendance";
 import Dashboard from "./admin/dashboard";
+import DashboardUser from "./admin/user";
 import Staff from "./admin/staff";
 import NewTeam from "./admin/newteam";
 import Team from "./admin/team";
@@ -37,9 +38,9 @@ function App() {
         />
 
         <Route path='/login'  element=
-          {
-           <UserLayout><Login/></UserLayout>
-          } 
+        {
+        <UserLayout><Login/></UserLayout>
+        } 
         />
 
         <Route path='/clock/:id' element=
@@ -80,7 +81,16 @@ function App() {
 
         <Route path='/admin/Login'  element=
           {
-            <UserLayout><AdminLogin/></UserLayout>  
+            <AdminLayout><AdminLogin/></AdminLayout>  
+          } 
+        />
+
+
+        <Route path='/admin/user'  element=
+          {
+            <AdminPrivateRoute>
+              <AdminLayout><DashboardUser/></AdminLayout>
+            </AdminPrivateRoute>     
           } 
         />
 

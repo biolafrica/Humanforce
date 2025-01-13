@@ -1,5 +1,10 @@
+import { Link } from "react-router-dom";
+
 const AdminNav=()=>{
 
+  const storedUser = localStorage.getItem('team');
+  const user = JSON.parse(storedUser);
+ 
   return(
     <div className="adminavbar_cont">
 
@@ -9,9 +14,9 @@ const AdminNav=()=>{
 
       <div className="right-adminav">
         
-        <div className="right-icon">
-          <h4>AB</h4>
-        </div>
+        <Link to="/admin/user" className="right-icon">
+          <h4> {((user.firstname)[0]).toUpperCase()}{((user.lastname)[0]).toUpperCase()} </h4>
+        </Link>
 
         <div className="right-logout">
           <img src="/icons/Logout.svg" alt="" />
