@@ -1,13 +1,16 @@
 import StaffForm from "../components/staffForm";
 import { useParams } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
+import useFetch from "../hooks/useFetch";
 
 const RegisteredStaff = ()=>{
   const {id} = useParams();
   const token = localStorage.getItem("adminAuthToken");
   const url = `http://localhost:4000/admin/staff/${id}`;
+  const refresh = false
+  console.log(url)
 
-  const {data, isLoading, errorMessage} = UserFetch(url,token);
+  const {data, isLoading, errorMessage} = useFetch(url,refresh);
 
 
   if(isLoading) return(<div>....Loading</div>)

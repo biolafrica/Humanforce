@@ -11,6 +11,7 @@ import Dashboard from "./admin/dashboard";
 import DashboardUser from "./admin/user";
 import Staff from "./admin/staff";
 import RegisteredStaff from "./admin/registeredStaff";
+import RegisteredTeam from "./admin/registeredTeam";
 import NewTeam from "./admin/newteam";
 import Team from "./admin/team";
 import NewStaff from "./admin/newstaff";
@@ -122,6 +123,14 @@ function App() {
           {
             <AdminPrivateRoute>
               <AdminLayout><Team/></AdminLayout>
+            </AdminPrivateRoute>          
+          }
+        />
+
+        <Route path='/admin/team/:id'  element=
+          {
+            <AdminPrivateRoute>
+              <AdminLayout><RegisteredTeam/></AdminLayout>
             </AdminPrivateRoute>          
           }
         />

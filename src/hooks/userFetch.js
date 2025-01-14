@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 
 function UserFetch(url, token){
+  
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(()=>{
+
     setIsLoading(true);
     fetch(url, {
       method : "GET",
       headers : {
         'Content-Type' : "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       
       }
     })
@@ -27,7 +29,7 @@ function UserFetch(url, token){
       setIsLoading(false);
       setErrorMessage(null)
     })
-    .catch(err =>{
+    .catch((err) =>{
       setErrorMessage(err.message);
       setIsLoading(false);
     })
