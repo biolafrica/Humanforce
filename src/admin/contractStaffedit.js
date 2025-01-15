@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import UserFetch from "../hooks/userFetch"
-import ContractStaffDisplay from "../components/contractStaffDisplay";
+import ContractStaffDisplay from "../components/adminPage/contractStaffDisplay";
 
 
 const ContractStaffEdit = ()=>{

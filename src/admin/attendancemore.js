@@ -1,6 +1,6 @@
 import UserFetch from "../hooks/userFetch";
 import { useParams } from "react-router-dom";
-import Attendance from "../components/attendance"
+import Attendance from "../components/userPage/attendance"
 
 const AttendanceMore = ()=>{
 

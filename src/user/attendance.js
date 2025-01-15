@@ -1,4 +1,4 @@
-import UserAttendance from "../components/userAttendance";
+import UserAttendance from "../components/userPage/userAttendance";
 
 
 const Attendance = ()=>{

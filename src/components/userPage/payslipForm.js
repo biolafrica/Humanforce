@@ -1,4 +1,4 @@
-import PayslipTemplate from "../components/payslipTemplate";
+import PayslipTemplate from "./payslipTemplate";
 import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";

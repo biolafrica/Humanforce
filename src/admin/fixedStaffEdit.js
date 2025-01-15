@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import UserFetch from "../hooks/userFetch";
-import { PaidStaff, UnpaidStaff } from "../components/fixedPayrollStaff";
+import { PaidStaff, UnpaidStaff } from "../components/adminPage/fixedPayrollStaff";
 
 const FixedStaffEdit = ()=>{
 

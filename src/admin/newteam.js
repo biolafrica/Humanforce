@@ -1,5 +1,5 @@
 import UserFetch from "../hooks/userFetch";
-import TeamForm from "../components/teamForm";
+import TeamForm from "../components/adminPage/teamForm";
 
 
 

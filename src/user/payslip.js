@@ -1,4 +1,4 @@
-import PayslipForm from "../components/payslipForm";
+import PayslipForm from "../components/userPage/payslipForm";
 import UserFetch from "../hooks/userFetch";
 
 const Payslip =()=>{

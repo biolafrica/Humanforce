@@ -1,6 +1,6 @@
 
 import DoubleUseFetch from "../hooks/doubleuseFetch";
-import HomeClicks from "../components/homeClick";
+import HomeClicks from "../components/userPage/homeClick";
 
 const Homepage=()=>{
   const urlI = 'http://localhost:4000/admin/business';

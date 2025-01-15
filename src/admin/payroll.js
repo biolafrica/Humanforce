@@ -1,5 +1,5 @@
-import ContractStaffList from "../components/contractStaffList";
-import FixedStaffList from "../components/fixedStaffList";
+import ContractStaffList from "../components/adminPage/contractStaffList";
+import FixedStaffList from "../components/adminPage/fixedStaffList";
 import { useState } from "react";
 import UserFetch from "../hooks/userFetch";
 

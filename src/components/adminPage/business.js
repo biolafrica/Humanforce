@@ -9,6 +9,8 @@ const Business= (props)=>{
   const apiKey = "";
   const data = props.data;
   const name = data[0];
+  const token = localStorage.getItem("adminAuthToken")
+  
 
   const initialValues = {
     business_name : name.business_name,
@@ -35,12 +37,13 @@ const Business= (props)=>{
   } = useFormWithAddress(initialValues, apiKey);
 
   const handleSubmit = async (e)=>{
+   
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:4000/admin/business", formData, {
         headers:{
-          Authorization : `Bearer ${token}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         }
       });
       

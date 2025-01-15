@@ -1,4 +1,4 @@
-import TeamForm from "../components/teamForm";
+import TeamForm from "../components/adminPage/teamForm";
 import { useParams } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
 

@@ -1,5 +1,5 @@
 import useFetch from "../hooks/useFetch";
-import Business from "../components/business";
+import Business from "../components/adminPage/business";
 import DoubleUseFetch from "../hooks/doubleuseFetch";
 
 const Businessetting =()=>{
