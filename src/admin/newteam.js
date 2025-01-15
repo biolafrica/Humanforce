@@ -1,4 +1,4 @@
-import useFetch from "../hooks/useFetch";
+import UserFetch from "../hooks/userFetch";
 import TeamForm from "../components/teamForm";
 
 
@@ -6,8 +6,8 @@ import TeamForm from "../components/teamForm";
 const NewTeam =()=>{
   const url = "http://localhost:4000/admin/staff";
   const urlI = "http://localhost:4000/admin/team";
-  const refresh = false;
-  const {data, isLoading, errorMessage} = useFetch(url, refresh);
+  const token = localStorage.getItem("adminAuthToken")
+  const {data, isLoading, errorMessage} = UserFetch(url,token);
   const edit = false;
   
 

@@ -1,12 +1,12 @@
 import ContractStaffList from "../components/contractStaffList";
 import FixedStaffList from "../components/fixedStaffList";
 import { useState } from "react";
-import useFetch from "../hooks/useFetch";
+import UserFetch from "../hooks/userFetch";
 
 const Payroll =()=>{
   const url = "http://localhost:4000/admin/payrolls";
-  const refresh = false;
-  const {data, isLoading, errorMessage} = useFetch(url, refresh);
+  const token = localStorage.getItem("adminAuthToken")
+  const {data, isLoading, errorMessage} = UserFetch(url,token);
   const [activeTab, setActiveTab] = useState("fixed");
 
   const handleFixedClick = ()=>{

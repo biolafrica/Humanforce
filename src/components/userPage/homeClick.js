@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AlertPopup,useAlert } from "./alert";
+import { AlertPopup,useAlert } from "../alert";
 
 const HomeClicks = (props)=>{
   const workingHours = props.workingHours.workingHours;

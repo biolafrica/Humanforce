@@ -1,15 +1,21 @@
 import axios from "axios";
-import { useForm } from "../hooks/useForm";
-import { AlertPopup, useAlert } from "./alert";
+import { useForm } from "../../hooks/useForm";
+import { AlertPopup, useAlert } from "../alert";
 
 const StaffForm = ({initialValues, url})=>{
   const {alert, showAlert} = useAlert();
   const {formData, handleInputChange, resetForm} = useForm(initialValues);
+  const token = localStorage.getItem("adminAuthToken");
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post(url, formData);
+      const response = await axios.post(url, formData, {
+        headers:{
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
       showAlert("staff added successfully!", "success");
       resetForm();
       

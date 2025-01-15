@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
+import { AlertPopup,useAlert } from "../alert";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 const PayrollTable = ({weeks}) =>{
@@ -54,16 +57,20 @@ const PayrollTable = ({weeks}) =>{
 };
 
 const PayrollEditPopup = ({weeks, cancel}) =>{
+  const {alert, showAlert} = useAlert();
+  const {id} = useParams();
+  const token = localStorage.getItem("adminAuthToken")
+  
 
   
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   const [availableDays, setAvailableDays] = useState([]);
   const [initialValues, setInitialValues] = useState({
-    rate: 0,
-    unit: 0,
-    loan: 0,
-    bonuses: 0,
+    rate: "",
+    unit: "",
+    loan: "",
+    bonuses: "",
 
   })
 
@@ -105,22 +112,35 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
       }
     }else{
       setInitialValues({
-        rate: 0,
-        unit: 0,
-        loan: 0,
-        bonuses: 0,
+        rate: "",
+        unit: "",
+        loan: "",
+        bonuses: "",
       })
     }
   };
 
   const handleSubmitForm = async(e) =>{
     e.preventDefault();
+
+    const formData = {
+      ...initialValues,
+      weekId : selectedWeek,
+      day : selectedDay
+    }
+
     try {
-      //await axios.post(``, formData)
-      //alert("Earning updated successfully"); 
+      const response = await axios.post(`http://localhost:4000/admin/payroll/${id}`, formData, {
+        headers:{
+          Authorization : `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
+      showAlert("Updated successfully", "success"); 
       
     } catch (error) {
-      console.error("Error updating earnings:", error);
+      console.error("Error submitting form:", error);
+      showAlert("Unsuccessful, try again", "error"); 
     }
 
   }
@@ -247,7 +267,15 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
         </form>
       </div>
 
-      <div></div>
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
+
     </>
   
   )

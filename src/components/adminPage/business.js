@@ -1,7 +1,7 @@
 import axios from "axios";
-import {useFormWithAddress} from "../hooks/useForm";
+import {useFormWithAddress} from "../../hooks/useForm";
 import WorkingHours from "./workingHours";
-import { AlertPopup, useAlert } from "../components/alert";
+import { AlertPopup, useAlert } from "../alert";
 
 
 const Business= (props)=>{
@@ -37,7 +37,13 @@ const Business= (props)=>{
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/admin/business", formData);
+      const response = await axios.post("http://localhost:4000/admin/business", formData, {
+        headers:{
+          Authorization : `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
+      
       showAlert("Business information saved successfully!", "success");
       
     } catch (error) {

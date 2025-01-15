@@ -2,8 +2,8 @@ import PayslipTemplate from "../components/payslipTemplate";
 import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { generateYearMonthWeeks } from "./formatmtime";
-import {AlertPopup, useAlert } from "./alert";
+import { generateYearMonthWeeks } from "../formatmtime";
+import {AlertPopup, useAlert } from "../alert";
 
 
 const PayslipForm = ({payslips})=>{

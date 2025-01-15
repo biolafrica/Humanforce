@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { AlertPopup,useAlert } from "./alert";
+import { AlertPopup,useAlert } from "../alert";
 
 const WorkingHours = (props)=>{
   const {alert, showAlert} = useAlert();
   const data = props.data.workingHours;
   const hour = data[0].days;
+  const token = localStorage.getItem("adminAuthToken")
   
   const [sun,mon,tue,wed,thur,fri,sat] = [
     hour.sunday,
@@ -80,7 +81,13 @@ const WorkingHours = (props)=>{
 
     const payload = {days : workingHours}
     try {
-      const response = await axios.post("http://localhost:4000/admin/working-hours", payload);
+      const response = await axios.post("http://localhost:4000/admin/working-hours", payload, {
+        headers:{
+          Authorization: `Bearer ${token}`,
+          'Content-Type' : "application/json",
+        }
+
+      });
       showAlert("working hours saved successfully!", "success")
 
       

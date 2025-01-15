@@ -1,4 +1,4 @@
-import { formattedDate, formattedFullTime } from "./formatmtime";
+import { formattedDate, formattedFullTime } from "../formatmtime";
 
 const UserAttendancelist = (props) =>{
   const attendances = props.attendance.attendance;

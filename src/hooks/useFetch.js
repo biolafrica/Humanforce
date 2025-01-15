@@ -2,13 +2,21 @@ import { useEffect, useState } from "react";
 
 
 function useFetch(url, refresh = false){
+  const token = localStorage.getItem("AuthToken");
+  
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(()=>{
     setIsLoading(true);
-    fetch(url)
+    fetch(url, {
+      method : "GET",
+      headers : {
+        'Content-Type' : "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    })
     .then(response =>{
       if(!response.ok){
         throw new Error('Error fetching data')

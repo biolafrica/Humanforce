@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {AlertPopup, useAlert} from "../components/alert";
+import {AlertPopup, useAlert} from "../alert";
 
 const TeamDetails =({users, teams})=>{
   const {alert, showAlert} = useAlert();

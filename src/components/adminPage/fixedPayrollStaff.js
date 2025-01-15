@@ -1,12 +1,13 @@
-import {useForm} from "../hooks/useForm"
+import {useForm} from "../../hooks/useForm"
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { AlertPopup,useAlert } from "./alert";
+import { AlertPopup,useAlert } from "../alert";
 
 const UnpaidStaff =(props)=>{
   const {alert, showAlert} = useAlert();
   const payroll = props.data
   const {id} = useParams();
+  const token = localStorage.getItem("adminAuthToken");
  
   const initialValues = {
     basic_pay : payroll.basic_pay ,
@@ -24,8 +25,11 @@ const UnpaidStaff =(props)=>{
   const handleSubmitForm = async(e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:4000/admin/payroll/${id}`, formData);
-      alert("payroll information updated successfully!");
+      const response = await axios.post(`http://localhost:4000/admin/payroll/${id}`, formData, {
+        headers:{
+          Authorization : `Bearer ${token}`
+        }
+      });
       showAlert("payroll information updated successfully!", "success")
       
       

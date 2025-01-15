@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
-import useFetch from "../hooks/useFetch";
+import UserFetch from "../hooks/userFetch";
 import { PaidStaff, UnpaidStaff } from "../components/fixedPayrollStaff";
 
 const FixedStaffEdit = ()=>{
@@ -8,9 +8,9 @@ const FixedStaffEdit = ()=>{
   const {id} = useParams();
   console.log("selected user id", id)
   const url = `http://localhost:4000/admin/payroll/${id}`;
-  const refresh = false ;
-
-  const {data, isLoading, errorMessage} = useFetch(url, refresh);
+  const token = localStorage.getItem("adminAuthToken")
+  
+  const {data, isLoading, errorMessage} = UserFetch(url,token);
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [payrollMonths, setPayrollMonths] = useState([]);
   const [activeMonthData, setActiveMonthData] = useState(null);

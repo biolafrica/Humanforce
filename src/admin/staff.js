@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import UserFetch from "../hooks/userFetch";
 
 const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
-  const refresh = false;
-  const {data, isLoading, errorMessage} = useFetch(url, refresh);
+  const token = localStorage.getItem("adminAuthToken")
+  const {data, isLoading, errorMessage} = UserFetch(url, token);
 
   const users = data?.users || [];
 

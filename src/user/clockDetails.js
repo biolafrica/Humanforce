@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import StaffDetails from "../components/staffDetails";
-import StaffClock from "../components/staffClock";
+import StaffDetails from "../components/userPage/staffDetails";
+import StaffClock from "../components/userPage/staffClock";
 import {clockButton, clockButtonClass} from "../components/clockButton";
 import axios from "axios";
 import { useState } from "react";

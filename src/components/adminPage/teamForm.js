@@ -1,10 +1,11 @@
-import {useForm} from "../hooks/useForm";
+import {useForm} from "../../hooks/useForm";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
-import { AlertPopup, useAlert } from "../components/alert";
+import { AlertPopup, useAlert } from "../alert";
 
 
 const TeamForm = ({url, initialValues, users, edit})=>{
+  const token = localStorage.getItem("adminAuthToken")
   const navigate = useNavigate();
   const {alert, showAlert} = useAlert();
   const{formData,handleInputChange,resetForm} = useForm(initialValues)
@@ -13,7 +14,12 @@ const TeamForm = ({url, initialValues, users, edit})=>{
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
-      const res = await axios.post(url, formData);
+      const res = await axios.post(url, formData,{
+        headers:{
+          Authorization : `Bearer ${token}`,
+          "Content-Type" : "application/json"
+        }
+      } );
       showAlert("Team added succesfully", "success");
       navigate("/admin/team")
       resetForm();

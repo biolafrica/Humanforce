@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-function DoubleUseFetch(urlI, urlII){
+function DoubleUseFetch(urlI, urlII,token){
   const [dataI, setDataI] = useState(null);
   const [dataII, setDataII] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,8 +13,20 @@ function DoubleUseFetch(urlI, urlII){
     setIsLoading(true);
 
     Promise.all([
-      axios.get(urlI),
-      axios.get(urlII)
+      axios.get(urlI, {
+        headers:{
+          Authorization : `Bearer ${token}`,
+          "Content-Type": "application/json",
+        }
+      }),
+
+      axios.get(urlII, {
+        headers:{
+          Authorization : `Bearer ${token}`,
+          "Content-Type": "application/json",
+        }
+      })
+
     ])
     .then(([responseI, responseII])=>{
       setDataI(responseI.data)

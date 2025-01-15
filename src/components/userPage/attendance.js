@@ -3,7 +3,6 @@ import AttendanceList from "./attendanceList"
 const Attendance = (props) =>{
   const attendances = props.AttendanceUser.attendance;
   const user = props.AttendanceUser.user;
-  console.log("pe")
   return(
 
     <div>

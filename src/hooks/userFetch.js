@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 function UserFetch(url, token){
-  
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+
 
   useEffect(()=>{
 
