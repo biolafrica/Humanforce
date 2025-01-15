@@ -16,8 +16,7 @@ const ContractStaffEdit = ()=>{
       
     return(
       <div className="payrolleditcont">
-        <></>
-
+        
         <div className="contract_staff">
 
           <h4>{name.firstname} {name.lastname} Payslip</h4>
@@ -26,6 +25,7 @@ const ContractStaffEdit = ()=>{
 
       
         </div>
+        
       </div>
     )
 

@@ -22,54 +22,70 @@ const ContractStaffDisplay = ({payroll})=>{
     month === currentMonth ? setIsEditVisible(true) : setIsEditVisible(false);
   }
 
+  const changePopup =()=>{
+    setIsPopupVisible(false)
+  }
+
   return(
     <>
+      <>
+        { isPopupVisible &&  <PayrollEditPopup weeks={weeks} cancel={changePopup}/>}
+      </>
 
-      <div className="contract_staff_date_filter">
-        <div className="staff_filter_container ">
+      <>
+        { !isPopupVisible &&
 
-          <select 
-            name="month"
-            value={selectedMonth}
-            onChange={()=> handleMonthChange} 
-          >
-            {Object.keys(payrollData).map((month)=>(
-              <option 
-                value={month}
-                key={month}
-              >
-                {month}
-              </option>
+          (
+            <>
+              <div className="contract_staff_date_filter">
+                <div className="staff_filter_container ">
 
-            ))}
-            
-          </select>
+                  <select 
+                    name="month"
+                    value={selectedMonth}
+                    onChange={()=> handleMonthChange} 
+                  >
+                    {Object.keys(payrollData).map((month)=>(
+                      <option 
+                        value={month}
+                        key={month}
+                      >
+                        {month}
+                      </option>
 
-        </div>
+                    ))}
+                    
+                  </select>
 
-        {isEditVisible && 
-          <img 
-            src="/icons/Edit.svg" 
-            alt="Edit" 
-            onClick={()=> setIsPopupVisible(true)} 
-            style={{ cursor: "pointer" }}
-          />
+                </div>
+
+                {isEditVisible && 
+                  <img 
+                    src="/icons/Edit.svg" 
+                    alt="Edit" 
+                    onClick={()=> setIsPopupVisible(true)} 
+                    style={{ cursor: "pointer" }}
+                  />
+                }
+
+              </div>
+
+              <div className="table_header">
+                <h6 className="date_column"></h6>
+                <h6 className="clockin_column">Basic Pay</h6>
+                <h6 className="clockout_column">Deductions</h6>
+                <h6 className="hours_column">Bonuses</h6>
+                <h6 className="status_column">Net Pay</h6>
+              </div>
+
+              <PayrollTable weeks={weeks}/>
+            </>
+          )
+        
         }
 
-      </div>
-
-      <div className="table_header">
-        <h6 className="date_column"></h6>
-        <h6 className="clockin_column">Basic Pay</h6>
-        <h6 className="clockout_column">Deductions</h6>
-        <h6 className="hours_column">Bonuses</h6>
-        <h6 className="status_column">Net Pay</h6>
-      </div>
-
-      <PayrollTable weeks={weeks}/>
-      { isPopupVisible &&  <PayrollEditPopup weeks={weeks}/>}
-
-
+   
+      </>
     </>
   )
 

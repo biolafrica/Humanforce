@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "../hooks/useForm";
-import axios from "axios";
+
 
 const PayrollTable = ({weeks}) =>{
   console.log("payroll week", weeks)
@@ -53,20 +53,65 @@ const PayrollTable = ({weeks}) =>{
 
 };
 
-const PayrollEditPopup = ({weeks}) =>{
-  console.log("my", weeks)
-  const initialValues = {
+const PayrollEditPopup = ({weeks, cancel}) =>{
+
+  
+  const [selectedWeek, setSelectedWeek] = useState("");
+  const [selectedDay, setSelectedDay] = useState("");
+  const [availableDays, setAvailableDays] = useState([]);
+  const [initialValues, setInitialValues] = useState({
     rate: 0,
     unit: 0,
     loan: 0,
     bonuses: 0,
-  }
-  const {formData, handleInputChange, resetForm} = useForm(initialValues);
-  const [selectedWeek, setSelectedWeek] = useState("");
-  const [selectedDay, setSelectedDay] = useState("");
 
-  const handleWeekChange = (e) => setSelectedWeek(e.target.value)
-  const handleDayChange = (e) => setSelectedDay(e.target.value)
+  })
+
+  const {formData, handleInputChange, resetForm} = useForm(initialValues);
+
+  const handleWeekChange = (e) => {
+    const weekId = e.target.value;
+    setSelectedWeek(weekId);
+
+    if(weekId){
+      const selectedWeekData = weeks.find((week)=>week._id === weekId);
+      if(selectedWeekData){
+        const daysArray = Object.entries(selectedWeekData.days)
+        .filter(([_, details])=>details.isPresent)
+        .map(([name, details])=>({name, ...details}));
+        setAvailableDays(daysArray)
+      }else{
+        setAvailableDays([]);
+      }
+    }else{
+      setAvailableDays([]);
+    }
+
+  }
+
+  const handleDayChange = (e) =>{
+    const dayName = e.target.value;
+    setSelectedDay(dayName)
+
+    if(dayName){
+      const selectedDayDetails = availableDays.find((day)=> day.name === dayName);
+      if(selectedDayDetails){
+        setInitialValues({
+          rate: selectedDayDetails.rate,
+          unit: selectedDayDetails.unit,
+          loan: selectedDayDetails.loan,
+          bonuses: selectedDayDetails.bonuses
+        });
+      }
+    }else{
+      setInitialValues({
+        rate: 0,
+        unit: 0,
+        loan: 0,
+        bonuses: 0,
+      })
+    }
+  };
 
   const handleSubmitForm = async(e) =>{
     e.preventDefault();
@@ -80,71 +125,134 @@ const PayrollEditPopup = ({weeks}) =>{
 
   }
 
-  const availableDays = selectedWeek
-  ? weeks.find((week)=>week._id === selectedWeek)?.days
-  : [];
 
   return(
     <>
-      <div className="overlay"></div>
-
       <div className="update_earnings">
+        <div className="icon_cont">
+          <img 
+            src="/icons/close alert.svg" 
+            alt="cancel-icon"
+            style={{cursor: "pointer"}}
+            onClick={()=>cancel()}
+          />
+        </div>
+        
         <form action="" onSubmit={handleSubmitForm}>
 
-          <label htmlFor="week"><h4>Week</h4></label>
-          <select 
-            name="week" 
-            value={selectedWeek} 
-            onChange={handleWeekChange}
-          >
-            {weeks.map((week)=>(
-              <option 
-                value={week._id}
-                key={week._id}
+          <div className="payroll_column">
+            
+            <div>
+              <label htmlFor="week"><h4>Week</h4></label>
+              <select 
+                name="week" 
+                value={selectedWeek} 
+                onChange={handleWeekChange}
               >
-                Week {week.week}
-              </option>
+                <option value="">Select Weeks</option>
+                {weeks.map((week)=>(
+                  <option 
+                    value={week._id}
+                    key={week._id}
+                  >
+                    {week.week}
+                  </option>
 
-            ))}
-          </select>
-          <div className="error_message"></div>
-
-          <label htmlFor="day"><h4>Day</h4></label>
-          <select 
-            name="day" 
-            value={selectedDay}
-            onChange={handleDayChange}
-          >
-            {availableDays.map((day)=>(
-              day.isPresent && 
-              <option key={day.name} value={day.name}>
-                {day.name}
-              </option>
-            ))}
-
-          </select>
-          <div className="error_message"></div>
-
-          {["rate", "unit", "loan", "bonuses"].map((field)=>(
-            <div key={field}>
-              <label htmlFor=""><h4>{field.charAt(0).toUpperCase() + field.slice(1)}</h4></label>
-              <input type="number" name="field" value={formData[field]} onChange={handleInputChange} />
+                ))}
+              </select>
               <div className="error_message"></div>
             </div>
+         
+            <div>
+              <label htmlFor="day"><h4>Day</h4></label>
+              <select 
+                name="day" 
+                value={selectedDay}
+                onChange={handleDayChange}
+                disabled={!selectedWeek}
+              >
+                <option value="">Select Days</option>
+                {availableDays.map((day)=>( 
+                  <option key={day.name} value={day.name}>
+                    {day.name}
+                  </option>
+                ))}
+              </select>
+              <div className="error_message"></div>
+            </div>
+           
+          </div>
 
-          ))}
+          <div className="payroll_column">
+            <div>
+              <label htmlFor=""><h4>Rate</h4></label>
+              <input 
+                type="number" 
+                name="rate" 
+                value={initialValues.rate} 
+                onChange={handleInputChange}
+                disabled={!selectedDay} 
+              />
+              <div className="error_message"></div>
+            </div>
+        
+          
+            <div>
+              <label htmlFor=""><h4>Unit</h4></label>
+              <input 
+                type="number" 
+                name="unit" 
+                value={initialValues.unit} 
+                onChange={handleInputChange}
+                disabled={!selectedDay} 
+              />
+              <div className="error_message"></div>
+            </div>
+          
+          </div>
+
+
+          <div className="payroll_column">
+
+            <div>
+              <label htmlFor=""><h4>Loan</h4></label>
+              <input 
+                type="number" 
+                name="loan" 
+                value={initialValues.loan} 
+                onChange={handleInputChange}
+                disabled={!selectedDay} 
+              />
+              <div className="error_message"></div>
+            </div>
+        
+          
+            <div>
+              <label htmlFor=""><h4>Bonuses</h4></label>
+              <input 
+                type="number" 
+                name="bonuses" 
+                value={initialValues.bonuses} 
+                onChange={handleInputChange}
+                disabled={!selectedDay} 
+              />
+              <div className="error_message"></div>
+            </div>
+           
+          </div>
+
 
           <button className="filled-btn" type="submit"><h4>Update</h4></button>
 
         </form>
       </div>
-      
+
+      <div></div>
     </>
-   
+  
   )
   
 }
-
 
 export {
   PayrollTable,
