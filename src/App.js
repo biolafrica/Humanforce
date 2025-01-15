@@ -16,7 +16,7 @@ import NewTeam from "./admin/newteam";
 import Team from "./admin/team";
 import NewStaff from "./admin/newstaff";
 import Payroll from "./admin/payroll";
-import ContractStaffEdit from "./admin/newContractStaffEdit";
+import ContractStaffEdit from "./admin/contractStaffedit";
 import FixedStaffEdit from "./admin/fixedStaffEdit";
 import AttendanceAdmin from "./admin/attendanceadmin";
 import AttendanceMore from "./admin/attendancemore";

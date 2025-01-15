@@ -54,6 +54,7 @@ const PayrollTable = ({weeks}) =>{
 };
 
 const PayrollEditPopup = ({weeks}) =>{
+  console.log("my", weeks)
   const initialValues = {
     rate: 0,
     unit: 0,
@@ -84,114 +85,68 @@ const PayrollEditPopup = ({weeks}) =>{
   : [];
 
   return(
-    <div className="update_earnings">
+    <>
+      <div className="overlay"></div>
 
-      <form action="" onSubmit={handleSubmitForm}>
+      <div className="update_earnings">
+        <form action="" onSubmit={handleSubmitForm}>
 
-        <label htmlFor="week"><h4>Week</h4></label>
-        <select 
-          name="week" 
-          value={selectedWeek} 
-          onChange={handleWeekChange}
-        >
-          {weeks.map((week)=>(
-            <option 
-              value={week._id}
-              key={week._id}
-            >
-              Week {week.week}
-            </option>
+          <label htmlFor="week"><h4>Week</h4></label>
+          <select 
+            name="week" 
+            value={selectedWeek} 
+            onChange={handleWeekChange}
+          >
+            {weeks.map((week)=>(
+              <option 
+                value={week._id}
+                key={week._id}
+              >
+                Week {week.week}
+              </option>
+
+            ))}
+          </select>
+          <div className="error_message"></div>
+
+          <label htmlFor="day"><h4>Day</h4></label>
+          <select 
+            name="day" 
+            value={selectedDay}
+            onChange={handleDayChange}
+          >
+            {availableDays.map((day)=>(
+              day.isPresent && 
+              <option key={day.name} value={day.name}>
+                {day.name}
+              </option>
+            ))}
+
+          </select>
+          <div className="error_message"></div>
+
+          {["rate", "unit", "loan", "bonuses"].map((field)=>(
+            <div key={field}>
+              <label htmlFor=""><h4>{field.charAt(0).toUpperCase() + field.slice(1)}</h4></label>
+              <input type="number" name="field" value={formData[field]} onChange={handleInputChange} />
+              <div className="error_message"></div>
+            </div>
 
           ))}
-        </select>
-        <div className="error_message"></div>
 
-        <label htmlFor="day"><h4>Day</h4></label>
-        <select 
-          name="day" 
-          value={selectedDay}
-          onChange={handleDayChange}
-        >
-          {availableDays.map((day)=>(
-            day.isPresent && 
-            <option key={day.name} value={day.name}>
-              {day.name}
-            </option>
-          ))}
+          <button className="filled-btn" type="submit"><h4>Update</h4></button>
 
-        </select>
-        <div className="error_message"></div>
-
-        {["rate", "unit", "loan", "bonuses"].map((field)=>(
-          <div key={field}>
-            <label htmlFor=""><h4>{field.charAt(0).toUpperCase() + field.slice(1)}</h4></label>
-            <input type="number" name="field" value={formData[field]} onChange={handleInputChange} />
-            <div className="error_message"></div>
-          </div>
-
-        ))}
-
-        <button className="filled-btn" type="submit"><h4>Update</h4></button>
-
-      </form>
+        </form>
+      </div>
       
-    </div>
+    </>
+   
   )
   
 }
 
-const PayrollHeader = ({setWeeks, setIsEditVisible, payrollData, isEditVisible})=>{
-
-  const currentMonth = new Date().toLocaleString("default", {
-    month: 'long', 
-    year: "numeric"
-  });
-
-  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-  const handleMonthChange = (e)=>{
-    const month = e.target.value;
-    setSelectedMonth(month)
-    setWeeks((payrollData)[month] || [])
-    month === currentMonth ? setIsEditVisible(true) : setIsEditVisible(false);
-    
-  }
-
-  return(
-
-    <div className="contract_staff_date_filter">
-
-      <div className="staff_filter_container ">
-
-        <select 
-          name="month"
-          value={selectedMonth}
-          onChange={handleMonthChange} 
-        >
-          {Object.keys(payrollData).map((month)=>(
-            <option 
-              value={month}
-              key={month}
-            >
-              {month}
-            </option>
-
-          ))}
-          
-        </select>
-
-      </div>
-
-      {isEditVisible && 
-      <img src="/icons/Edit.svg" alt="Edit" onClick={()=>setIsEditVisible(false)} />}
-
-    </div>
-
-  )
-
-}
 
 export {
   PayrollTable,
   PayrollEditPopup,
-  PayrollHeader
 }
