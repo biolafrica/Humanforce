@@ -25,7 +25,7 @@ const FixedStaffEdit = ()=>{
   useEffect(()=>{
     if(data && data.payroll){
 
-      const months = data.payroll.map((item) =>({
+      const months = (data.payroll).map((item) =>({
         label: formatMonthYear(item.createdAt),
         value: item.createdAt
       }))

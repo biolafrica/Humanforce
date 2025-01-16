@@ -136,14 +136,14 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
   const handleSubmitForm = async(e) =>{
     e.preventDefault();
 
-    const formData = {
-      ...initialValues,
+    const finalData = {
+      ...formData,
       weekId : selectedWeek,
       day : selectedDay
     }
 
     try {
-      const response = await axios.post(`http://localhost:4000/admin/payroll/${id}`, formData, {
+      const response = await axios.post(`http://localhost:4000/admin/payroll/${id}`, finalData, {
         headers:{
           Authorization : `Bearer ${token}`,
           "Content-Type": "application/json"
@@ -244,7 +244,6 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
           
           </div>
 
-
           <div className="payroll_column">
 
             <div>
@@ -274,7 +273,6 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
             </div>
            
           </div>
-
 
           <button className="filled-btn" type="submit"><h4>Update</h4></button>
 

@@ -59,7 +59,9 @@ const Payroll =()=>{
           {activeTab === "fixed" &&
           <PayrollStaffList 
             data = {data.fixed_staff} 
-            user ={(data.users).filter((users)=> users.employment_type === 'fixed')} 
+            user ={(data.users).filter((users)=> users.employment_type === 'fixed')
+
+            } 
           />}
 
           {activeTab === "contract" && <PayrollStaffList 
