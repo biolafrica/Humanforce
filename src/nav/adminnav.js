@@ -3,7 +3,7 @@ import {useNavigate } from "react-router-dom";
 
 
 
-const AdminNav=()=>{
+const AdminNav=({header})=>{
   const navigate = useNavigate();
   const storedUser = localStorage.getItem('team');
   const user = JSON.parse(storedUser);
@@ -18,7 +18,7 @@ const AdminNav=()=>{
     <div className="adminavbar_cont">
 
       <div className="left-adminav">
-        <h4>Dashboard</h4>
+        <h4>{header}</h4>
       </div>
 
       <div className="right-adminav">
