@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import {AlertPopup, useAlert} from "../alert";
+import Pagination from "../pagination";
+import usePagination from "../../hooks/usePagination";
 
 const TeamDetails =({users, teams})=>{
   const {alert, showAlert} = useAlert();
@@ -32,6 +34,15 @@ const TeamDetails =({users, teams})=>{
 
   }
 
+  const {
+    currentPage, 
+    currentData, 
+    totalPages, 
+    goToNextPage,
+    goToPreviousPage 
+  } = usePagination(teams, 5)
+
+
   return(
     <>
 
@@ -47,7 +58,7 @@ const TeamDetails =({users, teams})=>{
 
         <div className="table_body">
 
-          {teams.map((team)=>{
+          {currentData.map((team)=>{
 
             let matchingUser;
             users.forEach((user)=>{
@@ -77,11 +88,13 @@ const TeamDetails =({users, teams})=>{
 
         </div>
 
-        <div className="table_footer">
-          <img src="/icons/Keyboard arrow left.svg" alt="" />
-          <img src="/icons/Keyboard arrow right.svg" alt="" />
-        </div>
-
+        <Pagination
+          currentPage = {currentPage} 
+          totalPages = {totalPages} 
+          goToNextPage ={goToNextPage} 
+          goToPreviousPage ={goToPreviousPage}
+        />
+       
       </div>
 
       {alert.visible && (
