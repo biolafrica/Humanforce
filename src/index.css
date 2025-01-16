@@ -1016,6 +1016,7 @@ a {
 
 .update_earnings{
   width: 80%;
+  border: none;
 
 }
 
@@ -1023,8 +1024,13 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
-
 }
+
+.attendance_filter{
+  width: 20%;
+  margin-bottom: 20px;
+}
+
 @media(max-width:768px) {
   /* general styles */
 

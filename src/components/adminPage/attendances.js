@@ -1,14 +1,30 @@
-import AttendancesList from "./attendancesList"
+import AttendancesList from "./attendancesList";
+import { useState, useEffect} from "react";
 
-const Attendances = (props)=>{
+const Attendances = ({users, attendances})=>{
+  const currentMonth = new Date().toLocaleString('default',{month: 'long', year:'numeric'})
+  console.log("month", currentMonth)
+
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth)
+  const [attendanceData, setAttendanceData] = useState(attendances[currentMonth] || [])
+
+  useEffect(()=>{
+    setAttendanceData(attendances[selectedMonth] || [])
+
+  },[selectedMonth, attendances])
+  
+  const handleMonthChange = (e)=>{
+    setSelectedMonth(e.target.value)
+  }
+
   return(
     
     <div>
 
-      <div className="table_heading ">
-        <form action="" className="month_form">
-          <input type="month"  />
-        </form>
+      <div className="attendance_filter">
+        <select name="" value={selectedMonth} onChange={handleMonthChange}>
+          {Object.keys(attendances).map((month)=>(<option value={month} key={month}>{month}</option>))}
+        </select>
       </div>
 
       <div className="table_header">
@@ -19,7 +35,7 @@ const Attendances = (props)=>{
         <h6 className="status_column">Status</h6>
       </div>
 
-      <AttendancesList data ={props}/>
+      <AttendancesList users={users} attendances={attendanceData}/>
 
       <div className="table_footer">
         <img src="/icons/Keyboard arrow left.svg" alt="" />

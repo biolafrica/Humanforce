@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 
-const AttendancesList = (props)=>{
-
-  console.log("attendance props", props.data);
-  const attendances = props.data.attendances.attendances;
-  const users = props.data.users.users;
+const AttendancesList = ({attendances, users})=>{
   
   return(
       

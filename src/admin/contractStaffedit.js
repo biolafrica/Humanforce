@@ -16,16 +16,12 @@ const ContractStaffEdit = ()=>{
       
     return(
       <div className="payrolleditcont">
-        
         <div className="contract_staff">
 
           <h4>{name.firstname} {name.lastname} Payslip</h4>
-
           <ContractStaffDisplay payroll={data.payroll} />
-
       
         </div>
-        
       </div>
     )
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import { AlertPopup,useAlert } from "../alert";
+import { AlertPopup, useAlert } from "../alert";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -61,16 +61,14 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
   const {id} = useParams();
   const token = localStorage.getItem("adminAuthToken")
   
-
-  
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   const [availableDays, setAvailableDays] = useState([]);
   const [initialValues, setInitialValues] = useState({
-    rate: "",
-    unit: "",
-    loan: "",
-    bonuses: "",
+    rate: 0,
+    unit: 0,
+    loan: 0,
+    bonuses: 0,
 
   })
 
@@ -109,15 +107,30 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
           loan: selectedDayDetails.loan,
           bonuses: selectedDayDetails.bonuses
         });
+
+        resetForm({
+          rate: selectedDayDetails.rate,
+          unit: selectedDayDetails.unit,
+          loan: selectedDayDetails.loan,
+          bonuses: selectedDayDetails.bonuses
+        });
       }
     }else{
       setInitialValues({
-        rate: "",
-        unit: "",
-        loan: "",
-        bonuses: "",
+        rate: 0,
+        unit: 0,
+        loan: 0,
+        bonuses: 0,
+      })
+
+      resetForm({
+        rate: 0,
+        unit: 0,
+        loan: 0,
+        bonuses: 0,
       })
     }
+    
   };
 
   const handleSubmitForm = async(e) =>{
@@ -205,11 +218,11 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
 
           <div className="payroll_column">
             <div>
-              <label htmlFor=""><h4>Rate</h4></label>
+              <label htmlFor="rate"><h4>Rate</h4></label>
               <input 
                 type="number" 
                 name="rate" 
-                value={initialValues.rate} 
+                value={formData.rate} 
                 onChange={handleInputChange}
                 disabled={!selectedDay} 
               />
@@ -218,11 +231,11 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
         
           
             <div>
-              <label htmlFor=""><h4>Unit</h4></label>
+              <label htmlFor="unit"><h4>Unit</h4></label>
               <input 
                 type="number" 
                 name="unit" 
-                value={initialValues.unit} 
+                value={formData.unit} 
                 onChange={handleInputChange}
                 disabled={!selectedDay} 
               />
@@ -235,11 +248,11 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
           <div className="payroll_column">
 
             <div>
-              <label htmlFor=""><h4>Loan</h4></label>
+              <label htmlFor="loan"><h4>Loan</h4></label>
               <input 
                 type="number" 
                 name="loan" 
-                value={initialValues.loan} 
+                value={formData.loan} 
                 onChange={handleInputChange}
                 disabled={!selectedDay} 
               />
@@ -248,13 +261,14 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
         
           
             <div>
-              <label htmlFor=""><h4>Bonuses</h4></label>
+              <label htmlFor="bonuses"><h4>Bonuses</h4></label>
               <input 
                 type="number" 
                 name="bonuses" 
-                value={initialValues.bonuses} 
+                value={formData.bonuses} 
                 onChange={handleInputChange}
                 disabled={!selectedDay} 
+                
               />
               <div className="error_message"></div>
             </div>
@@ -265,6 +279,7 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
           <button className="filled-btn" type="submit"><h4>Update</h4></button>
 
         </form>
+
       </div>
 
       {alert.visible && (
