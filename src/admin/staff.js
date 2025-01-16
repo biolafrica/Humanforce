@@ -1,37 +1,65 @@
 import { Link } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
+import { useState } from "react";
+import StaffList from "../components/adminPage/staffList";
 
 const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
   const token = localStorage.getItem("adminAuthToken")
   const {data, isLoading, errorMessage} = UserFetch(url, token);
+  const [activeTab, setActiveTab] = useState("all")
 
-  const users = data?.users || [];
+  const handleContractClick =()=>{
+    setActiveTab('contract')
+  }
+  const handleFixedClick =()=>{
+    setActiveTab("fixed")
+  }
+  const handleAllClick =()=>{
+    setActiveTab("all")
+  }
 
-  const total = users ? users.length : 0;
-  const contract = [];
-  const fixed = [];
 
-  users.forEach((item)=>{
-    if (item.employment_type = "contract"){
-      contract.push(item);
 
-    } else if (item.employment_type = "fixed"){
-      fixed.push(item)
-    }
 
-  })
+  if(isLoading)return(<div>...Loading</div>)
+  if(errorMessage)return({errorMessage})
+  if(data){
 
-  return(
+    const users = data.users || [];
 
-    <div className="staff_cont">
-      {errorMessage && <div> {errorMessage} </div>}
-      {isLoading && <div>loading......</div>}
-      {users && (<>
+    const total = users.length || 0;
+    const contract = [];
+    const fixed = [];
+
+    users.forEach((item)=>{
+      if (item.employment_type === "contract"){
+        contract.push(item);
+
+      } else if (item.employment_type === "fixed"){
+        fixed.push(item)
+      }
+
+    })
+
+    return(
+
+      <div className="staff_cont">
+      
         <div className="staff_cont_head">
-          <h5 className="total select">Total - {total}</h5>
-          <h5 className="contract">Contract - {contract.length}</h5>
-          <h5 className="fixed">Fixed - {fixed.length}</h5>
+
+          <div className="text-btn" onClick={handleAllClick}>
+            <h5 className={`total ${activeTab === "all" ? "select" : ""}`}>Total - {total}</h5>
+          </div>
+
+          <div className="text-btn" onClick={handleContractClick}>
+            <h5 className={`contract ${activeTab === "contract" ? "select" : ""}`}>Contract - {contract.length}</h5>
+          </div>
+
+          <div className="text-btn" onClick={handleFixedClick}>
+            <h5 className={`fixed ${activeTab === "fixed" ? "select" : ""}`}>Fixed - {fixed.length}</h5>
+          </div>
+
         </div>
 
         <div className="staff_cont_body">
@@ -59,32 +87,18 @@ const Staff = ()=>{
               <h6 className="status_column">Status</h6>
             </div>
 
-            <div className="table_body">
-              {users.map((user)=>(
-
-                <Link to={`/admin/staff/${user._id}`} className="column" key={user._id}>
-                  <h6 className="date_column">{user.firstname} {user.lastname}</h6>
-                  <h6 className="clockin_column">{user.role}</h6>
-                  <h6 className="clockout_column">{user.employment_type}</h6>
-                  <h6 className="hours_column">{user.salary}</h6>
-                  <h6 className="status_column">{user.status}</h6>
-                </Link>
-
-              ))}
-
-            </div>
-
-            <div className="table_footer">
-              <img src="/icons/Keyboard arrow left.svg" alt="" />
-              <img src="/icons/Keyboard arrow right.svg" alt="" />
-            </div>
+            {activeTab === "all" && <StaffList users= {users}/>}
+            {activeTab === "contract" && <StaffList users ={contract}/>}
+            {activeTab === "fixed" &&  <StaffList users={fixed}/>}
 
           </div>
 
         </div>
-      </>)}
-    </div>
-  );
+        
+      </div>
+    );
+
+  }
 
 };
 
