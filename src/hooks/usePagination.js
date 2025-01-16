@@ -19,3 +19,5 @@ const UsePagination = (data, itemsPerPage = 5)=>{
   return {currentPage, currentData, totalPages, goToNextPage,goToPreviousPage }
 
 }
+
+export default UsePagination;

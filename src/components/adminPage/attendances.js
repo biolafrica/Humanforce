@@ -36,12 +36,7 @@ const Attendances = ({users, attendances})=>{
       </div>
 
       <AttendancesList users={users} attendances={attendanceData}/>
-
-      <div className="table_footer">
-        <img src="/icons/Keyboard arrow left.svg" alt="" />
-        <img src="/icons/Keyboard arrow right.svg" alt="" />
-      </div>
-
+  
     </div>
 
 
