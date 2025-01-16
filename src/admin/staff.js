@@ -19,9 +19,6 @@ const Staff = ()=>{
     setActiveTab("all")
   }
 
-
-
-
   if(isLoading)return(<div>...Loading</div>)
   if(errorMessage)return({errorMessage})
   if(data){

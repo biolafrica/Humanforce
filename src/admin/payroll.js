@@ -1,7 +1,6 @@
-import ContractStaffList from "../components/adminPage/contractStaffList";
-import FixedStaffList from "../components/adminPage/fixedStaffList";
 import { useState } from "react";
 import UserFetch from "../hooks/userFetch";
+import PayrollStaffList from "../components/adminPage/payrollStaffList";
 
 const Payroll =()=>{
   const url = "http://localhost:4000/admin/payrolls";
@@ -58,21 +57,16 @@ const Payroll =()=>{
           </div>
 
           {activeTab === "fixed" &&
-          <FixedStaffList 
+          <PayrollStaffList 
             data = {data.fixed_staff} 
             user ={(data.users).filter((users)=> users.employment_type === 'fixed')} 
           />}
 
-          {activeTab === "contract" && <ContractStaffList 
+          {activeTab === "contract" && <PayrollStaffList 
             data = {data.contract_staff} 
             user ={(data.users).filter((users)=> users.employment_type === 'contract')} 
           />}
           
-          <div className="table_footer">
-            <img src="/icons/Keyboard arrow left.svg" alt="" />
-            <img src="/icons/Keyboard arrow right.svg" alt="" />
-          </div>
-
         </div>
 
       </div>
