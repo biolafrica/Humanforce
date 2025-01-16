@@ -1,8 +1,6 @@
 import AttendanceList from "./attendanceList"
 
-const Attendance = (props) =>{
-  const attendances = props.AttendanceUser.attendance;
-  const user = props.AttendanceUser.user;
+const Attendance = ({attendances, user}) =>{
   return(
 
     <div>
@@ -18,11 +16,6 @@ const Attendance = (props) =>{
       </div>
 
       <AttendanceList attendances={attendances}/>
-
-      <div className="table_footer">
-        <img src="/icons/Keyboard arrow left.svg" alt="" />
-        <img src="/icons/Keyboard arrow right.svg" alt="" />
-      </div>
 
     </div>
   )

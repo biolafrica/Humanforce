@@ -21,6 +21,8 @@ const AttendancesList = ({attendances, users})=>{
             (attendance) => attendance.staff_code === user.staff_code
           );
 
+          const monthYear = new Date(attendances[0].createdAt).toLocaleString('default',{month: 'long', year:'numeric'});
+
           const totalHours = userAttendance.reduce(
             (acc, curr) => acc + curr.hours,
             0
@@ -44,7 +46,7 @@ const AttendancesList = ({attendances, users})=>{
 
           return(
             <Link 
-                to={`/admin/attendance/more/${user._id}`} 
+                to={`/admin/attendance/more/${user._id}?monthYear=${encodeURIComponent(monthYear)}`} 
                 className="column" 
                 key={user._id}
               >
