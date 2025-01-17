@@ -1031,6 +1031,41 @@ a {
   margin-bottom: 20px;
 }
 
+.att_filter{
+  width: 20%;
+}
+
+.attendance_sub_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.performance-cont{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.performance-cont img{
+  width: 48px;
+  height: 48px;
+ 
+}
+
+.late{
+  color: #B3261E;
+}
+
+.early{
+  color: #23893D;
+}
+
+.att_cont_head{
+  margin-bottom: 10px;
+}
+
 @media(max-width:768px) {
   /* general styles */
 
@@ -1164,8 +1199,13 @@ a {
     padding: 10px;
   }
 
-  
+  .att_filter {
+    width: 50%;
+  }
 
+  .table_container{
+    border: none;
+  }
 
 }
 

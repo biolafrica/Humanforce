@@ -12,6 +12,7 @@ const AttendanceAdmin =()=>{
   if(isLoading) return(<div>...Loading</div>)
   if(errorMessage) return({errorMessage})
   if(dataI && dataII){
+    
    
     return(
       <div className="attendanceadmin_cont">

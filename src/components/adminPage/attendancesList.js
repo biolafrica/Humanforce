@@ -44,6 +44,7 @@ const AttendancesList = ({attendances, users})=>{
             ? Math.floor((earlyCount/totalStatusCount) * 100)
             : 0;
 
+          
           return(
             <Link 
                 to={`/admin/attendance/more/${user._id}?monthYear=${encodeURIComponent(monthYear)}`} 
@@ -54,7 +55,7 @@ const AttendancesList = ({attendances, users})=>{
               <h6 className="clockin_column">{user.role}</h6>
               <h6 className="clockout_column">{totalHours || 0}</h6>
               <h6 className="hours_column">{totalFine || 0}</h6>
-              <h6 className="status_column">{percentageEarly}%</h6>
+              <h6 className={`status_column ${percentageEarly <= 50 ? "late" : "early"}`}>{percentageEarly}%</h6>
             </Link>
           )
 

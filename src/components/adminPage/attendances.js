@@ -3,6 +3,7 @@ import { useState, useEffect} from "react";
 
 const Attendances = ({users, attendances})=>{
   const currentMonth = new Date().toLocaleString('default',{month: 'long', year:'numeric'})
+  console.log("attendances", attendances);
   
   const [selectedMonth, setSelectedMonth] = useState(currentMonth)
   const [attendanceData, setAttendanceData] = useState(attendances[currentMonth] || [])
