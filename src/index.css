@@ -414,10 +414,8 @@ a {
 
 .payslip_form{
   width: 40%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 150px auto;
+ 
   padding: 50px;
   border: 1px solid black;
   border-radius: 5px;
@@ -1064,6 +1062,99 @@ a {
 
 .att_cont_head{
   margin-bottom: 10px;
+}
+
+/*Payslip Template*/
+.payslip_template_container {
+  border: 1px solid var(--Border-light);
+  margin: 20px auto;
+  height: 1194px;
+  background-color: white;
+  z-index: 1000;
+
+}
+
+.payslip_template_header {
+  display: flex;
+  height: 15%;
+}
+
+.payslip_template_header_column{
+  width: 25%;
+  border: 1px solid var(--Border-light);
+}
+
+.icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payslip_template_header_sub_column{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sub_top{
+  border-bottom: 1px solid var(--Seperator-light);
+}
+
+.payslip_template_body{
+  display: flex;
+  height: 50%;
+  border: 1px solid var(--Border-light);
+}
+
+
+
+.payslip_template_payment,
+.payslip_template_footer_left{
+  width: 50%;
+  border-right: 1px solid var(--Border-light);
+  padding: 5px;
+}
+
+.payment_head,
+.deduction_header{
+  margin-bottom: 30px;
+}
+
+.payment_head,
+.payment_cont_column
+{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: left;
+}
+
+.deduction_header,
+.deduction_column{
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment_cont_column,
+.deduction_column{
+  margin-bottom: 5px;
+}
+
+.payslip_template_deductions,
+.payslip_template_footer_right{
+  width: 50%;
+  padding: 5px;
+}
+
+.payslip_template_footer{
+  display: flex;
+  height: 35%;
+}
+
+.summary_row{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 @media(max-width:768px) {

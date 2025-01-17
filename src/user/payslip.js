@@ -11,7 +11,7 @@ const Payslip =()=>{
   if(data){
     return (
     <div className="payslip_container">
-      <PayslipForm payslips={data.formattedPayroll}/>
+      <PayslipForm payslips={data.formattedPayroll} staff={data.staff}/>
     </div>
 
   )

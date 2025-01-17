@@ -6,8 +6,7 @@ import { generateYearMonthWeeks } from "../formatmtime";
 import {AlertPopup, useAlert } from "../alert";
 
 
-const PayslipForm = ({payslips})=>{
-  console.log("payslipForm payslip", payslips);
+const PayslipForm = ({payslips, staff})=>{
   const currentMonth = generateYearMonthWeeks().currentMonth;
   const currentYear = generateYearMonthWeeks().currentYear;
   const currentWeek = generateYearMonthWeeks().week;
@@ -119,7 +118,7 @@ const PayslipForm = ({payslips})=>{
       {payslipData && payslipData._id && (
         <>
           <div id="payslip-template">
-            <PayslipTemplate payslipData={payslipData}/>
+            <PayslipTemplate payslipData={payslipData} staff={staff}/>
           </div>
           <button 
             className="filled-btn"

@@ -41,9 +41,9 @@ function App() {
         />
 
         <Route path='/login'  element=
-        {
-        <UserLayout><Login/></UserLayout>
-        } 
+          {
+            <UserLayout><Login/></UserLayout>
+          } 
         />
 
         <Route path='/clock/:id' element=

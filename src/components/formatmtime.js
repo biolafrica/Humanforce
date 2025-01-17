@@ -58,8 +58,6 @@ const breakTimeDifference=(startTime,endTime,breakStart,breakEnd)=>{
 
   return {hours, minutes, seconds}
 
-
-
 }
 
 
@@ -91,7 +89,6 @@ const generateYearMonthWeeks =()=>{
   return{currentMonth, currentYear, week};
 
 }
-
 
 export {
   formatMTime,
