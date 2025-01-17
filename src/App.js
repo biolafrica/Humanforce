@@ -6,7 +6,7 @@ import Login from "./user/login";
 import AdminLogin from "./admin/login";
 import ClockDetails from "./user/clockDetails";
 import Payslip from "./user/payslip";
-import Attendance from "./user/attendance";
+import UserAttendance from "./user/userAttendance";
 import Dashboard from "./admin/dashboard";
 import DashboardUser from "./admin/user";
 import Staff from "./admin/staff";
@@ -65,7 +65,7 @@ function App() {
         <Route path='/attendance' element=
           {   
             <PrivateRoute>
-              <UserLayout><Attendance/></UserLayout>
+              <UserLayout><UserAttendance/></UserLayout>
             </PrivateRoute> 
           }
         />
