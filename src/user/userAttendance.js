@@ -1,5 +1,6 @@
 import Attendance from "../components/userPage/attendance";
 import UserFetch from "../hooks/userFetch";
+import Loading from "../components/loading";
 
 const UserAttendance = ()=>{
   const token = localStorage.getItem("authToken");
@@ -7,7 +8,7 @@ const UserAttendance = ()=>{
 
   const{data, isLoading, errorMessage} = UserFetch(url, token); 
 
-  if(isLoading) return(<div>...loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(data){
     console.log(data)

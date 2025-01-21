@@ -1,5 +1,6 @@
 import DoubleUseFetch from "../hooks/doubleuseFetch";
 import Attendances from "../components/adminPage/attendances";
+import Loading from "../components/loading";
 
 
 const AttendanceAdmin =()=>{
@@ -9,7 +10,7 @@ const AttendanceAdmin =()=>{
 
   const{dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI, urlII, token);
 
-  if(isLoading) return(<div>...Loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(dataI && dataII){
     

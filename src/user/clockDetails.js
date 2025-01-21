@@ -8,6 +8,7 @@ import { useState } from "react";
 import DisplayTimer from "../components/displayTimer";
 import { AlertPopup, useAlert } from "../components/alert";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/loading";
 
 
 const ClockDetails =()=>{
@@ -59,7 +60,7 @@ const ClockDetails =()=>{
     
   }
 
-  if (isLoading)return<div>.....Loading</div>
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if (errorMessage)return<div>{errorMessage}</div>
   if(data)
     return(

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import UserFetch from "../hooks/userFetch";
 import { PaidStaff, UnpaidStaff } from "../components/adminPage/fixedPayrollStaff";
+import Loading from "../components/loading";
 
 const FixedStaffEdit = ()=>{
 
@@ -52,7 +53,7 @@ const FixedStaffEdit = ()=>{
     setActiveMonthData(selectedData);
   };
 
-  if(isLoading) return (<div>....Loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return (<div>{errorMessage}</div>)
 
 

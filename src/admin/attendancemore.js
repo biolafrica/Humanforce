@@ -1,6 +1,7 @@
 import UserFetch from "../hooks/userFetch";
 import { useParams, useLocation } from "react-router-dom";
 import UserAttendancelist from "../components/userPage/userAttendanceList";
+import Loading from "../components/loading";
 
 const AttendanceMore = ()=>{
 
@@ -16,7 +17,7 @@ const AttendanceMore = ()=>{
   
   const {data, isLoading, errorMessage} = UserFetch(url, token);
  
-  if(isLoading) return(<div>...Loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(data){
   

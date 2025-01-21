@@ -1,5 +1,6 @@
 import UserFetch from "../hooks/userFetch";
 import TeamForm from "../components/adminPage/teamForm";
+import Loading from "../components/loading";
 
 const NewTeam =()=>{
   const url = "http://localhost:4000/admin/staff";
@@ -9,7 +10,7 @@ const NewTeam =()=>{
   const edit = false;
   
 
-  if(isLoading) return(<div>...loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(data){
     const initialValues = {
