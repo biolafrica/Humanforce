@@ -36,7 +36,7 @@ function DoubleUseFetch(urlI, urlII,token){
       setIsLoading(false)
       setErrorMessage(null);
     })
-    .catch((error)=>{
+    .catch((err)=>{
       setIsLoading(false);
 
       if(err.status === 500){

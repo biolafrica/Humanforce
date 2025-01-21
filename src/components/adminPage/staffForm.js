@@ -19,6 +19,7 @@ const StaffForm = ({initialValues, url})=>{
         }
       });
       showAlert("staff added successfully!", "success");
+      navigate("/admin/staff")
       resetForm();
       
     } catch (error) {

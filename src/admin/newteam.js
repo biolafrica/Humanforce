@@ -1,8 +1,6 @@
 import UserFetch from "../hooks/userFetch";
 import TeamForm from "../components/adminPage/teamForm";
 
-
-
 const NewTeam =()=>{
   const url = "http://localhost:4000/admin/staff";
   const urlI = "http://localhost:4000/admin/team";

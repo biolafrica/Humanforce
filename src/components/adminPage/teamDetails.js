@@ -22,7 +22,7 @@ const TeamDetails =({users, teams})=>{
       const result = await response.json();
       if(response.ok){
         showAlert(result.message || "Team deleted succesfully", "success");
-
+        navigate("/admin/team")
       }else{
         showAlert("Failed to delete selected team", "error")
       }

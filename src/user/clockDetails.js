@@ -7,16 +7,18 @@ import axios from "axios";
 import { useState } from "react";
 import DisplayTimer from "../components/displayTimer";
 import { AlertPopup, useAlert } from "../components/alert";
-
+import { useNavigate } from "react-router-dom";
 
 
 const ClockDetails =()=>{
   const {id} = useParams();
   const {alert, showAlert} = useAlert();
+  const navigate = useNavigate();
 
   const url = `http://localhost:4000/clock/${id}`;
   const[refresh, setRefresh] = useState(false);
   const{data, isLoading, errorMessage} = useFetch(url,refresh);
+
 
   const storedUser = localStorage.getItem('user');
   const user = JSON.parse(storedUser);
@@ -55,8 +57,6 @@ const ClockDetails =()=>{
 
     }
     
-    
-
   }
 
   if (isLoading)return<div>.....Loading</div>
