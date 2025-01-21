@@ -3,6 +3,7 @@ import {useFormWithAddress} from "../../hooks/useForm";
 import WorkingHours from "./workingHours";
 import { AlertPopup, useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
+import { AdminExclusiveButton } from "./buttonState";
 
 
 const Business= (props)=>{
@@ -199,7 +200,7 @@ const Business= (props)=>{
             
           </div>
 
-          <button className="filled-btn" type="submit"><h4>Submit</h4></button>
+          <button className={`${AdminExclusiveButton}`} type="submit"><h4>Submit</h4></button>
 
         </form>
 
@@ -273,7 +274,7 @@ const Business= (props)=>{
             
           </div>
 
-          <button className="filled-btn" type="submit"><h4>submit</h4></button>
+          <button className={`${AdminExclusiveButton}`} type="submit"><h4>submit</h4></button>
 
         </form>
 

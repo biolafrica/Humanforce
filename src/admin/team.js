@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
 import TeamDetails from "../components/adminPage/teamDetails";
+import { AdminExclusiveButton } from "../components/adminPage/buttonState";
 
 const Team = ()=>{
   const url = "http://localhost:4000/admin/team";
@@ -24,7 +25,7 @@ const Team = ()=>{
 
           <div className="team_heading_right">
 
-            <Link to="/admin/team/new" className="filled-btn">
+            <Link to="/admin/team/new" className={`${AdminExclusiveButton}`}>
               <h4>Add Team</h4>
               <img src="/icons/Person add.svg" alt="" />
             </Link>

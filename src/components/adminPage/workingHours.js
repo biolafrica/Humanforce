@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
+import { AdminExclusiveButton } from "./buttonState";
 
 const WorkingHours = (props)=>{
   const {alert, showAlert} = useAlert();
@@ -163,7 +164,7 @@ const WorkingHours = (props)=>{
 
           ))}
 
-          <button className="filled-btn" type="submit"><h4>Submit</h4></button>
+          <button className={`${AdminExclusiveButton}`} type="submit"><h4>Submit</h4></button>
 
         </div>
 

@@ -84,8 +84,6 @@ const FixedStaffEdit = ()=>{
             </select>
           </div>
 
-          <img src="/icons/Edit.svg" alt="" />
-
         </div>
         
         <div>

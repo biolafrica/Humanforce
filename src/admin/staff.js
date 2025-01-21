@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
 import { useState } from "react";
 import StaffList from "../components/adminPage/staffList";
+import { AdminExclusiveButton } from "../components/adminPage/buttonState";
 
 const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
@@ -69,7 +70,7 @@ const Staff = ()=>{
                 <input type="text" placeholder="search " />
               </form>
 
-              <Link to="/admin/staff/new" className="filled-btn">
+              <Link to="/admin/staff/new" className={`${AdminExclusiveButton}`}>
                 <img src="/icons/Add.svg" alt="" />
                 <h4>Add Staff</h4>
               </Link>

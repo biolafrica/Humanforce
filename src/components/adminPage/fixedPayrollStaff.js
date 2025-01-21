@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
+import { AdminNonExclusiveButton } from "./buttonState";
 
 const UnpaidStaff =(props)=>{
   const navigate = useNavigate();
@@ -49,7 +50,6 @@ const UnpaidStaff =(props)=>{
   return(
 
     <>
-    
       <form className="unpaid_staff" onSubmit={handleSubmitForm}>
 
         <div className="newstaff_column">
@@ -157,7 +157,7 @@ const UnpaidStaff =(props)=>{
 
         </div>
 
-        <button className="filled-btn" type="submit"><h4>Update</h4></button>
+        <button className={`${AdminNonExclusiveButton}`} type="submit"><h4>Update</h4></button>
 
       </form>
 
