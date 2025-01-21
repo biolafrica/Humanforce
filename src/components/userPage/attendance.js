@@ -3,8 +3,6 @@ import UserAttendancelist from "./userAttendanceList"
 import performance from "../../utils/performance"
 
 const Attendance = ({attendance})=>{
-  console.log(attendance)
-
   const currentMonth = new Date().toLocaleString('default',{month: 'long', year:'numeric'})
   const [selectedMonth, setSelectedMonth] = useState(currentMonth)
   const [attendanceData, setAttendanceData] = useState(attendance[currentMonth] || [])

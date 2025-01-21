@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useForm } from "../../hooks/useForm";
 import { AlertPopup, useAlert } from "../alert";
+import { useNavigate } from "react-router-dom";
 
 const StaffForm = ({initialValues, url})=>{
   const {alert, showAlert} = useAlert();
   const {formData, handleInputChange, resetForm} = useForm(initialValues);
   const token = localStorage.getItem("adminAuthToken");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -21,7 +23,11 @@ const StaffForm = ({initialValues, url})=>{
       
     } catch (error) {
       console.log("Error adding staff", error);
-      showAlert("Unsuccessfull, please try again");
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Unsuccessfull, please try again", "error");
+      }
       
     }
   }

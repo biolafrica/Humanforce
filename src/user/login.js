@@ -34,9 +34,12 @@ const Login = ()=>{
       
     } catch (error) {
       console.log("Login failed;", error);
-      showAlert("Invalid Credentials", "error");
-     
-      
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Invalid Credentials", "error");
+      }
+    
     }
   }
 

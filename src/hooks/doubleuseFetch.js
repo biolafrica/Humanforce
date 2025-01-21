@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 
@@ -8,6 +9,7 @@ function DoubleUseFetch(urlI, urlII,token){
   const [dataII, setDataII] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     setIsLoading(true);
@@ -35,8 +37,14 @@ function DoubleUseFetch(urlI, urlII,token){
       setErrorMessage(null);
     })
     .catch((error)=>{
-      setErrorMessage(error.message || "An error occur fetching data");
       setIsLoading(false);
+
+      if(err.status === 500){
+        navigate("/server-error")
+      }else{
+        setErrorMessage(err.message || "An error occur fetching data");
+      }
+
     })
     
 

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
 
 const WorkingHours = (props)=>{
   const {alert, showAlert} = useAlert();
+  const navigate = useNavigate();
   const data = props.data.workingHours;
   const hour = data[0].days;
   const token = localStorage.getItem("adminAuthToken")
@@ -93,8 +95,11 @@ const WorkingHours = (props)=>{
       
     } catch (error) {
       console.log("Error saving working hours", error);
-      showAlert("Error saving working hours", "error")
-      
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Error saving working hours", "error");
+      }
     }
   }
 

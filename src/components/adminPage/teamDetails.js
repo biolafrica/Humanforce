@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import {AlertPopup, useAlert} from "../alert";
 import Pagination from "../pagination";
 import usePagination from "../../hooks/usePagination";
+import { useNavigate } from "react-router-dom";
 
 const TeamDetails =({users, teams})=>{
   const {alert, showAlert} = useAlert();
+  const navigate = useNavigate();
 
   const handleDelete = async(id)=>{
     const token = localStorage.getItem("adminAuthToken");
@@ -27,11 +29,12 @@ const TeamDetails =({users, teams})=>{
       
     } catch (error) {
       console.error("Error deleting team:", error)
-      showAlert("An error occured while deleting the team ", "error");
-      
-      
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Error deleting team member ", "error");
+      }
     }
-
   }
 
   const {

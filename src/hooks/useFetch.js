@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 function useFetch(url, refresh = false){
@@ -7,6 +8,7 @@ function useFetch(url, refresh = false){
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     setIsLoading(true);
@@ -30,9 +32,15 @@ function useFetch(url, refresh = false){
       setErrorMessage(null)
     })
     .catch(err =>{
-      setErrorMessage(err.message);
       setIsLoading(false);
+
+      if(err.status === 500){
+        navigate("/server-error")
+      }else{
+        setErrorMessage(err.message || "An error occured");
+      }
     })
+
   }, [url, refresh]);
 
   return {data, isLoading, errorMessage}

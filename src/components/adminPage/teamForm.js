@@ -26,8 +26,12 @@ const TeamForm = ({url, initialValues, users, edit})=>{
       
     } catch (error) {
       console.log("Fail to add team member:", error);
-      showAlert("Unsuccessfull , please try again", "error");
-      
+
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Unsuccessfull, please try again", "error");
+      }
     }
 
 

@@ -52,7 +52,12 @@ const HomeClicks = (props)=>{
         }
         
       } catch (error) {
-        console.error("Error:", error.response?.data || error.message);
+        if(error.response && error.response.status === 500){
+          navigate("/server-error")
+        }else{
+          console.error("Error:", error.response?.data || error.message);
+        }
+        
       }
 
     }

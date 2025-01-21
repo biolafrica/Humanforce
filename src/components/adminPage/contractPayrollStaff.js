@@ -3,6 +3,7 @@ import { useForm } from "../../hooks/useForm";
 import { AlertPopup, useAlert } from "../alert";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const PayrollTable = ({weeks}) =>{
@@ -57,6 +58,7 @@ const PayrollTable = ({weeks}) =>{
 };
 
 const PayrollEditPopup = ({weeks, cancel}) =>{
+  const navigate = useNavigate();
   const {alert, showAlert} = useAlert();
   const {id} = useParams();
   const token = localStorage.getItem("adminAuthToken")
@@ -153,7 +155,11 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
       
     } catch (error) {
       console.error("Error submitting form:", error);
-      showAlert("Unsuccessful, try again", "error"); 
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Unsuccessful, try again", "error");
+      }
     }
 
   }

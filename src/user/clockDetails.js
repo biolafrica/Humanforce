@@ -6,11 +6,13 @@ import {clockButton, clockButtonClass} from "../components/userPage/clockButton"
 import axios from "axios";
 import { useState } from "react";
 import DisplayTimer from "../components/displayTimer";
+import { AlertPopup, useAlert } from "../components/alert";
 
 
 
 const ClockDetails =()=>{
   const {id} = useParams();
+  const {alert, showAlert} = useAlert();
 
   const url = `http://localhost:4000/clock/${id}`;
   const[refresh, setRefresh] = useState(false);
@@ -25,7 +27,14 @@ const ClockDetails =()=>{
       setRefresh((prev)=> !prev);
       
     } catch (error) {
-      console.error("Error updating attendance:", error)
+      console.error("Error updating attendance:", error);
+
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Error updating attendance", "error");
+      }
+     
       
     }
     
@@ -71,6 +80,16 @@ const ClockDetails =()=>{
         >
           <h4>{clockButton(data.data)}</h4>
         </button>
+
+
+        {alert.visible && (
+          <AlertPopup 
+            visible={alert.visible} 
+            message={alert.message} 
+            type={alert.type}
+            
+          />
+        )}
       
       </div>
 

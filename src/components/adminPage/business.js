@@ -2,9 +2,11 @@ import axios from "axios";
 import {useFormWithAddress} from "../../hooks/useForm";
 import WorkingHours from "./workingHours";
 import { AlertPopup, useAlert } from "../alert";
+import { useNavigate } from "react-router-dom";
 
 
 const Business= (props)=>{
+  const navigate = useNavigate();
   const {alert, showAlert} = useAlert();
   const apiKey = "";
   const data = props.data;
@@ -51,8 +53,11 @@ const Business= (props)=>{
       
     } catch (error) {
       console.error("Error saving business information. Please try again");
-      showAlert("Unsuccessfull, please try again", "error");
-      
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Unsucessfull, Please try again", "error");
+      }
     };
 
   };

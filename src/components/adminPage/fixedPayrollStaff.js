@@ -2,8 +2,10 @@ import {useForm} from "../../hooks/useForm"
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
+import { useNavigate } from "react-router-dom";
 
 const UnpaidStaff =(props)=>{
+  const navigate = useNavigate();
   const {alert, showAlert} = useAlert();
   const payroll = props.data
   const {id} = useParams();
@@ -35,7 +37,11 @@ const UnpaidStaff =(props)=>{
       
     } catch (error) {
       console.error("Error updating payroll information . Please try again");
-      showAlert("Unsuccessfully, please try again ", "error")
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Unsuccessful, please try again", "error");
+      }
       
     };
   }

@@ -27,7 +27,6 @@ const AdminLogin = () =>{
 
       localStorage.setItem("adminAuthToken", token);
       localStorage.setItem('team', JSON.stringify(team));
-      console.log(token, team);
 
       if(data){
         showAlert("Logged in successfully", "success");
@@ -37,7 +36,13 @@ const AdminLogin = () =>{
       
     } catch (error) {
       console.log("Login failed;", error);
-      showAlert("Invalid Credentials", "error");
+
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Invalid Credentials", "error");
+      }
+      
     }
 
   }
