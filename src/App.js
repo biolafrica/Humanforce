@@ -22,6 +22,7 @@ import AttendanceAdmin from "./admin/attendanceadmin";
 import AttendanceMore from "./admin/attendancemore";
 import Businessetting from "./admin/businessetting";
 import PathError from "./pages/pathError";
+import ServerError from "./pages/serverError";
 import {PrivateRoute,AdminPrivateRoute} from "./utils/privateroute";
 
 
@@ -200,6 +201,12 @@ function App() {
         <Route path='*'  element=
           {
             <UserLayout><PathError/></UserLayout>
+          } 
+        />
+
+        <Route path='/server-error'  element=
+          {
+            <UserLayout><ServerError/></UserLayout>
           } 
         />
 
