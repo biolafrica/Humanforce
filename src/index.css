@@ -1157,6 +1157,27 @@ a {
   margin-bottom: 20px;
 }
 
+/*Error Page*/
+.error_path_cont{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.btn_container{
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clickable{
+  text-decoration: underline;
+}
+
+
 @media(max-width:768px) {
   /* general styles */
 

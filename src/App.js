@@ -21,6 +21,7 @@ import FixedStaffEdit from "./admin/fixedStaffEdit";
 import AttendanceAdmin from "./admin/attendanceadmin";
 import AttendanceMore from "./admin/attendancemore";
 import Businessetting from "./admin/businessetting";
+import PathError from "./pages/pathError";
 import {PrivateRoute,AdminPrivateRoute} from "./utils/privateroute";
 
 
@@ -189,6 +190,16 @@ function App() {
             <AdminPrivateRoute>
               <AdminLayout><Businessetting/></AdminLayout>
             </AdminPrivateRoute>            
+          } 
+        />
+
+
+
+        {/* error routes*/}
+
+        <Route path='*'  element=
+          {
+            <UserLayout><PathError/></UserLayout>
           } 
         />
 
