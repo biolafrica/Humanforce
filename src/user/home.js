@@ -4,8 +4,8 @@ import Loading from "../components/loading";
 import { useEffect, useState } from "react";
 
 const Homepage=()=>{
-  const urlI = 'http://localhost:4000/admin/business';
-  const urlII = 'http://localhost:4000/admin/working-hours';
+  const urlI = 'http://localhost:4000/business';
+  const urlII = 'http://localhost:4000/working-hours';
   const token = localStorage.getItem("authToken")
   const {dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI,urlII, token);
 

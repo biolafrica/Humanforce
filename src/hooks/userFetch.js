@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import ErrorManagement from "../components/errorManagement";
 
 function UserFetch(url, token){
   const [data, setData] = useState([]);
@@ -22,7 +23,9 @@ function UserFetch(url, token){
     .then(response =>{
       if(!response.ok){
         if(response.status === 401){
-          throw new Error ("Unauthorized")
+          throw new Error ("Unauthorized Admin")
+        } else if(response.status === 403){
+          throw new Error ("Unauthorized User")
         }else{
           throw new Error('Error fetching data')
         }
@@ -37,19 +40,7 @@ function UserFetch(url, token){
     })
     .catch((err) =>{
       setIsLoading(false);
-
-      if(err.status === 500){
-        navigate("/server-error")
-        
-      }else if (err.message === "Unauthorized"){
-
-        localStorage.removeItem("adminAuthToken")
-        localStorage.removeItem("team")
-        navigate("/admin/login")
-
-      }else{
-        setErrorMessage(err.message || "An error occured");
-      }
+      <ErrorManagement err={err} setErrorMessage={setErrorMessage}/>
       
     })
 
