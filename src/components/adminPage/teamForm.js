@@ -13,6 +13,8 @@ const TeamForm = ({url, initialValues, users, edit})=>{
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
+    console.log(formData);
+
     try {
       const res = await axios.post(url, formData,{
         headers:{
@@ -42,10 +44,11 @@ const TeamForm = ({url, initialValues, users, edit})=>{
       <div className="newteam_body">
 
         <form action="" onSubmit={handleSubmit}>
-          <label htmlFor="staff_code"><h4>Name</h4></label>
+          
+          <label htmlFor="staff_id"><h4>Name</h4></label>
           <select
-            name="staff_code"
-            value={FormData.staff_code}
+            name="staff_id"
+            value={FormData.staff_id}
             onChange={handleInputChange}
             required
             disabled={isEditable}
@@ -53,12 +56,12 @@ const TeamForm = ({url, initialValues, users, edit})=>{
           >
             <option>Select Staff</option>
             {edit ? (
-              <option value={users.staff_code} key={users.staff_code}>
+              <option value={users._id} key={users._id}>
                 {users.firstname} {users.lastname}
               </option>
             ) : (
               users.map((item) => (
-                <option value={item.staff_code} key={item._id}>
+                <option value={item._id} key={item._id}>
                   {item.firstname} {item.lastname}
                 </option>
               ))
@@ -66,7 +69,6 @@ const TeamForm = ({url, initialValues, users, edit})=>{
           
           </select>
           <div className="error_message"></div>
-
 
           <label htmlFor="team_role"><h4>Role</h4></label>
           <select 
@@ -82,6 +84,7 @@ const TeamForm = ({url, initialValues, users, edit})=>{
               <option value="Admin">Admin</option>
           </select>
           <div className="error_message"></div>
+
 
           <button className="filled-btn" type="submit"><h4>Submit</h4></button>
           

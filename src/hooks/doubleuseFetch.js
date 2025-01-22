@@ -36,11 +36,19 @@ function DoubleUseFetch(urlI, urlII,token){
       setIsLoading(false)
       setErrorMessage(null);
     })
+
     .catch((err)=>{
       setIsLoading(false);
 
       if(err.status === 500){
         navigate("/server-error")
+        
+      }else if (err.status === 401){
+
+        localStorage.removeItem("adminAuthToken")
+        localStorage.removeItem("team")
+        navigate("/admin/login")
+
       }else{
         setErrorMessage(err.message || "An error occur fetching data");
       }

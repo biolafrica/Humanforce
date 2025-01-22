@@ -71,7 +71,7 @@ const TeamDetails =({users, teams})=>{
 
             let matchingUser;
             users.forEach((user)=>{
-              if(team.staff_code === user.staff_code){
+              if(team.staff_id === user._id){
                 matchingUser = user
               }
             })
@@ -81,7 +81,7 @@ const TeamDetails =({users, teams})=>{
                 <h6 className="date_column">{matchingUser.firstname} {matchingUser.lastname}</h6>
                 <h6 className="clockin_column">{team.team_role}</h6>
                 <h6 className="clockout_column">{matchingUser.email_address}</h6>
-                <h6 className="hours_column">{team.staff_code}</h6>
+                <h6 className="hours_column">{matchingUser.staff_code}</h6>
                 <h6 className="status_column">
                   <Link to={ team.role === "Admin" ? `/admin/team/${team._id}` : ""}><img src="/icons/Edit.svg" alt="" /></Link>
                   <img

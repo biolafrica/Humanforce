@@ -21,8 +21,13 @@ function useFetch(url, refresh = false){
     })
     .then(response =>{
       if(!response.ok){
-        throw new Error('Error fetching data')
+        if(response.status === 401){
+          throw new Error ('Unauthorized')
+        }else{
+          throw new Error('Error fetching data')
+        }
       }
+
       return response.json();
     })
     .then((data)=>{
@@ -36,6 +41,10 @@ function useFetch(url, refresh = false){
 
       if(err.status === 500){
         navigate("/server-error")
+      }else if(err.message === 'Unauthorized'){
+        localStorage.removeItem("adminAuthToken")
+        localStorage.removeItem("team")
+        navigate("/admin/login")
       }else{
         setErrorMessage(err.message || "An error occured");
       }
