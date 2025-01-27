@@ -1,11 +1,26 @@
-const teamString = localStorage.getItem("team") ;
-const team = teamString ? JSON.parse(teamString) : {};
+import { useState, useEffect } from "react";
 
-const AdminExclusiveButton = team.role === "Admin" ? "filled-btn" : "inactive-btn";
-const AdminNonExclusiveButton = team.role === "Admin" || team.role === "Finance" ||team.role === "Operations" ? "filled-btn" : "inactive-btn";
+const useTeam =()=>{
+
+  const [team, setTeam] = useState({})
+  useEffect(()=>{
+    const teamString = localStorage.getItem('team');
+    if(teamString){
+      setTeam(JSON.parse(teamString))
+    }
+  }, [])
+  const isAdmin = team.role === "Admin";
+  const isAdminFinOrOps = team.role === "Admin" || team.role === "Finance" ||team.role === "Operations";
+
+  return{
+    team,
+    AdminExclusiveButton : isAdmin? "filled-btn" : "inactive-btn",
+    AdminNonExclusiveButton :isAdminFinOrOps ? "filled-btn" : "inactive-btn"
+
+  }
 
 
-export {
-  AdminExclusiveButton,
-  AdminNonExclusiveButton
 }
+
+
+export default useTeam;

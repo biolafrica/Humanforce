@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
-import { AdminNonExclusiveButton } from "./buttonState";
+import useTeam from "./buttonState";
 
 const UnpaidStaff =(props)=>{
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ const UnpaidStaff =(props)=>{
   const payroll = props.data
   const {id} = useParams();
   const token = localStorage.getItem("adminAuthToken");
+  const {AdminNonExclusiveButton} = useTeam()
  
   const initialValues = {
     basic_pay : payroll.basic_pay ,
@@ -157,7 +158,7 @@ const UnpaidStaff =(props)=>{
 
         </div>
 
-        <button className="filled-btn" type="submit"><h4>Update</h4></button>
+        <button className={`${AdminNonExclusiveButton}`} type="submit"><h4>Update</h4></button>
 
       </form>
 

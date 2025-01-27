@@ -4,11 +4,13 @@ import Pagination from "../pagination";
 import usePagination from "../../hooks/usePagination";
 import { useNavigate } from "react-router-dom";
 import Empty from "../empty";
+import useTeam from "./buttonState";
 
 const TeamDetails =({users, teams})=>{
   const {alert, showAlert} = useAlert();
   const navigate = useNavigate();
   const token = localStorage.getItem("adminAuthToken");
+  const {team} = useTeam()
 
   const handleDelete = async(id)=>{
     try {
@@ -37,8 +39,11 @@ const TeamDetails =({users, teams})=>{
     }
 
   }
+  
+
 
   const {
+
     currentPage, 
     currentData, 
     totalPages, 
@@ -81,11 +86,26 @@ const TeamDetails =({users, teams})=>{
                     <h6 className="clockout_column">{matchingUser.email_address}</h6>
                     <h6 className="hours_column">{matchingUser.staff_code}</h6>
                     <h6 className="status_column">
-                      <Link to= {`/admin/team/${team._id}`}><img src="/icons/Edit.svg" alt="edit icon" /></Link>
+                      <Link 
+                        to= {team.role === 'Admin' ? `/admin/team/${team._id}` : "#"}
+                        onClick={(e)=>{if(team.role !== "Admin"){
+                          e.preventDefault();
+                          showAlert("Only Admin can add team", "info");
+                        }}}
+                      >
+                        <img src="/icons/Edit.svg" alt="edit icon" />
+                      </Link>
                       <img
                         src="/icons/Delete.svg" 
                         alt="Delete-icon"
-                        onClick={()=> handleDelete(team._id)}
+                        onClick={(e)=>{ if(team.role === 'Admin'){
+                          handleDelete(team._id)
+                          }else{
+                            e.preventDefault();
+                            showAlert("Only Admin can delete team", "info");
+
+                          }}
+                        }
                         style={{cursor : "pointer"}} 
                       />
                     </h6>

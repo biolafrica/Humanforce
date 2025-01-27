@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
 import TeamDetails from "../components/adminPage/teamDetails";
-import { AdminExclusiveButton } from "../components/adminPage/buttonState";
 import Loading from "../components/loading";
 import { useState } from "react";
+import useTeam from "../components/adminPage/buttonState";
 
 const Team = ()=>{
   const url = "http://localhost:4000/admin/team";
   const token = localStorage.getItem("adminAuthToken")
   const {data, isLoading, errorMessage} = UserFetch(url,token);
   const [searchTerm, setSearchTerm] = useState("");
+  const{AdminExclusiveButton} = useTeam()
 
 
   if(isLoading) return(<Loading width={200} height={200}/>)

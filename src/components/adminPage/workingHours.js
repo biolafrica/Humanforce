@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
 import { AdminExclusiveButton } from "./buttonState";
+import useTeam from "./buttonState";
 
 const WorkingHours = (props)=>{
   const {alert, showAlert} = useAlert();
@@ -10,6 +11,7 @@ const WorkingHours = (props)=>{
   const data = props.data.workingHours;
   const hour = data[0].days;
   const token = localStorage.getItem("adminAuthToken")
+  const {AdminExclusiveButton} = useTeam();
   
   const [sun,mon,tue,wed,thur,fri,sat] = [
     hour.sunday,

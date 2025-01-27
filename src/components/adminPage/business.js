@@ -3,7 +3,7 @@ import {useFormWithAddress} from "../../hooks/useForm";
 import WorkingHours from "./workingHours";
 import { AlertPopup, useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
-import { AdminExclusiveButton } from "./buttonState";
+import useTeam from "./buttonState";
 
 
 const Business= (props)=>{
@@ -13,6 +13,7 @@ const Business= (props)=>{
   const data = props.data;
   const name = data[0];
   const token = localStorage.getItem("adminAuthToken")
+  const{AdminExclusiveButton} = useTeam();
   
 
   const initialValues = {

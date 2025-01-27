@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
 import { useState } from "react";
 import StaffList from "../components/adminPage/staffList";
-import { AdminExclusiveButton } from "../components/adminPage/buttonState";
 import Loading from "../components/loading";
+import useTeam from "../components/adminPage/buttonState";
 
 const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
@@ -11,6 +11,7 @@ const Staff = ()=>{
   const {data, isLoading, errorMessage} = UserFetch(url, token);
   const [activeTab, setActiveTab] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const {AdminExclusiveButton} = useTeam()
 
  
   if(isLoading) return(<Loading width={200} height={200}/>)

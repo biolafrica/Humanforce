@@ -1,13 +1,16 @@
 import { PayrollTable, PayrollEditPopup } from "./contractPayrollStaff";
 import { useState } from "react";
+import useTeam from "./buttonState";
+import { AlertPopup, useAlert} from "../alert";
 
 const ContractStaffDisplay = ({payroll})=>{
- 
-
   const currentMonth = new Date().toLocaleString("default", {
     month: 'long', 
     year: "numeric"
   });
+
+  const {team} = useTeam();
+  const {alert, showAlert} = useAlert();
 
   const [payrollData, setPayrollData] = useState(payroll);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
@@ -23,21 +26,14 @@ const ContractStaffDisplay = ({payroll})=>{
     month === currentMonth ? setIsEditVisible(true) : setIsEditVisible(false);
   }
 
-  const restrictSetPopup =()=>{
-    const team = localStorage.getItem("team");
-    if(team && (team.role === "Admin" || team.role === "Finance" ||team.role === "Operations")){
-      setIsPopupVisible(true)
-    }
-  }
-
-  const changePopup =()=>{
-    setIsPopupVisible(false)
+  const canOpenPopup = ()=>{
+    return ["Admin", "Operations", "Finance"].includes(team.role)
   }
 
   return(
     <>
       <>
-        { isPopupVisible &&  <PayrollEditPopup weeks={weeks} cancel={changePopup}/>}
+        { isPopupVisible &&  <PayrollEditPopup weeks={weeks} cancel={()=>setIsPopupVisible(false)}/>}
       </>
 
       <>
@@ -71,7 +67,12 @@ const ContractStaffDisplay = ({payroll})=>{
                   <img 
                     src="/icons/Edit.svg" 
                     alt="Edit" 
-                    onClick={()=>setIsPopupVisible(true)} 
+                    onClick={(e)=>{if(["Admin", "Operations", "Finance"].includes(team.role)){
+                      setIsPopupVisible(true);
+                    }else{
+                      e.preventDefault();
+                      showAlert("You can't edit amount", "info");
+                    }}} 
                     style={{ cursor: "pointer" }}
                   />
                 }
@@ -94,6 +95,15 @@ const ContractStaffDisplay = ({payroll})=>{
 
    
       </>
+
+      {alert.visible && (
+        <AlertPopup 
+          visible={alert.visible} 
+          message={alert.message} 
+          type={alert.type}
+          
+        />
+      )}
     </>
   )
 
