@@ -16,7 +16,7 @@ const UserAttendancelist = ({attendance}) =>{
   
   return(
     <>
-      <div className="table_body">
+      <div className="table_body my_table">
         {
           currentData.length === 0 ? (<Empty/>): 
 

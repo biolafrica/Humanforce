@@ -1185,10 +1185,11 @@ a {
   height: 100vh;
 }
 
-.table_body{
+.my_table{
   position: relative;
   min-height: 200px;
 }
+
 
 .empty_container{
   position: absolute;

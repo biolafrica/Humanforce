@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
 import TeamDetails from "../components/adminPage/teamDetails";
 import { AdminExclusiveButton } from "../components/adminPage/buttonState";
+import Loading from "../components/loading";
 
 const Team = ()=>{
   const url = "http://localhost:4000/admin/team";
@@ -9,7 +10,7 @@ const Team = ()=>{
   const {data, isLoading, errorMessage} = UserFetch(url,token);
 
 
-  if(isLoading) return(<div>....loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(data){
 

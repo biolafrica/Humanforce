@@ -3,6 +3,7 @@ import UserFetch from "../hooks/userFetch";
 import { useState } from "react";
 import StaffList from "../components/adminPage/staffList";
 import { AdminExclusiveButton } from "../components/adminPage/buttonState";
+import Loading from "../components/loading";
 
 const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
@@ -20,7 +21,7 @@ const Staff = ()=>{
     setActiveTab("all")
   }
 
-  if(isLoading)return(<div>...Loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage)return({errorMessage})
   if(data){
 

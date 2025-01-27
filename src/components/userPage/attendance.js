@@ -3,9 +3,9 @@ import UserAttendancelist from "./userAttendanceList"
 import performance from "../../utils/performance"
 
 const Attendance = ({attendance})=>{
-  const currentMonth = new Date().toLocaleString('default',{month: 'long', year:'numeric'})
-  const [selectedMonth, setSelectedMonth] = useState(currentMonth)
-  const [attendanceData, setAttendanceData] = useState(attendance[currentMonth] || [])
+  const currentMonth = new Date().toLocaleString('default',{month: 'long', year:'numeric'});
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+  const [attendanceData, setAttendanceData] = useState(attendance[currentMonth] || []);
 
   useEffect(()=>{
     setAttendanceData(attendance[selectedMonth] || [])

@@ -14,12 +14,11 @@ const ContractStaffEdit = ()=>{
   if(errorMessage) return({errorMessage})
   if(data.payroll && data.name){
     const name = data.name;
-      
     return(
       <div className="payrolleditcont">
         <div className="contract_staff">
 
-          <h4>{name.firstname} {name.lastname} Payslip</h4>
+          <h4>{name.firstname || ""} {name.lastname || ""} Payslip</h4>
           <ContractStaffDisplay payroll={data.payroll} />
       
         </div>
