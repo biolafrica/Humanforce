@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import errorManagement from "../components/errorManagement";
 import ErrorManagement from "../components/errorManagement";
 
 
 function useFetch(url, refresh = false){
-  const token = localStorage.getItem("AuthToken");
+  const token = localStorage.getItem("authToken");
   
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

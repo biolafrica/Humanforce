@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UserFetch from "../hooks/userFetch";
 import PayrollStaffList from "../components/adminPage/payrollStaffList";
+import Loading from "../components/loading";
 
 const Payroll =()=>{
   const url = "http://localhost:4000/admin/payrolls";
@@ -11,11 +12,12 @@ const Payroll =()=>{
   const handleFixedClick = ()=>{
     setActiveTab("fixed")
   }
+  
   const handleContractClick = ()=>{
     setActiveTab("contract");
   }
 
-  if(isLoading)return(<div>....Loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage)return({errorMessage})
   if(data){
 

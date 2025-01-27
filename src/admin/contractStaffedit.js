@@ -12,7 +12,7 @@ const ContractStaffEdit = ()=>{
 
   if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
-  if(data){
+  if(data.payroll && data.name){
     const name = data.name;
       
     return(

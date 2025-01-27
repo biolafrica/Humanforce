@@ -16,7 +16,7 @@ const clockButton=(data)=>{
 
 }
 
-const clockButtonClass= data => (data.clock_out !== defaultTime ? "inactive-btn" : "filled-btn");
+const clockButtonClass= data => data.clock_out !== defaultTime ? "inactive-btn" : "filled-btn";
 
 
 

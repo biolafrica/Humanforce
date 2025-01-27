@@ -1,7 +1,7 @@
 import {formatMTime} from "../formatmtime"
 
-const StaffClock = (props)=>{
-  const clock = props.clock.data;
+const StaffClock = ({clock})=>{
+  console.log("clock", clock)
   const clock_in = formatMTime(clock.clock_in); 
   const break_start = formatMTime(clock.break_start);
   const break_end = formatMTime(clock.break_end);

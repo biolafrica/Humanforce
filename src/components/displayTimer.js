@@ -2,9 +2,8 @@ import Timer from "../functions/timer";
 import { breakTimeDifference, timeDifference } from "./formatmtime";
 const defaultTime = new Date(0).toISOString();
 
-const DisplayTimer = (props)=>{
-  const time = props.time.data;
-  console.log("displayTimerData:", time);
+const DisplayTimer = ({time})=>{
+
   if(
     time.clock_in !== defaultTime &&
     time.break_start === defaultTime && 

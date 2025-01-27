@@ -25,7 +25,7 @@ const FixedStaffEdit = ()=>{
 
   useEffect(()=>{
     if(data && data.payroll){
-
+     
       const months = (data.payroll).map((item) =>({
         label: formatMonthYear(item.createdAt),
         value: item.createdAt
@@ -43,6 +43,8 @@ const FixedStaffEdit = ()=>{
       setActiveMonthData(currentMonthData);
     }
   }, [data]);
+
+  
 
   const handleMonthChange = (e) =>{
     const selected = e.target.value;
@@ -63,6 +65,7 @@ const FixedStaffEdit = ()=>{
       <div className="fixed_staff">
 
         <h4>{data.name.firstname} {data.name.lastname} Payslip</h4>
+
 
         <div className="fixed_staff_date_filter">
 

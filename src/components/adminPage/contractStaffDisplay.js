@@ -2,7 +2,7 @@ import { PayrollTable, PayrollEditPopup } from "./contractPayrollStaff";
 import { useState } from "react";
 
 const ContractStaffDisplay = ({payroll})=>{
-  const team = localStorage.getItem("team");
+ 
 
   const currentMonth = new Date().toLocaleString("default", {
     month: 'long', 
@@ -24,9 +24,10 @@ const ContractStaffDisplay = ({payroll})=>{
   }
 
   const restrictSetPopup =()=>{
-    if(team.role === "Admin" || team.role === "Finance" ||team.role === "Operations"){
+    const team = localStorage.getItem("team");
+    if(team && (team.role === "Admin" || team.role === "Finance" ||team.role === "Operations")){
       setIsPopupVisible(true)
-    }else{return}
+    }
   }
 
   const changePopup =()=>{
@@ -70,7 +71,7 @@ const ContractStaffDisplay = ({payroll})=>{
                   <img 
                     src="/icons/Edit.svg" 
                     alt="Edit" 
-                    onClick={restrictSetPopup} 
+                    onClick={()=>setIsPopupVisible(true)} 
                     style={{ cursor: "pointer" }}
                   />
                 }

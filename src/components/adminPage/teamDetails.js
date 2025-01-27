@@ -11,36 +11,31 @@ const TeamDetails =({users, teams})=>{
   const team = localStorage.getItem("team")
 
   const handleDelete = async(id)=>{
-    if(team.role === "Admin"){
-      try {
-        const response = await fetch(`http://localhost:4000/admin/team-delete/${id}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+    try {
+      const response = await fetch(`http://localhost:4000/admin/team-delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-        const result = await response.json();
-        if(response.ok){
-          showAlert(result.message || "Team deleted succesfully", "success");
-          navigate("/admin/team")
-        }else{
-          showAlert("Failed to delete selected team", "error")
-        }
-        
-      } catch (error) {
-        console.error("Error deleting team:", error)
-        if(error.response && error.response.status === 500){
-          navigate("/server-error")
-        }else{
-          showAlert("Error deleting team member ", "error");
-        }
+      const result = await response.json();
+      if(response.ok){
+        showAlert(result.message || "Team deleted succesfully", "success");
+        navigate("/admin/team")
+      }else{
+        showAlert("Failed to delete selected team", "error")
       }
-
-    }else{
-      return;
-
+      
+    } catch (error) {
+      console.error("Error deleting team:", error)
+      if(error.response && error.response.status === 500){
+        navigate("/server-error")
+      }else{
+        showAlert("Error deleting team member ", "error");
+      }
     }
+
   }
 
   const {
@@ -49,7 +44,7 @@ const TeamDetails =({users, teams})=>{
     totalPages, 
     goToNextPage,
     goToPreviousPage 
-  } = usePagination(teams, 5)
+  } = usePagination(teams ||  5)
 
 
   return(
@@ -83,7 +78,7 @@ const TeamDetails =({users, teams})=>{
                 <h6 className="clockout_column">{matchingUser.email_address}</h6>
                 <h6 className="hours_column">{matchingUser.staff_code}</h6>
                 <h6 className="status_column">
-                  <Link to={ team.role === "Admin" ? `/admin/team/${team._id}` : ""}><img src="/icons/Edit.svg" alt="" /></Link>
+                  <Link to= {`/admin/team/${team._id}`}><img src="/icons/Edit.svg" alt="" /></Link>
                   <img
                     src="/icons/Delete.svg" 
                     alt="Delete-icon"

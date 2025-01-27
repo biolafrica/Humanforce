@@ -157,7 +157,7 @@ const UnpaidStaff =(props)=>{
 
         </div>
 
-        <button className={`${AdminNonExclusiveButton}`} type="submit"><h4>Update</h4></button>
+        <button className="filled-btn" type="submit"><h4>Update</h4></button>
 
       </form>
 

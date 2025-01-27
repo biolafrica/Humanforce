@@ -211,7 +211,7 @@ const StaffForm = ({initialValues, url})=>{
           
         </div>
 
-        <button className={`${AdminExclusiveButton}`} type="submit"><h4>Submit</h4></button>
+        <button className="filled-btn" type="submit"><h4>Submit</h4></button>
 
       </form>
       

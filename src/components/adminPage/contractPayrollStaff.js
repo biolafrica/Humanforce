@@ -45,8 +45,8 @@ const PayrollTable = ({weeks}) =>{
             weeks.reduce((acc, week)=>{
               const deductions = week.loan + week.lateness_fine + week.tax + week.pension;
               const net_pay  = (week.basic_pay + week.bonuses) - deductions; 
-              return acc + net_pay, 0
-            })
+              return acc + net_pay;
+            }, 0)
             .toFixed(2)
           }
         </h6>

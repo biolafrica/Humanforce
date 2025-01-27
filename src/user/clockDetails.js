@@ -15,6 +15,7 @@ const ClockDetails =()=>{
   const {id} = useParams();
   const {alert, showAlert} = useAlert();
   const navigate = useNavigate();
+  const token = localStorage.getItem("authToken");
 
   const url = `http://localhost:4000/clock/${id}`;
   const[refresh, setRefresh] = useState(false);
@@ -26,7 +27,12 @@ const ClockDetails =()=>{
 
   const patchAttendance = async(updates)=>{
     try {
-      const response = await  axios.patch(`http://localhost:4000/clock/${id}`, updates);
+      const response = await  axios.patch(`http://localhost:4000/clock/${id}`, updates, {
+        headers:{
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
       setRefresh((prev)=> !prev);
       
     } catch (error) {
@@ -66,20 +72,20 @@ const ClockDetails =()=>{
     return(
       <div className="clock_container">
 
-        <DisplayTimer time={data} />
+        <DisplayTimer time={data.attendance} />
 
         <div className="clockstatus_container">
 
           <StaffDetails staff={user}/>
-          <StaffClock clock ={data}/>
+          <StaffClock clock ={data.attendance}/>
 
         </div>
 
         <button 
-          className={clockButtonClass(data.data)}
+          className={clockButtonClass(data.attendance)}
           onClick={handleSubmit}
         >
-          <h4>{clockButton(data.data)}</h4>
+          <h4>{clockButton(data.attendance)}</h4>
         </button>
 
 
