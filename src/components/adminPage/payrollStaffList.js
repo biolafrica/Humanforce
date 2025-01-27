@@ -2,6 +2,7 @@ import Pagination from "../pagination";
 import usePagination from "../../hooks/usePagination";
 import { Link } from "react-router-dom";
 import Empty from "../empty";
+import formatNaira from "../../utils/formatNaira";
 
 
 const PayrollStaffList = ({user})=>{
@@ -27,7 +28,7 @@ const PayrollStaffList = ({user})=>{
                   <h6 className="date_column">{user.firstname} {user.lastname}</h6>
                   <h6 className="clockin_column">{user.role}</h6>
                   <h6 className="clockout_column">{user.email_address}</h6>
-                  <h6 className="hours_column">&#8358;{user.salary}</h6>
+                  <h6 className="hours_column">{formatNaira(user.salary)}</h6>
                   <h6 className="status_column">{user.status}</h6>
                 </Link>
               )

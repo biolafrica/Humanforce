@@ -1,4 +1,5 @@
 import { formattedDate } from "../formatmtime";
+import formatNaira from "../../utils/formatNaira";
 
 
 const PayslipTemplate = ({payslipData, staff})=>{
@@ -63,16 +64,16 @@ const PayslipTemplate = ({payslipData, staff})=>{
           <div className="payment_cont">
             <div className="payment_cont_column">
               <h6>Basic Pay</h6>
-              <h6>&#8358; {payslipData.basic_pay}</h6>
+              <h6>{formatNaira(payslipData.basic_pay)}</h6>
               <h6>1</h6>
-              <h6>&#8358; {payslipData.bonuses}</h6>
+              <h6>{formatNaira(payslipData.bonuses)}</h6>
             </div>
 
             <div className="payment_cont_column">
               <h6>Bonuses</h6>
-              <h6>&#8358; {payslipData.bonuses}</h6>
+              <h6>{formatNaira(payslipData.bonuses)}</h6>
               <h6>1</h6>
-              <h6>&#8358; {payslipData.bonuses}</h6>
+              <h6>{formatNaira(payslipData.bonuses)}</h6>
             </div>
           </div>
         </div>
@@ -88,17 +89,17 @@ const PayslipTemplate = ({payslipData, staff})=>{
             <div className="deduction_cont">
               <div className="deduction_column">
                 <h6>Tax</h6>
-                <h6>&#8358; {payslipData.tax}</h6>
+                <h6>{formatNaira(payslipData.tax)}</h6>
               </div>
 
               <div className="deduction_column">
                 <h6>Pension</h6>
-                <h6>&#8358; {payslipData.pension}</h6>
+                <h6>{formatNaira(payslipData.pension)}</h6>
               </div>
 
               <div className="deduction_column">
                 <h6>Lateness Fine</h6>
-                <h6>&#8358; {payslipData.lateness_fine}</h6>
+                <h6>{formatNaira(payslipData.lateness_fine)}</h6>
               </div>
 
             </div>
@@ -118,17 +119,17 @@ const PayslipTemplate = ({payslipData, staff})=>{
 
           <div className="summary_row">
             <h6>Total Payment:</h6>
-            <h6>&#8358; {totalPayment}</h6>
+            <h6>{formatNaira(totalPayment)}</h6>
           </div>
 
           <div className="summary_row">
             <h6>Total Deduction:</h6>
-            <h6>&#8358; {totalDeduction}</h6>
+            <h6>{formatNaira(totalDeduction)}</h6>
           </div>
 
           <div className="summary_row">
             <h6>Net Payment:</h6>
-            <h6><b>&#8358; {netPay}</b></h6>
+            <h6><b>{formatNaira(netPay)}</b></h6>
 
           </div>
           

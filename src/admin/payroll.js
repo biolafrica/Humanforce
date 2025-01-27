@@ -63,7 +63,7 @@ const Payroll =()=>{
             <h6 className="date_column">Name</h6>
             <h6 className="clockin_column">Role</h6>
             <h6 className="clockout_column">Date</h6>
-            <h6 className="hours_column">Salary</h6>
+            <h6 className="hours_column">Email</h6>
             <h6 className="status_column">Status</h6>
           </div>
 

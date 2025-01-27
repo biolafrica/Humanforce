@@ -4,6 +4,7 @@ import { AlertPopup, useAlert } from "../alert";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import formatNaira from "../../utils/formatNaira";
 
 
 const PayrollTable = ({weeks}) =>{
@@ -19,10 +20,10 @@ const PayrollTable = ({weeks}) =>{
         return(
           <div className="column" key={week._id}>
             <h6 className="date_column">Week {index + 1}</h6>
-            <h6 className="clockin_column">&#8358;{(week.basic_pay).toFixed(2)}</h6>
-            <h6 className="clockout_column">&#8358;{(deductions).toFixed(2)}</h6>
-            <h6 className="hours_column">&#8358;{(week.bonuses).toFixed(2)}</h6>
-            <h6 className="status_column">&#8358;{(net_pay).toFixed(2)}</h6>
+            <h6 className="clockin_column">{formatNaira(week.basic_pay)}</h6>
+            <h6 className="clockout_column">{formatNaira(deductions)}</h6>
+            <h6 className="hours_column">{formatNaira(week.bonuses)}</h6>
+            <h6 className="status_column">{formatNaira(net_pay)}</h6>
           </div>
         )
       })}
@@ -32,22 +33,22 @@ const PayrollTable = ({weeks}) =>{
       <div className="column">
       
         <h6 className="date_column">Total</h6>
-        <h6 className="clockin_column">&#8358;{ weeks.reduce((acc, week)=>acc + week.basic_pay, 0).toFixed(2)}</h6>
-        <h6 className="clockout_column">&#8358;
+        <h6 className="clockin_column">{formatNaira(weeks.reduce((acc, week)=>acc + week.basic_pay, 0).toFixed(2))}</h6>
+        <h6 className="clockout_column">
           {
-            weeks.reduce((acc, week)=>
-            acc + (week.loan + week.lateness_fine + week.tax + week.pension), 0).toFixed(2)
+            formatNaira(weeks.reduce((acc, week)=>
+            acc + (week.loan + week.lateness_fine + week.tax + week.pension), 0).toFixed(2))
           }
         </h6>
-        <h6 className="hours_column">&#8358;{ weeks.reduce((acc, week)=>acc + week.bonuses, 0).toFixed(2)}</h6>
-        <h6 className="status_column">&#8358;
+        <h6 className="hours_column">{formatNaira(weeks.reduce((acc, week)=>acc + week.bonuses, 0).toFixed(2))}</h6>
+        <h6 className="status_column">
           { 
-            weeks.reduce((acc, week)=>{
+            formatNaira(weeks.reduce((acc, week)=>{
               const deductions = week.loan + week.lateness_fine + week.tax + week.pension;
               const net_pay  = (week.basic_pay + week.bonuses) - deductions; 
               return acc + net_pay;
             }, 0)
-            .toFixed(2)
+            .toFixed(2))
           }
         </h6>
       </div>

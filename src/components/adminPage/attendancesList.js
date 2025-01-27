@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Pagination from "../pagination";
 import usePagination from "../../hooks/usePagination"
+import formatNaira from "../../utils/formatNaira";
 
 const AttendancesList = ({attendances, users})=>{
   const{
@@ -54,7 +55,7 @@ const AttendancesList = ({attendances, users})=>{
               <h6 className="date_column">{user.firstname} {user.lastname}</h6>
               <h6 className="clockin_column">{user.role}</h6>
               <h6 className="clockout_column">{totalHours || 0}</h6>
-              <h6 className="hours_column">{totalFine || 0}</h6>
+              <h6 className="hours_column">{formatNaira(totalFine) || 0}</h6>
               <h6 className={`status_column ${percentageEarly <= 50 ? "late" : "early"}`}>{percentageEarly}%</h6>
             </Link>
           )
