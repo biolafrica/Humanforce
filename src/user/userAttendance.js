@@ -12,7 +12,7 @@ const UserAttendance = ()=>{
   if(errorMessage) return({errorMessage})
   if(data){
     console.log(data)
-  
+    
     return(
 
       <div className="attendance_cont">
