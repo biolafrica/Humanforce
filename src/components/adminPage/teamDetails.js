@@ -9,7 +9,6 @@ const TeamDetails =({users, teams})=>{
   const {alert, showAlert} = useAlert();
   const navigate = useNavigate();
   const token = localStorage.getItem("adminAuthToken");
-  const team = localStorage.getItem("team")
 
   const handleDelete = async(id)=>{
     try {
@@ -51,7 +50,7 @@ const TeamDetails =({users, teams})=>{
   return(
     <>
 
-      <div className="team_body">
+      <div className="team_sbody">
 
         <div className="table_header">
           <h6 className="date_column">Name</h6>
@@ -61,13 +60,13 @@ const TeamDetails =({users, teams})=>{
           <h6 className="status_column">Status</h6>
         </div>
 
-        <div className="table_body">
+        <div className="table_body my_table">
 
           { currentData.length === 0 
             ? (<Empty/>) 
             :(
               currentData.map((team)=>{
-
+               
                 let matchingUser;
                 users.forEach((user)=>{
                   if(team.staff_id === user._id){
@@ -82,7 +81,7 @@ const TeamDetails =({users, teams})=>{
                     <h6 className="clockout_column">{matchingUser.email_address}</h6>
                     <h6 className="hours_column">{matchingUser.staff_code}</h6>
                     <h6 className="status_column">
-                      <Link to= {`/admin/team/${team._id}`}><img src="/icons/Edit.svg" alt="" /></Link>
+                      <Link to= {`/admin/team/${team._id}`}><img src="/icons/Edit.svg" alt="edit icon" /></Link>
                       <img
                         src="/icons/Delete.svg" 
                         alt="Delete-icon"

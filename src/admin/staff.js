@@ -9,37 +9,32 @@ const Staff = ()=>{
   const url = "http://localhost:4000/admin/staff";
   const token = localStorage.getItem("adminAuthToken")
   const {data, isLoading, errorMessage} = UserFetch(url, token);
-  const [activeTab, setActiveTab] = useState("all")
+  const [activeTab, setActiveTab] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleContractClick =()=>{
-    setActiveTab('contract')
-  }
-  const handleFixedClick =()=>{
-    setActiveTab("fixed")
-  }
-  const handleAllClick =()=>{
-    setActiveTab("all")
-  }
-
+ 
   if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage)return({errorMessage})
   if(data){
 
     const users = data.users || [];
-
     const total = users.length || 0;
-    const contract = [];
-    const fixed = [];
+  
+    const contract = users.filter(user=>user.employment_type == "contract");
+    const fixed = users.filter(user=>user.employment_type == "fixed");
 
-    users.forEach((item)=>{
-      if (item.employment_type === "contract"){
-        contract.push(item);
+    const filteredUsers = users.filter(user=>
+      `${user.firstname} ${user.lastname}`.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-      } else if (item.employment_type === "fixed"){
-        fixed.push(item)
-      }
+    const filteredContract = contract.filter(user =>
+      `${user.firstname} ${user.lastname}`.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    const filteredFixed = fixed.filter(user =>
+      `${user.firstname} ${user.lastname}`.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-    })
 
     return(
 
@@ -47,15 +42,15 @@ const Staff = ()=>{
       
         <div className="staff_cont_head">
 
-          <div className="text-btn" onClick={handleAllClick}>
+          <div className="text-btn" onClick={()=> setActiveTab("all")}>
             <h5 className={`total ${activeTab === "all" ? "select" : ""}`}>Total - {total}</h5>
           </div>
 
-          <div className="text-btn" onClick={handleContractClick}>
+          <div className="text-btn" onClick={()=> setActiveTab("contract")}>
             <h5 className={`contract ${activeTab === "contract" ? "select" : ""}`}>Contract - {contract.length}</h5>
           </div>
 
-          <div className="text-btn" onClick={handleFixedClick}>
+          <div className="text-btn" onClick={()=> setActiveTab("fixed")}>
             <h5 className={`fixed ${activeTab === "fixed" ? "select" : ""}`}>Fixed - {fixed.length}</h5>
           </div>
 
@@ -67,8 +62,14 @@ const Staff = ()=>{
 
             <div className="table_heading">
 
-              <form action="" className="month_form">
-                <input type="text" placeholder="search " />
+              <form action="staff" className="month_form">
+                <input 
+                  type="text" 
+                  placeholder="search staff"
+                  value={searchTerm}
+                  name="staff"
+                  onChange={(e)=>setSearchTerm(e.target.value)} 
+                />
               </form>
 
               <Link to="/admin/staff/new" className={`${AdminExclusiveButton}`}>
@@ -86,9 +87,9 @@ const Staff = ()=>{
               <h6 className="status_column">Status</h6>
             </div>
 
-            {activeTab === "all" && <StaffList users= {users}/>}
-            {activeTab === "contract" && <StaffList users ={contract}/>}
-            {activeTab === "fixed" &&  <StaffList users={fixed}/>}
+            {activeTab === "all" && <StaffList users= {filteredUsers}/>}
+            {activeTab === "contract" && <StaffList users ={filteredContract}/>}
+            {activeTab === "fixed" &&  <StaffList users={filteredFixed}/>}
 
           </div>
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Empty from "../empty";
 
 
-const PayrollStaffList = ({staff, user})=>{
+const PayrollStaffList = ({user})=>{
 
   const {
     currentPage, 
@@ -15,7 +15,7 @@ const PayrollStaffList = ({staff, user})=>{
 
   return(
     <>
-      <div className="table_body fixed_staff_table">
+      <div className="table_body fixed_staff_table my_table">
         { currentData.length === 0 
           ? (<Empty/>)
           :(
