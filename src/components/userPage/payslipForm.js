@@ -17,6 +17,7 @@ const PayslipForm = ({payslips, staff})=>{
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedWeek, setSelectedWeek] = useState(currentWeek);
   const [payslipData, setPayslipData] = useState({});
+  const [overlay, setOverlay] = useState("")
   
   const handleViewPayslip = (e)=>{
     e.preventDefault();
@@ -31,10 +32,12 @@ const PayslipForm = ({payslips, staff})=>{
 
     if(selectedPayslip.length > 0 && (payslips[currentYear])[0].staff_type === "fixed"){
       setPayslipData(selectedPayslip[0])
+      setOverlay("overlay")
 
     }else if((selectedPayslip.length > 0 && (payslips[currentYear])[0].staff_type === "contract")){
       const selectedOptionWeek = selectedPayslip.filter((weeks) => weeks.week === selectedWeek);
       setPayslipData(selectedOptionWeek[0])
+      setOverlay("overlay")
 
     }else {
       showAlert('Payslip not found for the selected month', "info");
@@ -43,16 +46,53 @@ const PayslipForm = ({payslips, staff})=>{
   }
 
   const downloadPayslipAsPDF = async () =>{
+    const month = new Date(payslipData.createdAt).toLocaleString("default", {
+      month: 'long', 
+      year: "numeric"
+    });
+
     const pdfContent = document.getElementById("payslip-template");
     const canvas = await html2canvas(pdfContent);
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF()
     pdf.addImage(imgData, "PNG", 10, 10, 190, 0);
-    pdf.save(`${payslipData.month} - Payslip.pdf`);
+    pdf.save(`${payslipData.week ? payslipData.week : month} - Payslip.pdf`);
+  }
+
+  const handleClose = ()=>{
+    setPayslipData({});
+    setOverlay("");
+
   }
 
   return(
     <>
+      <div className={`${overlay}`}></div>
+
+      {payslipData && payslipData._id && (
+        <div className="payslip-template-container">
+
+          <img 
+            src="/icons/close alert.svg" 
+            alt="cancel icon"
+            onClick={handleClose}
+            style={{cursor:"pointer"}} 
+          />
+
+          <div id="payslip-template">
+            <PayslipTemplate payslipData={payslipData} staff={staff}/>
+          </div>
+
+          <button 
+            className="filled-btn"
+            onClick={downloadPayslipAsPDF}
+          >
+            <h4>Download as PDF</h4> 
+          </button>
+          
+        </div>
+      )}
+
       <form onSubmit={handleViewPayslip} className="payslip_form">
 
         <h4 className="payslip_head">My Payslip</h4>
@@ -114,20 +154,6 @@ const PayslipForm = ({payslips, staff})=>{
         <button type="submit" className="filled-btn"><h4>View Payslip</h4></button>
 
       </form>
-
-      {payslipData && payslipData._id && (
-        <>
-          <div id="payslip-template">
-            <PayslipTemplate payslipData={payslipData} staff={staff}/>
-          </div>
-          <button 
-            className="filled-btn"
-            onClick={downloadPayslipAsPDF}
-          >
-            <h4>Download as PDF</h4> 
-          </button>
-        </>
-      )}
 
       {alert.visible && (
         <AlertPopup 

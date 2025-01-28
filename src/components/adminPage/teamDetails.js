@@ -11,6 +11,7 @@ const TeamDetails =({users, teams})=>{
   const navigate = useNavigate();
   const token = localStorage.getItem("adminAuthToken");
   const {team} = useTeam()
+  const activeTeam = team;
 
   const handleDelete = async(id)=>{
     try {
@@ -85,8 +86,8 @@ const TeamDetails =({users, teams})=>{
                     <h6 className="hours_column">{matchingUser.staff_code}</h6>
                     <h6 className="status_column">
                       <Link 
-                        to= {team.role === 'Admin' ? `/admin/team/${team._id}` : "#"}
-                        onClick={(e)=>{if(team.role !== "Admin"){
+                        to= {activeTeam.role === 'Admin' ? `/admin/team/${team._id}` : "#"}
+                        onClick={(e)=>{if(activeTeam.role !== "Admin"){
                           e.preventDefault();
                           showAlert("Only Admin can add team", "info");
                         }}}
@@ -96,7 +97,7 @@ const TeamDetails =({users, teams})=>{
                       <img
                         src="/icons/Delete.svg" 
                         alt="Delete-icon"
-                        onClick={(e)=>{ if(team.role === 'Admin'){
+                        onClick={(e)=>{ if(activeTeam.role === 'Admin'){
                           handleDelete(team._id)
                           }else{
                             e.preventDefault();

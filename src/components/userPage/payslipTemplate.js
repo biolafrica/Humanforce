@@ -10,6 +10,7 @@ const PayslipTemplate = ({payslipData, staff})=>{
 
   return(
     <div className="payslip_template_container">
+      
       <div className="payslip_template_header">
 
         <div className="payslip_template_header_column icon">

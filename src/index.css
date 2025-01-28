@@ -1068,10 +1068,8 @@ a {
 .payslip_template_container {
   border: 1px solid var(--Border-light);
   margin: 20px auto;
-  height: 1194px;
-  background-color: white;
-  z-index: 1000;
-
+  height: 100%;
+  width: 100%;
 }
 
 .payslip_template_header {
@@ -1106,8 +1104,6 @@ a {
   height: 50%;
   border: 1px solid var(--Border-light);
 }
-
-
 
 .payslip_template_payment,
 .payslip_template_footer_left{
@@ -1155,6 +1151,41 @@ a {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.payslip-template-container{
+  width: 80%;
+  height: 100%;
+  padding: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: white;
+  z-index: 1000;
+  box-shadow: var(--elevate-1);
+}
+
+.overlay{
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.payslip-template-container img{
+  display: flex;
+  
 }
 
 /*Error Page*/
