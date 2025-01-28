@@ -4,6 +4,7 @@ import WorkingHours from "./workingHours";
 import { AlertPopup, useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
 import useTeam from "./buttonState";
+import { useState } from "react";
 
 
 const Business= (props)=>{
@@ -14,6 +15,7 @@ const Business= (props)=>{
   const name = data[0];
   const token = localStorage.getItem("adminAuthToken")
   const{AdminExclusiveButton} = useTeam();
+  const[errors , setErrors] = useState("")
   
 
   const initialValues = {
@@ -41,8 +43,18 @@ const Business= (props)=>{
   } = useFormWithAddress(initialValues, apiKey);
 
   const handleSubmit = async (e)=>{
-   
     e.preventDefault();
+    let phoneError = "";
+
+    if(formData.business_phone_number.toString().length < 11){
+      phoneError = "Minimum of eleven digits required"
+    }
+
+    if(phoneError !== ""){
+      setErrors(phoneError);
+      return
+    }
+    
     try {
       const response = await axios.post("http://localhost:4000/admin/business", formData, {
         headers:{
@@ -50,8 +62,8 @@ const Business= (props)=>{
           Authorization: `Bearer ${token}`,
         }
       });
-      
       showAlert("Business information saved successfully!", "success");
+      setErrors("");
       
     } catch (error) {
       console.error("Error saving business information. Please try again");
@@ -76,15 +88,15 @@ const Business= (props)=>{
 
           <div className="payroll_column">
 
-            <div action="">
+            <div>
               <label htmlFor="business_name"><h4>Business name</h4></label>
               <input
-              type="text" 
-              placeholder="Enter business name"
-              value={formData.business_name}
-              name="business_name"
-              onChange={handleInputChange}
-              required
+                type="text" 
+                placeholder="Enter business name"
+                value={formData.business_name}
+                name="business_name"
+                onChange={handleInputChange}
+                required
               />
             </div>
 
@@ -104,7 +116,7 @@ const Business= (props)=>{
 
           <div className="payroll_column">
 
-            <div action="">
+            <div>
               <label htmlFor="business_address_I"><h4>Business address I</h4></label>
               <input 
                 type="text" 
@@ -116,7 +128,7 @@ const Business= (props)=>{
               />
             </div>
 
-            <div action="">
+            <div>
               <label htmlFor="business_address_II"><h4>Business address II</h4></label>
               <input 
                 type="text" 
@@ -147,27 +159,27 @@ const Business= (props)=>{
 
           <div className="payroll_column">
 
-            <div action="">
+            <div>
               <label htmlFor="break_hours"><h4>Break hours</h4></label>
               <input 
-              type="number" 
-              placeholder="Enter break hours"
-              name="break_hours"
-              value={formData.break_hours}
-              onChange={handleInputChange}
-              required
+                type="number" 
+                placeholder="Enter break hours"
+                name="break_hours"
+                value={formData.break_hours}
+                onChange={handleInputChange}
+                required
               />
             </div>
 
-            <div action="">
+            <div>
               <label htmlFor="lateness_hours"><h4>Lateness hour</h4></label>
               <input 
-              type="number" 
-              placeholder="Enter phone number"
-              name="lateness_hours"
-              value={formData.lateness_hours}
-              onChange={handleInputChange} 
-              required
+                type="number" 
+                placeholder="Enter phone number"
+                name="lateness_hours"
+                value={formData.lateness_hours}
+                onChange={handleInputChange} 
+                required
               />
             </div>
             
@@ -175,8 +187,8 @@ const Business= (props)=>{
 
           <div className="payroll_column">
 
-            <div action="">
-              <label htmlFor="lateness_fine"><h4>Lateness fine</h4></label>
+            <div>
+              <label htmlFor="lateness_fine"><h4>Lateness fine(&#8358;)</h4></label>
               <input 
                 type="number" 
                 placeholder="Enter fine amount"
@@ -187,17 +199,19 @@ const Business= (props)=>{
               />
             </div>
 
-            <div action="">
+            <div>
               <label htmlFor="business_phone_number"><h4>Business number</h4></label>
               <input 
-              type="number" 
-              placeholder="Enter business phone number"
-              name="business_phone_number"
-              value={formData.business_phone_number}
-              onChange={handleInputChange}
-              required 
+                type="number" 
+                placeholder="Enter business phone number"
+                name="business_phone_number"
+                value={formData.business_phone_number}
+                onChange={handleInputChange}
+                required 
               />
+              {errors && <div className="error_text">{errors}</div>}
             </div>
+            
             
           </div>
 
@@ -250,7 +264,7 @@ const Business= (props)=>{
           <div className="payment_column">
 
             <div>
-              <label htmlFor="tax"><h4>Tax</h4></label>
+              <label htmlFor="tax"><h4>Tax(%)</h4></label>
               <input 
                 type="number" 
                 placeholder="enter tax percentage" 
@@ -262,7 +276,7 @@ const Business= (props)=>{
             </div>
 
             <div>
-              <label htmlFor="pension"><h4>Pension</h4></label>
+              <label htmlFor="pension"><h4>Pension(%)</h4></label>
               <input 
               type="number" 
               placeholder="enter percentage"

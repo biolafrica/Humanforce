@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
 import useTeam from "./buttonState";
+import formatNaira from "../../utils/formatNaira"
 
 const UnpaidStaff =(props)=>{
   const navigate = useNavigate();
@@ -89,6 +90,7 @@ const UnpaidStaff =(props)=>{
               name="lateness_fine"
               value={formData.lateness_fine} 
               onChange={handleInputChange}
+              readOnly
             />
           </div>
 
@@ -100,6 +102,7 @@ const UnpaidStaff =(props)=>{
               name="pension"
               value={formData.pension} 
               onChange={handleInputChange}
+              readOnly
             />
           </div>
 
@@ -141,6 +144,7 @@ const UnpaidStaff =(props)=>{
               name="tax"
               value={formData.tax}
               onChange={handleInputChange}
+              readOnly
             />
           </div>
 
@@ -185,42 +189,42 @@ const PaidStaff =(props)=>{
 
       <div className="staff_row">
         <h4>Basic Pay</h4>
-        <h4>&#8358;{payroll.basic_pay}</h4>
+        <h4>{formatNaira(payroll.basic_pay)}</h4>
       </div>
 
       <div className="staff_row">
         <h4>Bonuses</h4>
-        <h4>&#8358;{payroll.bonuses}</h4>
+        <h4>{formatNaira(payroll.bonuses)}</h4>
       </div>
 
       <div className="staff_row">
         <h4>Loan</h4>
-        <h4>&#8358;{payroll.loan}</h4>
+        <h4>{formatNaira(payroll.loan)}</h4>
       </div>
 
       <div className="staff_row">
         <h4>Late Fine</h4>
-        <h4>&#8358;{payroll.lateness_fine}</h4>
+        <h4>{formatNaira(payroll.lateness_fine)}</h4>
       </div>
 
       <div className="staff_row">
         <h4>Pension </h4>
-        <h4>&#8358;{payroll.pension}</h4>
+        <h4>{formatNaira(payroll.pension)}</h4>
       </div>
 
       <div className="staff_row">
         <h4>Deduction</h4>
-        <h4>&#8358;{payroll.deductions}</h4>
+        <h4>{formatNaira(payroll.deductions)}</h4>
       </div>
 
       <div className="staff_row">
         <h4>Tax</h4>
-        <h4>&#8358;{payroll.tax}</h4>
+        <h4>{formatNaira(payroll.tax)}</h4>
       </div>
 
       <div className="staff_row">
         <h4>Net Pay</h4>
-        <h4>&#8358;{payroll.net_pay}</h4>
+        <h4>{formatNaira(payroll.net_pay)}</h4>
       </div>
 
     </div>

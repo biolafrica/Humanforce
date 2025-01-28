@@ -1201,6 +1201,13 @@ a {
 
 }
 
+.newstaff_column .error_text,
+.payroll_column .error_text{
+  color: red;
+  width: 100%;
+}
+
+
 @media(max-width:768px) {
   /* general styles */
 

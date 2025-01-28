@@ -31,12 +31,13 @@ const TeamForm = ({url, initialValues, users, edit})=>{
 
       if(error.response && error.response.status === 500){
         navigate("/server-error")
+      }else if(error.response && error.response.status === 402){
+        showAlert("Team member already exist", "error");
       }else{
         showAlert("Unsuccessfull, please try again", "error");
       }
+      
     }
-
-
   }
 
   return(

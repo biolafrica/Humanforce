@@ -39,8 +39,6 @@ const TeamDetails =({users, teams})=>{
     }
 
   }
-  
-
 
   const {
 

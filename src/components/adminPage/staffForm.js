@@ -3,16 +3,38 @@ import { useForm } from "../../hooks/useForm";
 import { AlertPopup, useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
 import useTeam from "./buttonState";
+import { useState } from "react";
 
 const StaffForm = ({initialValues, url})=>{
   const {alert, showAlert} = useAlert();
   const {formData, handleInputChange, resetForm} = useForm(initialValues);
   const token = localStorage.getItem("adminAuthToken");
   const navigate = useNavigate();
-  const {AdminExclusiveButton} = useTeam()
+  const {AdminExclusiveButton} = useTeam();
+  const [errors, setErrors] = useState({})
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
+    let validationErrors ={}
+
+    const today = new Date().toISOString().split("T")[0];
+    if(formData.date_of_birth >= today){
+      validationErrors.date_of_birth = "Date of birth cannot be today or in the future"
+    }
+
+    if(formData.phone_number.toString().length < 11){
+      validationErrors.phone_number = "Minimum of eleven digits required"
+    }
+
+    if(formData.next_of_kin_phone_number.toString().length < 11){
+      validationErrors.next_of_kin_phone_number = "Minimum of eleven digits required"
+    }
+
+    if(Object.keys(validationErrors).length > 0){
+      setErrors(validationErrors)
+      return
+    }
+
     try {
       const response = await axios.post(url, formData, {
         headers:{
@@ -23,18 +45,21 @@ const StaffForm = ({initialValues, url})=>{
       showAlert("staff added successfully!", "success");
       navigate("/admin/staff")
       resetForm();
+      setErrors({});
       
     } catch (error) {
       console.log("Error adding staff", error);
       if(error.response && error.response.status === 500){
         navigate("/server-error")
+      }else if(error.response && error.response.status === 402){
+        showAlert("Email already exist", "error");
       }else{
         showAlert("Unsuccessfull, please try again", "error");
       }
       
     }
-  }
 
+  }
 
   return(
     <>
@@ -65,7 +90,6 @@ const StaffForm = ({initialValues, url})=>{
               required   
             />
           </div>
-          
         </div>
 
         <div className="newstaff_column">
@@ -96,7 +120,6 @@ const StaffForm = ({initialValues, url})=>{
               required
             />
           </div>
-          
         </div>
 
         <div className="newstaff_column">
@@ -140,6 +163,7 @@ const StaffForm = ({initialValues, url})=>{
               onChange={handleInputChange}
               required
             />
+            {errors.date_of_birth && <div className="error_text">{errors.date_of_birth}</div>}
           </div>
 
           <div>
@@ -168,6 +192,7 @@ const StaffForm = ({initialValues, url})=>{
               onChange={handleInputChange}
               required 
             />
+            {errors.phone_number && <div className="error_text">{errors.phone_number}</div>}
           </div>
 
           <div>
@@ -181,7 +206,6 @@ const StaffForm = ({initialValues, url})=>{
               required 
             />
           </div>
-          
         </div>
 
         <div className="newstaff_column">
@@ -208,6 +232,7 @@ const StaffForm = ({initialValues, url})=>{
               onChange={handleInputChange}
               required 
             />
+            {errors.next_of_kin_phone_number && <div className="error_text">{errors.next_of_kin_phone_number}</div>}
           </div>
           
         </div>

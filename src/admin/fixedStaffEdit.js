@@ -5,7 +5,6 @@ import { PaidStaff, UnpaidStaff } from "../components/adminPage/fixedPayrollStaf
 import Loading from "../components/loading";
 
 const FixedStaffEdit = ()=>{
-
   const {id} = useParams();
   console.log("selected user id", id)
   const url = `http://localhost:4000/admin/payroll/${id}`;
@@ -15,8 +14,6 @@ const FixedStaffEdit = ()=>{
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [payrollMonths, setPayrollMonths] = useState([]);
   const [activeMonthData, setActiveMonthData] = useState(null);
-
- 
   
   const formatMonthYear = (dateString) =>{
     const options = {year : "numeric", month: "long"};
@@ -45,7 +42,6 @@ const FixedStaffEdit = ()=>{
   }, [data]);
 
   
-
   const handleMonthChange = (e) =>{
     const selected = e.target.value;
     setSelectedMonth(selected);
@@ -57,14 +53,14 @@ const FixedStaffEdit = ()=>{
 
   if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return (<div>{errorMessage}</div>)
-
+  const name = data.name || "";
 
   return(
     <div className="payrolleditcont">
 
       <div className="fixed_staff">
 
-        <h4>{data.name.firstname} {data.name.lastname} Payslip</h4>
+        <h4>{name.firstname} {name.lastname} Payslip</h4>
 
 
         <div className="fixed_staff_date_filter">
