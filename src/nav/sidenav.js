@@ -42,7 +42,7 @@ const SideNav=({changeHeader})=>{
           className={`dashboard ${activeTab === "Dashboard" ? "active" : ""}`} 
           onClick={handleDashboardClick}
         >
-          <img src="icons/Dashboard.svg" alt="" />
+          <img src="/icons/Dashboard.svg" alt="" />
           <h4>Dashboard</h4>
         </Link>
 
@@ -51,7 +51,7 @@ const SideNav=({changeHeader})=>{
           className={`staff ${activeTab === "Staff" ? "active" : ""}`}  
           onClick={handleStaffClick}
         >
-          <img src="icons/Group.svg" alt="" />
+          <img src="/icons/Group.svg" alt="" />
           <h4>Staff</h4>
         </Link>
 
@@ -60,7 +60,7 @@ const SideNav=({changeHeader})=>{
           className={`team ${activeTab === "Team" ? "active" : ""}`} 
           onClick={handleTeamClick}
         >
-          <img src="icons/Groups.svg" alt="" />
+          <img src="/icons/Groups.svg" alt="" />
           <h4>Team</h4>
         </Link>
 
@@ -69,7 +69,7 @@ const SideNav=({changeHeader})=>{
           className={`attendance ${activeTab === "Attendance" ? "active" : ""}`} 
           onClick={handleAttendanceClick}
         >
-          <img src="icons/Date range.svg" alt="" />
+          <img src="/icons/Date range.svg" alt="" />
           <h4>Attendance</h4>
         </Link>
 
@@ -78,7 +78,7 @@ const SideNav=({changeHeader})=>{
           className={`payroll ${activeTab === "Payroll" ? "active" : ""}`} 
           onClick={handlePayrollClick}
         >
-          <img src="icons/Matthew Accounting.svg" alt="" />
+          <img src="/icons/Matthew Accounting.svg" alt="" />
           <h4>Payroll</h4>
         </Link>
 
@@ -88,7 +88,7 @@ const SideNav=({changeHeader})=>{
           className={`settings ${activeTab === "Settings" ? "active" : ""}`} 
           onClick={handleSettingsClick}
         >
-          <img src="icons/Settings.svg" alt="" />
+          <img src="/icons/Settings.svg" alt="" />
           <h4>Settings</h4>
         </Link>
 

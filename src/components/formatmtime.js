@@ -12,13 +12,14 @@ const formattedFullTime = (timeStamp)=>{
 
   const date = new Date(timeStamp); 
 
-  const hours = date.getHours().toString().padStart(2, "0");
-  const minute = date.getMinutes().toString().padStart(2, "0");
-  const seconds = date.getSeconds().toString().padStart(2, "0");
+  const hours = date.getUTCHours().toString().padStart(2, "0");
+  const minute = date.getUTCMinutes().toString().padStart(2, "0");
+  const seconds = date.getUTCSeconds().toString().padStart(2, "0");
 
   return `${hours} : ${minute} : ${seconds}`
 
 }
+
 
 
 const timeDifference=(startTime, endTime)=>{
@@ -81,12 +82,14 @@ const generateYearMonthWeeks =()=>{
   });
   const currentYear = new Date().getFullYear().toString();
 
+  const currentMonthOnly = new Date().toLocaleString("default", {month: 'long'});
+
   const date = new Date();
   const start = new Date(date.getFullYear(), 0, 1);
   const diff = (date - start +(start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) / 86400000;
   const week = `${date.getFullYear()}-W${Math.ceil((diff + start.getDay() + 1) / 7)}`;
   
-  return{currentMonth, currentYear, week};
+  return{currentMonth,currentMonthOnly, currentYear, week};
 
 }
 

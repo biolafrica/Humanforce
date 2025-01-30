@@ -5,10 +5,10 @@ const defaultTime = new Date(0).toISOString();
 const DisplayTimer = ({time})=>{
 
   if(
-    time.clock_in !== defaultTime &&
-    time.break_start === defaultTime && 
-    time.break_end === defaultTime && 
-    time.clock_out === defaultTime
+    time.clock_in !== defaultTime || null &&
+    time.break_start === defaultTime || null && 
+    time.break_end === defaultTime || null && 
+    time.clock_out === defaultTime || null
   )
   {
     let difference = timeDifference(time.clock_in, new Date());
@@ -24,10 +24,10 @@ const DisplayTimer = ({time})=>{
     
   }
   else if (
-    time.clock_in !== defaultTime && 
-    time.break_start !== defaultTime && 
-    time.break_end == defaultTime && 
-    time.clock_out === defaultTime 
+    time.clock_in !== defaultTime || null && 
+    time.break_start !== defaultTime || null && 
+    time.break_end == defaultTime || null && 
+    time.clock_out === defaultTime || null
   )
   {
     let difference = timeDifference(time.clock_in, time.break_start);
@@ -43,10 +43,10 @@ const DisplayTimer = ({time})=>{
 
   }
   else if(
-    time.clock_in !== defaultTime && 
-    time.break_start !== defaultTime && 
-    time.break_end !== defaultTime && 
-    time.clock_out === defaultTime
+    time.clock_in !== defaultTime || null && 
+    time.break_start !== defaultTime || null && 
+    time.break_end !== defaultTime || null && 
+    time.clock_out === defaultTime || null
   )
   {
     
@@ -72,10 +72,10 @@ const DisplayTimer = ({time})=>{
 
   }
   else if(
-    time.clock_in !== defaultTime && 
-    time.break_start !== defaultTime && 
-    time.break_end !== defaultTime && 
-    time.clock_out !== defaultTime
+    time.clock_in !== defaultTime || null && 
+    time.break_start !== defaultTime || null && 
+    time.break_end !== defaultTime || null && 
+    time.clock_out !== defaultTime || null
   )
   {
     let difference = timeDifference(time.clock_in, time.clock_out);

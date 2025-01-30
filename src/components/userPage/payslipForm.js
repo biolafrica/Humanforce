@@ -7,7 +7,8 @@ import {AlertPopup, useAlert } from "../alert";
 
 
 const PayslipForm = ({payslips, staff})=>{
-  const currentMonth = generateYearMonthWeeks().currentMonth;
+  console.log(payslips);
+  const currentMonth = generateYearMonthWeeks().currentMonthOnly;
   const currentYear = generateYearMonthWeeks().currentYear;
   const currentWeek = generateYearMonthWeeks().week;
   
@@ -103,12 +104,13 @@ const PayslipForm = ({payslips, staff})=>{
           value={selectedYear}
           onChange={(e)=>setSelectedYear(e.target.value)} 
         >
-          {Object.keys(payslips).map((year)=>(
-            <option value={year} key={year}>{year}</option>
-          ))}
+          {
+            Object.keys(payslips)
+            .map((year)=><option value={year} key={year}>{year}</option>)
+          }
         
         </select>
-        <div className="error_message"></div>
+      
 
 
         <label htmlFor="payslip"><h4>Payslip:</h4></label>
@@ -117,21 +119,24 @@ const PayslipForm = ({payslips, staff})=>{
           value={selectedMonth}
           onChange={(e)=>setSelectedMonth(e.target.value)} 
         >
-          {(payslips[selectedYear]).map((month)=>{
-            const optionMonth = new Date(month.createdAt).toLocaleString("default", {
-              month: 'long', 
-              year: "numeric"
-            });
-              
-            return(
-              <option value={optionMonth} key={optionMonth}>{optionMonth} Payslip</option>
+          <option value="" >Select Month</option>
+          {staff.employment_type === "fixed" ?
+            (payslips[selectedYear]
+              .filter((month)=>{
+                const optionMonth = new Date(month.createdAt).toLocaleString("default", {month: 'long'});
+                return optionMonth !== currentMonth;
+              })
+              .map((filteredMonth)=><option value={filteredMonth} key={filteredMonth}>{filteredMonth} Payslip</option>)
+            ) :(Object.keys(payslips[selectedYear])
+              .map((month)=><option value={month} key={month}>{month}</option>)
             )
-          })}
+          }
          
         </select>
-        <div className="error_message"></div>
+       
 
-        {(payslips[currentYear])[0].staff_type === "contract" &&  (
+
+        {staff.employment_type === "contract" &&  (
           <>
             <label htmlFor="payslip"><h4>Weeks:</h4></label>
             <select
@@ -139,15 +144,15 @@ const PayslipForm = ({payslips, staff})=>{
               value={selectedWeek}
               onChange={(e)=>setSelectedWeek(e.target.value)} 
             >
-              {(payslips[selectedYear]).map((month)=>{
-                  
-                return(
-                  <option value={month.week} key={month.week}>{month.week}</option>
-                )
-              })}
+              <option value="" >Select Week</option>
+              {
+                (payslips[selectedYear][selectedMonth])
+                .filter((month)=>month.week !== currentWeek)
+                .map((filteredWeek)=><option value={filteredWeek.week} key={filteredWeek.week}>{filteredWeek.week} Payslip</option>)
+              }
             
             </select>
-            <div className="error_message"></div>
+            
           </>
         )}
 

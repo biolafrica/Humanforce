@@ -123,6 +123,9 @@ textarea {
   box-sizing: border-box;
 
 }
+select{
+  margin-bottom: 20px;
+}
 
 input[type=checkbox] {
   width: 24px;
@@ -231,12 +234,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 20px;
+  padding: 20px 120px;
   position: fixed;
   right: 0;
   left: 0;
   top: 0;
   background-color: white;
+  z-index: 1;
 }
 
 .login_container{
@@ -430,7 +434,7 @@ a {
 .table_container{
   border: 1px solid var(--Border-light);
   width: 80%;
-  margin: 200px auto 0px auto;
+  margin: 120px auto 50px auto;
   padding: 20px;
   border-radius: 5px;
 
@@ -1381,6 +1385,10 @@ a {
     border: none;
   }
 
+  .nav_container {
+    padding: 20px 30px;
+  }
+
 }
 
 @media(min-width:769px) and (max-width:992px) {
@@ -1429,5 +1437,7 @@ a {
   .clock_container{
     width: 80%;
   }
+
+ 
 
 }
