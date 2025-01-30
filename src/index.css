@@ -1121,16 +1121,10 @@ a {
   margin-bottom: 30px;
 }
 
-.payment_head,
-.payment_cont_column
-{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  text-align: left;
-}
-
 .deduction_header,
-.deduction_column{
+.deduction_column,
+.payment_head,
+.payment_cont_column{
   display: flex;
   justify-content: space-between;
 }

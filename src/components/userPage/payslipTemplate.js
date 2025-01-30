@@ -57,27 +57,61 @@ const PayslipTemplate = ({payslipData, staff})=>{
         <div className="payslip_template_payment">
           <div className="payment_head">
             <h6><b>PAYMENT</b></h6>
-            <h6><b>RATE</b></h6>
-            <h6><b>UNIT</b></h6>
             <h6><b>AMOUNT</b></h6>
           </div>
-
+         
           <div className="payment_cont">
+            {staff.employment_type === "contract" && (
+              <>
+                <div className="payment_cont_column">
+                  <h6>Monday Pay</h6>
+                  <h6>{formatNaira(payslipData.days.monday.rate || 0)}</h6>
+                </div>
+
+                <div className="payment_cont_column">
+                  <h6>Tuesday Pay</h6>
+                  <h6>{formatNaira(payslipData.days.tuesday.rate)}</h6>
+                </div>
+
+                <div className="payment_cont_column">
+                  <h6>Wednesday Pay</h6>
+                  <h6>{formatNaira(payslipData.days.wednesday.rate)}</h6>
+                </div>
+
+                <div className="payment_cont_column">
+                  <h6>Thursday Pay</h6>
+                  <h6>{formatNaira(payslipData.days.thursday.rate)}</h6>
+                </div>
+
+                <div className="payment_cont_column">
+                  <h6>Friday Pay</h6>
+                  <h6>{formatNaira(payslipData.days.friday.rate)}</h6>
+                </div>
+
+                <div className="payment_cont_column">
+                  <h6>Saturday Pay</h6>
+                  <h6>{formatNaira(payslipData.days.saturday.rate)}</h6>
+                </div>
+
+              </>
+
+            )}
+            
+            <br/>
+            
             <div className="payment_cont_column">
               <h6>Basic Pay</h6>
               <h6>{formatNaira(payslipData.basic_pay)}</h6>
-              <h6>1</h6>
-              <h6>{formatNaira(payslipData.bonuses)}</h6>
             </div>
 
             <div className="payment_cont_column">
               <h6>Bonuses</h6>
               <h6>{formatNaira(payslipData.bonuses)}</h6>
-              <h6>1</h6>
-              <h6>{formatNaira(payslipData.bonuses)}</h6>
             </div>
+
           </div>
         </div>
+
 
         <div className="payslip_template_deductions">
           
@@ -113,7 +147,7 @@ const PayslipTemplate = ({payslipData, staff})=>{
       <div className="payslip_template_footer">
 
         <div className="payslip_template_footer_left">
-          <h4>......Delivering happiness in meal boxes</h4>
+          <h4>Thank you for your hardwork {staff.firstname}!</h4>
         </div>
 
         <div className="payslip_template_footer_right">

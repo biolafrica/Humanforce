@@ -22,20 +22,32 @@ const PayslipForm = ({payslips, staff})=>{
   
   const handleViewPayslip = (e)=>{
     e.preventDefault();
-    const selectedPayslip = payslips[selectedYear].filter((months)=> {
-      const optionMonth = new Date(months.createdAt).toLocaleString("default", {
-        month: 'long', 
-        year: "numeric",
+    let selectedPayslip = [];
+
+    if (staff.employment_type === "fixed"){
+      selectedPayslip = payslips[selectedYear].filter((months)=> {
+        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'})
+        return(optionMonth === selectedMonth)
       })
-      return(optionMonth === selectedMonth)
 
-    })
+    }else{
+      selectedPayslip = payslips[selectedYear][selectedMonth].filter((months)=> {
+        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'})
+        return(optionMonth === selectedMonth)
+      })
 
-    if(selectedPayslip.length > 0 && (payslips[currentYear])[0].staff_type === "fixed"){
+    }
+ 
+
+    if(selectedPayslip.length > 0 && staff.employment_type === "fixed"){
+      const selectedPayslip = payslips[selectedYear].filter((months)=> {
+        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'})
+        return(optionMonth === selectedMonth)
+      })
       setPayslipData(selectedPayslip[0])
       setOverlay("overlay")
 
-    }else if((selectedPayslip.length > 0 && (payslips[currentYear])[0].staff_type === "contract")){
+    }else if(selectedPayslip.length > 0 && staff.employment_type === "contract"){
       const selectedOptionWeek = selectedPayslip.filter((weeks) => weeks.week === selectedWeek);
       setPayslipData(selectedOptionWeek[0])
       setOverlay("overlay")
