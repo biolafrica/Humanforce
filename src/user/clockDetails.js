@@ -67,10 +67,8 @@ const ClockDetails =()=>{
         <DisplayTimer time={data.attendance} />
 
         <div className="clockstatus_container">
-
           <StaffDetails staff={user}/>
           <StaffClock clock ={data.attendance}/>
-
         </div>
 
         <button 
@@ -86,10 +84,9 @@ const ClockDetails =()=>{
             visible={alert.visible} 
             message={alert.message} 
             type={alert.type}
-            
           />
         )}
-      
+  
       </div>
     )
   
