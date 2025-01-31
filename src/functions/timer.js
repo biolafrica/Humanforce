@@ -13,7 +13,6 @@ const Timer =({
 
   useEffect(()=>{
     let timer;
-    console.log("Timer isRunning:", isRunning, "isPaused:", isPaused);
 
     if(isRunning && !isPaused){
       timer = setInterval(()=>{
@@ -36,7 +35,7 @@ const Timer =({
    
   },[isRunning, isPaused]);
 
-  const formatTime = (time) => (time < 10 ? `0${time}` : time);
+  const formatTime = (time) =>time < 10 ? `0${time}` : time;
 
   return(
     

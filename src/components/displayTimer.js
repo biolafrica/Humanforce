@@ -1,16 +1,9 @@
 import Timer from "../functions/timer";
 import { breakTimeDifference, timeDifference } from "./formatmtime";
-const defaultTime = new Date(0).toISOString();
 
 const DisplayTimer = ({time})=>{
-
-  if(
-    time.clock_in !== defaultTime || null &&
-    time.break_start === defaultTime || null && 
-    time.break_end === defaultTime || null && 
-    time.clock_out === defaultTime || null
-  )
-  {
+  
+  if(time.clock_in && !time.break_start && !time.break_end && !time.clock_out){
     let difference = timeDifference(time.clock_in, new Date());
     return(
       <Timer
@@ -23,13 +16,7 @@ const DisplayTimer = ({time})=>{
     )
     
   }
-  else if (
-    time.clock_in !== defaultTime || null && 
-    time.break_start !== defaultTime || null && 
-    time.break_end == defaultTime || null && 
-    time.clock_out === defaultTime || null
-  )
-  {
+  else if (time.clock_in && time.break_start && !time.break_end && !time.clock_out){
     let difference = timeDifference(time.clock_in, time.break_start);
     return(
       <Timer
@@ -42,21 +29,8 @@ const DisplayTimer = ({time})=>{
     )
 
   }
-  else if(
-    time.clock_in !== defaultTime || null && 
-    time.break_start !== defaultTime || null && 
-    time.break_end !== defaultTime || null && 
-    time.clock_out === defaultTime || null
-  )
-  {
-    
-    let difference = breakTimeDifference(
-      time.clock_in,
-      new Date(),
-      time.break_start, 
-      time.break_end
-    )
-  
+  else if(time.clock_in && time.break_start && time.break_end && time.clock_out){
+    let difference = breakTimeDifference(time.clock_in, new Date(), time.break_start, time.break_end)
     return(
       <Timer
         initialHours = {difference.hours}
@@ -64,20 +38,11 @@ const DisplayTimer = ({time})=>{
         initialSeconds = {difference.seconds}
         isRunning = {true}
         isPaused = {false}
-       
-        
       />
-      
     )
 
   }
-  else if(
-    time.clock_in !== defaultTime || null && 
-    time.break_start !== defaultTime || null && 
-    time.break_end !== defaultTime || null && 
-    time.clock_out !== defaultTime || null
-  )
-  {
+  else if(time.clock_in && time.break_start && time.break_end && time.clock_out){
     let difference = timeDifference(time.clock_in, time.clock_out);
     return(
       <Timer
@@ -88,6 +53,7 @@ const DisplayTimer = ({time})=>{
         isRunning = {false}
       />
     )
+
   }else{
     let difference = timeDifference(time.clock_in, time.clock_out);
     return(

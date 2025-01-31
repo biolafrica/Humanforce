@@ -1,13 +1,15 @@
 import {formatMTime} from "../formatmtime"
 
 const StaffClock = ({clock})=>{
-  console.log("clock", clock)
-  const clock_in = formatMTime(clock.clock_in); 
-  const break_start = formatMTime(clock.break_start);
-  const break_end = formatMTime(clock.break_end);
-  const clock_out = formatMTime(clock.clock_out);
-
-  const display =(time)=>(time === "01 : 00" ? "none" : "")
+  
+  const [clock_in, break_start, break_end, clock_out] = [
+    formatMTime(clock.clock_in),
+    formatMTime(clock.break_start), 
+    formatMTime(clock.break_end), 
+    formatMTime(clock.clock_out)
+  ]
+ 
+  const display =(time)=>time === "01 : 00" ? "none" : "";
 
   return(
 

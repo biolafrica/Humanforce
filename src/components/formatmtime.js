@@ -7,7 +7,6 @@ const formatMTime=(time)=>{
   return `${hours} : ${minute}`
 }
 
-
 const formattedFullTime = (timeStamp)=>{
 
   const date = new Date(timeStamp); 
@@ -20,8 +19,6 @@ const formattedFullTime = (timeStamp)=>{
 
 }
 
-
-
 const timeDifference=(startTime, endTime)=>{
   
   const start = new Date(startTime);
@@ -30,14 +27,11 @@ const timeDifference=(startTime, endTime)=>{
   const diffInSeconds = Math.floor((end - start)/ 1000);
 
   const hours = Math.floor(diffInSeconds/ 3600);
-
   const minutes = Math.floor((diffInSeconds % 3600) / 60);
-
   const seconds = diffInSeconds % 60;
 
   return {hours, minutes, seconds}
 }
-
 
 const breakTimeDifference=(startTime,endTime,breakStart,breakEnd)=>{
 
@@ -52,15 +46,12 @@ const breakTimeDifference=(startTime,endTime,breakStart,breakEnd)=>{
   const diffInSeconds = timeDiffInSeconds - breakDiffInSeconds;
 
   const hours = Math.floor(diffInSeconds/ 3600);
-
   const minutes = Math.floor((diffInSeconds % 3600) / 60);
-
   const seconds = diffInSeconds % 60;
 
   return {hours, minutes, seconds}
 
 }
-
 
 const formattedDate=(timeStamp)=>{
 

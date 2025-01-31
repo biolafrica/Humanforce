@@ -16,22 +16,17 @@ const ClockDetails =()=>{
   const {alert, showAlert} = useAlert();
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
-
   const url = `http://localhost:4000/clock/${id}`;
+  const storedUser = localStorage.getItem('user');
+  const user =  JSON.parse(storedUser);
+
   const[refresh, setRefresh] = useState(false);
   const{data, isLoading, errorMessage} = useFetch(url,refresh);
-
-
-  const storedUser = localStorage.getItem('user');
-  const user = JSON.parse(storedUser);
 
   const patchAttendance = async(updates)=>{
     try {
       const response = await  axios.patch(`http://localhost:4000/clock/${id}`, updates, {
-        headers:{
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json"
-        }
+        headers:{ Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
       });
       setRefresh((prev)=> !prev);
       
@@ -44,10 +39,7 @@ const ClockDetails =()=>{
         showAlert("Error updating attendance", "error");
       }
      
-      
     }
-    
-
   }
 
   const handleSubmit = (e)=>{
@@ -99,8 +91,6 @@ const ClockDetails =()=>{
         )}
       
       </div>
-
-
     )
   
 
