@@ -81,6 +81,7 @@ const HomeClicks = (props)=>{
         </Link>
 
       </div>
+      
 
       <div className="home_down">
 

@@ -1,6 +1,7 @@
 import { formattedDate, formattedFullTime } from "../formatmtime";
 import usePagination from "../../hooks/usePagination"
 import Empty from "../empty";
+import { Link } from "react-router-dom";
 
 import Pagination from "../pagination"
 
@@ -27,13 +28,13 @@ const UserAttendancelist = ({attendance}) =>{
             const clockOut = formattedFullTime(attendance.clock_out);
 
             return(
-              <div className="column">
+              <Link to={`/clock/${attendance._id}`} className="column" Key={attendance._id}>
                 <h6 className="date_column">{date}</h6>
                 <h6 className="clockin_column"> <b className="small">Clock in: </b>{clockIn}</h6>
                 <h6 className="clockout_column"><b className="small" >Clock out: </b>{clockOut}</h6>
                 <h6 className="hours_column">{attendance.hours}<span className="small" >hours</span></h6>
                 <h6 className={`status_column ${attendance.status === "early" ? "early" : "late"}`}>{attendance.status}</h6>
-              </div>
+              </Link>
             )
 
           }))
