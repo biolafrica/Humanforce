@@ -1236,6 +1236,10 @@ a {
   width: 100%;
 }
 
+.dashboard_body select{
+  width: 20%;
+}
+
 
 @media(max-width:768px) {
   /* general styles */
