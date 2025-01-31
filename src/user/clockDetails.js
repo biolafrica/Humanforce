@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import UseFetch from "../hooks/userFetch";
 import StaffDetails from "../components/userPage/staffDetails";
 import StaffClock from "../components/userPage/staffClock";
 import {clockButton, clockButtonClass} from "../components/userPage/clockButton";
@@ -21,7 +21,7 @@ const ClockDetails =()=>{
   const user =  JSON.parse(storedUser);
 
   const[refresh, setRefresh] = useState(false);
-  const{data, isLoading, errorMessage} = useFetch(url,refresh);
+  const{data, isLoading, errorMessage} = UseFetch(url,token,refresh);
 
   const patchAttendance = async(updates)=>{
     try {

@@ -1,53 +1,73 @@
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import ErrorManagement from "../components/errorManagement";
+import {useNavigate } from "react-router-dom";
 
-function UserFetch(url, token){
+function UseFetch(url, token, refresh = false){
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
+  const  navigate = useNavigate();
 
-
+  
   useEffect(()=>{
+    const fetchData = async()=>{
+      try {
+        setIsLoading(true);
+        setErrorMessage(null);
 
-    setIsLoading(true);
-    fetch(url, {
-      method : "GET",
-      headers : {
-        'Content-Type' : "application/json",
-        Authorization: `Bearer ${token}`,
-      
-      }
-    })
-    .then(response =>{
-      if(!response.ok){
-        if(response.status === 401){
-          throw new Error ("Unauthorized Admin")
-        } else if(response.status === 403){
-          throw new Error ("Unauthorized User")
-        }else{
-          throw new Error('Error fetching data')
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if(!response.ok){
+          const errorText = await response.text();
+          let errorMessage = `Error: ${response.status}`;
+
+          if(response.status === 401){
+            errorMessage = "Unauthorized Admin";
+          }else if(response.status === 403){
+            errorMessage = "Unauthorized User";
+          }else if (response.status === 500){
+            errorMessage = "Server Error. Please try again later."
+          }
+
+          throw new Error(errorMessage || errorText)
         }
-      }
-      return response.json();
-    })
-    .then((data)=>{
-      console.log(data)
-      setData(data);
-      setIsLoading(false);
-      setErrorMessage(null)
-    })
-    .catch((err) =>{
-      setIsLoading(false);
-      <ErrorManagement err={err} setErrorMessage={setErrorMessage}/>
-      
-    })
 
-  }, [url, token]);
+        const result = await response.json();
+        setData(result)
+      } catch (error) {
+        handleError(error.message,navigate, setErrorMessage)
+      } finally{
+        setIsLoading(false)
+      }
+    };
+
+    fetchData();
+
+  }, [url, token, navigate, refresh])
 
   return {data, isLoading, errorMessage}
-
 }
 
-export default UserFetch;
+const handleError = (errorMessage,navigate,setErrorMessage)=>{
+  
+  if(errorMessage.includes("Unauthorized Admin")){
+    localStorage.removeItem("adminAuthToken");
+    localStorage.removeItem("team");
+    navigate("/admin/login");
+  }else if (errorMessage.includes('Unauthorized User')){
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
+    navigate("/login")
+  }else if(errorMessage.includes("Server Error")){
+    navigate("/server-error");
+  } else{
+    setErrorMessage(errorMessage || "An unexpected error occurred")
+  }
+};
+
+export default UseFetch;
