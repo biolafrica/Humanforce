@@ -3,8 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
 
-const HomeClicks = (props)=>{
-  const workingHours = props.workingHours.workingHours;
+const HomeClicks = ({business, workingHours})=>{
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
   const {alert, showAlert} = useAlert();
@@ -23,17 +22,10 @@ const HomeClicks = (props)=>{
       try {
         const response = await  axios.post("http://localhost:4000/clock", {token});
         const data = response.data;
-        if(data){
-          navigate(`/clock/${data.id}`);
-        }
+        if(data){navigate(`/clock/${data.id}`)}
         
-      } catch (error) {
-        console.error("Error:", error.response?.data || error.message); 
-        
-      }
-      
+      } catch (error) {console.error("Error:", error.response?.data || error.message)}
     }
-    
   }
 
   const handleEndWorkClick = async() =>{
@@ -82,7 +74,6 @@ const HomeClicks = (props)=>{
 
       </div>
       
-
       <div className="home_down">
 
         <Link to= "/Payslip" className="payroll_container">

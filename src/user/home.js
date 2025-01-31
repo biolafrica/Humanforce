@@ -1,7 +1,6 @@
 import DoubleUseFetch from "../hooks/doubleuseFetch";
 import HomeClicks from "../components/userPage/homeClick";
 import Loading from "../components/loading";
-import { useEffect, useState } from "react";
 
 const Homepage=()=>{
   const urlI = 'http://localhost:4000/business';
@@ -14,7 +13,7 @@ const Homepage=()=>{
   if(dataI && dataII){
     return(
     <div>
-      <HomeClicks business={dataI} workingHours={dataII} />
+      <HomeClicks business={dataI} workingHours={dataII.workingHours} />
     </div>
   )
   }

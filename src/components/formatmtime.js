@@ -67,20 +67,16 @@ const formattedDate=(timeStamp)=>{
 }
 
 const generateYearMonthWeeks =()=>{
-  const currentMonth = new Date().toLocaleString("default", {
-    month: 'long', 
-    year: "numeric"
-  });
   const currentYear = new Date().getFullYear().toString();
 
-  const currentMonthOnly = new Date().toLocaleString("default", {month: 'long'});
+  const currentMonth = new Date().toLocaleString("default", {month: 'long'});
 
   const date = new Date();
   const start = new Date(date.getFullYear(), 0, 1);
   const diff = (date - start +(start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) / 86400000;
   const week = `${date.getFullYear()}-W${Math.ceil((diff + start.getDay() + 1) / 7)}`;
   
-  return{currentMonth,currentMonthOnly, currentYear, week};
+  return{currentMonth, currentYear, week};
 
 }
 

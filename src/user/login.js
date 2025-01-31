@@ -2,7 +2,6 @@ import {useForm} from "../hooks/useForm";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
 import {AlertPopup, useAlert} from "../components/alert";
-import { type } from "@testing-library/user-event/dist/type";
 
 const Login = ()=>{
   const navigate = useNavigate();
@@ -13,18 +12,17 @@ const Login = ()=>{
     staff_code: ""
   })
 
-  const{formData, handleInputChange, resetForm} = useForm(initialValue)
+  const {formData, handleInputChange, resetForm} = useForm(initialValue)
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:4000/login", formData);
       const data = response.data;
-      const {token,user} = response.data;
+      const {token, user} = response.data;
 
       localStorage.setItem("authToken", token);
       localStorage.setItem('user', JSON.stringify(user));
-      console.log(token, user);
 
       if(data){
         showAlert("Logged in successfully", "success");
@@ -77,6 +75,5 @@ const Login = ()=>{
   )
  
 }
-
 
 export default Login

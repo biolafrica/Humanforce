@@ -7,12 +7,9 @@ import {AlertPopup, useAlert } from "../alert";
 
 
 const PayslipForm = ({payslips, staff})=>{
-  console.log(payslips);
-  const currentMonth = generateYearMonthWeeks().currentMonthOnly;
-  const currentYear = generateYearMonthWeeks().currentYear;
-  const currentWeek = generateYearMonthWeeks().week;
-  
+  const {currentYear, currentWeek, currentMonth} = generateYearMonthWeeks();
   const {alert, showAlert} = useAlert();
+  const longMonth = (item)=>{new Date(item).toLocaleString("default", {month: 'long'})}
 
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
@@ -20,19 +17,20 @@ const PayslipForm = ({payslips, staff})=>{
   const [payslipData, setPayslipData] = useState({});
   const [overlay, setOverlay] = useState("")
   
+
   const handleViewPayslip = (e)=>{
     e.preventDefault();
     let selectedPayslip = [];
 
     if (staff.employment_type === "fixed"){
       selectedPayslip = payslips[selectedYear].filter((months)=> {
-        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'})
+        const optionMonth = longMonth(months.createdAt)
         return(optionMonth === selectedMonth)
       })
 
     }else{
       selectedPayslip = payslips[selectedYear][selectedMonth].filter((months)=> {
-        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'})
+        const optionMonth = longMonth(months.createdAt)
         return(optionMonth === selectedMonth)
       })
 
@@ -41,7 +39,7 @@ const PayslipForm = ({payslips, staff})=>{
 
     if(selectedPayslip.length > 0 && staff.employment_type === "fixed"){
       const selectedPayslip = payslips[selectedYear].filter((months)=> {
-        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'})
+        const optionMonth = longMonth(months.createdAt)
         return(optionMonth === selectedMonth)
       })
       setPayslipData(selectedPayslip[0])

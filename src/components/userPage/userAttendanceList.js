@@ -23,9 +23,11 @@ const UserAttendancelist = ({attendance}) =>{
 
           (currentData.map((attendance)=>{
 
-            const date = formattedDate(attendance.createdAt);
-            const clockIn = formattedFullTime(attendance.clock_in);
-            const clockOut = formattedFullTime(attendance.clock_out);
+            const [date, clockIn, clockOut] = [
+              formattedDate(attendance.createdAt),
+              formattedFullTime(attendance.clock_in), 
+              formattedFullTime(attendance.clock_out)
+            ]
 
             return(
               <Link to={`/clock/${attendance._id}`} className="column" Key={attendance._id}>

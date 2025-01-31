@@ -12,11 +12,6 @@ const Attendance = ({attendance})=>{
 
   },[selectedMonth, attendance])
 
-  const handleMonthChange = (e)=>{
-    setSelectedMonth(e.target.value)
-  }
-
-
   return(
 
     <div className="table_container att">
@@ -24,13 +19,13 @@ const Attendance = ({attendance})=>{
       <div className="attendance_sub_container">
 
         <div className="att_filter">
-          <select name="" value={selectedMonth} onChange={handleMonthChange}>
-            {Object.keys(attendance).map((month)=>(<option value={month} key={month}>{month}</option>))}
+          <select name="" value={selectedMonth} onChange={(e)=>setSelectedMonth(e.target.value)}>
+            {Object.keys(attendance).map((month)=><option value={month} key={month}>{month}</option>)}
           </select>
         </div>
 
         <div className="performance-cont">
-          <img src={`icons/${performance(attendanceData)}.svg`} alt="" />
+          <img src={`icons/${performance(attendanceData)}.svg`} alt="performance-emoji" />
           <h4>{performance(attendanceData)}</h4>
         </div>
 
