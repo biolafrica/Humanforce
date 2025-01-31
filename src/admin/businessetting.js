@@ -5,7 +5,7 @@ import Loading from "../components/loading";
 const Businessetting =()=>{
   const urlI = 'http://localhost:4000/admin/business';
   const urlII = 'http://localhost:4000/admin/working-hours';
-  const token = localStorage.getItem("adminAuthToken")
+  const token = localStorage.getItem("adminAuthToken");
   const {dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI,urlII,token);
 
   if(isLoading) return(<Loading width={200} height={200}/>)

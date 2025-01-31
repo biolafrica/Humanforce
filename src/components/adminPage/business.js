@@ -35,8 +35,7 @@ const Business= (props)=>{
 
   const{
     formData,
-    handleInputChange, 
-    resetForm,
+    handleInputChange,
     handleSuggestionClick,
     isLoading,
     suggestions

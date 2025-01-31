@@ -12,7 +12,6 @@ const Dashboard =()=>{
   if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(data){
-    console.log(data)
 
     return(
       <div className="dashboard-cont">

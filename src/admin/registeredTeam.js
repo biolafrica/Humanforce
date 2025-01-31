@@ -1,6 +1,7 @@
 import TeamForm from "../components/adminPage/teamForm";
 import { useParams } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
+import Loading from "../components/loading";
 
 const RegisteredTeam = ()=>{
   const {id} = useParams();
@@ -10,7 +11,7 @@ const RegisteredTeam = ()=>{
   const edit = true;
   const {data, isLoading, errorMessage} = UserFetch(url, token);
 
-  if(isLoading) return (<div>.....Loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return ({errorMessage})
   if(data){
     const initialValues = {

@@ -6,13 +6,12 @@ import { useNavigate } from "react-router-dom";
 import useTeam from "./buttonState";
 import formatNaira from "../../utils/formatNaira"
 
-const UnpaidStaff =(props)=>{
+const UnpaidStaff =({payroll})=>{
   const navigate = useNavigate();
   const {alert, showAlert} = useAlert();
-  const payroll = props.data
   const {id} = useParams();
   const token = localStorage.getItem("adminAuthToken");
-  const {AdminNonExclusiveButton} = useTeam()
+  const {AdminNonExclusiveButton} = useTeam();
  
   const initialValues = {
     basic_pay : payroll.basic_pay ,
@@ -25,7 +24,7 @@ const UnpaidStaff =(props)=>{
     tax : payroll.tax,
 
   }
-  const {formData, handleInputChange, resetForm} = useForm (initialValues)
+  const {formData, handleInputChange} = useForm(initialValues);
 
   const handleSubmitForm = async(e)=>{
     e.preventDefault();
@@ -180,8 +179,8 @@ const UnpaidStaff =(props)=>{
   )
 }
 
-const PaidStaff =(props)=>{
-  const payroll = props.data === null ? 0 : props.data;
+const PaidStaff =({paidPayroll})=>{
+  const payroll = paidPayroll === null ? 0 : paidPayroll;
 
   return(
 

@@ -6,9 +6,7 @@ import { AlertPopup, useAlert } from "../components/alert";
 
 
 const AdminLogin = () =>{
-
   const navigate = useNavigate();
-
   const {alert, showAlert} = useAlert();
 
   const initialValue = ({

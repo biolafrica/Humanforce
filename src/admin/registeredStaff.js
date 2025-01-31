@@ -1,6 +1,8 @@
 import StaffForm from "../components/adminPage/staffForm";
 import { useParams } from "react-router-dom";
 import UserFetch from "../hooks/userFetch";
+import Loading from "../components/loading";
+
 
 const RegisteredStaff = ()=>{
   const {id} = useParams();
@@ -10,7 +12,7 @@ const RegisteredStaff = ()=>{
   const {data, isLoading, errorMessage} = UserFetch(url,token);
 
 
-  if(isLoading) return(<div>....Loading</div>)
+  if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(data){
     const staff = data.staff;

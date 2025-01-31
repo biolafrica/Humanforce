@@ -8,7 +8,6 @@ import formatNaira from "../../utils/formatNaira";
 
 
 const PayrollTable = ({weeks}) =>{
-  console.log("payroll week", weeks)
   
   return(
     <div className="table_body">

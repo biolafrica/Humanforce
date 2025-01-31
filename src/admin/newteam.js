@@ -13,7 +13,6 @@ const NewTeam =()=>{
   if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return({errorMessage})
   if(data){
-    console.log("team data", data)
     const initialValues = {
       staff_id: "",
       team_role: ""

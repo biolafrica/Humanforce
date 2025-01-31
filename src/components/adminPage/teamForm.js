@@ -13,7 +13,6 @@ const TeamForm = ({url, initialValues, users, edit})=>{
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
-    console.log(formData);
 
     try {
       const res = await axios.post(url, formData,{

@@ -4,14 +4,11 @@ import UserAttendancelist from "../components/userPage/userAttendanceList";
 import Loading from "../components/loading";
 
 const AttendanceMore = ()=>{
-
   const {id} = useParams();
   const location = useLocation()
-
   const searchParams = new URLSearchParams(location.search);
   const monthYear = searchParams.get("monthYear");
 
-  console.log("attendance id", id)
   const url = `http://localhost:4000/admin/attendance/${id}?monthYear=${encodeURIComponent(monthYear)}`;
   const token = localStorage.getItem("adminAuthToken")
   

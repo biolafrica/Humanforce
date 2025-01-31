@@ -11,7 +11,7 @@ const WorkingHours = (props)=>{
   const data = props.data.workingHours;
   const hour = data[0].days;
   const token = localStorage.getItem("adminAuthToken")
-  const {AdminExclusiveButton} = useTeam();
+  const {AdminExclusiveButton} = useTeam()
   
   const [sun,mon,tue,wed,thur,fri,sat] = [
     hour.sunday,

@@ -6,7 +6,6 @@ import Loading from "../components/loading";
 
 const FixedStaffEdit = ()=>{
   const {id} = useParams();
-  console.log("selected user id", id)
   const url = `http://localhost:4000/admin/payroll/${id}`;
   const token = localStorage.getItem("adminAuthToken")
   
@@ -88,9 +87,9 @@ const FixedStaffEdit = ()=>{
         <div>
 
           {selectedMonth === payrollMonths[0]?.value ? (
-            <UnpaidStaff data={activeMonthData}/>
+            <UnpaidStaff payroll={activeMonthData}/>
           ):(
-            <PaidStaff data={activeMonthData} />
+            <PaidStaff paidPayroll={activeMonthData} />
           )}
           
           
