@@ -16,7 +16,6 @@ const PayslipForm = ({payslips, staff})=>{
   const [selectedWeek, setSelectedWeek] = useState(currentWeek);
   const [payslipData, setPayslipData] = useState({});
   const [overlay, setOverlay] = useState("")
-  
 
   const handleViewPayslip = (e)=>{
     e.preventDefault();
@@ -29,13 +28,12 @@ const PayslipForm = ({payslips, staff})=>{
       })
 
     }else{
-      selectedPayslip = payslips[selectedYear][selectedMonth].filter((months)=> {
-        const optionMonth = longMonth(months.createdAt)
-        return(optionMonth === selectedMonth)
+      selectedPayslip = payslips[selectedYear][selectedMonth].filter((weeks)=> {
+        const optionWeek = weeks.week
+        return(optionWeek === selectedWeek)
       })
 
     }
- 
 
     if(selectedPayslip.length > 0 && staff.employment_type === "fixed"){
       const selectedPayslip = payslips[selectedYear].filter((months)=> {
@@ -131,13 +129,13 @@ const PayslipForm = ({payslips, staff})=>{
         >
           <option value="" >Select Month</option>
           {staff.employment_type === "fixed" ?
-            (payslips[selectedYear]
+            (payslips[selectedYear] || []
               .filter((month)=>{
                 const optionMonth = new Date(month.createdAt).toLocaleString("default", {month: 'long'});
                 return optionMonth !== currentMonth;
               })
               .map((filteredMonth)=><option value={filteredMonth} key={filteredMonth}>{filteredMonth} Payslip</option>)
-            ) :(Object.keys(payslips[selectedYear])
+            ) :(Object.keys(payslips[selectedYear] || [])
               .map((month)=><option value={month} key={month}>{month}</option>)
             )
           }
@@ -156,7 +154,7 @@ const PayslipForm = ({payslips, staff})=>{
             >
               <option value="" >Select Week</option>
               {
-                (payslips[selectedYear][selectedMonth])
+                (payslips[selectedYear][selectedMonth] || [])
                 .filter((month)=>month.week !== currentWeek)
                 .map((filteredWeek)=><option value={filteredWeek.week} key={filteredWeek.week}>{filteredWeek.week} Payslip</option>)
               }

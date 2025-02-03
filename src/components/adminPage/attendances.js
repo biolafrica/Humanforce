@@ -3,7 +3,7 @@ import { useState, useEffect} from "react";
 
 const Attendances = ({users, attendances})=>{
   const currentMonth = new Date().toLocaleString('default',{month: 'long', year:'numeric'})
-  console.log("attendances", attendances);
+  console.log("currentMonth", currentMonth);
   
   const [selectedMonth, setSelectedMonth] = useState(currentMonth)
   const [attendanceData, setAttendanceData] = useState(attendances[currentMonth] || [])
@@ -23,6 +23,7 @@ const Attendances = ({users, attendances})=>{
 
       <div className="attendance_filter">
         <select name="" value={selectedMonth} onChange={handleMonthChange}>
+          {Object.keys(attendances).includes(currentMonth)? "" : <option value="">{currentMonth}</option>}
           {Object.keys(attendances).map((month)=>(<option value={month} key={month}>{month}</option>))}
         </select>
       </div>

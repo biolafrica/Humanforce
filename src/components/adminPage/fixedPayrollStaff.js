@@ -14,14 +14,14 @@ const UnpaidStaff =({payroll})=>{
   const {AdminNonExclusiveButton} = useTeam();
  
   const initialValues = {
-    basic_pay : payroll.basic_pay ,
-    bonuses : payroll.bonuses,
-    deductions : payroll.deductions,
-    lateness_fine : payroll.lateness_fine,
-    loan : payroll.loan,
-    net_pay : payroll.net_pay,
-    pension : payroll.pension,
-    tax : payroll.tax,
+    basic_pay : !payroll ? "" : payroll.basic_pay,
+    bonuses : !payroll ? "" : payroll.bonuses,
+    deductions : !payroll ? "" : payroll.deductions,
+    lateness_fine : !payroll ? "" : payroll.lateness_fine,
+    loan : !payroll ? "" : payroll.loan,
+    net_pay : !payroll ? "" : payroll.net_pay,
+    pension : !payroll ? "" : payroll.pension,
+    tax : !payroll ? "" : payroll.tax,
 
   }
   const {formData, handleInputChange} = useForm(initialValues);
@@ -180,7 +180,8 @@ const UnpaidStaff =({payroll})=>{
 }
 
 const PaidStaff =({paidPayroll})=>{
-  const payroll = paidPayroll === null ? 0 : paidPayroll;
+  const payroll = paidPayroll[0];
+  
 
   return(
 

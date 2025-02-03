@@ -5,53 +5,57 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import formatNaira from "../../utils/formatNaira";
+import Empty from "../empty";
 
 
 const PayrollTable = ({weeks}) =>{
   
   return(
-    <div className="table_body">
+    <div className="table_body my_table">
 
-      {weeks.map((week, index)=>{
-        const deductions = week.loan + week.lateness_fine + week.tax + week.pension;
-        const net_pay  = (week.basic_pay + week.bonuses) - deductions ;
+      {weeks.length === 0 ? (<Empty/>):
+        (weeks.map((week, index)=>{
+          const deductions = week.loan + week.lateness_fine + week.tax + week.pension;
+          const net_pay  = (week.basic_pay + week.bonuses) - deductions ;
 
-        return(
-          <div className="column" key={week._id}>
-            <h6 className="date_column">Week {index + 1}</h6>
-            <h6 className="clockin_column">{formatNaira(week.basic_pay)}</h6>
-            <h6 className="clockout_column">{formatNaira(deductions)}</h6>
-            <h6 className="hours_column">{formatNaira(week.bonuses)}</h6>
-            <h6 className="status_column">{formatNaira(net_pay)}</h6>
-          </div>
-        )
-      })}
+          return(
+            <div className="column" key={week._id}>
+              <h6 className="date_column">Week {index + 1}</h6>
+              <h6 className="clockin_column">{formatNaira(week.basic_pay)}</h6>
+              <h6 className="clockout_column">{formatNaira(deductions)}</h6>
+              <h6 className="hours_column">{formatNaira(week.bonuses)}</h6>
+              <h6 className="status_column">{formatNaira(net_pay)}</h6>
+            </div>
+          )
+        }))
+      }
 
       
       {/* Total Row */}
-      <div className="column">
-      
-        <h6 className="date_column">Total</h6>
-        <h6 className="clockin_column">{formatNaira(weeks.reduce((acc, week)=>acc + week.basic_pay, 0).toFixed(2))}</h6>
-        <h6 className="clockout_column">
-          {
-            formatNaira(weeks.reduce((acc, week)=>
-            acc + (week.loan + week.lateness_fine + week.tax + week.pension), 0).toFixed(2))
-          }
-        </h6>
-        <h6 className="hours_column">{formatNaira(weeks.reduce((acc, week)=>acc + week.bonuses, 0).toFixed(2))}</h6>
-        <h6 className="status_column">
-          { 
-            formatNaira(weeks.reduce((acc, week)=>{
-              const deductions = week.loan + week.lateness_fine + week.tax + week.pension;
-              const net_pay  = (week.basic_pay + week.bonuses) - deductions; 
-              return acc + net_pay;
-            }, 0)
-            .toFixed(2))
-          }
-        </h6>
-      </div>
-
+      { weeks.length === 0 ? (<Empty/>):
+        (<div className="column">
+        
+          <h6 className="date_column">Total</h6>
+          <h6 className="clockin_column">{formatNaira(weeks.reduce((acc, week)=>acc + week.basic_pay, 0).toFixed(2))}</h6>
+          <h6 className="clockout_column">
+            {
+              formatNaira(weeks.reduce((acc, week)=>
+              acc + (week.loan + week.lateness_fine + week.tax + week.pension), 0).toFixed(2))
+            }
+          </h6>
+          <h6 className="hours_column">{formatNaira(weeks.reduce((acc, week)=>acc + week.bonuses, 0).toFixed(2))}</h6>
+          <h6 className="status_column">
+            { 
+              formatNaira(weeks.reduce((acc, week)=>{
+                const deductions = week.loan + week.lateness_fine + week.tax + week.pension;
+                const net_pay  = (week.basic_pay + week.bonuses) - deductions; 
+                return acc + net_pay;
+              }, 0)
+              .toFixed(2))
+            }
+          </h6>
+        </div>)
+      }
     </div>
   );
 

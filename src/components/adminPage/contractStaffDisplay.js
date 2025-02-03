@@ -26,10 +26,6 @@ const ContractStaffDisplay = ({payroll})=>{
     month === currentMonth ? setIsEditVisible(true) : setIsEditVisible(false);
   }
 
-  const canOpenPopup = ()=>{
-    return ["Admin", "Operations", "Finance"].includes(team.role)
-  }
-
   return(
     <>
       <>
@@ -47,17 +43,13 @@ const ContractStaffDisplay = ({payroll})=>{
                   <select 
                     name="month"
                     value={selectedMonth}
-                    onChange={()=> handleMonthChange} 
+                    onChange={(e)=> handleMonthChange(e)} 
                   >
-                    {Object.keys(payrollData).map((month)=>(
-                      <option 
-                        value={month}
-                        key={month}
-                      >
-                        {month}
-                      </option>
-
-                    ))}
+                    {Object.keys(payrollData).includes(currentMonth) ? "" :<option value="">{currentMonth}</option>}
+                    {
+                      Object.keys(payrollData)
+                      .map((month)=>(<option value={month} key={month}>{month}</option>))
+                    }
                     
                   </select>
 
@@ -87,7 +79,7 @@ const ContractStaffDisplay = ({payroll})=>{
                 <h6 className="status_column">Net Pay</h6>
               </div>
 
-              <PayrollTable weeks={weeks}/>
+              <PayrollTable weeks={weeks || []}/>
             </>
           )
         

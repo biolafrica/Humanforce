@@ -12,7 +12,7 @@ const performance =(attendanceData)=>{
     return "Good"
   }else if(percentagePerformance >= 91 && percentagePerformance <= 100){
     return "Excellent"
-  }else if(percentagePerformance === 0){
+  }else if(percentagePerformance === 0 || !percentagePerformance){
     return "Get started"
   }
 

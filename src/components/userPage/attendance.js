@@ -20,6 +20,7 @@ const Attendance = ({attendance})=>{
 
         <div className="att_filter">
           <select name="" value={selectedMonth} onChange={(e)=>setSelectedMonth(e.target.value)}>
+            {Object.keys(attendance).includes(currentMonth)? "" : <option value="">{currentMonth}</option>}
             {Object.keys(attendance).map((month)=><option value={month} key={month}>{month}</option>)}
           </select>
         </div>
