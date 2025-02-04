@@ -12,5 +12,12 @@ describe('test suite: staff details components', ()=>{
     expect(screen.getByText("Abiodun Biobaku")).toBeInTheDocument();
 
   })
+   
+  test("test case: render empty staff details", ()=>{
+    const staff = {};
+    render(<StaffDetails staff={staff}/>)
+    expect(screen.getByText("Eatup Food Services")).toBeInTheDocument();
+
+  })
 
 })
