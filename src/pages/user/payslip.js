@@ -1,6 +1,6 @@
-import PayslipForm from "../components/userPage/payslipForm";
-import UserFetch from "../hooks/userFetch";
-import Loading from "../components/loading";
+import PayslipForm from "../../components/userPage/payslipForm";
+import UserFetch from "../../hooks/userFetch";
+import Loading from "../../components/loading";
 
 const Payslip =()=>{
   const url = "http://localhost:4000/payslip/";

@@ -1,6 +1,6 @@
-import Attendance from "../components/userPage/attendance";
-import UserFetch from "../hooks/userFetch";
-import Loading from "../components/loading";
+import Attendance from "../../components/userPage/attendance";
+import UserFetch from "../../hooks/userFetch";
+import Loading from "../../components/loading";
 
 const UserAttendance = ()=>{
   const token = localStorage.getItem("authToken");

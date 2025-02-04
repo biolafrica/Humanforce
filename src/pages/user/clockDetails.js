@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
-import UseFetch from "../hooks/userFetch";
-import StaffDetails from "../components/userPage/staffDetails";
-import StaffClock from "../components/userPage/staffClock";
-import {clockButton, clockButtonClass} from "../components/userPage/clockButton";
+import UseFetch from "../../hooks/userFetch";
+import StaffDetails from "../../components/userPage/staffDetails";
+import StaffClock from "../../components/userPage/staffClock";
+import {clockButton, clockButtonClass} from "../../components/userPage/clockButton";
 import axios from "axios";
 import { useState } from "react";
-import DisplayTimer from "../components/displayTimer";
-import { AlertPopup, useAlert } from "../components/alert";
+import DisplayTimer from "../../components/displayTimer";
+import { AlertPopup, useAlert } from "../../components/alert";
 import { useNavigate } from "react-router-dom";
-import Loading from "../components/loading";
+import Loading from "../../components/loading";
 
 
 const ClockDetails =()=>{

@@ -1,4 +1,4 @@
-import StaffForm from "../components/adminPage/staffForm";
+import StaffForm from "../../components/adminPage/staffForm";
 
 const NewStaff =()=>{
 

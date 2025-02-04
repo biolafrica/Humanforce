@@ -1,7 +1,7 @@
-import TeamForm from "../components/adminPage/teamForm";
+import TeamForm from "../../components/adminPage/teamForm";
 import { useParams } from "react-router-dom";
-import UserFetch from "../hooks/userFetch";
-import Loading from "../components/loading";
+import Loading from "../../components/loading";
+import UseFetch from "../../hooks/userFetch";
 
 const RegisteredTeam = ()=>{
   const {id} = useParams();
@@ -9,11 +9,12 @@ const RegisteredTeam = ()=>{
   const urlI = `http://localhost:4000/admin/team-edit/${id}`;
   const token = localStorage.getItem("adminAuthToken");
   const edit = true;
-  const {data, isLoading, errorMessage} = UserFetch(url, token);
+  const {data, isLoading, errorMessage} = UseFetch(url, token);
 
   if(isLoading) return(<Loading width={200} height={200}/>)
   if(errorMessage) return ({errorMessage})
   if(data){
+    console.log(data);
     const initialValues = {
       staff_code: data.staff_code,
       team_role: data.role,

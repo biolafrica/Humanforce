@@ -9,7 +9,7 @@ import {AlertPopup, useAlert } from "../alert";
 const PayslipForm = ({payslips, staff})=>{
   const {currentYear, currentWeek, currentMonth} = generateYearMonthWeeks();
   const {alert, showAlert} = useAlert();
-  const longMonth = (item)=>{new Date(item).toLocaleString("default", {month: 'long'})}
+  console.log(payslips)
 
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
@@ -23,9 +23,10 @@ const PayslipForm = ({payslips, staff})=>{
 
     if (staff.employment_type === "fixed"){
       selectedPayslip = payslips[selectedYear].filter((months)=> {
-        const optionMonth = longMonth(months.createdAt)
+        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'});
         return(optionMonth === selectedMonth)
       })
+      console.log(selectedPayslip)
 
     }else{
       selectedPayslip = payslips[selectedYear][selectedMonth].filter((weeks)=> {
@@ -37,10 +38,11 @@ const PayslipForm = ({payslips, staff})=>{
 
     if(selectedPayslip.length > 0 && staff.employment_type === "fixed"){
       const selectedPayslip = payslips[selectedYear].filter((months)=> {
-        const optionMonth = longMonth(months.createdAt)
+        const optionMonth =new Date(months.createdAt).toLocaleString("default", {month: 'long'})
         return(optionMonth === selectedMonth)
       })
       setPayslipData(selectedPayslip[0])
+       console.log(payslipData)
       setOverlay("overlay")
 
     }else if(selectedPayslip.length > 0 && staff.employment_type === "contract"){
@@ -127,14 +129,19 @@ const PayslipForm = ({payslips, staff})=>{
           value={selectedMonth}
           onChange={(e)=>setSelectedMonth(e.target.value)} 
         >
-          <option value="" >Select Month</option>
+          <option value="">Select Month</option>
           {staff.employment_type === "fixed" ?
-            (payslips[selectedYear] || []
+            ((payslips[selectedYear] || [])
               .filter((month)=>{
-                const optionMonth = new Date(month.createdAt).toLocaleString("default", {month: 'long'});
+                const optionMonth = new Date(month.createdAt).toLocaleString("default", {month: 'long'})
                 return optionMonth !== currentMonth;
               })
-              .map((filteredMonth)=><option value={filteredMonth} key={filteredMonth}>{filteredMonth} Payslip</option>)
+              .map((filteredMonth)=>{
+                const optionFilter = new Date(filteredMonth.createdAt).toLocaleString("default", {month: 'long'});
+                return(<option value={optionFilter} key={optionFilter}>
+                  {optionFilter} Payslip
+                </option>)
+              })
             ) :(Object.keys(payslips[selectedYear] || [])
               .map((month)=><option value={month} key={month}>{month}</option>)
             )

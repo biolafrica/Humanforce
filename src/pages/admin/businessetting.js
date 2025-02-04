@@ -1,6 +1,6 @@
-import Business from "../components/adminPage/business";
-import DoubleUseFetch from "../hooks/doubleuseFetch";
-import Loading from "../components/loading";
+import Business from "../../components/adminPage/business";
+import DoubleUseFetch from "../../hooks/doubleuseFetch";
+import Loading from "../../components/loading";
 
 const Businessetting =()=>{
   const urlI = 'http://localhost:4000/admin/business';

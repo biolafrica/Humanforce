@@ -1,7 +1,7 @@
-import useTeam from "../components/adminPage/buttonState";
-import UserFetch from "../hooks/userFetch";
-import Loading from "../components/loading";
-import DashboardDetails from "../components/adminPage/dashboardDetails";
+import useTeam from "../../components/adminPage/buttonState";
+import UserFetch from "../../hooks/userFetch";
+import Loading from "../../components/loading";
+import DashboardDetails from "../../components/adminPage/dashboardDetails";
 
 const Dashboard =()=>{
   const {team} = useTeam();

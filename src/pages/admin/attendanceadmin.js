@@ -1,6 +1,6 @@
-import DoubleUseFetch from "../hooks/doubleuseFetch";
-import Attendances from "../components/adminPage/attendances";
-import Loading from "../components/loading";
+import DoubleUseFetch from "../../hooks/doubleuseFetch";
+import Attendances from "../../components/adminPage/attendances";
+import Loading from "../../components/loading";
 
 
 const AttendanceAdmin =()=>{

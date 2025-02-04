@@ -1,7 +1,7 @@
 import { useState } from "react";
-import UserFetch from "../hooks/userFetch";
-import PayrollStaffList from "../components/adminPage/payrollStaffList";
-import Loading from "../components/loading";
+import UserFetch from "../../hooks/userFetch";
+import PayrollStaffList from "../../components/adminPage/payrollStaffList";
+import Loading from "../../components/loading";
 
 const Payroll =()=>{
   const url = "http://localhost:4000/admin/payrolls";

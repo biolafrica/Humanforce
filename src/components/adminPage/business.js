@@ -19,18 +19,18 @@ const Business= (props)=>{
   
 
   const initialValues = {
-    business_name : name.business_name,
-    business_email : name.business_email,
-    business_address_I : name.business_address_I,
-    business_address_II : name.business_address_I,
-    break_hours : name.break_hours,
-    lateness_hours : name.lateness_hours,
-    lateness_fine : name.lateness_fine,
-    business_phone_number : name.business_phone_number,
-    salary_date : name.salary_date,
-    wages_day : name.wages_day,
-    tax : name.tax,
-    pension : name.pension,
+    business_name : !name ? "" : name.business_name,
+    business_email :!name ? "" :  name.business_email,
+    business_address_I :!name ? "" :  name.business_address_I,
+    business_address_II :!name ? "" :  name.business_address_I,
+    break_hours :!name ? "" :  name.break_hours,
+    lateness_hours :!name ? "" :  name.lateness_hours,
+    lateness_fine :!name ? "" :  name.lateness_fine,
+    business_phone_number :!name ? "" :  name.business_phone_number,
+    salary_date :!name ? "" :  name.salary_date,
+    wages_day :!name ? "" :  name.wages_day,
+    tax :!name ? "" :  name.tax,
+    pension :!name ? "" :  name.pension,
   }
 
   const{
@@ -61,8 +61,10 @@ const Business= (props)=>{
           Authorization: `Bearer ${token}`,
         }
       });
+      
       showAlert("Business information saved successfully!", "success");
       setErrors("");
+      
       
     } catch (error) {
       console.error("Error saving business information. Please try again");

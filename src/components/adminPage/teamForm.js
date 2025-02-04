@@ -48,18 +48,18 @@ const TeamForm = ({url, initialValues, users, edit})=>{
           <label htmlFor="staff_id"><h4>Name</h4></label>
           <select
             name="staff_id"
-            value={FormData.staff_id}
+            value={formData.staff_id}
             onChange={handleInputChange}
             required
             disabled={isEditable}
             
           >
-            <option>Select Staff</option>
-            {edit ? (
-              <option value={users._id} key={users._id}>
+            {edit === true ? (
+              <option value={users.staff_code} key={users.staff_code}>
                 {users.firstname} {users.lastname}
               </option>
             ) : (
+            
               users.map((item) => (
                 <option value={item._id} key={item._id}>
                   {item.firstname} {item.lastname}

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import UserFetch from "../hooks/userFetch"
-import ContractStaffDisplay from "../components/adminPage/contractStaffDisplay";
-import Loading from "../components/loading";
+import UserFetch from "../../hooks/userFetch"
+import ContractStaffDisplay from "../../components/adminPage/contractStaffDisplay";
+import Loading from "../../components/loading";
 
 
 const ContractStaffEdit = ()=>{
@@ -26,8 +26,6 @@ const ContractStaffEdit = ()=>{
     )
 
   }
-
-
 
 }
 

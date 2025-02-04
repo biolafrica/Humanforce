@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import UserFetch from "../hooks/userFetch";
-import Loading from "../components/loading";
-import FixedStaffDisplay from "../components/adminPage/fixedStaffDisplay";
+import UserFetch from "../../hooks/userFetch";
+import Loading from "../../components/loading";
+import FixedStaffDisplay from "../../components/adminPage/fixedStaffDisplay";
 
 const FixedStaffEdit = ()=>{
   const {id} = useParams();

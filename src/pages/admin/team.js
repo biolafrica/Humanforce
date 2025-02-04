@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import UserFetch from "../hooks/userFetch";
-import TeamDetails from "../components/adminPage/teamDetails";
-import Loading from "../components/loading";
+import UserFetch from "../../hooks/userFetch";
+import TeamDetails from "../../components/adminPage/teamDetails";
+import Loading from "../../components/loading";
 import { useState } from "react";
-import useTeam from "../components/adminPage/buttonState";
+import useTeam from "../../components/adminPage/buttonState";
 
 const Team = ()=>{
   const url = "http://localhost:4000/admin/team";
