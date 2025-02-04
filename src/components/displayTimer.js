@@ -43,7 +43,7 @@ const DisplayTimer = ({time})=>{
 
   }
   else if(time.clock_in && time.break_start && time.break_end && time.clock_out){
-    let difference = timeDifference(time.clock_in, time.clock_out);
+    let difference = breakTimeDifference(time.clock_in, time.clock_out,time.break_start, time.break_end);
     return(
       <Timer
         initialHours = {difference.hours}
