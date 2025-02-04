@@ -1,16 +1,16 @@
 
-const StaffDetails = (props)=>(
+const StaffDetails = ({staff})=>(
 
   <div className="staff_details">
 
     <div className="staff_name">
       <img src="/icons/Person.svg" alt="" />
-      <h4>{props.staff.firstname} {props.staff.lastname}</h4>
+      <h4>{staff.firstname} {staff.lastname}</h4>
     </div>
 
     <div className="staff_position">
       <img src="/icons/Work.svg" alt="" />
-      <h4>{props.staff.position}</h4>
+      <h4>{staff.position}</h4>
     </div>
 
     <div className="staff_company">
