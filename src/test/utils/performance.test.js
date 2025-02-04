@@ -1,7 +1,5 @@
 import performance from "../../utils/performance";
 
-
-
 describe("test suite : for performance", ()=>{
 
   test("basic data test cases : excellent", ()=>{

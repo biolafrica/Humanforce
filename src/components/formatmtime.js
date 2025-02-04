@@ -62,8 +62,6 @@ const formattedDate=(timeStamp)=>{
   const year = dateObject.getFullYear();
 
   return(`${day} - ${month} - ${year}`);
-
-
 }
 
 const generateYearMonthWeeks =()=>{
