@@ -21,8 +21,8 @@ import FixedStaffEdit from "./pages/admin/fixedStaffEdit";
 import AttendanceAdmin from "./pages/admin/attendanceadmin";
 import AttendanceMore from "./pages/admin/attendancemore";
 import Businessetting from "./pages/admin/businessetting";
-import PathError from "./pages/pathError";
-import ServerError from "./pages/serverError";
+import PathError from "./pages/error/pathError";
+import ServerError from "./pages/error/serverError";
 import {PrivateRoute,AdminPrivateRoute} from "./utils/privateroute";
 
 
