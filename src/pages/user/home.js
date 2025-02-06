@@ -3,6 +3,7 @@ import HomeClicks from "../../components/userPage/homeClick";
 import Loading from "../../components/loading";
 
 const Homepage=()=>{
+  console.log(process.env.REACT_APP_API_URL)
   const urlI = `${process.env.REACT_APP_API_URL}/business`;
   const urlII = `${process.env.REACT_APP_API_URL}/working-hours`;
   const token = localStorage.getItem("authToken")
