@@ -16,7 +16,7 @@ const ClockDetails =()=>{
   const {alert, showAlert} = useAlert();
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
-  const url = `http://localhost:4000/clock/${id}`;
+  const url = `${process.env.REACT_APP_API_URL}/clock/${id}`;
   const storedUser = localStorage.getItem('user');
   const user =  JSON.parse(storedUser);
 
@@ -25,7 +25,7 @@ const ClockDetails =()=>{
 
   const patchAttendance = async(updates)=>{
     try {
-      const response = await  axios.patch(`http://localhost:4000/clock/${id}`, updates, {
+      const response = await  axios.patch(`${process.env.REACT_APP_API_URL}/clock/${id}`, updates, {
         headers:{ Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
       });
       setRefresh((prev)=> !prev);

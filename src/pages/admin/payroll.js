@@ -4,7 +4,7 @@ import PayrollStaffList from "../../components/adminPage/payrollStaffList";
 import Loading from "../../components/loading";
 
 const Payroll =()=>{
-  const url = "http://localhost:4000/admin/payrolls";
+  const url = `${process.env.REACT_APP_API_URL}/admin/payrolls`;
   const token = localStorage.getItem("adminAuthToken")
   const {data, isLoading, errorMessage} = UserFetch(url,token);
   const [activeTab, setActiveTab] = useState("fixed");

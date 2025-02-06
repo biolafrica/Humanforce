@@ -7,7 +7,7 @@ import Loading from "../../components/loading";
 const RegisteredStaff = ()=>{
   const {id} = useParams();
   const token = localStorage.getItem("adminAuthToken");
-  const url = `http://localhost:4000/admin/staff/${id}`;
+  const url = `${process.env.REACT_APP_API_URL}/admin/staff/${id}`;
  
   const {data, isLoading, errorMessage} = UserFetch(url,token);
 

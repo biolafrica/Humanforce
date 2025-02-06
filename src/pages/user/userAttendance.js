@@ -4,7 +4,7 @@ import Loading from "../../components/loading";
 
 const UserAttendance = ()=>{
   const token = localStorage.getItem("authToken");
-  const url  = "http://localhost:4000/attendance/";
+  const url  = `${process.env.REACT_APP_API_URL}/attendance/`;
 
   const{data, isLoading, errorMessage} = UserFetch(url, token); 
 

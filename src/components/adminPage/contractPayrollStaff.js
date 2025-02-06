@@ -149,7 +149,7 @@ const PayrollEditPopup = ({weeks, cancel}) =>{
     }
 
     try {
-      const response = await axios.post(`http://localhost:4000/admin/payroll/${id}`, finalData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/admin/payroll/${id}`, finalData, {
         headers:{
           Authorization : `Bearer ${token}`,
           "Content-Type": "application/json"

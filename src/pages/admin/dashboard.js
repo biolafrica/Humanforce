@@ -5,7 +5,7 @@ import DashboardDetails from "../../components/adminPage/dashboardDetails";
 
 const Dashboard =()=>{
   const {team} = useTeam();
-  const url = "http://localhost:4000/admin/dashboard";
+  const url = `${process.env.REACT_APP_API_URL}/admin/dashboard`;
   const token = localStorage.getItem("adminAuthToken");
   const {data, isLoading, errorMessage} = UserFetch(url,token);
 

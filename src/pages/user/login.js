@@ -13,11 +13,10 @@ const Login = ()=>{
   })
 
   const {formData, handleInputChange, resetForm} = useForm(initialValue)
-
   const handleSubmit = async(e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/login", formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, formData);
       const data = response.data;
       const {token, user} = response.data;
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
-import { AdminExclusiveButton } from "./buttonState";
 import useTeam from "./buttonState";
 
 const WorkingHours = (props)=>{
@@ -86,7 +85,7 @@ const WorkingHours = (props)=>{
 
     const payload = {days : workingHours}
     try {
-      const response = await axios.post("http://localhost:4000/admin/working-hours", payload, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/admin/working-hours`, payload, {
         headers:{
           Authorization: `Bearer ${token}`,
           'Content-Type' : "application/json",

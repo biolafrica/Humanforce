@@ -3,8 +3,8 @@ import HomeClicks from "../../components/userPage/homeClick";
 import Loading from "../../components/loading";
 
 const Homepage=()=>{
-  const urlI = 'http://localhost:4000/business';
-  const urlII = 'http://localhost:4000/working-hours';
+  const urlI = `${process.env.REACT_APP_API_URL}/business`;
+  const urlII = `${process.env.REACT_APP_API_URL}/working-hours`;
   const token = localStorage.getItem("authToken")
   const {dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI,urlII, token);
 

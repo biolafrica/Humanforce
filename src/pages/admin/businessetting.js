@@ -3,8 +3,8 @@ import DoubleUseFetch from "../../hooks/doubleuseFetch";
 import Loading from "../../components/loading";
 
 const Businessetting =()=>{
-  const urlI = 'http://localhost:4000/admin/business';
-  const urlII = 'http://localhost:4000/admin/working-hours';
+  const urlI = `${process.env.REACT_APP_API_URL}/admin/business`;
+  const urlII = `${process.env.REACT_APP_API_URL}/admin/working-hours`;
   const token = localStorage.getItem("adminAuthToken");
   const {dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI,urlII,token);
 

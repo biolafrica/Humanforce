@@ -6,7 +6,7 @@ import Loading from "../../components/loading";
 import useTeam from "../../components/adminPage/buttonState";
 
 const Staff = ()=>{
-  const url = "http://localhost:4000/admin/staff";
+  const url = `${process.env.REACT_APP_API_URL}/admin/staff`;
   const token = localStorage.getItem("adminAuthToken")
   const {data, isLoading, errorMessage} = UserFetch(url, token);
   const [activeTab, setActiveTab] = useState("all");

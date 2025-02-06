@@ -245,10 +245,11 @@ a {
 
 .login_container{
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid var(--Border-light);
   width: 40%;
   margin: 200px auto;
   padding: 50px;
+  border-radius: 5px;
 
 }
 

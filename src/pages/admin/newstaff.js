@@ -16,7 +16,7 @@ const NewStaff =()=>{
     next_of_kin_name: "",
     next_of_kin_phone_number: "",
   }
-  const url = "http://localhost:4000/admin/staff"
+  const url = `${process.env.REACT_APP_API_URL}/admin/staff`
 
 
   return(

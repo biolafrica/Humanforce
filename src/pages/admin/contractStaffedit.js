@@ -6,7 +6,7 @@ import Loading from "../../components/loading";
 
 const ContractStaffEdit = ()=>{
   const {id} = useParams();
-  const url = `http://localhost:4000/admin/payroll/${id}`;
+  const url = `${process.env.REACT_APP_API_URL}/admin/payroll/${id}`;
   const token = localStorage.getItem("adminAuthToken");
   const {data, isLoading, errorMessage}= UserFetch(url, token);
 

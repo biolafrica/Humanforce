@@ -5,8 +5,8 @@ import UseFetch from "../../hooks/userFetch";
 
 const RegisteredTeam = ()=>{
   const {id} = useParams();
-  const url = `http://localhost:4000/admin/team/${id}`;
-  const urlI = `http://localhost:4000/admin/team-edit/${id}`;
+  const url = `${process.env.REACT_APP_API_URL}/admin/team/${id}`;
+  const urlI = `${process.env.REACT_APP_API_URL}/admin/team-edit/${id}`;
   const token = localStorage.getItem("adminAuthToken");
   const edit = true;
   const {data, isLoading, errorMessage} = UseFetch(url, token);

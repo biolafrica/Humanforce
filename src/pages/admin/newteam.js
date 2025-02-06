@@ -3,8 +3,8 @@ import TeamForm from "../../components/adminPage/teamForm";
 import Loading from "../../components/loading";
 
 const NewTeam =()=>{
-  const url = "http://localhost:4000/admin/staff";
-  const urlI = "http://localhost:4000/admin/team";
+  const url = `${process.env.REACT_APP_API_URL}/admin/staff`;
+  const urlI = `${process.env.REACT_APP_API_URL}/admin/team`;
   const token = localStorage.getItem("adminAuthToken")
   const {data, isLoading, errorMessage} = UserFetch(url,token);
   const edit = false;

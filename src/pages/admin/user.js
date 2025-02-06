@@ -2,7 +2,6 @@ const DashboardUser =()=>{
   const storedUser = localStorage.getItem('team');
   const user = JSON.parse(storedUser);
 
-
   return(
 
     <div className="personal_body">

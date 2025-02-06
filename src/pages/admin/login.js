@@ -19,7 +19,7 @@ const AdminLogin = () =>{
     e.preventDefault();
     try {
 
-      const response = await axios.post("http://localhost:4000/admin/login", formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/admin/login`, formData);
       const data = response.data;
       const {token,team} = response.data;
 

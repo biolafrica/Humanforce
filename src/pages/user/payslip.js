@@ -3,7 +3,7 @@ import UserFetch from "../../hooks/userFetch";
 import Loading from "../../components/loading";
 
 const Payslip =()=>{
-  const url = "http://localhost:4000/payslip/";
+  const url = `${process.env.REACT_APP_API_URL}/payslip`;
   const token = localStorage.getItem('authToken');
   const{data, isLoading, errorMessage}= UserFetch(url, token);
 

@@ -4,8 +4,8 @@ import Loading from "../../components/loading";
 
 
 const AttendanceAdmin =()=>{
-  const urlI= 'http://localhost:4000/admin/staff';
-  const urlII = 'http://localhost:4000/admin/attendances';
+  const urlI= `${process.env.REACT_APP_API_URL}/admin/staff`;
+  const urlII = `${process.env.REACT_APP_API_URL}/admin/attendances`;
   const token = localStorage.getItem("adminAuthToken")
 
   const{dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI, urlII, token);

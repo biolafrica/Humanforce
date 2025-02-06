@@ -20,7 +20,7 @@ const HomeClicks = ({business, workingHours})=>{
       return showAlert("we are not operational today", "info")
     }else{
       try {
-        const response = await  axios.post("http://localhost:4000/clock", {token});
+        const response = await  axios.post(`${process.env.REACT_APP_API_URL}/clock`, {token});
         const data = response.data;
         if(data){navigate(`/clock/${data.id}`)}
         
@@ -34,7 +34,7 @@ const HomeClicks = ({business, workingHours})=>{
       return showAlert("we are not operational today", "info")
     }else{
       try {
-        const response = await axios.post("http://localhost:4000/clocked", {token});
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/clocked`, {token});
         const data = response.data;
         
         if(data.id){

@@ -6,7 +6,7 @@ import { useState } from "react";
 import useTeam from "../../components/adminPage/buttonState";
 
 const Team = ()=>{
-  const url = "http://localhost:4000/admin/team";
+  const url = `${process.env.REACT_APP_API_URL}/admin/team`;
   const token = localStorage.getItem("adminAuthToken")
   const {data, isLoading, errorMessage} = UserFetch(url,token);
   const [searchTerm, setSearchTerm] = useState("");

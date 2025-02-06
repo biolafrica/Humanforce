@@ -55,7 +55,7 @@ const Business= (props)=>{
     }
     
     try {
-      const response = await axios.post("http://localhost:4000/admin/business", formData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/admin/business`, formData, {
         headers:{
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

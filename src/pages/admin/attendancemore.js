@@ -9,7 +9,7 @@ const AttendanceMore = ()=>{
   const searchParams = new URLSearchParams(location.search);
   const monthYear = searchParams.get("monthYear");
 
-  const url = `http://localhost:4000/admin/attendance/${id}?monthYear=${encodeURIComponent(monthYear)}`;
+  const url = `${process.env.REACT_APP_API_URL}/admin/attendance/${id}?monthYear=${encodeURIComponent(monthYear)}`;
   const token = localStorage.getItem("adminAuthToken")
   
   const {data, isLoading, errorMessage} = UserFetch(url, token);

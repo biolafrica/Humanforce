@@ -9,7 +9,6 @@ import {AlertPopup, useAlert } from "../alert";
 const PayslipForm = ({payslips, staff})=>{
   const {currentYear, currentWeek, currentMonth} = generateYearMonthWeeks();
   const {alert, showAlert} = useAlert();
-  console.log(payslips)
 
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
