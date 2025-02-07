@@ -85,6 +85,8 @@ body {
   font-size: 1rem;
   overflow-x: hidden;
   box-sizing: border-box;
+  margin-top: 120px;
+
 }
 
 h1,
@@ -321,6 +323,9 @@ a {
   border-bottom: 1px solid var(--Seperator-light);
   padding: 20px 0px;
   margin-bottom: 30px;
+
+ 
+  
 }
 
 .clock_container button{
@@ -349,10 +354,7 @@ a {
   width: 60%;
   padding: 0px 50px;
   box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0px auto;
   border-radius: 5px;
 }
 
@@ -438,6 +440,7 @@ a {
   margin: 120px auto 50px auto;
   padding: 20px;
   border-radius: 5px;
+  box-sizing: border-box;
 
 }
 
@@ -1040,7 +1043,7 @@ a {
 
 .attendance_sub_container{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 20px;
 }
@@ -1295,12 +1298,13 @@ a {
   }
 
   .table_container {
-    border: 1px solid black;
-    width: 80%;
-    padding: 20px;
-    border-radius: 5px;
+    width: 90%;
+    border: none;
+  }
 
-
+  .attendance_sub_container {
+    margin: 0 auto;
+    width: 93%;
   }
 
   .month_form {
@@ -1308,10 +1312,7 @@ a {
     margin-bottom: 30px;
   }
 
-  .table_container {
-    width: 90%;
-  
-  }
+
 
   .table_header {
     display: none;
@@ -1364,6 +1365,7 @@ a {
   .staff_details,
   .staff_clock_summary{
     margin: 0 auto;
+    width: 80%;
   }
 
   .clock_container button{
@@ -1380,13 +1382,21 @@ a {
     width: 50%;
   }
 
-  .table_container{
-    border: none;
-  }
-
   .nav_container {
     padding: 20px 30px;
+    
   }
+
+  .timer_container{
+    border: 1px solid var(--Border-light);
+    border-radius: 5px;
+  }
+
+  .performance-cont img{
+    width: 32px;
+    height: 32px;
+  }
+
 
 }
 
