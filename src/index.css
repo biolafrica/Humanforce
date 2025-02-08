@@ -579,10 +579,13 @@ a {
 .settings:hover{
   background-color: black;
   color: white;
+  border-radius: 5px;
 }
+
 .active{
   background-color: black;
   color: white;
+  border-radius: 5px;
 }
 
 .side-logo img{
@@ -596,10 +599,10 @@ a {
 
 .sidebar-cont{
   padding: 40px;
-  border: 1px solid var(--Border-light);
+  border: 1px solid var(--Seperator-light);
   width: 25%;
   position: fixed;
-  top: 0;
+  top: 90px;
   left: 0;
   bottom: 0;
   box-sizing: border-box;
@@ -636,7 +639,23 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
-  border-bottom: 1px solid var(--Border-light);
+  border-bottom: 1px solid var(--Seperator-light);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.adminavbar_cont .right_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+}
+.adminavbar_cont .left_container {
+  width: 25%;
 }
 
 /*admin dashboard*/
@@ -1212,10 +1231,10 @@ a {
 
 /*Animation Page*/
 .loading_container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .my_table{

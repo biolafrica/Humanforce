@@ -17,23 +17,32 @@ const AdminNav=({header})=>{
   return(
     <div className="adminavbar_cont">
 
-      <div className="left-adminav">
-        <h4>{header}</h4>
-      </div>
-
-      <div className="right-adminav">
-        
-        <Link to="/admin/user" className="right-icon">
-          <h4> { ((user.firstname)[0]).toUpperCase()}{((user.lastname)[0]).toUpperCase()} </h4>
+      <div className="left_container">
+        <Link to="/admin" className="side-logo">
+          <img src="/icons/Group work.svg" alt="" />
         </Link>
 
-        <button onClick={handleLogout} className="right-logout text-btn">
-          <img src="/icons/Logout.svg" alt="" />
-          <h4>Logout</h4>
-        </button>
-
       </div>
-      
+
+      <div className="right_container">
+        <div className="left-adminav">
+          <h4>{header}</h4>
+        </div>
+
+        <div className="right-adminav">
+          
+          <Link to="/admin/user" className="right-icon">
+            <h4> { ((user.firstname)[0]).toUpperCase()}{((user.lastname)[0]).toUpperCase()} </h4>
+          </Link>
+
+          <button onClick={handleLogout} className="right-logout text-btn">
+            <img src="/icons/Logout.svg" alt="" />
+            <h4>Logout</h4>
+          </button>
+
+        </div>
+      </div>
+
     </div>
 
   );

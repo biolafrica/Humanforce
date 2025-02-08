@@ -31,10 +31,6 @@ const SideNav=({changeHeader})=>{
   return(
     <div className="sidebar-cont">
 
-      <div className="side-logo">
-        <img src="/icons/Group work.svg" alt="" />
-      </div>
-
       <div className="side-nav">
 
         <Link 
@@ -82,7 +78,6 @@ const SideNav=({changeHeader})=>{
           <h4>Payroll</h4>
         </Link>
 
-       
         <Link 
           to="/admin/settings" 
           className={`settings ${activeTab === "Settings" ? "active" : ""}`} 

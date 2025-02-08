@@ -38,11 +38,10 @@ function UseFetch(url, token, refresh = false){
         }
 
         const result = await response.json();
+        setIsLoading(false)
         setData(result)
       } catch (error) {
         handleError(error.message,navigate, setErrorMessage)
-      } finally{
-        setIsLoading(false)
       }
     };
 
