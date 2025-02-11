@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import UserLayout from "./layout/userlayout";
 import AdminLayout from "./layout/adminlayout";
 import Homepage from "./pages/user/home";
@@ -106,6 +106,7 @@ function App() {
             </AdminPrivateRoute>     
           } 
         />
+
         <Route path='/admin/staff/:id'  element=
           {
             <AdminPrivateRoute>
