@@ -5,8 +5,8 @@ import html2canvas from "html2canvas";
 import { generateYearMonthWeeks } from "../formatmtime";
 import {AlertPopup, useAlert } from "../alert";
 
-
 const PayslipForm = ({payslips, staff})=>{
+  console.log(payslips);
   const {currentYear, currentWeek, currentMonth} = generateYearMonthWeeks();
   const {alert, showAlert} = useAlert();
 
@@ -21,7 +21,7 @@ const PayslipForm = ({payslips, staff})=>{
     let selectedPayslip = [];
 
     if (staff.employment_type === "fixed"){
-      const fixedSelectedPayslip = payslips[selectedYear].filter((months)=> {
+      selectedPayslip = (payslips[selectedYear] || []).filter((months)=> {
         const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'});
         return(optionMonth === selectedMonth)
       });
@@ -30,7 +30,7 @@ const PayslipForm = ({payslips, staff})=>{
       if(selectedMonth === ""){
         showAlert('Select month', "info");
       }else{
-        const contractSelectedPayslip = payslips[selectedYear][selectedMonth].filter((weeks)=> {
+        selectedPayslip = payslips[selectedYear][selectedMonth].filter((weeks)=> {
         return(weeks.week === selectedWeek)
         })
       }
@@ -78,7 +78,7 @@ const PayslipForm = ({payslips, staff})=>{
             style={{cursor:"pointer"}} 
           />
 
-          <div id="payslip-template">
+          <div id="payslip-template" data-testid="payslip-template">
             <PayslipTemplate payslipData={payslipData} staff={staff}/>
           </div>
 
@@ -96,11 +96,13 @@ const PayslipForm = ({payslips, staff})=>{
 
         <h4 className="payslip_head">My Payslip</h4>
 
-        <label htmlFor="year"><h4>Year:</h4></label>
+        <label htmlFor="Year"><h4>Year:</h4></label>
         <select
-          name="payroll_month" 
+          id="Year"
+          name="Year" 
           value={selectedYear}
-          onChange={(e)=>setSelectedYear(e.target.value)} 
+          onChange={(e)=>setSelectedYear(e.target.value)}
+          required 
         >
           {
             Object.keys(payslips)
@@ -111,11 +113,13 @@ const PayslipForm = ({payslips, staff})=>{
       
 
 
-        <label htmlFor="payslip"><h4>Payslip:</h4></label>
+        <label htmlFor="Payslip"><h4>Payslip:</h4></label>
         <select
-          name="payroll_month" 
+          id="Payslip"
+          name="Payslip" 
           value={selectedMonth}
-          onChange={(e)=>setSelectedMonth(e.target.value)} 
+          onChange={(e)=>setSelectedMonth(e.target.value)}
+          required 
         >
           <option value="">Select Month</option>
           {staff.employment_type === "fixed" ?
@@ -141,15 +145,17 @@ const PayslipForm = ({payslips, staff})=>{
 
         {staff.employment_type === "contract" &&  (
           <>
-            <label htmlFor="payslip"><h4>Weeks:</h4></label>
+            <label htmlFor="Weeks"><h4>Weeks:</h4></label>
             <select
-              name="payroll_week" 
+              name="Weeks" 
+              id="Weeks"
               value={selectedWeek}
-              onChange={(e)=>setSelectedWeek(e.target.value)} 
+              onChange={(e)=>setSelectedWeek(e.target.value)}
+              required 
             >
               <option value="" >Select Week</option>
               {
-                (payslips[selectedYear][selectedMonth] || [])
+                (payslips[selectedYear]?.[selectedMonth] || [])
                 .filter((month)=>month.week !== currentWeek)
                 .map((filteredWeek)=><option value={filteredWeek.week} key={filteredWeek.week}>{filteredWeek.week} Payslip</option>)
               }

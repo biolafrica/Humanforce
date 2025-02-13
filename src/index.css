@@ -110,7 +110,7 @@ input[type="date"],
 input[type="time"],
 select,
 textarea {
-  font-family: 'Almarai', 'Inter';
+  font-family: 'Roboto', sans-serif;
   display: block;
   background-color: #fafaff;
   box-sizing: border-box;

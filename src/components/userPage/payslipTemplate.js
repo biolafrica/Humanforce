@@ -65,32 +65,32 @@ const PayslipTemplate = ({payslipData, staff})=>{
               <>
                 <div className="payment_cont_column">
                   <h6>Monday Pay</h6>
-                  <h6>{formatNaira(payslipData.days.monday.rate || 0)}</h6>
+                  <h6>{formatNaira(payslipData?.days?.monday?.rate)}</h6>
                 </div>
 
                 <div className="payment_cont_column">
                   <h6>Tuesday Pay</h6>
-                  <h6>{formatNaira(payslipData.days.tuesday.rate)}</h6>
+                  <h6>{formatNaira(payslipData?.days?.tuesday?.rate)}</h6>
                 </div>
 
                 <div className="payment_cont_column">
                   <h6>Wednesday Pay</h6>
-                  <h6>{formatNaira(payslipData.days.wednesday.rate)}</h6>
+                  <h6>{formatNaira(payslipData?.days?.wednesday?.rate)}</h6>
                 </div>
 
                 <div className="payment_cont_column">
                   <h6>Thursday Pay</h6>
-                  <h6>{formatNaira(payslipData.days.thursday.rate)}</h6>
+                  <h6>{formatNaira(payslipData?.days?.thursday?.rate)}</h6>
                 </div>
 
                 <div className="payment_cont_column">
                   <h6>Friday Pay</h6>
-                  <h6>{formatNaira(payslipData.days.friday.rate)}</h6>
+                  <h6>{formatNaira(payslipData?.days?.friday?.rate)}</h6>
                 </div>
 
                 <div className="payment_cont_column">
                   <h6>Saturday Pay</h6>
-                  <h6>{formatNaira(payslipData.days.saturday.rate)}</h6>
+                  <h6>{formatNaira(payslipData?.days?.saturday?.rate)}</h6>
                 </div>
 
               </>

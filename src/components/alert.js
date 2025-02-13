@@ -39,9 +39,6 @@ const useAlert = ()=>{
   timer = setTimeout(()=>{
     setAlert({visible: false, message: "", type: "success"})
   }, 2000);
-  
-
-
 
   return{alert, showAlert}
 
