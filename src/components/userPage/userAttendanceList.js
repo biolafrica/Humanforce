@@ -2,7 +2,6 @@ import { formattedDate, formattedFullTime } from "../formatmtime";
 import usePagination from "../../hooks/usePagination"
 import Empty from "../empty";
 import { Link } from "react-router-dom";
-
 import Pagination from "../pagination"
 
 const UserAttendancelist = ({attendance}) =>{
@@ -24,7 +23,7 @@ const UserAttendancelist = ({attendance}) =>{
           (currentData.map((attendance)=>{
 
             const [date, clockIn, clockOut] = [
-              formattedDate(attendance.createdAt),
+              formattedDate(attendance.clock_in),
               formattedFullTime(attendance.clock_in), 
               formattedFullTime(attendance.clock_out)
             ]
