@@ -4,7 +4,7 @@ import formatNaira from "../../utils/formatNaira";
 
 const PayslipTemplate = ({payslipData, staff})=>{
   const totalPayment = payslipData.basic_pay + payslipData.bonuses;
-  const totalDeduction = payslipData.loan + payslipData.tax + payslipData.lateness_fine;
+  const totalDeduction = payslipData.loan + payslipData.tax + payslipData.lateness_fine + payslipData.pension;
   const netPay = totalPayment - totalDeduction;
   const date = formattedDate(payslipData.createdAt);
 
