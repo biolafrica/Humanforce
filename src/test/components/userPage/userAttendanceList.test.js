@@ -1,6 +1,4 @@
 import UserAttendancelist from "../../../components/userPage/userAttendanceList";
-import UsePagination from "../../../hooks/usePagination";
-import Empty from "../../../components/empty";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 

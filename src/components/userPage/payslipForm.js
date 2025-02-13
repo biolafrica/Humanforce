@@ -10,9 +10,9 @@ const PayslipForm = ({payslips, staff})=>{
   const {currentYear, currentWeek, currentMonth} = generateYearMonthWeeks();
   const {alert, showAlert} = useAlert();
 
-  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+  const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState(currentYear);
-  const [selectedWeek, setSelectedWeek] = useState(currentWeek);
+  const [selectedWeek, setSelectedWeek] = useState("");
   const [payslipData, setPayslipData] = useState({});
   const [overlay, setOverlay] = useState("")
 
@@ -21,38 +21,27 @@ const PayslipForm = ({payslips, staff})=>{
     let selectedPayslip = [];
 
     if (staff.employment_type === "fixed"){
-      selectedPayslip = payslips[selectedYear].filter((months)=> {
+      const fixedSelectedPayslip = payslips[selectedYear].filter((months)=> {
         const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'});
         return(optionMonth === selectedMonth)
-      })
-      console.log(selectedPayslip)
+      });
 
     }else{
-      selectedPayslip = payslips[selectedYear][selectedMonth].filter((weeks)=> {
-        const optionWeek = weeks.week
-        return(optionWeek === selectedWeek)
-      })
-
+      if(selectedMonth === ""){
+        showAlert('Select month', "info");
+      }else{
+        const contractSelectedPayslip = payslips[selectedYear][selectedMonth].filter((weeks)=> {
+        return(weeks.week === selectedWeek)
+        })
+      }
     }
 
-    if(selectedPayslip.length > 0 && staff.employment_type === "fixed"){
-      const selectedPayslip = payslips[selectedYear].filter((months)=> {
-        const optionMonth =new Date(months.createdAt).toLocaleString("default", {month: 'long'})
-        return(optionMonth === selectedMonth)
-      })
-      setPayslipData(selectedPayslip[0])
-       console.log(payslipData)
-      setOverlay("overlay")
-
-    }else if(selectedPayslip.length > 0 && staff.employment_type === "contract"){
-      const selectedOptionWeek = selectedPayslip.filter((weeks) => weeks.week === selectedWeek);
-      setPayslipData(selectedOptionWeek[0])
-      setOverlay("overlay")
-
+    if(selectedPayslip.length > 0 ){
+      setPayslipData(selectedPayslip[0]);
+      setOverlay("overlay");
     }else {
       showAlert('Payslip not found for the selected month', "info");
     }
-   
   }
 
   const downloadPayslipAsPDF = async () =>{
