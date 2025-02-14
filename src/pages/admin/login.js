@@ -47,7 +47,7 @@ const AdminLogin = () =>{
 
   return(
     <div className="login_container">
-      <h2>Team Sign In</h2>
+      <h3>Team Sign In</h3>
 
       <form action="" onSubmit={handleSubmit} >
 

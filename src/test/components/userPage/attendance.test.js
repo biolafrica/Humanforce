@@ -1,5 +1,4 @@
 import Attendance from "../../../components/userPage/attendance";
-import performance from "../../../utils/performance";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 

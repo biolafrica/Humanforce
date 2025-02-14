@@ -42,7 +42,7 @@ const Login = ()=>{
 
   return(
     <div className="login_container">
-      <h2>Sign In</h2>
+      <h3>Sign In</h3>
 
       <form action="" onSubmit={handleSubmit}>
 

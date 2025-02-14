@@ -123,6 +123,7 @@ textarea {
   line-height: clamp(21.3px, 3vw, 27px);
   letter-spacing: clamp(0.6%, 0.3vw, 0.7%);
   box-sizing: border-box;
+  color: var(--Text-light);
 
 }
 select{
@@ -255,7 +256,7 @@ a {
 
 }
 
-.login_container h2{
+.login_container h3{
   text-align: center;
   margin-bottom: 30px;
 }
