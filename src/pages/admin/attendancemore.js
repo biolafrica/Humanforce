@@ -1,7 +1,8 @@
-import UserFetch from "../../hooks/userFetch";
+import UseFetch from "../../hooks/userFetch";
 import { useParams, useLocation } from "react-router-dom";
 import UserAttendancelist from "../../components/userPage/userAttendanceList";
 import Loading from "../../components/loading";
+import PathError from "../error/pathError";
 
 const AttendanceMore = ()=>{
   const {id} = useParams();
@@ -12,10 +13,10 @@ const AttendanceMore = ()=>{
   const url = `${process.env.REACT_APP_API_URL}/admin/attendance/${id}?monthYear=${encodeURIComponent(monthYear)}`;
   const token = localStorage.getItem("adminAuthToken")
   
-  const {data, isLoading, errorMessage} = UserFetch(url, token);
+  const {data, isLoading, errorMessage} = UseFetch(url, token);
  
   if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage) return({errorMessage})
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
   
     return(

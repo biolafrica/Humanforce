@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
-import UserFetch from "../../hooks/userFetch";
+import UseFetch from "../../hooks/userFetch";
 import TeamDetails from "../../components/adminPage/teamDetails";
 import Loading from "../../components/loading";
 import { useState } from "react";
 import useTeam from "../../components/adminPage/buttonState";
+import PathError from "../error/pathError";
 
 const Team = ()=>{
   const url = `${process.env.REACT_APP_API_URL}/admin/team`;
   const token = localStorage.getItem("adminAuthToken")
-  const {data, isLoading, errorMessage} = UserFetch(url,token);
+  const {data, isLoading, errorMessage} = UseFetch(url,token);
   const [searchTerm, setSearchTerm] = useState("");
   const{AdminExclusiveButton} = useTeam()
 
 
-  if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage) return({errorMessage})
+  if(isLoading) return(<Loading width={200} height={200}/>);
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
 
     const filteredTeam = (data.teams).filter(team=>

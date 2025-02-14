@@ -1,17 +1,18 @@
 import { useState } from "react";
-import UserFetch from "../../hooks/userFetch";
+import UseFetch from "../../hooks/userFetch";
 import PayrollStaffList from "../../components/adminPage/payrollStaffList";
 import Loading from "../../components/loading";
+import PathError from "../error/pathError";
 
 const Payroll =()=>{
   const url = `${process.env.REACT_APP_API_URL}/admin/payrolls`;
   const token = localStorage.getItem("adminAuthToken")
-  const {data, isLoading, errorMessage} = UserFetch(url,token);
+  const {data, isLoading, errorMessage} = UseFetch(url,token);
   const [activeTab, setActiveTab] = useState("fixed");
   const [searchTerm, setSearchTerm] = useState("");
 
-  if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage)return({errorMessage})
+  if(isLoading) return(<Loading width={200} height={200}/>);
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
 
     const fixedStaff = (data.users).filter((users)=> users.employment_type === 'fixed');

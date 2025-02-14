@@ -9,6 +9,7 @@ import DisplayTimer from "../../components/displayTimer";
 import { AlertPopup, useAlert } from "../../components/alert";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/loading";
+import PathError from "../error/pathError";
 
 
 const ClockDetails =()=>{
@@ -59,7 +60,7 @@ const ClockDetails =()=>{
   }
 
   if(isLoading) return(<Loading width={200} height={200}/>)
-  if (errorMessage)return<div>{errorMessage}</div>
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data)
     return(
       <div className="clock_container">

@@ -1,6 +1,7 @@
 import DoubleUseFetch from "../../hooks/doubleuseFetch";
 import Attendances from "../../components/adminPage/attendances";
 import Loading from "../../components/loading";
+import PathError from "../error/pathError";
 
 
 const AttendanceAdmin =()=>{
@@ -11,7 +12,7 @@ const AttendanceAdmin =()=>{
   const{dataI, dataII, isLoading, errorMessage} = DoubleUseFetch(urlI, urlII, token);
 
   if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage) return({errorMessage})
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(dataI && dataII){
     
    

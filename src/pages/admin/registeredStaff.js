@@ -1,7 +1,8 @@
 import StaffForm from "../../components/adminPage/staffForm";
 import { useParams } from "react-router-dom";
-import UserFetch from "../../hooks/userFetch";
+import UseFetch from "../../hooks/userFetch";
 import Loading from "../../components/loading";
+import PathError from "../error/pathError";
 
 
 const RegisteredStaff = ()=>{
@@ -9,11 +10,11 @@ const RegisteredStaff = ()=>{
   const token = localStorage.getItem("adminAuthToken");
   const url = `${process.env.REACT_APP_API_URL}/admin/staff/${id}`;
  
-  const {data, isLoading, errorMessage} = UserFetch(url,token);
+  const {data, isLoading, errorMessage} = UseFetch(url,token);
 
 
   if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage) return({errorMessage})
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
     const staff = data.staff;
     const dateObject = new Date(staff.date_of_birth);

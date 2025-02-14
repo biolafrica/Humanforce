@@ -2,6 +2,7 @@ import TeamForm from "../../components/adminPage/teamForm";
 import { useParams } from "react-router-dom";
 import Loading from "../../components/loading";
 import UseFetch from "../../hooks/userFetch";
+import PathError from "../error/pathError";
 
 const RegisteredTeam = ()=>{
   const {id} = useParams();
@@ -12,7 +13,7 @@ const RegisteredTeam = ()=>{
   const {data, isLoading, errorMessage} = UseFetch(url, token);
 
   if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage) return ({errorMessage})
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
     console.log(data);
     const initialValues = {

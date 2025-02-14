@@ -1,17 +1,18 @@
 import { useParams } from "react-router-dom";
-import UserFetch from "../../hooks/userFetch"
+import UseFetch from "../../hooks/userFetch"
 import ContractStaffDisplay from "../../components/adminPage/contractStaffDisplay";
 import Loading from "../../components/loading";
+import PathError from "../error/pathError";
 
 
 const ContractStaffEdit = ()=>{
   const {id} = useParams();
   const url = `${process.env.REACT_APP_API_URL}/admin/payroll/${id}`;
   const token = localStorage.getItem("adminAuthToken");
-  const {data, isLoading, errorMessage}= UserFetch(url, token);
+  const {data, isLoading, errorMessage}= UseFetch(url, token);
 
   if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage) return({errorMessage})
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data.payroll && data.name){
     const name = data.name;
     return(
