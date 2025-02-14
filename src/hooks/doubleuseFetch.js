@@ -40,6 +40,10 @@ function DoubleUseFetch(urlI, urlII,token){
     .catch((err)=>{
       setIsLoading(false);
 
+      const errorObj = typeof err.message === "string"
+      ? { status: err.status, message: err.message }
+      : err.message;
+
       if(err.status === 500){
         navigate("/server-error")
         
@@ -50,7 +54,7 @@ function DoubleUseFetch(urlI, urlII,token){
         navigate("/admin/login")
 
       }else{
-        setErrorMessage(err.message || "An error occur fetching data");
+        setErrorMessage(errorObj);
       }
 
     })
