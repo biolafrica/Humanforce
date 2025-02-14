@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
-import UserFetch from "../../hooks/userFetch";
+import UseFetch from "../../hooks/userFetch";
 import { useState } from "react";
 import StaffList from "../../components/adminPage/staffList";
 import Loading from "../../components/loading";
 import useTeam from "../../components/adminPage/buttonState";
+import PathError from "../error/pathError";
 
 const Staff = ()=>{
   const url = `${process.env.REACT_APP_API_URL}/admin/staff`;
   const token = localStorage.getItem("adminAuthToken")
-  const {data, isLoading, errorMessage} = UserFetch(url, token);
+  const {data, isLoading, errorMessage} = UseFetch(url, token);
   const [activeTab, setActiveTab] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const {AdminExclusiveButton} = useTeam()
 
  
-  if(isLoading) return(<Loading width={200} height={200}/>)
-  if(errorMessage)return({errorMessage})
+  if(isLoading) return(<Loading width={200} height={200}/>);
+  if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
 
     const users = data.users || [];

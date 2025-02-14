@@ -53,6 +53,10 @@ function UseFetch(url, token, refresh = false){
 }
 
 const handleError = (errorMessage,navigate,setErrorMessage)=>{
+
+  const errorObj = typeof errorMessage === "string"
+  ? { status: "500", message: errorMessage }
+  : errorMessage;
   
   if(errorMessage.includes("Unauthorized Admin")){
     localStorage.removeItem("adminAuthToken");
@@ -65,7 +69,7 @@ const handleError = (errorMessage,navigate,setErrorMessage)=>{
   }else if(errorMessage.includes("Server Error")){
     navigate("/server-error");
   } else{
-    setErrorMessage(errorMessage || "An unexpected error occurred")
+    setErrorMessage(errorObj)
   }
 };
 

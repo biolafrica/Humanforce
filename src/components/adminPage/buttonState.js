@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 const useTeam =()=>{
 
   const [team, setTeam] = useState({})
+
   useEffect(()=>{
     const teamString = localStorage.getItem('team');
+    
     if(teamString){
       setTeam(JSON.parse(teamString))
     }
