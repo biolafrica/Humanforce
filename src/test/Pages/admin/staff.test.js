@@ -19,6 +19,7 @@ jest.mock("../../../hooks/userFetch", ()=>jest.fn())
 
 
 describe("test suite: staff components", ()=>{
+  
  
   const mockStaff = [
     {firstname: "Abiodun", lastname: "Biobaku", employment_type: "contract", role:"software developer", salary:"50000", status:"Active", _id: 1},
@@ -48,8 +49,6 @@ describe("test suite: staff components", ()=>{
 
     
   });
-
-
 
 
   

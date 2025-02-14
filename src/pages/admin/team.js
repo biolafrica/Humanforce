@@ -17,6 +17,7 @@ const Team = ()=>{
   if(isLoading) return(<Loading width={200} height={200}/>);
   if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
+    console.log(data);
 
     const filteredTeam = (data.teams).filter(team=>
       `${team.team_role}`.toLowerCase().includes(searchTerm.toLowerCase())
