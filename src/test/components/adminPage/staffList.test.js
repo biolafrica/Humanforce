@@ -1,6 +1,6 @@
 import StaffList from "../../../components/adminPage/staffList";
 import { MemoryRouter } from "react-router-dom";
-import { screen,render,fireEvent } from "@testing-library/react";
+import { screen,render,} from "@testing-library/react";
 
 describe("test suite: staff list components", ()=>{
 
@@ -37,9 +37,6 @@ describe("test suite: staff list components", ()=>{
     )
 
     expect(screen.getByText("No available data")).toBeInTheDocument();
-
-
-
 
   })
 
