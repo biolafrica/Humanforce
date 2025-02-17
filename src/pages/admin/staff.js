@@ -75,8 +75,8 @@ const Staff = ()=>{
               </form>
 
               <Link to="/admin/staff/new" className={`${AdminExclusiveButton}`}>
-                <img src="/icons/Add.svg" alt="" />
                 <h4>Add Staff</h4>
+                 <img src="/icons/Person add.svg" alt="" />
               </Link>
 
             </div>

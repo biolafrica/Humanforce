@@ -351,7 +351,7 @@ a {
 }
 
 .clock_container{
-  border: 1px solid black;
+  border: 1px solid var(--Border-light);
   width: 60%;
   padding: 0px 50px;
   box-sizing: border-box;
@@ -424,7 +424,7 @@ a {
   margin: 150px auto;
  
   padding: 50px;
-  border: 1px solid black;
+  border: 1px solid var(--Border-light);
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -487,13 +487,15 @@ a {
 
 .table_header{
  background-color: #f4f4f4;
- font-weight: bold;
- 
-  
+ font-weight: 500;
+ color: var(--Secondary-Text-light);
+ padding: 15px 0px;
+
 }
 
 .table_body .column{
   display: contents;
+  
 }
 
 .column .date_column,
@@ -506,8 +508,6 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  
 }
 
 .month_form{

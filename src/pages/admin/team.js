@@ -37,7 +37,7 @@ const Team = ()=>{
 
             <Link to="/admin/team/new" className={`${AdminExclusiveButton}`}>
               <h4>Add Team</h4>
-              <img src="/icons/Person add.svg" alt="" />
+              <img src="/icons/Group add.svg" alt="" />
             </Link>
 
           </div>
