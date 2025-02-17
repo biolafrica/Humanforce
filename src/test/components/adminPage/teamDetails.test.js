@@ -3,14 +3,9 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { useAlert } from "../../../components/alert";
 import useTeam from "../../../components/adminPage/buttonState";
-import { useNavigate } from "react-router-dom";
 
 jest.mock("../../../components/alert", ()=>( {useAlert :jest.fn()}))
 jest.mock("../../../components/adminPage/buttonState", ()=>jest.fn())
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: jest.fn(),
-}));
 
 describe("test suite: team details components", ()=>{
     
@@ -26,7 +21,6 @@ describe("test suite: team details components", ()=>{
   ];
 
   const mockShowAlert = jest.fn()
-  const mockNavigate = jest.fn()
   const mockHandleDelete = jest.fn()
  
 
@@ -128,7 +122,6 @@ describe("test suite: team details components", ()=>{
     expect(mockShowAlert).toHaveBeenCalledWith('Team deleted successfully', 'success');
 
   })
-
 
   test("test case: prevent  non-admin from deleting a team member", ()=>{
     useTeam.mockReturnValue({

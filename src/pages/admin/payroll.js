@@ -14,6 +14,7 @@ const Payroll =()=>{
   if(isLoading) return(<Loading width={200} height={200}/>);
   if(errorMessage)return(<PathError error={errorMessage}/>);
   if(data){
+   
 
     const fixedStaff = (data.users).filter((users)=> users.employment_type === 'fixed');
     const contractStaff = (data.users).filter((users)=> users.employment_type === "contract");
@@ -33,11 +34,11 @@ const Payroll =()=>{
 
           <div className="staff_cont_head">
 
-            <button className="text-btn" onClick={()=>setActiveTab("fixed")}>
+            <button data-testid="fixed-btn" className="text-btn" onClick={()=>setActiveTab("fixed")}>
               <h5 className={`total ${activeTab === "fixed" ? "select" : ""}`}>Fixed - {(data.users).filter((users)=> users.employment_type === 'fixed').length}</h5> 
             </button> 
 
-            <button className="text-btn" onClick={()=>setActiveTab("contract")}> 
+            <button data-testid="contract-btn" className="text-btn" onClick={()=>setActiveTab("contract")}> 
               <h5 className={`contract ${activeTab === "contract" ? "select" : ""}`}>Contract - {(data.users).filter((users)=> users.employment_type === 'contract').length}</h5> 
             </button>
 
@@ -63,8 +64,8 @@ const Payroll =()=>{
           <div className="table_header">
             <h6 className="date_column">Name</h6>
             <h6 className="clockin_column">Role</h6>
-            <h6 className="clockout_column">Date</h6>
-            <h6 className="hours_column">Email</h6>
+            <h6 className="clockout_column">Email</h6>
+            <h6 className="hours_column">Salary</h6>
             <h6 className="status_column">Status</h6>
           </div>
 

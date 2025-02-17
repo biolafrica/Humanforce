@@ -17,10 +17,8 @@ jest.mock("lottie-react", ()=>({
 
 jest.mock("../../../hooks/userFetch", ()=>jest.fn())
 
-
 describe("test suite: staff components", ()=>{
-  
- 
+
   const mockStaff = [
     {firstname: "Abiodun", lastname: "Biobaku", employment_type: "contract", role:"software developer", salary:"50000", status:"Active", _id: 1},
 
@@ -116,7 +114,7 @@ describe("test suite: staff components", ()=>{
 
   })
 
-  test("test case: toggle bettween tabs correctly", ()=>{
+  test("test case: toggle between tabs correctly", ()=>{
     render(
       <MemoryRouter>
         <Staff/>

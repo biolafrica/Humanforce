@@ -31,9 +31,6 @@ describe("test Suite : Time and date function format", ()=>{
     expect(formatMTime(nullTime)).toStrictEqual("NaN : NaN");
   });
 
-
-
-
   test("basic test case: extract hours,minute and seconds from ISO time for UTC", ()=>{
     const time = '2024-12-31T11:14:19.393+00:00'
     expect(formattedFullTime(time)).toBe("11 : 14 : 19");
@@ -48,9 +45,6 @@ describe("test Suite : Time and date function format", ()=>{
     const time = '2024-02-29T23:45:00.000Z';
     expect(formattedFullTime(time)).toBe("23 : 45 : 00");
   });
-
-
-
 
   test("basic test case: check time difference between clock-in and clock out time", ()=>{
     const startTime = "2025-02-04T02:44:51.490+00:00";
@@ -82,9 +76,6 @@ describe("test Suite : Time and date function format", ()=>{
     expect(timeDifference(startTime, endTime)).toStrictEqual({"hours":-9, "minutes":-26, "seconds": -38})
   });
 
- 
-
-
   test("basic test case: check time difference between clock-in, clock-out and break time", ()=>{
     const startTime = "2025-02-04T02:44:51.490+00:00";
     const endTime = "2025-02-04T11:10:29.364+00:00";
@@ -109,8 +100,6 @@ describe("test Suite : Time and date function format", ()=>{
     expect(breakTimeDifference(startTime, endTime, startBreak,endBreak)).toStrictEqual({"hours":NaN, "minutes":NaN, "seconds": NaN})
   });
 
-
-
   test("basic test case: extract day,month and year from ISO time format", ()=>{
     const time = '2025-02-04T02:44:51.490+00:00'
     expect(formattedDate(time)).toBe("04 - 02 - 2025");
@@ -121,10 +110,15 @@ describe("test Suite : Time and date function format", ()=>{
     expect(formattedDate(time)).toBe("NaN - NaN - NaN");
   });
 
-
-
   test("basic test case: extract currentYear, currentMonth and current Week from ISO time format", ()=>{
-    expect(generateYearMonthWeeks()).toStrictEqual({"currentMonth": "February", "currentYear": "2025", "week": "2025-W6"});
+    const mockYear = new Date().getFullYear().toString();
+    const mockMonth = new Date().toLocaleString("default", {month: 'long'});
+    const date = new Date();
+    const start = new Date(date.getFullYear(), 0, 1);
+    const diff = (date - start +(start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) / 86400000;
+    const mockWeek = `${date.getFullYear()}-W${Math.ceil((diff + start.getDay() + 1) / 7)}`;
+
+    expect(generateYearMonthWeeks()).toStrictEqual({"currentMonth": mockMonth, "currentYear": mockYear, "week": mockWeek});
   });
 
 
