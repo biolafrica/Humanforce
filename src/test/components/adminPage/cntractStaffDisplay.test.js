@@ -2,7 +2,7 @@ import ContractStaffDisplay from "../../../components/adminPage/contractStaffDis
 import { render,screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import useTeam from "../../../components/adminPage/buttonState";
-import { useAlert, AlertPopup } from "../../../components/alert";
+import { useAlert, } from "../../../components/alert";
 import formatNaira from "../../../utils/formatNaira";
 
 jest.mock("../../../components/adminPage/buttonState");
