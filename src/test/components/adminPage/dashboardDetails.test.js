@@ -56,4 +56,5 @@ describe("test suite: dashboard components", ()=>{
     expect(screen.getByText("1500")).toBeInTheDocument();
 
   })
+  
 })
