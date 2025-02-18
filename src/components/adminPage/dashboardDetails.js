@@ -1,21 +1,21 @@
 import { useState } from "react"
 
 const DashboardDetails = ({attendance, staff})=>{
-  const book = Object.keys(attendance)
-  const [selectedOption, setSelectedOption] = useState(book[0]);
+  const attendanceKey = Object.keys(attendance)
+  const [selectedOption, setSelectedOption] = useState(attendanceKey[0]);
   const [selectedAnalytics, setSelectedAnalytics] = useState(attendance.today);
   
 
   const handleOnChange= (e)=>{
     const chosenOption = e.target.value;
-    if(chosenOption === book[0]){
-      setSelectedOption(book[0])
+    if(chosenOption === attendanceKey[0]){
+      setSelectedOption(attendanceKey[0])
       setSelectedAnalytics(attendance.today)
-    }else if(chosenOption === book[1]){
-      setSelectedOption(book[1])
+    }else if(chosenOption === attendanceKey[1]){
+      setSelectedOption(attendanceKey[1])
       setSelectedAnalytics(attendance.thisMonth)
-    }else if(chosenOption === book[2]){
-      setSelectedOption(book[2])
+    }else if(chosenOption === attendanceKey[2]){
+      setSelectedOption(attendanceKey[2])
       setSelectedAnalytics(attendance.thisYear)
     }
   }
@@ -25,7 +25,7 @@ const DashboardDetails = ({attendance, staff})=>{
 
     <div className="dashboard_body">
       <h4>Dashboard Analytics</h4>
-      <select name="" value={selectedOption} onChange={(e)=>handleOnChange(e)}>
+      <select role="combobox" value={selectedOption} onChange={(e)=>handleOnChange(e)}>
         {Object.keys(attendance).map((attendance)=> <option value={attendance} key={attendance}>{attendance}</option>)}
       </select>
 
