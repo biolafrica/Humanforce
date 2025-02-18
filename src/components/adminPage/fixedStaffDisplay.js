@@ -30,9 +30,10 @@ const FixedStaffDisplay = ({payroll})=>{
           <select 
             name=""
             value={selectedMonth}
+            role="combobox"
             onChange={handleMonthChange} 
           >
-            {Object.keys(payroll).includes(currentMonth)? "":<option value="">{currentMonth}</option>}
+            {Object.keys(payroll).includes(currentMonth)? "":<option value={currentMonth}>{currentMonth}</option>}
             {
               Object.keys(payroll)
               .map((month) => <option value={month} key={month}>{month}</option>)

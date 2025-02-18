@@ -51,7 +51,7 @@ const UnpaidStaff =({payroll})=>{
   return(
 
     <>
-      <form className="unpaid_staff" onSubmit={handleSubmitForm}>
+      <form data-testid = "unpaid_staff" className="unpaid_staff" onSubmit={handleSubmitForm}>
 
         <div className="newstaff_column">
 
@@ -185,7 +185,7 @@ const PaidStaff =({paidPayroll})=>{
 
   return(
 
-    <div className="paid_staff">
+    <div className="paid_staff" data-testid = "paid_staff">
 
       <div className="staff_row">
         <h4>Basic Pay</h4>

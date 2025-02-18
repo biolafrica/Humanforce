@@ -5,12 +5,8 @@ import useTeam from "../../../components/adminPage/buttonState";
 import { useAlert, AlertPopup } from "../../../components/alert";
 import formatNaira from "../../../utils/formatNaira";
 
-
 jest.mock("../../../components/adminPage/buttonState");
 jest.mock("../../../components/alert");
-
-
-
 
 describe("test suite: contract staff components", ()=>{
   const mockPayroll={
