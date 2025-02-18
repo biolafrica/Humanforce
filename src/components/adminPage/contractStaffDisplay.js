@@ -4,6 +4,7 @@ import useTeam from "./buttonState";
 import { AlertPopup, useAlert} from "../alert";
 
 const ContractStaffDisplay = ({payroll})=>{
+  console.log(payroll)
   const currentMonth = new Date().toLocaleString("default", {
     month: 'long', 
     year: "numeric"
@@ -14,7 +15,7 @@ const ContractStaffDisplay = ({payroll})=>{
 
   const [payrollData, setPayrollData] = useState(payroll);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-  const [weeks, setWeeks] = useState(payroll[currentMonth]);
+  const [weeks, setWeeks] = useState(payroll[currentMonth] || []);
   const [isEditVisible, setIsEditVisible] = useState(true); 
   const [isPopupVisible, setIsPopupVisible] = useState(false); 
 
@@ -37,15 +38,16 @@ const ContractStaffDisplay = ({payroll})=>{
 
           (
             <>
-              <div className="contract_staff_date_filter">
+              <div className="contract_staff_date_filter" data-testid="contract-staff">
                 <div className="staff_filter_container ">
 
                   <select 
                     name="month"
                     value={selectedMonth}
+                    role="combobox"
                     onChange={(e)=> handleMonthChange(e)} 
                   >
-                    {Object.keys(payrollData).includes(currentMonth) ? "" :<option value="">{currentMonth}</option>}
+                    {Object.keys(payrollData).includes(currentMonth) ? "" :<option value={currentMonth}>{currentMonth}</option>}
                     {
                       Object.keys(payrollData)
                       .map((month)=>(<option value={month} key={month}>{month}</option>))
