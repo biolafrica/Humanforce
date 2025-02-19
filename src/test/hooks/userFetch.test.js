@@ -21,7 +21,6 @@ describe("test suite: useFetch hook", ()=>{
     jest.clearAllMocks()
   })
 
-
   test("test case: to fetch successful data", async()=>{
     const mockData =[{id:1, name:"abbey", email: "test@gmail.com"}]
 

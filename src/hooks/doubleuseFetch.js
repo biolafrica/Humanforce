@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
-
 function DoubleUseFetch(urlI, urlII,token){
   const [dataI, setDataI] = useState(null);
   const [dataII, setDataII] = useState(null);
@@ -52,7 +50,10 @@ function DoubleUseFetch(urlI, urlII,token){
         localStorage.removeItem("adminAuthToken")
         localStorage.removeItem("team")
         navigate("/admin/login")
-
+      }else if(err.status === 403){
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("user");
+        navigate("/login")
       }else{
         setErrorMessage(errorObj);
       }
