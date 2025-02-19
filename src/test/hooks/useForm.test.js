@@ -41,4 +41,16 @@ describe("test suite: useform hook", ()=>{
     expect(result.current.formData).toEqual({name: "", email: ""});
   })
 
+  test("test case: create a new key and value if absent", ()=>{
+    const {result} = renderHook(()=> useForm({name: "",}))
+
+    act(()=>{
+      result.current.handleInputChange({target: {name:"email", value: "test@gmail.com"}})
+    })
+
+    expect(result.current.formData).toEqual({name: "", email: "test@gmail.com"});
+
+   
+  })
+
 })
