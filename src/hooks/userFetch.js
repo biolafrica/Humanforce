@@ -24,7 +24,7 @@ function UseFetch(url, token, refresh = false){
 
         if(!response.ok){
           const errorText = await response.text();
-          let errorMessage = `Error: ${response.status}`;
+          let errorMessage = `Error: ${errorText}`;
 
           if(response.status === 401){
             errorMessage = "Unauthorized Admin";
