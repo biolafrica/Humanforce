@@ -63,7 +63,7 @@ const StaffForm = ({initialValues, url})=>{
 
   return(
     <>
-      <form className="form_column" onSubmit={handleSubmit}>
+      <form role="form" className="form_column" onSubmit={handleSubmit} >
 
         <div className="newstaff_column">
 
@@ -161,6 +161,7 @@ const StaffForm = ({initialValues, url})=>{
               name="date_of_birth"
               value={formData.date_of_birth}
               onChange={handleInputChange}
+              placeholder="select date of birth"
               required
             />
             {errors.date_of_birth && <div className="error_text">{errors.date_of_birth}</div>}
@@ -185,7 +186,7 @@ const StaffForm = ({initialValues, url})=>{
           <div>
             <label htmlFor="phone_number"><h4>Phone Number</h4></label>
             <input
-              type="number" 
+              type="tel" 
               name="phone_number"
               placeholder="Enter Phone number"
               value={formData.phone_number}
@@ -225,7 +226,7 @@ const StaffForm = ({initialValues, url})=>{
           <div>
             <label htmlFor="next_of_kin_phone_number"><h4>Next of Kin Number</h4> </label>
             <input
-              type="number" 
+              type="tel" 
               placeholder="Enter phone number"
               name="next_of_kin_phone_number"
               value={formData.next_of_kin_phone_number}
