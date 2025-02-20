@@ -2,9 +2,6 @@ import WorkingHours from "../../../components/adminPage/workingHours";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { useAlert } from "../../../components/alert";
-import { MemoryRouter } from "react-router-dom";
-import { type } from "@testing-library/user-event/dist/type";
-import { act } from "react";
 
 jest.mock("axios")
 jest.mock("../../../components/alert", ()=>({
@@ -148,5 +145,5 @@ describe("test suite:", ()=>{
 
   })
 
-  
+
 })

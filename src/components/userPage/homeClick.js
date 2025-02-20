@@ -24,7 +24,13 @@ const HomeClicks = ({business, workingHours})=>{
         const data = response.data;
         if(data){navigate(`/clock/${data.id}`)}
         
-      } catch (error) {console.error("Error:", error.response?.data || error.message)}
+      } catch (error) {
+        if(error.response && error.response.status === 500){
+          navigate("/server-error")
+        }else{
+          console.error("Error:", error.response?.data || error.message);
+        }
+      }
     }
   }
 
