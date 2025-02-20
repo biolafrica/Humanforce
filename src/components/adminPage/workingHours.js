@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
 import useTeam from "./buttonState";
 
-const WorkingHours = (props)=>{
+const WorkingHours = ({work})=>{
   const {alert, showAlert} = useAlert();
   const navigate = useNavigate();
-  const data = props.data.workingHours;
+  const data = work.workingHours;
   const hour = data[0].days;
   const token = localStorage.getItem("adminAuthToken")
   const {AdminExclusiveButton} = useTeam()
@@ -131,6 +131,7 @@ const WorkingHours = (props)=>{
                   <input
                     type="checkbox" 
                     name="" 
+                    role="checkbox"
                     onChange={()=>handleCheckboxChange(day)}
                     checked={workingHours[day].isClosed}
                   />
@@ -143,7 +144,8 @@ const WorkingHours = (props)=>{
                   <div>
                     <label htmlFor=""><h4>Open:</h4></label>
                     <input 
-                      type="time" 
+                      type="time"
+                      role="crombobox"
                       value={workingHours[day].open}
                       onChange={(e) => handleTimeChange(day, "open", e.target.value)}
                     />

@@ -32,6 +32,8 @@ describe("test suite: Team form components", ()=>{
       showAlert : mockShowAlert
     });
 
+    jest.clearAllMocks()
+
   })
 
   test("test case: display initial value properly", ()=>{

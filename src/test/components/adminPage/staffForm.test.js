@@ -49,6 +49,8 @@ describe("test suite: staff form components ", ()=>{
       AdminExclusiveButton : "filled-btn"
 
     })
+
+    jest.clearAllMocks();
   })
 
   test("test case: display initial value properly", ()=>{

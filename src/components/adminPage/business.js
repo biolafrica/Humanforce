@@ -7,11 +7,10 @@ import useTeam from "./buttonState";
 import { useState } from "react";
 
 
-const Business= (props)=>{
+const Business= ({data, work})=>{
   const navigate = useNavigate();
   const {alert, showAlert} = useAlert();
   const apiKey = "";
-  const data = props.data;
   const name = data[0];
   const token = localStorage.getItem("adminAuthToken")
   const{AdminExclusiveButton} = useTeam();
@@ -225,7 +224,7 @@ const Business= (props)=>{
       <div className="working_hours">
         <h5>Working hours</h5>
 
-        <WorkingHours data = {props.work}/>
+        <WorkingHours work = {work}/>
 
       </div>
 
