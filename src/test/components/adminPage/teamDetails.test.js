@@ -5,6 +5,7 @@ import { useAlert } from "../../../components/alert";
 import useTeam from "../../../components/adminPage/buttonState";
 
 jest.mock("../../../components/alert", ()=>( {useAlert :jest.fn()}))
+
 jest.mock("../../../components/adminPage/buttonState", ()=>jest.fn())
 
 describe("test suite: team details components", ()=>{

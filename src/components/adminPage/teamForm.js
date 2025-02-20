@@ -22,7 +22,7 @@ const TeamForm = ({url, initialValues, users, edit})=>{
         }
       } );
       showAlert("Team added succesfully", "success");
-      navigate("/admin/team")
+      navigate("/admin/team");
       resetForm();
       
     } catch (error) {
@@ -43,7 +43,7 @@ const TeamForm = ({url, initialValues, users, edit})=>{
     <>
       <div className="newteam_body">
 
-        <form action="" onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleSubmit} role="form">
           
           <label htmlFor="staff_id"><h4>Name</h4></label>
           <select
@@ -51,6 +51,7 @@ const TeamForm = ({url, initialValues, users, edit})=>{
             value={formData.staff_id}
             onChange={handleInputChange}
             required
+            role="combobox"
             disabled={isEditable}
             
           >
@@ -75,6 +76,7 @@ const TeamForm = ({url, initialValues, users, edit})=>{
             name="team_role"
             value={formData.team_role}
             onChange={handleInputChange}
+            role="combobox"
             required
             >
               <option value="">Select role</option>
