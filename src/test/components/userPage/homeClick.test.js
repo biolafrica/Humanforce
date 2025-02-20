@@ -2,7 +2,6 @@ import HomeClicks from "../../../components/userPage/homeClick";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { useAlert } from "../../../components/alert";
 import axios from "axios";
-import { toBeInTheDocument } from "@testing-library/jest-dom/dist/matchers";
 import { MemoryRouter } from "react-router-dom";
 
 jest.mock("axios")

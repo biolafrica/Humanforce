@@ -84,7 +84,7 @@ const Business= ({data, work})=>{
       <div className="bio_data">
         <h5>Payroll Summary</h5>
 
-        <form className="payroll_columns" onSubmit={handleSubmit}>
+        <form role="form" className="payroll_columns" onSubmit={handleSubmit}>
 
           <div className="payroll_column">
 
@@ -202,7 +202,7 @@ const Business= ({data, work})=>{
             <div>
               <label htmlFor="business_phone_number"><h4>Business number</h4></label>
               <input 
-                type="number" 
+                type="tel" 
                 placeholder="Enter business phone number"
                 name="business_phone_number"
                 value={formData.business_phone_number}
@@ -308,6 +308,5 @@ const Business= ({data, work})=>{
   )
 
 }
-
 
 export default Business;
