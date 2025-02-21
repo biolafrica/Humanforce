@@ -4,24 +4,24 @@ import WorkingHours from "./workingHours";
 import { AlertPopup, useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
 import useTeam from "./buttonState";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 
 const Business= ({data, work})=>{
   const navigate = useNavigate();
   const {alert, showAlert} = useAlert();
-  const apiKey = "";
   const name = data[0];
   const token = localStorage.getItem("adminAuthToken")
   const{AdminExclusiveButton} = useTeam();
   const[errors , setErrors] = useState("")
+  const inputRefI = useRef(null);
+  const inputRefII = useRef(null);
   
-
   const initialValues = {
     business_name : !name ? "" : name.business_name,
     business_email :!name ? "" :  name.business_email,
     business_address_I :!name ? "" :  name.business_address_I,
-    business_address_II :!name ? "" :  name.business_address_I,
+    business_address_II :!name ? "" :  name.business_address_II,
     break_hours :!name ? "" :  name.break_hours,
     lateness_hours :!name ? "" :  name.lateness_hours,
     lateness_fine :!name ? "" :  name.lateness_fine,
@@ -32,13 +32,32 @@ const Business= ({data, work})=>{
     pension :!name ? "" :  name.pension,
   }
 
-  const{
-    formData,
-    handleInputChange,
-    handleSuggestionClick,
-    isLoading,
-    suggestions
-  } = useFormWithAddress(initialValues, apiKey);
+  const{formData, handleInputChange, setFormData} = useFormWithAddress(initialValues);
+
+  useEffect(()=>{
+    if(window.google){
+
+      const autocompleteI = new window.google.maps.places.Autocomplete(inputRefI.current, {
+        types: ["address"],
+        componentRestrictions: {country: "NG"},
+      });
+
+      const autocompleteII = new window.google.maps.places.Autocomplete(inputRefII.current, {
+        types: ["address"],
+        componentRestrictions: {country: "NG"}
+      });
+
+      autocompleteI.addListener("place_changed", ()=>{
+        const place = autocompleteI.getPlace();
+        setFormData((prev)=> ({...prev, business_address_I:place.formatted_address}))
+      });
+
+      autocompleteII.addListener("place_changed", ()=>{
+        const place = autocompleteII.getPlace();
+        setFormData((prev)=>({...prev, business_address_II: place.formatted_address}))
+      });
+    }
+  }, [])
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -75,6 +94,7 @@ const Business= ({data, work})=>{
     };
 
   };
+
 
 
   return(
@@ -119,6 +139,7 @@ const Business= ({data, work})=>{
             <div>
               <label htmlFor="business_address_I"><h4>Business address I</h4></label>
               <input 
+                ref={inputRefI}
                 type="text" 
                 placeholder="Enter first business address" 
                 name="business_address_I"
@@ -131,6 +152,7 @@ const Business= ({data, work})=>{
             <div>
               <label htmlFor="business_address_II"><h4>Business address II</h4></label>
               <input 
+                ref={inputRefII}
                 type="text" 
                 placeholder="Enter second business address"
                 name="business_address_II"
@@ -139,21 +161,6 @@ const Business= ({data, work})=>{
                 required
               />
             </div>
-
-            {isLoading && <div>...Loading</div>}
-            {suggestions.length > 0 && (
-              <ul className="sugesstions-list">
-                {suggestions.map((suggestion, index)=>{
-                  <li
-                  key={index}
-                  onClick={()=> handleSuggestionClick(suggestion)}
-                  className="suggestion-item"
-                  >
-                    {suggestion}
-                  </li>
-                })}
-              </ul>
-            )}
             
           </div>
 

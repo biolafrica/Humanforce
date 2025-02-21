@@ -1,17 +1,33 @@
 import axios from "axios";
-import { useForm } from "../../hooks/useForm";
+import { useFormWithAddress } from "../../hooks/useForm";
 import { AlertPopup, useAlert } from "../alert";
 import { useNavigate } from "react-router-dom";
 import useTeam from "./buttonState";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const StaffForm = ({initialValues, url})=>{
   const {alert, showAlert} = useAlert();
-  const {formData, handleInputChange, resetForm} = useForm(initialValues);
+  const {formData, handleInputChange, resetForm, setFormData} = useFormWithAddress(initialValues);
   const token = localStorage.getItem("adminAuthToken");
   const navigate = useNavigate();
   const {AdminExclusiveButton} = useTeam();
   const [errors, setErrors] = useState({})
+  const inputRef = useRef(null);
+
+  useEffect(()=>{
+    if(window.google){
+      const autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, {
+        types: ['address'],
+        componentRestrictions: {country: "NG"}
+      });
+
+      autocomplete.addListener("place_changed", ()=>{
+        const place = autocomplete.getPlace();
+        setFormData((prev)=>({...prev, address:place.formatted_address}))
+      })
+    }
+
+  }, [])
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -199,6 +215,7 @@ const StaffForm = ({initialValues, url})=>{
           <div>
             <label htmlFor="address"><h4>Address</h4></label>
             <input
+              ref={inputRef}
               type="text" 
               placeholder="Enter home address"
               name="address"

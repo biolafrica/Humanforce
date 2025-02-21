@@ -108,6 +108,7 @@ input[type="number"],
 input[type="month"],
 input[type="date"],
 input[type="time"],
+input[type="tel"],
 select,
 textarea {
   font-family: 'Roboto', sans-serif;
