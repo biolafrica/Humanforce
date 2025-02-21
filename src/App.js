@@ -24,10 +24,24 @@ import Businessetting from "./pages/admin/businessetting";
 import PathError from "./pages/error/pathError";
 import ServerError from "./pages/error/serverError";
 import {PrivateRoute,AdminPrivateRoute} from "./utils/privateroute";
+import { useEffect } from "react";
+
+const loadGoogleMapsScript=()=>{
+  const script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY}&libraries=places`;
+  script.async = true;
+  script.defer = true;
+  document.body.appendChild(script);
+}
 
 
 
 function App() {
+  
+  useEffect(()=>{
+    loadGoogleMapsScript();
+  }, []);
+
   return (
 
     <Router>
