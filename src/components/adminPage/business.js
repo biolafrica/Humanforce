@@ -39,12 +39,12 @@ const Business= ({data, work})=>{
 
       const autocompleteI = new window.google.maps.places.Autocomplete(inputRefI.current, {
         types: ["address"],
-        componentRestrictions: {country: "NG"},
+        componentRestrictions: {country: "uk"},
       });
 
       const autocompleteII = new window.google.maps.places.Autocomplete(inputRefII.current, {
         types: ["address"],
-        componentRestrictions: {country: "NG"}
+        componentRestrictions: {country: "uk"}
       });
 
       autocompleteI.addListener("place_changed", ()=>{

@@ -18,7 +18,7 @@ const StaffForm = ({initialValues, url})=>{
     if(window.google){
       const autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, {
         types: ['address'],
-        componentRestrictions: {country: "NG"}
+        componentRestrictions: {country: "uk"}
       });
 
       autocomplete.addListener("place_changed", ()=>{

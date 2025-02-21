@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../alert";
+import { getCordinates, getDistance, handleGeoLocationError, handleApiError } from "../../utils/geolocation";
 
 const HomeClicks = ({business, workingHours})=>{
+  const businessData = business.business[0];
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
   const {alert, showAlert} = useAlert();
@@ -18,21 +20,57 @@ const HomeClicks = ({business, workingHours})=>{
     
     if(day.isClosed === true){
       return showAlert("we are not operational today", "info")
-    }else{
-      try {
-        const response = await  axios.post(`${process.env.REACT_APP_API_URL}/clock`, {token});
-        const data = response.data;
-        if(data){navigate(`/clock/${data.id}`)}
-        
-      } catch (error) {
-        if(error.response && error.response.status === 500){
-          navigate("/server-error")
-        }else{
-          console.error("Error:", error.response?.data || error.message);
-        }
-      }
     }
-  }
+
+    if(!navigator.geolocation){
+      return showAlert("Geolocation is not supported by your browser", "error")
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async(position) =>{
+        const{latitude : userLat, longitude: userLng} = position.coords;
+
+        try {
+          const [coords1, coords2]= await Promise.all([
+            getCordinates(businessData.business_address_I),
+            getCordinates(businessData.business_address_II)
+          ]);
+
+          if(!coords1 && !coords2){
+            return showAlert("No business location added", "error")
+          }
+
+          const radiusLimit = 500;
+
+          const isWithinRange = 
+          (coords1 && getDistance(userLat, userLng, coords1.lat, coords2.lng) <= radiusLimit) || 
+          (coords2 && getDistance(userLat, userLng, coords2.lat, coords2.lng) <= radiusLimit);
+
+          if(!isWithinRange){
+            return showAlert("You can't clock in outside office", "error");
+          }
+
+          try {
+            const response = await  axios.post(`${process.env.REACT_APP_API_URL}/clock`, {token});
+            if(response.data){
+              navigate(`/clock/${response.data.id}`)
+            }
+          } catch (error) {
+            handleApiError(error, navigate, showAlert); 
+          }
+          
+        } catch (error) {
+          console.error("Location fetching error:", error);
+          showAlert("Error fetching location data", "error")
+        }
+
+      },
+      (error)=>{
+        handleGeoLocationError(error, showAlert)
+      }
+    );
+
+  };
 
   const handleEndWorkClick = async() =>{
 
@@ -61,7 +99,7 @@ const HomeClicks = ({business, workingHours})=>{
     }
   
 
-  }
+  };
 
   return(
     <div className="home_container">
