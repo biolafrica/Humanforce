@@ -31,7 +31,7 @@ describe("test suite: staff form components ", ()=>{
     salary: 50000,
     date_of_birth: '2024-12-07',
     email_address: "test@gmail.com",
-    phone_number: 81851919680,
+    phone_number: 8185191968,
     address: "ajasin, osun",
     next_of_kin_name: "john Doe",
     next_of_kin_phone_number: 81851919680,
@@ -155,7 +155,7 @@ describe("test suite: staff form components ", ()=>{
     fireEvent.change(screen.getByPlaceholderText("Enter Phone number"), {target: {value : "7455267167"}});
     fireEvent.submit(screen.getByRole("form"))
 
-    expect(screen.getByText("Minimum of eleven digits required")).toBeInTheDocument()
+    expect(screen.getByText("Minimum of ten digits required")).toBeInTheDocument()
 
   })
 

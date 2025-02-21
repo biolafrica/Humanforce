@@ -38,12 +38,12 @@ const StaffForm = ({initialValues, url})=>{
       validationErrors.date_of_birth = "Date of birth cannot be today or in the future"
     }
 
-    if(formData.phone_number.toString().length < 11){
-      validationErrors.phone_number = "Minimum of eleven digits required"
+    if(formData.phone_number.toString().length < 10){
+      validationErrors.phone_number = "Minimum of ten digits required"
     }
 
-    if(formData.next_of_kin_phone_number.toString().length < 11){
-      validationErrors.next_of_kin_phone_number = "Minimum of eleven digits required"
+    if(formData.next_of_kin_phone_number.toString().length < 10){
+      validationErrors.next_of_kin_phone_number = "Minimum of ten digits required"
     }
 
     if(Object.keys(validationErrors).length > 0){

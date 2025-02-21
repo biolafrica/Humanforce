@@ -63,8 +63,8 @@ const Business= ({data, work})=>{
     e.preventDefault();
     let phoneError = "";
 
-    if(formData.business_phone_number.toString().length < 11){
-      phoneError = "Minimum of eleven digits required"
+    if(formData.business_phone_number.toString().length < 10){
+      phoneError = "Minimum of 10 digits required"
     }
 
     if(phoneError !== ""){

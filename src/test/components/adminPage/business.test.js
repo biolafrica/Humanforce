@@ -21,7 +21,7 @@ describe("test suite: business components", ()=>{
   const mockBusiness= [{
     business_name:"Test Limited",
     business_email: "info@test.com",
-    business_phone_number: 818519191681,
+    business_phone_number: 81851919168,
     business_address_I: "OL1 3FU",
     business_address_II: "OL2 3HU",
   }]
@@ -91,7 +91,7 @@ describe("test suite: business components", ()=>{
 
     fireEvent.submit(screen.getByRole("form"));
 
-    expect(screen.getByText("Minimum of eleven digits required")).toBeInTheDocument();
+    expect(screen.getByText("Minimum of ten digits required")).toBeInTheDocument();
 
   })
   
