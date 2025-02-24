@@ -27,13 +27,18 @@ import {PrivateRoute,AdminPrivateRoute} from "./utils/privateroute";
 import { useEffect } from "react";
 
 const loadGoogleMapsScript=()=>{
+  if(document.getElementById("google-maps-script")){
+    console.log("Google Maps API script already loaded");
+    return
+  }
+
   const script = document.createElement("script");
+  script.id ="google-maps-script";
   script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY}&libraries=places`;
   script.async = true;
   script.defer = true;
   document.body.appendChild(script);
 }
-
 
 
 function App() {
