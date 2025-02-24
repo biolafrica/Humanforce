@@ -110,6 +110,8 @@ input[type="time"],
 input[type="tel"],
 select,
 textarea {
+  -webkit-appearance: none;
+  appearance: none;
   font-family: 'Roboto', sans-serif;
   display: block;
   background-color: #fafaff;
@@ -124,8 +126,25 @@ textarea {
   letter-spacing: clamp(0.6%, 0.3vw, 0.7%);
   box-sizing: border-box;
   color: var(--Text-light);
-
+  
 }
+
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='gray'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 15px;
+  padding-right: 30px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+  padding-right: 5px;
+}
+
 select{
   margin-bottom: 20px;
 }
