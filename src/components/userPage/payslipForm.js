@@ -1,98 +1,73 @@
 import PayslipTemplate from "./payslipTemplate";
-import { useState } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import { useState , useRef} from "react";
 import { generateYearMonthWeeks } from "../formatmtime";
 import {AlertPopup, useAlert } from "../alert";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const PayslipForm = ({payslips, staff})=>{
-  console.log(payslips);
   const {currentYear, currentWeek, currentMonth} = generateYearMonthWeeks();
+
   const {alert, showAlert} = useAlert();
 
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedWeek, setSelectedWeek] = useState("");
-  const [payslipData, setPayslipData] = useState({});
-  const [overlay, setOverlay] = useState("")
+  const [payslipData, setPayslipData] = useState(null);
 
-  const handleViewPayslip = (e)=>{
+  const payslipRef = useRef();
+
+  const handleDownloadPayslip = async(e)=>{
     e.preventDefault();
-    let selectedPayslip = [];
+    if(!selectedMonth || (staff.employment_type === "contract" && !selectedWeek)){
+      showAlert("Please select all the required fields", "info");
+      return;
+    }
 
-    if (staff.employment_type === "fixed"){
-      selectedPayslip = (payslips[selectedYear] || []).filter((months)=> {
-        const optionMonth = new Date(months.createdAt).toLocaleString("default", {month: 'long'});
-        return(optionMonth === selectedMonth)
-      });
-
+    let selectedPayslip;
+    if(staff.employment_type === "contract"){
+      selectedPayslip = payslips[selectedYear]?.[selectedMonth]?.find(p => p.week === selectedWeek);
     }else{
-      if(selectedMonth === ""){
-        showAlert('Select month', "info");
-      }else{
-        selectedPayslip = payslips[selectedYear][selectedMonth].filter((weeks)=> {
-        return(weeks.week === selectedWeek)
-        })
-      }
+      selectedPayslip = payslips[selectedYear]?.[selectedMonth]?.[0]
     }
 
-    if(selectedPayslip.length > 0 ){
-      setPayslipData(selectedPayslip[0]);
-      setOverlay("overlay");
-    }else {
-      showAlert('Payslip not found for the selected month', "info");
+    if(!selectedPayslip){
+      showAlert("payslip not found for the selected period", "error");
+      return;
     }
-  }
 
-  const downloadPayslipAsPDF = async () =>{
-    const month = new Date(payslipData.createdAt).toLocaleString("default", {
-      month: 'long', 
-      year: "numeric"
-    });
+    setPayslipData(selectedPayslip);
 
-    const pdfContent = document.getElementById("payslip-template");
-    const canvas = await html2canvas(pdfContent);
-    const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF()
-    pdf.addImage(imgData, "PNG", 10, 10, 190, 0);
-    pdf.save(`${payslipData.week ? payslipData.week : month} - Payslip.pdf`);
-  }
+    await new Promise((resolve)=> setTimeout(resolve, 500));
 
-  const handleClose = ()=>{
-    setPayslipData({});
-    setOverlay("");
+    
+    
+    html2canvas(payslipRef.current, {scale: 3})
+    .then((canvas)=>{
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const imgWidth = 210;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-  }
+      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+      pdf.save(`Payslip_${staff.firstname}_${staff.lastname}_${selectedMonth}_${selectedYear}.pdf`)
+    })
+    .catch((error)=>{
+      console.error("Error generating PDF:", error);
+      showAlert("Failed to generate PDF!", "error");
+    })
+      
+  };
 
   return(
     <>
-      <div className={`${overlay}`}></div>
-
-      {payslipData && payslipData._id && (
-        <div className="payslip-template-container">
-
-          <img 
-            src="/icons/close alert.svg" 
-            alt="cancel icon"
-            onClick={handleClose}
-            style={{cursor:"pointer"}} 
-          />
-
-          <div id="payslip-template" data-testid="payslip-template">
-            <PayslipTemplate payslipData={payslipData} staff={staff}/>
-          </div>
-
-          <button 
-            className="filled-btn"
-            onClick={downloadPayslipAsPDF}
-          >
-            <h4>Download as PDF</h4> 
-          </button>
-          
+      <div >
+        <div ref={payslipRef} style={{ position: "absolute", left: "-9999px", top: "-9999px" }}>
+          <PayslipTemplate payslipData={payslipData || {}} staff={staff}/>
         </div>
-      )}
-
-      <form onSubmit={handleViewPayslip} className="payslip_form">
+      </div>
+    
+      <form onSubmit={handleDownloadPayslip} className="payslip_form"> 
 
         <h4 className="payslip_head">My Payslip</h4>
 
@@ -165,7 +140,7 @@ const PayslipForm = ({payslips, staff})=>{
           </>
         )}
 
-        <button type="submit" className="filled-btn"><h4>View Payslip</h4></button>
+        <button type="submit" className="filled-btn"><h4>Download Payslip</h4></button>
 
       </form>
 
