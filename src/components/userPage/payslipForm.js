@@ -14,10 +14,14 @@ const PayslipForm = ({payslips, staff})=>{
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedWeek, setSelectedWeek] = useState("");
   const [payslipData, setPayslipData] = useState(null);
+  const [loading, setLoading] = useState(false)
+  
 
   const payslipRef = useRef();
 
   const handleDownloadPayslip = async(e)=>{
+    setLoading(true);
+    
     e.preventDefault();
     if(!selectedMonth || (staff.employment_type === "contract" && !selectedWeek)){
       showAlert("Please select all the required fields", "info");
@@ -28,7 +32,12 @@ const PayslipForm = ({payslips, staff})=>{
     if(staff.employment_type === "contract"){
       selectedPayslip = payslips[selectedYear]?.[selectedMonth]?.find(p => p.week === selectedWeek);
     }else{
-      selectedPayslip = payslips[selectedYear]?.[selectedMonth]?.[0]
+      
+      const fixedPayslip = payslips[selectedYear].filter((payslip)=>{
+        const convertedMonth = new Date(payslip.createdAt).toLocaleString("default", {month: 'long'});
+        return convertedMonth === selectedMonth
+      })
+      selectedPayslip = fixedPayslip[0];
     }
 
     if(!selectedPayslip){
@@ -40,8 +49,6 @@ const PayslipForm = ({payslips, staff})=>{
 
     await new Promise((resolve)=> setTimeout(resolve, 500));
 
-    
-    
     html2canvas(payslipRef.current, {scale: 3})
     .then((canvas)=>{
       const imgData = canvas.toDataURL("image/png");
@@ -56,6 +63,9 @@ const PayslipForm = ({payslips, staff})=>{
       console.error("Error generating PDF:", error);
       showAlert("Failed to generate PDF!", "error");
     })
+
+    setLoading(false)
+
       
   };
 
@@ -140,7 +150,14 @@ const PayslipForm = ({payslips, staff})=>{
           </>
         )}
 
-        <button type="submit" className="filled-btn"><h4>Download Payslip</h4></button>
+        <button 
+          type="submit" 
+          className="filled-btn"
+          disabled={loading}
+        >
+          {loading === true ? <h4>Downloading...</h4> : <h4>Download Payslip</h4> }
+          
+        </button>
 
       </form>
 

@@ -302,7 +302,7 @@ a {
   border: 1px solid var(--Border-light);
   box-shadow: var(--elevate-1);
   border-radius: 5px;
-  margin: 150px auto;
+  margin: 200px auto;
   padding: 50px;
   box-sizing: border-box;
  
@@ -371,7 +371,7 @@ a {
   width: 60%;
   padding: 0px 50px;
   box-sizing: border-box;
-  margin: 0px auto;
+  margin: 200px auto;
   border-radius: 5px;
 }
 

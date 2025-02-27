@@ -3,12 +3,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AlertPopup,useAlert } from "../common/alert";
 import { getCordinates, getDistance, handleGeoLocationError, handleApiError } from "../../utils/geolocation";
+import { useState } from "react";
 
 const HomeClicks = ({business, workingHours})=>{
   const businessData = business.business[0];
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
   const {alert, showAlert} = useAlert();
+  const [loading, setLoading] = useState(false)
 
   const now = new Date();
   const currentDay = now.toLocaleString("en-US", {weekday: 'long'}).toLowerCase();
@@ -17,6 +19,7 @@ const HomeClicks = ({business, workingHours})=>{
   const day = hour[currentDay]
 
   const handleStartWorkClick =async()=>{
+    setLoading(true)
     
     if(day.isClosed === true){
       return showAlert("we are not operational today", "info")
@@ -70,6 +73,8 @@ const HomeClicks = ({business, workingHours})=>{
       }
     );
 
+    setLoading(false)
+
   };
 
   const handleEndWorkClick = async() =>{
@@ -108,7 +113,8 @@ const HomeClicks = ({business, workingHours})=>{
 
         <Link to="" className="clockin_container" onClick={handleStartWorkClick}>
           <img src="icons/START SHIFT.svg" alt="" />
-          <h4>Start Work</h4>
+          {loading === true ?<h4>Authenticating</h4> :<h4>Start Work</h4>}
+          
         </Link>
 
         <Link to="" className="clockout_container" onClick={handleEndWorkClick}>
