@@ -1,4 +1,4 @@
-import Timer from "../utils/timer";
+import Timer from "../../utils/timer";
 import { breakTimeDifference, timeDifference } from "./formatmtime";
 
 const DisplayTimer = ({time})=>{

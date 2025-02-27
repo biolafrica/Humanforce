@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AlertPopup,useAlert } from "../alert";
+import { AlertPopup,useAlert } from "../common/alert";
 import { getCordinates, getDistance, handleGeoLocationError, handleApiError } from "../../utils/geolocation";
 
 const HomeClicks = ({business, workingHours})=>{

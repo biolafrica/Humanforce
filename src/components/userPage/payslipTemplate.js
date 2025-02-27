@@ -1,4 +1,4 @@
-import { formattedDate } from "../formatmtime";
+import { formattedDate } from "../common/formatmtime";
 import formatNaira from "../../utils/formatNaira";
 
 

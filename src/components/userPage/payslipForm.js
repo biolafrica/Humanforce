@@ -1,7 +1,7 @@
 import PayslipTemplate from "./payslipTemplate";
 import { useState , useRef} from "react";
-import { generateYearMonthWeeks } from "../formatmtime";
-import {AlertPopup, useAlert } from "../alert";
+import { generateYearMonthWeeks } from "../common/formatmtime";
+import {AlertPopup, useAlert } from "../common/alert";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 

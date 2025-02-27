@@ -1,7 +1,7 @@
 import {useForm} from "../../hooks/useForm";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
-import { AlertPopup, useAlert } from "../alert";
+import { AlertPopup, useAlert } from "../common/alert";
 
 
 const TeamForm = ({url, initialValues, users, edit})=>{

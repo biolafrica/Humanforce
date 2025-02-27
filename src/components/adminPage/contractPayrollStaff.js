@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import { AlertPopup, useAlert } from "../alert";
+import { AlertPopup, useAlert } from "../common/alert";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import formatNaira from "../../utils/formatNaira";
-import Empty from "../empty";
+import Empty from "../common/empty";
 
 
 const PayrollTable = ({weeks}) =>{

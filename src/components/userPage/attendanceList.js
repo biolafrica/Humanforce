@@ -1,7 +1,7 @@
-import { formattedDate, formattedFullTime } from "../formatmtime";
-import Pagination from "../pagination"
+import { formattedDate, formattedFullTime } from "../common/formatmtime";
+import Pagination from "../common/pagination"
 import usePagination from "../../hooks/usePagination"
-import Empty from "../empty";
+import Empty from "../common/empty";
 
 const AttendanceList = ({attendances})=>{
 

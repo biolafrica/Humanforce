@@ -1,6 +1,6 @@
 import TeamForm from "../../components/adminPage/teamForm";
 import { useParams } from "react-router-dom";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import UseFetch from "../../hooks/userFetch";
 import PathError from "../error/pathError";
 

@@ -1,6 +1,6 @@
 import DoubleUseFetch from "../../hooks/doubleuseFetch";
 import HomeClicks from "../../components/userPage/homeClick";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 const Homepage=()=>{

@@ -1,6 +1,6 @@
 import useTeam from "../../components/adminPage/buttonState";
 import UseFetch from "../../hooks/userFetch";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import DashboardDetails from "../../components/adminPage/dashboardDetails";
 import PathError from "../error/pathError";
 

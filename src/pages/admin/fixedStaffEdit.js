@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import UseFetch from "../../hooks/userFetch";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import FixedStaffDisplay from "../../components/adminPage/fixedStaffDisplay";
 import PathError from "../error/pathError";
 

@@ -1,6 +1,6 @@
 import Business from "../../components/adminPage/business";
 import DoubleUseFetch from "../../hooks/doubleuseFetch";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 const Businessetting =()=>{

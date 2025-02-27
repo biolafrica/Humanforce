@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import {AlertPopup, useAlert} from "../alert";
-import Pagination from "../pagination";
+import {AlertPopup, useAlert} from "../common/alert";
+import Pagination from "../common/pagination";
 import usePagination from "../../hooks/usePagination";
 import { useNavigate } from "react-router-dom";
-import Empty from "../empty";
+import Empty from "../common/empty";
 import useTeam from "./buttonState";
 
 const TeamDetails =({users, teams})=>{

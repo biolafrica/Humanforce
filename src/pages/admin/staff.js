@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import UseFetch from "../../hooks/userFetch";
 import { useState } from "react";
 import StaffList from "../../components/adminPage/staffList";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import useTeam from "../../components/adminPage/buttonState";
 import PathError from "../error/pathError";
 

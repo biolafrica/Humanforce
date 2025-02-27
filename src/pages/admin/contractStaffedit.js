@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import UseFetch from "../../hooks/userFetch"
 import ContractStaffDisplay from "../../components/adminPage/contractStaffDisplay";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 

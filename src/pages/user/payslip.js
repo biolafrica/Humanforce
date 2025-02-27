@@ -1,6 +1,6 @@
 import PayslipForm from "../../components/userPage/payslipForm";
 import UseFetch from "../../hooks/userFetch";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 const Payslip =()=>{

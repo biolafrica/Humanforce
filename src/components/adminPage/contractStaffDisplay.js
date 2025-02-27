@@ -1,7 +1,7 @@
 import { PayrollTable, PayrollEditPopup } from "./contractPayrollStaff";
 import { useState } from "react";
 import useTeam from "./buttonState";
-import { AlertPopup, useAlert} from "../alert";
+import { AlertPopup, useAlert} from "../common/alert";
 
 const ContractStaffDisplay = ({payroll})=>{
   console.log(payroll)

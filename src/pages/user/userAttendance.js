@@ -1,6 +1,6 @@
 import Attendance from "../../components/userPage/attendance";
 import UseFetch from "../../hooks/userFetch";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 const UserAttendance = ()=>{

@@ -1,8 +1,8 @@
-import { formattedDate, formattedFullTime } from "../formatmtime";
+import { formattedDate, formattedFullTime } from "../common/formatmtime";
 import usePagination from "../../hooks/usePagination"
-import Empty from "../empty";
+import Empty from "../common/empty";
 import { Link } from "react-router-dom";
-import Pagination from "../pagination"
+import Pagination from "../common/pagination"
 
 const UserAttendancelist = ({attendance}) =>{
   const{

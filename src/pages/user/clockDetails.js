@@ -5,10 +5,10 @@ import StaffClock from "../../components/userPage/staffClock";
 import {clockButton, clockButtonClass} from "../../utils/clockButton";
 import axios from "axios";
 import { useState } from "react";
-import DisplayTimer from "../../components/displayTimer";
-import { AlertPopup, useAlert } from "../../components/alert";
+import DisplayTimer from "../../components/common/displayTimer";
+import { AlertPopup, useAlert } from "../../components/common/alert";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 

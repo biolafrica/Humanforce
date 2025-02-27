@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Pagination from "../pagination";
+import Pagination from "../common/pagination";
 import usePagination from "../../hooks/usePagination"
 import formatNaira from "../../utils/formatNaira";
-import Empty from "../empty";
+import Empty from "../common/empty";
 
 const AttendancesList = ({attendances, users})=>{
   const{

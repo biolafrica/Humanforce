@@ -1,7 +1,7 @@
 import UseFetch from "../../hooks/userFetch";
 import { useParams, useLocation } from "react-router-dom";
 import UserAttendancelist from "../../components/userPage/userAttendanceList";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 const AttendanceMore = ()=>{

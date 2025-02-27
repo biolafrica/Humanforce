@@ -1,7 +1,7 @@
 import axios from "axios";
 import {useFormWithAddress} from "../../hooks/useForm";
 import WorkingHours from "./workingHours";
-import { AlertPopup, useAlert } from "../alert";
+import { AlertPopup, useAlert } from "../common/alert";
 import { useNavigate } from "react-router-dom";
 import useTeam from "./buttonState";
 import { useState, useEffect, useRef } from "react";

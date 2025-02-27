@@ -1,7 +1,7 @@
-import Pagination from "../pagination";
+import Pagination from "../common/pagination";
 import usePagination from "../../hooks/usePagination";
 import { Link } from "react-router-dom";
-import Empty from "../empty";
+import Empty from "../common/empty";
 import formatNaira from "../../utils/formatNaira";
 
 const StaffList = ({users})=>{

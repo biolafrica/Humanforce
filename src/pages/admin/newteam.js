@@ -1,6 +1,6 @@
 import UseFetch from "../../hooks/userFetch";
 import TeamForm from "../../components/adminPage/teamForm";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 const NewTeam =()=>{

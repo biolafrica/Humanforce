@@ -1,6 +1,6 @@
 import DoubleUseFetch from "../../hooks/doubleuseFetch";
 import Attendances from "../../components/adminPage/attendances";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 

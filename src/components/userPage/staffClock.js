@@ -1,4 +1,4 @@
-import {formatMTime} from "../formatmtime"
+import {formatMTime} from "../common/formatmtime"
 
 const StaffClock = ({clock})=>{
   

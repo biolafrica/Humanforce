@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UseFetch from "../../hooks/userFetch";
 import PayrollStaffList from "../../components/adminPage/payrollStaffList";
-import Loading from "../../components/loading";
+import Loading from "../../components/common/loading";
 import PathError from "../error/pathError";
 
 const Payroll =()=>{
