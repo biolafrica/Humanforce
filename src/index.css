@@ -473,8 +473,10 @@ a {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 10px;
+
   
 }
+
 
 .fixed_staff_date_filter,
 .contract_staff_date_filter{
@@ -504,7 +506,7 @@ a {
  background-color: #f4f4f4;
  font-weight: 500;
  color: var(--Secondary-Text-light);
- padding: 15px 0px;
+ padding: 15px 20px;
 
 }
 

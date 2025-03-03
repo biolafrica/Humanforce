@@ -10,7 +10,6 @@ const HomeClicks = ({business, workingHours})=>{
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
   const {alert, showAlert} = useAlert();
-  const [loading, setLoading] = useState(false)
 
   const now = new Date();
   const currentDay = now.toLocaleString("en-US", {weekday: 'long'}).toLowerCase();
@@ -19,7 +18,6 @@ const HomeClicks = ({business, workingHours})=>{
   const day = hour[currentDay]
 
   const handleStartWorkClick =async()=>{
-    setLoading(true)
     
     if(day.isClosed === true){
       return showAlert("we are not operational today", "info")
@@ -50,7 +48,7 @@ const HomeClicks = ({business, workingHours})=>{
           (coords2 && getDistance(userLat, userLng, coords2.lat, coords2.lng) <= radiusLimit);
 
           if(!isWithinRange){
-            return showAlert("You can't clock in outside office", "error");
+            return showAlert("You are only allowed to clock in at work", "error");
           }
 
           try {
@@ -72,8 +70,6 @@ const HomeClicks = ({business, workingHours})=>{
         handleGeoLocationError(error, showAlert)
       }
     );
-
-    setLoading(false)
 
   };
 
@@ -113,7 +109,7 @@ const HomeClicks = ({business, workingHours})=>{
 
         <Link to="" className="clockin_container" onClick={handleStartWorkClick}>
           <img src="icons/START SHIFT.svg" alt="" />
-          {loading === true ?<h4>Authenticating</h4> :<h4>Start Work</h4>}
+          <h4>Start Work</h4>
           
         </Link>
 
