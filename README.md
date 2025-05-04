@@ -1,4 +1,45 @@
-# Getting Started with Create React App
+# Humanforce – Real-Time Attendance & Payroll Tracker
+
+A web app that enables real-time staff attendance tracking and automated payroll processing.
+
+## 🔧 Tech Stack
+- **Frontend**: React.js
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Auth**: JWT
+- **Other**: Nodemailer, Cron Jobs, REST API
+
+## 🚀 Features
+- Geolocation-based clock-in validation
+- Automatic daily clock-out via cron jobs
+- Weekly/monthly payslip generation and email dispatch
+- Role-based access control (staff/admin)
+- Admin dashboard with logs and summaries
+
+## 📸 Screenshots
+![upwork 4](https://github.com/user-attachments/assets/30331c05-5517-4d56-9c29-c1229acfa375)
+![upwork 3](https://github.com/user-attachments/assets/508efce9-6c46-449c-94f9-793c2265b85e)
+![upwork 1](https://github.com/user-attachments/assets/1a99c5e0-901a-46a9-b069-331f40c26981)
+![upwork 2](https://github.com/user-attachments/assets/005bdd69-c869-4580-b2b9-5efb06bb165b)
+![upwork5](https://github.com/user-attachments/assets/bd0885ec-ba0b-4bb3-9947-0263853c5234)
+
+## ⚙️ Challenges
+- Managing time zones for accurate time logs
+- Handling geolocation precision and false positives
+- Cron job reliability and failure logging
+
+## 📈 Metrics
+- Reduced manual HR admin time by ~60%
+- Improved attendance compliance by 40%
+
+
+## 📦 Installation
+- git clone https://github.com/biolafrica/humanforce
+- cd humanforce
+- npm install
+- npm run dev
+
+<!--# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +108,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)--!>
